@@ -1,19 +1,16 @@
 #ContentMain{
 	border : 1px solid black;
 	width : 1000px;
-	height : 2000px;
 	margin : 50px;
 	margin-left : 250px;
 }
 
 #first{
 	border-bottom: 1px solid black;
-	height : 1300px;
 }
 
 #second{
 	border-bottom: 1px solid black;
-	height : 100px;
 }
 
 #third{

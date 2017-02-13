@@ -1,9 +1,37 @@
 <?php
+
+  namespace App\Http\Controllers;
+  use Illuminate\Support\Facades\DB;
+  use App\Http\Controllers\Controller;
+
   session_start();
+
+
   if(!isset($_SESSION['is_login'])){
     header('Location: ./');
     exit;
   }
+  class UserController extends Controller
+  {
+      /**
+       * Show a list of all of the application's users.
+       *
+       * @return Response
+       */
+      public function index()
+      {
+          $Sentence = "select * from totalart where artPK = ".$_POST['int'];
+          $users = DB::select(DB::raw($Sentence));
+          foreach($users as $user){
+                $GLOBALS['Title'] = $user->title;
+                $GLOBALS['ARTURL'] = $user->ArtURL;
+                $GLOBALS['uploadDate'] = $user->uploaddate;
+                $GLOBALS['lastloadDate'] = $user->lastloaddate;
+                $GLOBALS['Description'] = $user->description;
+          }
+      }
+  }
+
 ?>
 
 <link rel="stylesheet" type ="text/css" href="css/main.css">
@@ -28,11 +56,18 @@
 
   <div id = "ContentMain">
       <div id = "first">
+        <?php
+           $A = new UserController();
+           $A->index();
+           echo '<img src = '.$GLOBALS['ARTURL'].' width = "700px" height ="700px">'
 
+         ?>
       </div>
 
       <div id = "second">
-
+          <?php
+              echo $GLOBALS['Description'];
+          ?>
       </div>
 
       <div id = "third">

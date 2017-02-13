@@ -1,0 +1,15 @@
+.BOX{
+	margin-left : 210px;
+	border : 0px;
+	border-bottom : 1px gray solid;
+	width : 300px;
+}
+
+#subsub{
+		margin-left : 270px;
+		margin-right : 50px;
+}
+
+#signUp{
+		style : none;
+}

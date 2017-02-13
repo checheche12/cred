@@ -33,7 +33,7 @@ Route::get('/Logout',function(){
 	return view('auth.Logout');
 });
 
-Route::get('/post',function(){
+Route::post('/post',function(){
 	return view('post');
 });
 
@@ -41,6 +41,11 @@ Route::get('/post',function(){
 Route::get('/getContentURL',function(){
 	return view('DBSelect.GetcontentByDB');
 });
+
+Route::get('/token',function(){
+	return view('DBSelect.getToken');
+});
+
 
 
 Auth::routes();

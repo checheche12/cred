@@ -2,6 +2,7 @@
   session_start();
   if(!isset($_SESSION['is_login'])){
     header('Location: ./');
+    exit;
   }
 ?>
 
@@ -31,7 +32,7 @@
         echo '<img id = "profileImage2" src = "mainImage/profile.jpg">';
         echo 'name<br>';
         echo 'school<br>';
-        echo '직책';
+        echo '직책'.'<br>';
      ?>
   </div>
 

@@ -25,7 +25,6 @@ class UserController extends Controller
             $imshi = array();
             $imshi = array($user->artPK,$user->artURL);
             array_push($userArt,$imshi);
-
         }
 
         die(json_encode($userArt));
