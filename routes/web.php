@@ -46,6 +46,18 @@ Route::get('/token',function(){
 	return view('DBSelect.getToken');
 });
 
+Route::get('/signup',function(){
+	return view('signup');
+});
+
+Route::post('/checkSignup',function(){
+	return view('checkSignup');
+});
+
+Route::get('/getWorkList',function(){
+	return view('DBSelect.getWorkList');
+});
+
 
 
 Auth::routes();

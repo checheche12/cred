@@ -6,11 +6,11 @@
 
   session_start();
 
-
   if(!isset($_SESSION['is_login'])){
     header('Location: ./');
     exit;
   }
+
   class UserController extends Controller
   {
       /**
@@ -29,6 +29,17 @@
                 $GLOBALS['lastloadDate'] = $user->lastloaddate;
                 $GLOBALS['Description'] = $user->description;
           }
+      }
+
+      public function getWorkList(){
+            $workList = array();
+            $Sentence2 = "select position, A.userPK, Name from ".$_POST['int']."workDB as A join userinfo as B ON A.userPK = B.userPK";
+            $users2 = DB::select(DB::raw($Sentence2));
+            foreach($users2 as $user){
+                  $imshi = array();
+                  $imshi = array($user->position,$user->Name);
+                  array_push($workList,$imshi);
+            }
       }
   }
 
@@ -60,7 +71,6 @@
            $A = new UserController();
            $A->index();
            echo '<img src = '.$GLOBALS['ARTURL'].' width = "700px" height ="700px">'
-
          ?>
       </div>
 
@@ -76,3 +86,4 @@
   </div>
 
 <script type = "text/javascript" src = "js/jquery-3.1.1.min.js"></script>
+<script type = "text/javascript" src = "js/post.js"></script>

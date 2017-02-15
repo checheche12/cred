@@ -9,18 +9,30 @@
     }
 ?>
 
-  <img src = "mainImage/LoginMain1.png"><br>
-  <img src = "mainImage/LoginEmail.png">
+<div class="logo">
+  <img src = "https://scontent-icn1-1.xx.fbcdn.net/v/t34.0-12/16707122_10208714188076516_677554857_n.png?oh=2a7ec64148df580269ed4d1a6e4483da&oe=58A4CC01" width="196px" height="140px"><br>
+</div>
+<div class="quote">CRED에서 여러 사람들과의 협업을 <br>공유하고 관리하세요!</div>
 <form method="post" action = "auth">
-  <input class = "BOX" id = "IDID" name = "ID" type="text"></input><br>
-  <img src = "mainImage/LoginPass.png"><br>
-  <input class = "BOX" id = "PWPW" name ="PW" type="password"></input><br><br>
-  <input type="hidden" name="_token" value="{{ csrf_token() }}">
-  <input id = "subsub" type="submit" value = "Log in"></input>
-  <a id = "signUp" href=""href = "naver.com">회원가입</a>
+<div class="infoFrame">
+  <p>이메일</p>
+  <input class = "BOX" id = "IDID" name = "ID" type="text"><br>
+  <p>패스워드</p>
+  <input class = "BOX" id = "PWPW" name ="PW" type="password"><br><br>
+</div>
+<input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+<div class="buttons">
+
+<!--   <input id = "subsub" type="submit" value = "Log in"> -->
+  <input id = "subsub" type="image" src="https://scontent-icn1-1.xx.fbcdn.net/v/t1.0-9/16711893_10155812420853135_566586362708508326_n.jpg?oh=55c618a83e48473dde87d13f28dd0ef9&oe=5902573D"/>
+<!-- <a id = "signUp" href=""href = "naver.com">회원가입</a> -->
+
 </form>
 
+<a href = "/signup"><img src = "https://scontent-icn1-1.xx.fbcdn.net/v/t1.0-9/16708416_10155812438113135_2115653503167242082_n.jpg?oh=e80878a5317abb2d7537de52cd5118d6&oe=59391D2F"></a>
 
+</div>
 
 <?php
 

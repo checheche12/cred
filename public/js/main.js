@@ -11,7 +11,6 @@ var token;
 function post_to_url(path, int, method) {
     method = method || "post"; // 전송 방식 기본값을 POST로
 
-
     var form = document.createElement("form");
     form.setAttribute("method", method);
     form.setAttribute("action", path);
@@ -41,8 +40,7 @@ function post_to_url(path, int, method) {
 // 이 함수에서 json 형태를 다시 URL 배열로 풀어서
 // 3행짜리 동영상의 table 을 구성한다.
 
-// 현재 제작 과정. 이미지를 잘 불러오므로 이미지를 클릭했을때 post 페이지로 넘어가는
-// 내용을 구현해 볼 것이다.
+// 현재 제작 과정. post 페이지로 잘 이동한다.
 
 Project.addEventListener("click",function(){
 
