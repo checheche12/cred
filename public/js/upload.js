@@ -1,3 +1,7 @@
+var TitleBox = document.getElementById('titleBox');
+var URLBox = document.getElementById('URLBox');
+var Description = document.getElementById('context');
+
 var addCredit = document.getElementById('submitCredit');
 var Email = document.getElementById('email');
 var position = document.getElementById('position');
@@ -54,6 +58,11 @@ addCredit.addEventListener("click",function(){
 
 submitButton.addEventListener("click",function(){
       var Data2 = {"_token" : token};
+
+      Data2['Title'] = TitleBox.value;
+      Data2['ArtURL'] = URLBox.value;
+      Data2['Description'] = Description.value;
+
       Data2['main'] = creditArray;
 
       $.ajax({
