@@ -3,6 +3,7 @@
 var Project = document.getElementById('Project');
 var Bridge_Log = document.getElementById('Bridge_Log');
 var Bridge = document.getElementById('Bridge');
+var Upload = document.getElementById('upload');
 var token;
 
 //js 에서 php 로 값을 넘겨서 php 페이지를 띄우기 위한 함수.
@@ -87,4 +88,8 @@ Bridge_Log.addEventListener("click",function(){
 
 Bridge.addEventListener("click",function(){
   $(location).attr('href','./Logout');
+});
+
+Upload.addEventListener("click",function(){
+    $(location).attr('href','./upload')
 });

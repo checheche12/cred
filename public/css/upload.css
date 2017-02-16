@@ -58,23 +58,46 @@
 	margin-top : 80px;
 }
 
-#profileSelection{
+#uploadtext{
+	margin-left: 100px;
+	margin-top:100px;
+	font-size: 40px;
+	font-weight: bold;
+}
+
+#video{
+	border : 1px solid black;
+	width : 335px;
+	height : 215px;
+	margin-left : 50px;
 	float:left;
-	text-align : center;
-	display : block-inline;
+}
+
+#contextBox{
+	margin-left : 500px;
+	padding : 50px;
+	border : 1px solid black;
+	width : 1000px;
+	height : auto;
+}
+
+#context{
+	width : 700px;
+	height : 200px;
+}
+
+#titleBox,#URLBOX{
+	width : 500px;
+}
+
+#creditBox{
+	margin-top:10px;
+	border : 1px solid black;
 	width : 700px;
 	height : 100px;
-	border-bottom : 1px solid black;
-
 }
 
-ul{
-	list-style:none;
-}
-
-li{
-	display:inline-block;
-	margin-top : 20px;
-	margin-right : 100px;
-	cursor:pointer;
+#submit{
+	width : 60px;
+	height : 40px;
 }

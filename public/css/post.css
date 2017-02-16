@@ -16,3 +16,22 @@
 #third{
 	height : 600px;
 }
+
+#addCredit{
+	height : 50px;
+	width : 100px;
+}
+
+.positionFrame{
+ 	float:left;
+	text-align:right;
+	width:230px;
+	line-height:1.5em
+}
+
+.nameFrame{
+	float:right;
+	text-align:left;
+	width:230px;
+	line-height:1.5em
+}

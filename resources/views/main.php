@@ -21,6 +21,7 @@
         echo '<div id = "profileName">mina</div>';
         echo '</div>';
      ?>
+     <button id = "upload">upload</button>
   </div>
 
     <!--

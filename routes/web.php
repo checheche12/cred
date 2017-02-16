@@ -58,6 +58,10 @@ Route::get('/getWorkList',function(){
 	return view('DBSelect.getWorkList');
 });
 
+Route::get('/upload',function(){
+	return view('upload');
+});
+
 
 
 Auth::routes();

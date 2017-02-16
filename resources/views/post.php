@@ -31,17 +31,22 @@
           }
       }
 
-      public function getWorkList(){
-            $workList = array();
+      public function getWorkNameList(){
             $Sentence2 = "select position, A.userPK, Name from ".$_POST['int']."workDB as A join userinfo as B ON A.userPK = B.userPK";
             $users2 = DB::select(DB::raw($Sentence2));
             foreach($users2 as $user){
-                  $imshi = array();
-                  $imshi = array($user->position,$user->Name);
-                  array_push($workList,$imshi);
-                      
+                echo "<p class = 'nameFrame'>".$user->Name."</p>";
             }
       }
+
+        public function getWorkPositionList(){
+              $Sentence2 = "select position, A.userPK, Name from ".$_POST['int']."workDB as A join userinfo as B ON A.userPK = B.userPK";
+              $users2 = DB::select(DB::raw($Sentence2));
+              foreach($users2 as $user){
+                  echo "<p class = 'positionFrame'>".$user->position."</p>";
+              }
+        }
+
   }
 
 ?>
@@ -71,7 +76,7 @@
         <?php
            $A = new UserController();
            $A->index();
-           echo '<img src = '.$GLOBALS['ARTURL'].' width = "700px" height ="700px">'
+           echo '<img src = '.$GLOBALS['ARTURL'].' width = "560px" height ="315px">'
          ?>
       </div>
 
@@ -82,6 +87,26 @@
       </div>
 
       <div id = "third">
+        <div class="creditFrame" style="width:500px">
+            <p class="credit" style="font-size:36px;text-align:center; text-decoration:underline">Credit</p>
+            <div class="positionFrame">
+              position
+              <?php
+                $A->getWorkPositionList();
+               ?>
+            </div> <!-- position end -->
+            <div class="nameFrame">
+              name
+              <?php
+                $A->getWorkNameList();
+              ?>
+            </div><!-- creditNamee end -->
+        </div><!-- creditFrame end -->
+
+        <br><br><br>
+         position : <input id = "position"></input>
+         Email : <input id = "Email"></input>
+        <button id = "addCredit">credit 추가</button>
 
       </div>
   </div>
