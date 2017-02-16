@@ -1,3 +1,12 @@
+body{
+	background-repeat: no-repeat;
+	background-position: 50%50%;
+	background-size:2000px;
+	vertical-align:middle;
+	text-align:center;
+ }
+
+
 .logoDiv {
 	text-align: center;
 	margin-top: 0px;
@@ -45,12 +54,4 @@ background-color: #ffffff;
 width:450px;
 height:650px;
 margin-top:67px;
-}
-#body{
-background-image:url("https://files.slack.com/files-tmb/T2Z0F0H1A-F452G78TS-3aa32dadbd/_______________________________________________________480.png");
-background-repeat: no-repeat;
-background-position: 50%50%;
-background-size:2000px;
-vertical-align:middle;
-text-align:center;
 }

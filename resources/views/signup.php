@@ -4,7 +4,7 @@
 <div id="infoFrame">
 	<div class="logoDiv">
 		<img
-			id="logoImage" src="mainImage/signupImage/signupLogo.png"
+			id="logoImage" src="/mainImage/signupImage/signupLogo.png"
 			><br>
 	</div>
 	<div class="quote">

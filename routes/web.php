@@ -59,8 +59,18 @@ Route::get('/getWorkList',function(){
 });
 
 Route::get('/upload',function(){
-	return view('upload');
+	return view('upload.upload');
 });
+
+
+Route::post('/checkAddcredit',function(){
+	return view('upload.checkAddcredit');
+});
+
+Route::post('/uploadWriteDB',function(){
+	return view('upload.uploadWriteDB');
+});
+
 
 
 

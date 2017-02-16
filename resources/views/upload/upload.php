@@ -21,6 +21,7 @@
       echo '<div id = "profileName">mina</div>';
       echo '</div>';
    ?>
+
    <button id = "upload">upload</button>
 </div>
 
@@ -51,5 +52,9 @@
   <textarea id = "context" cols : "40" rows:"10"></textarea><br><br>
 
   <button id = "submit">등록</button>
-  
+
 <div>
+
+
+<script type = "text/javascript" src = "js/jquery-3.1.1.min.js"></script>
+<script type = "text/javascript" src = "js/upload.js"></script>

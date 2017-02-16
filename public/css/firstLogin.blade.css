@@ -1,3 +1,13 @@
+/*
+    body{
+    background-image: url("/mainImage/mainBackground.png");
+    background-repeat: no-repeat;
+    background-position: 50%50%;
+    background-size:2000px;
+    vertical-align:middle;
+    text-align:center;
+   }
+*/
 .logo{
 text-align:center;
   margin-top:5%;
