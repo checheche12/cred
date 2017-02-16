@@ -39,6 +39,7 @@
                   $imshi = array();
                   $imshi = array($user->position,$user->Name);
                   array_push($workList,$imshi);
+                      
             }
       }
   }
