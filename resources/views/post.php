@@ -76,8 +76,11 @@
         <?php
            $A = new UserController();
            $A->index();
-           echo '<img src = '.$GLOBALS['ARTURL'].' width = "560px" height ="315px">'
          ?>
+          <script>
+              var SourceURL = "<?= $GLOBALS['ARTURL'] ?>";
+          </script>
+
       </div>
 
       <div id = "second">
@@ -110,6 +113,7 @@
 
       </div>
   </div>
+
 
 <script type = "text/javascript" src = "js/jquery-3.1.1.min.js"></script>
 <script type = "text/javascript" src = "js/post.js"></script>

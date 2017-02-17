@@ -1,12 +1,15 @@
+@CHARSET "UTF-8";
 #header{
 	border-bottom : 1px solid black;
 	margin : -15px;
-	height : 100px;
+	Height : 100px;
 }
 
 #credImage{
 	float : left;
-	padding : 15px;
+	padding : 5px;
+	max-width:100%;
+max-height:100%;
 }
 
 #profile{
@@ -17,6 +20,14 @@
 	margin-top : 30px;
 }
 
+.videoArt{
+	float : left;
+	width : 232px;
+	height : 232px;
+	margin-right : 50px;
+	margin-bottom : 50px;
+}
+
 #profileImage{
 	float : left;
 	width : 50px;
@@ -24,48 +35,71 @@
 }
 
 #profileName{
-	width : 100px;
+
+	/* width : 100px; */
 	height : 30px;
-	text-align : center;
+	/* text-align : center; */
+	word-wrap:normal;
 }
 
 #upload{
 	float:right;
 	margin-top : 30px;
 	margin-right : -200px;
+	height:20px;
+	width:20px;
+	background-color:#ffffff;
+	background-image:url('https://scontent-icn1-1.xx.fbcdn.net/v/t34.0-12/16808425_10208739634232654_729364077_n.png?oh=654b018c457a8f7b867b3efa0980d0d5&oe=58A7AF0F');
+	background-size: 20px 20px;
+	border: none;
 }
 
-#mainProfile{
-	margin-left : 50px;
-	float : left;
-	margin-top : 100px;
-	height : 200px;
-	width : 200px;
+.mainProfile{
+	float:left;
+	/* border : 1px solid black; */
+	margin : 50px;
+	margin-top:80px;
+	height : 800px;
+	width : 300px;
+	text-align:center;
+	line-height:30%
 }
-
+.mainProfile .email{
+	margin-top:50px;
+}
+.mainProfile .personalDescription{
+	text-align:left;
+	margin-top:20px;
+/* 	border:1px solid black;
+	border-color: #c0c0c0; */
+	word-wrap:break-word;
+	line-height:120%
+}
 #profileImage2{
-	float : left;
+	/* float : left; */
 	width : 80px;
 	height : 80px;
-	margin-right : 5px;
 }
 
 #profileContent{
-	width : 700px;
+	width : 900px;
 	height : 800px;
 	margin-left : 500px;
-	border : 1px solid black;
+	/* border : 1px solid black; */
 	margin-top : 80px;
 }
 
 #profileSelection{
-	float:left;
+	/* float:left; */
 	text-align : center;
 	display : block-inline;
-	width : 700px;
+	width : 900px;
 	height : 100px;
-	border-bottom : 1px solid black;
+	/* border-bottom : 1px solid black; */
 
+}
+#profileBody{
+	width:100%;
 }
 
 ul{
@@ -77,4 +111,65 @@ li{
 	margin-top : 20px;
 	margin-right : 100px;
 	cursor:pointer;
+}
+/* #imageSpacer{
+	width:50px;
+} */
+.card{
+	height:100px;
+	width:344px;
+	border-bottom:2px solid black;
+	border-right:2px solid black;
+	border-bottom-color: #e2e2e2;
+	border-right-color: #e2e2e2;
+	float:left;
+	margin:10px;
+}
+.personalImageFrame{
+	height:100px;
+	width:80px;
+}
+.personalImage{
+	height:60px;
+	width:60px;
+	margin:10px;
+}
+.personalInfo{
+	margin:5px;
+	width:95px;
+	float:left;
+	line-height:30%
+}
+.name{
+	font-size:20px;
+	font-weight:bold;
+
+}
+.organization{
+	font-size:13px;
+
+}
+.position{
+	font-size:13px;
+	font-weight:bold;
+
+}
+.location{
+	font-size:12px;
+	font-weight:lighter;
+
+}
+.workImageFrame{
+	width:149px;
+	height:100px;
+}
+.workImage{
+	width:129px;
+	height:76px;
+	margin:10px;
+
+}
+
+ table td, table tr{
+	/* border:1px solid black; */
 }
