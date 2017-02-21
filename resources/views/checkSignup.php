@@ -36,11 +36,36 @@
                   artPK bigint(20) not null,
                   primary key(number)
                 )');
+
+              DB::statement('CREATE TABLE '.$userNumber.'education (
+                	educationPK int NOT NULL AUTO_INCREMENT,
+                	Location tinytext,
+                  Startdate date,
+                  enddate date,
+                  education tinytext,
+                  PRIMARY KEY(educationPK)
+                )');
+
+                DB::statement('CREATE TABLE '.$userNumber.'keyword (
+                	keywordPK int NOT NULL AUTO_INCREMENT,
+                	keyword tinytext,
+                	PRIMARY KEY(keywordPK)
+                )');
+
+                DB::statement('CREATE TABLE '.$userNumber.'career (
+                  careerPK int NOT NULL AUTO_INCREMENT,
+                  position tinytext,
+                  homepageURL text,
+                  startdate date,
+                  enddate date,
+                  location tinytext,
+                  PRIMARY KEY(careerPK)
+                )');
           }
           else{
               echo "이미 존재하는 회원 email 입니다.";
           }
-          echo "3초뒤에 메인 화면으로 이동한다./n";
+          echo "3초뒤에 메인 화면으로 이동합니다./n";
           echo "<script type='text/javascript'>setTimeout(function(){
               document.location.href='./';
           },3000);</script>";

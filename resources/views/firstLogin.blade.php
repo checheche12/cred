@@ -10,7 +10,7 @@
 ?>
 
 <div class="logo">
-  <img src = "https://scontent-icn1-1.xx.fbcdn.net/v/t34.0-12/16707122_10208714188076516_677554857_n.png?oh=2a7ec64148df580269ed4d1a6e4483da&oe=58A4CC01" width="196px" height="140px"><br>
+  <img src = "/mainImage/signupImage/signupLogo.png" width="187px"><br>
 </div>
 <div class="quote">CRED에서 여러 사람들과의 협업을 <br>공유하고 관리하세요!</div>
 <form method="post" action = "auth">

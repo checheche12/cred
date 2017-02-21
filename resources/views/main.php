@@ -34,6 +34,7 @@
         echo '<p class="name">Test 1</p>';
         echo '<p class="organization">CRED</p>';
         echo '<p class="position">Chief Chef</p>';
+        echo '<button id = "informationEdit"></button>';
         echo '<p class="location">GangNam</p>';
         echo '<p class="email">email@cred.com</p>';
         echo '<hr>';
