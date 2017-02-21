@@ -6,6 +6,8 @@ var Bridge = document.getElementById('Bridge');
 
 var Upload = document.getElementById('upload');
 
+var informationEdit = document.getElementById('informationEdit');
+
 var token;
 
 // js 에서 php 로 값을 넘겨서 php 페이지를 띄우기 위한 함수.
@@ -64,7 +66,12 @@ function post_to_url(path, int, method) {
 
 // 현재 제작 과정. post 페이지로 잘 이동한다.
 
+informationEdit.addEventListener("click",function(){
+	$(location).attr('href','/informationEdit');
+})
+
 Project.addEventListener("click", function() {
+
 	console.log("SUCCESS POINT01");
 
 	// 토큰값을 가지고 와야한다. 토큰용 php 파일을 하나 만든다.

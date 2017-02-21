@@ -71,8 +71,9 @@ Route::post('/uploadWriteDB',function(){
 	return view('upload.uploadWriteDB');
 });
 
-
-
+Route::get('/informationEdit',function(){
+	return view('information.informationEdit');
+});
 
 Auth::routes();
 
