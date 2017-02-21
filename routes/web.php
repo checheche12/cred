@@ -39,7 +39,7 @@ Route::post('/post',function(){
 
 
 Route::get('/getContentURL',function(){
-	return view('DBSelect.GetcontentByDB');
+	return view('DBSelect.GetContentByDB');
 });
 
 Route::get('/token',function(){
