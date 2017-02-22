@@ -81,29 +81,30 @@
       </div>
 
       <div id = "third">
-        <div class="creditFrame" style="width:500px">
-            <p class="credit" style="font-size:36px;text-align:center; text-decoration:underline">Credit</p>
+          <div class="creditFrame">
+            <p class="credit">Credit</p>
             <div class="positionFrame">
-              position
+              <p class="titleText">position</p><br>
               <?php
-                $A->getWorkPositionList();
-               ?>
-            </div> <!-- position end -->
-            <div class="nameFrame">
-              name
-              <?php
-                $A->getWorkNameList();
+              $A->getWorkPositionList();
               ?>
-            </div><!-- creditNamee end -->
-        </div><!-- creditFrame end -->
-
-        <br><br><br>
-         position : <input id = "position"></input>
-         Email : <input id = "Email"></input>
-        <button id = "addCredit">credit 추가</button>
-
+            </div>
+            <div class="nameFrame">
+              <p class="titleText">name</p>
+              <?php
+              $A->getWorkNameList();
+              ?>
+            </div>
+          </div>
+          
+          <br><br><br>
+          <input id="position" placeholder="담당 position"></input>
+          <input id="Email" placeholder="계졍 Email"></input>
+          <input id="addCredit" type="button" value="creidt 추가"></input>
+          
+        </div>
       </div>
-  </div>
+      <div><input id="close" type=button value="close"></input></div>
 
 
 <script type = "text/javascript" src = "js/jquery-3.1.1.min.js"></script>

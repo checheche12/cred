@@ -85,7 +85,6 @@ Route::get('/informationEdit',function(){
 });
 
 
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');

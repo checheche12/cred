@@ -20,27 +20,27 @@
 
 <div id = "contextBox">
 
-  <p>제목</p>
-  <input id = "titleBox" type="text"></input>
+<label for="URLBox">URL을 입력하여 프로젝트를 업로드하세요</label><br>
+    <input id = "URLBox" type="text" placeholder="동영상 url을 입력해 주세요"></input><br><br>
+    <label for="titleBox">제목</label><br>
+    <input id = "titleBox" type="text"></input><br><br>
 
-  <p>URL</p>
-  <input id = "URLBox" type="text"></input>
+    <label for="email">크레딧</label><br><br>
+    <input id = "email" type="text" placeholder=" e-mail"></input>
+    <input id = "position" type="text" placeholder=" 담당 역할"></input>
+    <button id = "submitCredit" >+추가</button><br><br>
+    <!-- 추가된 크레딧 -->
+    <div id = "creditBox">
 
-  <p>크레딧(이메일/직책)</p>
-  <input id = "email" type="text"></input>
-  <input id = "position" type="text"></input>
-  <button id = "submitCredit">크레딧 추가</button><br><br>
-  추가된 크레딧
-  <div id = "creditBox">
+    </div>
 
-  </div>
+    <label for="context">내용</label><br>
+    <textarea id = "context" cols : "40" rows:"10"></textarea><br><br>
 
-  <p>내용</p>
-  <textarea id = "context" cols : "40" rows:"10"></textarea><br><br>
+    <button id = "cancelButton" class="submitButton">cancel</button>
+    <button id = "saveButton" class="submitButton">저장</button>
 
-  <button id = "submit">등록</button>
-
-<div>
+    <div>
 
 
 <script type = "text/javascript" src = "js/jquery-3.1.1.min.js"></script>

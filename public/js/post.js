@@ -64,7 +64,9 @@ function imageExists(url, callback) {
 
 	/** urlCheck**/
 	function urlCheck(urlInput) {
-
+		
+		var width = 1050;
+		var height = 484;
 		var url = urlInput;
 //		var url = urlInput.value; //url input 에서 가져오기
 		var id = matchYoutubeUrl(url); //youtube url 인지 체크 하고 youtube id 반환
@@ -75,7 +77,7 @@ function imageExists(url, callback) {
 //			$("#testImage")
 //					.html(
 //							"<div> <iframe width='560' height='315' src='https://www.youtube.com/embed/"+id+ "' frameborder='0' allowfullscreen></iframe> </div>");
-			return "<iframe width='560' height='315' src='https://www.youtube.com/embed/"+id+ "' frameborder='0' allowfullscreen></iframe>";
+			return "<iframe width='"+width+"' height='"+height+"' src='https://www.youtube.com/embed/"+id+ "' frameborder='0' allowfullscreen></iframe>";
 		} else if (matchVimeoUrl(url) != false) {
 			id = matchVimeoUrl(url); //vimeo id 반환
 //			$("#checkResult").html("Vimeo Video id: " + id);
@@ -86,7 +88,7 @@ function imageExists(url, callback) {
 //									+ "?title=0&byline=0&portrait=0&badge=0' width='640' height='360' frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> </div>");
 			return "<iframe src='https://player.vimeo.com/video/"
       									+ id
-      									+ "?title=0&byline=0&portrait=0&badge=0' width='640' height='360' frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>";
+      									+ "?title=0&byline=0&portrait=0&badge=0' width='"+width+"' height='"+height+"' frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>";
 		} else {
 			return "<image src = " + url + ">";
 		}

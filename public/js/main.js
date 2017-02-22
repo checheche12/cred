@@ -69,14 +69,9 @@ function post_to_url(path, int, method) {
 // 3행짜리 동영상의 table 을 구성한다.
 
 // 현재 제작 과정. post 페이지로 잘 이동한다.
+bridgeLogDisplay();
 
-
-Project.addEventListener("click", function() {
-
-	console.log("SUCCESS POINT01");
-
-	// 토큰값을 가지고 와야한다. 토큰용 php 파일을 하나 만든다.
-
+function bridgeLogDisplay(){
 	$.ajax({
 
 		url : './token',
@@ -105,28 +100,28 @@ Project.addEventListener("click", function() {
 				if (urlType == "youtube") {
 					var yvID = matchYoutubeUrl(url);
 					imgSrc = 'https://img.youtube.com/vi/' + yvID
-							+ '/hqdefault.jpg';
+					+ '/hqdefault.jpg';
 					j = '<img class = "VideoArt" id = Image' + k[i][0] + ' src = ' + imgSrc
-							+ '>';
+					+ '>';
 
 					$('#profileBody').append(j);
 
 				} else if (urlType == "vimeo") {
 					var vvID = matchVimeoUrl(url);
 					$.getJSON('http://www.vimeo.com/api/v2/video/' + vvID
-							+ '.json?callback=?', {
-						format : "json"
-					}, function(data) {
-						j = '<img class "VideoArt" id = Image' + k[i][0] + ' src = ' + data[0].thumbnail_large
-								+ '>';
+						+ '.json?callback=?', {
+							format : "json"
+						}, function(data) {
+							j = '<img class "VideoArt" id = Image' + k[i][0] + ' src = ' + data[0].thumbnail_large
+							+ '>';
 
-						$('#profileBody').append(j);
+							$('#profileBody').append(j);
 
 //						$('#profileBody').attr('src', data[0].thumbnail_large);
-					});
+});
 				} else {
 					j = '<img class = "VideoArt" id = Image' + k[i][0] + ' src = ' + url
-							+ '>';
+					+ '>';
 
 					$('#profileBody').append(j);// skip
 				}
@@ -153,6 +148,15 @@ Project.addEventListener("click", function() {
 		}
 
 	})
+
+}//bridgeLogDisplay()
+
+Project.addEventListener("click", function() {
+
+	console.log("SUCCESS POINT01");
+
+	// 토큰값을 가지고 와야한다. 토큰용 php 파일을 하나 만든다.
+	bridgeLogDisplay();
 
 });
 
@@ -197,8 +201,8 @@ function validateImageURL(imageUrl) {
 		} else { // Image 가 아닐 시
 		// alert("Invalid URL");
 
-		}
-	});
+	}
+});
 
 }
 function matchYoutubeUrl(url) {
@@ -225,12 +229,12 @@ function urlCheck(urlInput) {
 	var id = matchYoutubeUrl(url); // youtube url 인지 체크 하고 youtube id 반환
 	if (id != false) {
 //		alert("Youtube Video id: " + id);
-		return "youtube";
-	} else if (matchVimeoUrl(url) != false) {
+return "youtube";
+} else if (matchVimeoUrl(url) != false) {
 		id = matchVimeoUrl(url); // vimeo id 반환
 //		alert("Vimeo Video id: " + id);
-		return "vimeo";
-	} else {
-		validateImageURL(url);
-	}
+return "vimeo";
+} else {
+	validateImageURL(url);
+}
 }
