@@ -1,24 +1,4 @@
 @CHARSET "UTF-8";
-#header{
-	border-bottom : 1px solid black;
-	margin : -15px;
-	Height : 100px;
-}
-
-#credImage{
-	float : left;
-	padding : 5px;
-	max-width:100%;
-max-height:100%;
-}
-
-#profile{
-	float : right;
-	display : inline-block;
-	width : 500px;
-	height : 50px;
-	margin-top : 30px;
-}
 
 .videoArt{
 	float : left;
@@ -28,33 +8,7 @@ max-height:100%;
 	margin-bottom : 50px;
 }
 
-#profileImage{
-	float : left;
-	width : 50px;
-	height : 50px;
-}
-
-#profileName{
-
-	/* width : 100px; */
-	height : 30px;
-	/* text-align : center; */
-	word-wrap:normal;
-}
-
-#upload{
-	float:right;
-	margin-top : 30px;
-	margin-right : -200px;
-	height:20px;
-	width:20px;
-	background-color:#ffffff;
-	background-image:url('https://scontent-icn1-1.xx.fbcdn.net/v/t34.0-12/16808425_10208739634232654_729364077_n.png?oh=654b018c457a8f7b867b3efa0980d0d5&oe=58A7AF0F');
-	background-size: 20px 20px;
-	border: none;
-}
-
-.mainProfile{
+.ProfileBasicInfo{
 	float:left;
 	/* border : 1px solid black; */
 	margin : 50px;
@@ -63,22 +17,6 @@ max-height:100%;
 	width : 300px;
 	text-align:center;
 	line-height:30%
-}
-.mainProfile .email{
-	margin-top:50px;
-}
-.mainProfile .personalDescription{
-	text-align:left;
-	margin-top:20px;
-/* 	border:1px solid black;
-	border-color: #c0c0c0; */
-	word-wrap:break-word;
-	line-height:120%
-}
-#profileImage2{
-	/* float : left; */
-	width : 80px;
-	height : 80px;
 }
 
 #profileContent{

@@ -1,0 +1,18 @@
+#profileImage2{
+	/* float : left; */
+	width : 80px;
+	height : 80px;
+}
+
+.email{
+	margin-top:50px;
+}
+
+.personalDescription{
+	text-align:left;
+	margin-top:20px;
+/* 	border:1px solid black;
+	border-color: #c0c0c0; */
+	word-wrap:break-word;
+	line-height:120%
+}

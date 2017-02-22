@@ -1,12 +1,16 @@
+// Header section 추가
+$(document).ready( function() {
+
+	$("#pfpf").load("/ProfileBasicInfo");
+	$("#header").load("/header");
+
+});
+
 var Project = document.getElementById('Project');
 
 var Bridge_Log = document.getElementById('Bridge_Log');
 
 var Bridge = document.getElementById('Bridge');
-
-var Upload = document.getElementById('upload');
-
-var informationEdit = document.getElementById('informationEdit');
 
 var token;
 
@@ -66,9 +70,6 @@ function post_to_url(path, int, method) {
 
 // 현재 제작 과정. post 페이지로 잘 이동한다.
 
-informationEdit.addEventListener("click",function(){
-	$(location).attr('href','/informationEdit');
-})
 
 Project.addEventListener("click", function() {
 
@@ -175,19 +176,6 @@ Bridge_Log.addEventListener("click", function() {
 
 });
 
-// 로그아웃 하는 버튼인데 원래는 아님 나중에 수정해야함.
-
-Bridge.addEventListener("click", function() {
-
-	$(location).attr('href', './Logout');
-
-});
-
-Upload.addEventListener("click", function() {
-
-	$(location).attr('href', './upload')
-
-});
 
 // urlCheck functions
 function imageExists(url, callback) {

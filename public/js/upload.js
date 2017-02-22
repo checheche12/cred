@@ -1,3 +1,9 @@
+$(document).ready( function() {
+
+	$("#header").load("/header");
+
+});
+
 var TitleBox = document.getElementById('titleBox');
 var URLBox = document.getElementById('URLBox');
 var Description = document.getElementById('context');

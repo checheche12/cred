@@ -1,3 +1,10 @@
+// Header section 추가
+$(document).ready( function() {
+
+	$("#header").load("/header");
+
+});
+
 var addCreditButton = document.getElementById('addCredit');
 
 addCreditButton.addEventListener("click",function(){

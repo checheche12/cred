@@ -16,6 +16,15 @@ Route::get('/',function(){
 });
 
 
+Route::get('/header',function(){
+	return view('header');
+});
+
+Route::get('/ProfileBasicInfo',function(){
+	return view('ProfileBasicInfo');
+});
+
+
 Route::get('UserInfo',function(){
 	return view('DBSelect.DB');
 });
@@ -74,6 +83,8 @@ Route::post('/uploadWriteDB',function(){
 Route::get('/informationEdit',function(){
 	return view('information.informationEdit');
 });
+
+
 
 Auth::routes();
 

@@ -8,45 +8,18 @@
 
 <link rel="stylesheet" type ="text/css" href="css/main.css">
 
-  <div id = "header">
-    <img id = "credImage" src = "mainImage/CredLogo.jpg">
+  <div id ='header'>
 
-    <!--
-        아래에 있는 코드는 DB에서 값을 가져 온 뒤에 동적으로 수정해야 한다. (수정 1)
-    -->
-
-    <?php
-        echo '<div id = "profile">';
-        echo '<img id = "profileImage" src = "mainImage/profile.jpg">';
-        echo '<div id = "profileName">mina</div>';
-        echo '</div>';
-     ?>
-     <button id = "upload"></button>
   </div>
-
     <!--
         아래에 있는 코드는 DB에서 값을 가져 온 뒤에 동적으로 수정해야 한다. (수정 2)
     -->
 
-  <div class = "mainProfile">
-    <?php
-        echo '<img id = "profileImage2" src = "mainImage/profile.jpg">';
-        echo '<p class="name">Test 1</p>';
-        echo '<p class="organization">CRED</p>';
-        echo '<p class="position">Chief Chef</p>';
+  <div>
+  </div>
 
-        echo '<button id = "informationEdit">프로필 수정하기</button>';
+  <div id = "pfpf" class = "ProfileBasicInfo">
 
-        echo '<p class="location">GangNam</p>';
-        echo '<p class="email">email@cred.com</p>';
-        echo '<hr>';
-        echo '<p class="personalDescription">';
-        echo 'art university<br> <br> Capable of: <br> producer, art
-			       director,<br> music video<br> <br> Community and Brand
-	          Designer/Illustrator<br> Wix.Com — Tel Aviv-Yafo, Israel<br>
-			      <br> Story Designer<br> Jimdo GmbH — Hamburg, Germany';
-        echo '</p>';
-     ?>
   </div>
 
   <div id = "profileContent">
