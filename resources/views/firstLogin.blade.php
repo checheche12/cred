@@ -10,7 +10,7 @@
 ?>
 
 <div class="logo">
-  <img src = "/mainImage/signupImage/signupLogo.png" width="187px"><br>
+  <img id="logoImage"src = "/mainImage/signupImage/signupLogo.png" width="187px"><br>
 </div>
 <div class="quote">CRED에서 여러 사람들과의 협업을 <br>공유하고 관리하세요!</div>
 <form method="post" action = "auth">
@@ -39,3 +39,4 @@
 ?>
 
 <script type = "text/javascript" src = "js/jquery-3.1.1.min.js"></script>
+<script type = "text/javascript" src = "js/firstLogin.blade.js"></script>

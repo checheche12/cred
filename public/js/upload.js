@@ -65,7 +65,7 @@ addCredit.addEventListener("click",function(){
 });
 
 cancelButton.addEventListener("click",function(){
-  $(location).attr('href','/main');
+  goBack();
 })
 
 submitButton.addEventListener("click",function(){
@@ -92,3 +92,6 @@ submitButton.addEventListener("click",function(){
   })
 
 });
+function goBack() {
+    window.history.back();
+}

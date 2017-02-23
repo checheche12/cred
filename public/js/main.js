@@ -156,6 +156,22 @@ Project.addEventListener("click", function() {
 
 Bridge.addEventListener("click", function() {
 
+	    var Data = {"_token" : token};
+			Data['userPK'] = userPK;
+
+	    $.ajax({
+	        type:'POST',
+	        url:'/bridgeLoader',
+	        data : Data,
+	        success:function(data){
+
+	        },
+	        error: function(){
+	          alert('error');
+	        }
+	    })
+
+
 	// $(location).attr('href','/bridge');
 	$('#profileBody').text('');
 

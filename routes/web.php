@@ -83,6 +83,9 @@ Route::get('/informationEdit',function(){
 	return view('information.informationEdit');
 });
 
+Route::post('/bridgeLoader',function(){
+	return view('bridgeLoader');
+});
 
 Auth::routes();
 

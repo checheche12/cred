@@ -42,6 +42,8 @@ if(!isset($_SESSION['is_login'])){
 
 
 ?>
-
+<script>
+  var userPK = <?=$_SESSION['userPK']?>;
+</script>
 <script type = "text/javascript" src = "js/jquery-3.1.1.min.js"></script>
 <script type = "text/javascript" src = "js/main.js"></script>

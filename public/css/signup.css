@@ -1,18 +1,21 @@
+#logoImage{
+	cursor: pointer;
+}
+
 body{
 	background-repeat: no-repeat;
 	background-position: 50%50%;
 	background-size:2000px;
 	vertical-align:middle;
 	text-align:center;
- }
-
+}
 
 .logoDiv {
 	text-align: center;
 	margin-top: 0px;
 }
 #logoImage{
-width:187px;
+	width:187px;
 }
 
 .quote {
@@ -49,9 +52,9 @@ width:187px;
 	width: 180px;
 }
 #infoFrame{
-display:inline-block;
-background-color: #ffffff;
-width:450px;
-height:650px;
-margin-top:67px;
+	display:inline-block;
+	background-color: #ffffff;
+	width:450px;
+	height:650px;
+	margin-top:67px;
 }

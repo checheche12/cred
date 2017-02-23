@@ -74,3 +74,15 @@
 #cancelButton{
 	margin-left: 10px;
 }
+
+button{
+	cursor: pointer;
+	background-color: white;
+	color: black;
+	border: 2px solid #555555 ;
+	border-radius: 4px;
+}
+button:hover {
+	background-color: #555555 ;
+	color: white;
+}

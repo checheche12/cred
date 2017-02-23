@@ -1,8 +1,5 @@
 @CHARSET "UTF-8";
-button{
-	cursor: pointer;
 
-}
 #ContentMain {
 	/*border: 1px solid black;
 	*/
@@ -88,7 +85,7 @@ p.positionFrame, p.nameFrame{
 	background-color: #EE3E80;
 }
 
-#close{
+/*#close{
 	color:gray;
 	margin-left: 1300px;
 }
@@ -98,8 +95,19 @@ p.positionFrame, p.nameFrame{
 }
 #close:active{
 	background-color: #EE3E80;
-}
+}*/
 .titleText{
 	font-weight: bold;
 	font-size: 18px;
+}
+button{
+	cursor: pointer;
+	background-color: white;
+	color: black;
+	border: 2px solid #555555 ;
+	border-radius: 4px;
+}
+button:hover {
+	background-color: #555555 ;
+	color: white;
 }
