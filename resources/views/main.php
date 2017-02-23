@@ -26,7 +26,6 @@
     <div id = "profileSelection">
         <ul>
           <li id = "Project">Project</li>
-          <li id = "Bridge_Log">Bridge Log</li>
           <li id = "Bridge">Bridge</li>
         </ul>
     </div>

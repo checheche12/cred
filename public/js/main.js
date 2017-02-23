@@ -8,8 +8,6 @@ $(document).ready( function() {
 
 var Project = document.getElementById('Project');
 
-var Bridge_Log = document.getElementById('Bridge_Log');
-
 var Bridge = document.getElementById('Bridge');
 
 var token;
@@ -100,7 +98,7 @@ function bridgeLogDisplay(){
 				if (urlType == "youtube") {
 					var yvID = matchYoutubeUrl(url);
 					imgSrc = 'https://img.youtube.com/vi/' + yvID
-					+ '/hqdefault.jpg';
+					+ '/mqdefault.jpg';
 					j = '<img class = "VideoArt" id = Image' + k[i][0] + ' src = ' + imgSrc
 					+ '>';
 
@@ -164,19 +162,22 @@ Project.addEventListener("click", function() {
 
 // 수정 해야함.
 
-Bridge_Log.addEventListener("click", function() {
 
-	$.ajax({
+Bridge.addEventListener("click", function() {
 
-		url : './UserInfo',
+	$(location).attr('href','/bridge');
+	// $.ajax({
 
-		success : function(data) {
+	// 	url : './UserInfo',
 
-			$('#profileBody').html(data);
+	// 	success : function(data) {
 
-		}
+	// 		$('#profileBody').html(data);
 
-	})
+
+	// 	}
+
+	// })
 
 });
 

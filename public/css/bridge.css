@@ -1,33 +1,7 @@
 @CHARSET "UTF-8";
 
-/* .videoArt{
-	float : left;
-	width : 232px;
-	height : 232px;
-	margin-right : 50px;
-	margin-bottom : 50px;
-} */
-
-.videoArt{
-	float : left;
-	width : 232px;
-	margin-right : 50px;
-	margin-bottom : 50px;
-}
-
-.ProfileBasicInfo{
-	float:left;
-	/* border : 1px solid black; */
-	margin : 50px;
-	margin-top:80px;
-	height : 800px;
-	width : 300px;
-	text-align:center;
-	line-height:30%
-}
-
 #profileContent{
-	width : 900px;
+	width : 750px;
 	height : 800px;
 	margin-left : 500px;
 	/* border : 1px solid black; */
@@ -38,7 +12,7 @@
 	/* float:left; */
 	text-align : center;
 	display : block-inline;
-	width : 900px;
+	width : 750px;
 	height : 100px;
 	/* border-bottom : 1px solid black; */
 
@@ -46,7 +20,6 @@
 #profileBody{
 	width:100%;
 }
-
 ul{
 	list-style:none;
 }
@@ -57,9 +30,7 @@ li{
 	margin-right : 100px;
 	cursor:pointer;
 }
-/* #imageSpacer{
-	width:50px;
-} */
+
 .card{
 	height:100px;
 	width:344px;
@@ -75,9 +46,11 @@ li{
 	width:80px;
 }
 .personalImage{
-	height:60px;
-	width:60px;
-	margin:10px;
+	max-height: 100%;
+	max-width: 100%;
+	object-fit: contain;
+	height:100%;
+	width:100%
 }
 .personalInfo{
 	margin:5px;
@@ -88,33 +61,34 @@ li{
 .name{
 	font-size:20px;
 	font-weight:bold;
-
+	
 }
 .organization{
 	font-size:13px;
-
+	
 }
 .position{
 	font-size:13px;
 	font-weight:bold;
-
+	
 }
 .location{
 	font-size:12px;
 	font-weight:lighter;
-
+	
 }
 .workImageFrame{
 	width:149px;
 	height:100px;
 }
 .workImage{
-	width:129px;
-	height:76px;
-	margin:10px;
-
+	/*max-height: 100%;
+	max-width: 100%;*/
+	object-fit: contain;
+	height:100%;
+	width:100%
 }
 
- table td, table tr{
+table td, table tr{
 	/* border:1px solid black; */
-}
+} 
