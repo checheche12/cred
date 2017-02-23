@@ -56,13 +56,13 @@ $A->getUserData();
 
       <div id = "uploadSource">
 
-        이름 <input type = "text" value = "<?= $GLOBALS['name']?>" id = "name"></input><br>
-        경력 <input type = "text" value = "<?= $GLOBALS['career']?>" id = "career"></input><br>
-        학력 <input type = "text" value = "<?= $GLOBALS['education']?>" id = "education"></input><br>
+        이름 <input type = "text" id = "name" value = "<?= $GLOBALS['name']?>" id = "name"></input><br>
+        경력 <input type = "text" id = "career" value = "<?= $GLOBALS['career']?>" id = "career"></input><br>
+        학력 <input type = "text" id = "education" value = "<?= $GLOBALS['education']?>" id = "education"></input><br>
 
-        키워드 <textarea rows="5" cols="30" name="contents"><?= $GLOBALS['keyword']?></textarea><br>
+        키워드 <textarea rows="5" id = "keyword" cols="30" name="contents"><?= $GLOBALS['keyword']?></textarea><br>
 
-        <button id="edit">수정</button>
+        <button id="eeddiitt">수정</button>
 
       </div>
   </div>

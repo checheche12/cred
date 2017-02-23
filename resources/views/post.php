@@ -1,18 +1,18 @@
 <?php
 
-  namespace App\Http\Controllers;
-  use Illuminate\Support\Facades\DB;
-  use App\Http\Controllers\Controller;
+namespace App\Http\Controllers;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 
-  session_start();
+session_start();
 
-  if(!isset($_SESSION['is_login'])){
-    header('Location: ./');
-    exit;
-  }
+if(!isset($_SESSION['is_login'])){
+  header('Location: ./');
+  exit;
+}
 
-  class UserController extends Controller
-  {
+class UserController extends Controller
+{
       /**
        * Show a list of all of the application's users.
        *
@@ -20,71 +20,72 @@
        */
       public function index()
       {
-          $Sentence = "select * from totalart where artPK = ".$_POST['int'];
-          $users = DB::select(DB::raw($Sentence));
-          foreach($users as $user){
-                $GLOBALS['Title'] = $user->title;
-                $GLOBALS['ARTURL'] = $user->ArtURL;
-                $GLOBALS['uploadDate'] = $user->uploaddate;
-                $GLOBALS['lastloadDate'] = $user->lastloaddate;
-                $GLOBALS['Description'] = $user->description;
-          }
+        $Sentence = "select * from totalart where artPK = ".$_POST['int'];
+        $users = DB::select(DB::raw($Sentence));
+        foreach($users as $user){
+          $GLOBALS['Title'] = $user->title;
+          $GLOBALS['ARTURL'] = $user->ArtURL;
+          $GLOBALS['uploadDate'] = $user->uploaddate;
+          $GLOBALS['lastloadDate'] = $user->lastloaddate;
+          $GLOBALS['Description'] = $user->description;
+        }
       }
 
       public function getWorkNameList(){
-            $Sentence2 = "select position, A.userPK, Name from ".$_POST['int']."workDB as A join userinfo as B ON A.userPK = B.userPK";
-            $users2 = DB::select(DB::raw($Sentence2));
-            foreach($users2 as $user){
-                echo "<p class = 'nameFrame'>".$user->Name."</p>";
-            }
+        $Sentence2 = "select position, A.userPK, Name from ".$_POST['int']."workDB as A join userinfo as B ON A.userPK = B.userPK";
+        $users2 = DB::select(DB::raw($Sentence2));
+        foreach($users2 as $user){
+          echo "<p class = 'nameFrame'>".$user->Name."</p>";
+        }
       }
 
-        public function getWorkPositionList(){
-              $Sentence2 = "select position, A.userPK, Name from ".$_POST['int']."workDB as A join userinfo as B ON A.userPK = B.userPK";
-              $users2 = DB::select(DB::raw($Sentence2));
-              foreach($users2 as $user){
-                  echo "<p class = 'positionFrame'>".$user->position."</p>";
-              }
+      public function getWorkPositionList(){
+        $Sentence2 = "select position, A.userPK, Name from ".$_POST['int']."workDB as A join userinfo as B ON A.userPK = B.userPK";
+        $users2 = DB::select(DB::raw($Sentence2));
+        foreach($users2 as $user){
+          echo "<p class = 'positionFrame'>".$user->position."</p>";
         }
+      }
 
-  }
+    }
 
-?>
+    ?>
 
-<link rel="stylesheet" type ="text/css" href="css/main.css">
-<link rel="stylesheet" type ="text/css" href="css/post.css">
+    <link rel="stylesheet" type ="text/css" href="css/main.css">
+    <link rel="stylesheet" type ="text/css" href="css/post.css">
 
     <div id ='header'>
 
     </div>
+    <div><input id="close" type=button value="close"></input></div>
 
     <!--
         아래에 있는 코드는 DB에서 값을 가져 온 뒤에 동적으로 수정해야 한다. (수정 2)
-    -->
+      -->
 
-  <div id = "ContentMain">
-      <div id = "first">
-        <?php
-           $A = new UserController();
-           $A->index();
-         ?>
+      <div id = "ContentMain">
+        <div id = "first">
+          <?php
+          $A = new UserController();
+          $A->index();
+          ?>
           <script>
-              var SourceURL = "<?= $GLOBALS['ARTURL'] ?>";
+            var SourceURL = "<?= $GLOBALS['ARTURL'] ?>";
           </script>
 
-      </div>
+        </div>
 
-      <div id = "second">
+        <div id = "second">
           <?php
-              echo $GLOBALS['Description'];
+          echo $GLOBALS['Description'];
           ?>
-      </div>
+        </div>
 
-      <div id = "third">
+        <div id = "third">
           <div class="creditFrame">
             <p class="credit">Credit</p>
             <div class="positionFrame">
-              <p class="titleText">position</p><br>
+            <p class="titleText">position</p>
               <?php
               $A->getWorkPositionList();
               ?>
@@ -104,8 +105,7 @@
           
         </div>
       </div>
-      <div><input id="close" type=button value="close"></input></div>
 
 
-<script type = "text/javascript" src = "js/jquery-3.1.1.min.js"></script>
-<script type = "text/javascript" src = "js/post.js"></script>
+      <script type = "text/javascript" src = "js/jquery-3.1.1.min.js"></script>
+      <script type = "text/javascript" src = "js/post.js"></script>

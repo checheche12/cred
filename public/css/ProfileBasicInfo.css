@@ -1,42 +1,63 @@
+.ProfileBasicInfo{
+	position: fixed;
+	background: rgba(255, 255, 255, 0.97);
+}
 #profileImage2{
-	/* float : left; */
+	cursor:pointer;
 	width : 80px;
 	height : 80px;
+	border-radius: 100%;
+}
+.ProfileBasicInfo .name{
+	font-size:25px;
+	font-weight:bold;
+	margin: 45px;
+
+}
+.ProfileBasicInfo .organization{
+	font-size: 17px;
+	margin-bottom: 20px;
+
+}
+.ProfileBasicInfo .position{
+	font-weight:bold;
+	font-size: 17px;
+	margin-bottom: 20px;
+}
+.ProfileBasicInfo .location{
+	font-weight:lighter;
+	font-size: 17px;
+	margin-bottom: 20px;
+}
+.ProfileBasicInfo .email{
+	margin: 45px;
 }
 
-.email{
-	margin-top:50px;
-}
-
-.personalDescription{
+.ProfileBasicInfo .personalDescription{
 	text-align:left;
 	margin-top:20px;
-/* 	border:1px solid black;
-	border-color: #c0c0c0; */
 	word-wrap:break-word;
 	line-height:120%
 }
 
-/* 
-.mainProfile{
-	float:left;
-	margin : 50px;
-	margin-top:80px;
-	height : 800px;
-	width : 300px;
-	text-align:center;
-	line-height:30%
+#informationEdit {
+	display: inline-block;
+	padding: 10px 20px;
+	font-size: 16px;
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none;
+	outline: none;
+	color: #000;
+	background-color: #F2F2F2;
+	border: none;
+	border-radius: 15px;
 }
-.mainProfile .email{
-	margin-top:50px;
+
+#informationEdit:hover {background-color: #D4145A }
+
+#informationEdit:active {
+	background-color: #D4145A ;
+	box-shadow: 0 5px #666;
+	transform: translateY(4px);
 }
-.mainProfile .personalDescription{
-	text-align:left;
-	margin-top:20px;
-word-wrap:break-word;
-line-height:120%
-}
-#profileImage2{
-	width : 80px;
-	height : 80px;
-} */

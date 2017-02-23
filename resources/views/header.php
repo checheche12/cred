@@ -1,7 +1,7 @@
 <link rel="stylesheet" type ="text/css" href="css/header.css?v=1">
 
 <div id = "header">
-    <img id = "credImage" src = "mainImage/CredLogo.jpg">
+    <img id = "credImage" src = "mainImage/signupImage/signupLogo.png">
 
     <!--
         아래에 있는 코드는 DB에서 값을 가져 온 뒤에 동적으로 수정해야 한다. (수정 1)
@@ -16,7 +16,7 @@
         ?>
 
                 <button id = "upload"></button>
-                <button id = "logout">로그아웃</button>
+                <button id = "logout"></button>
         </div>
     </div>
 

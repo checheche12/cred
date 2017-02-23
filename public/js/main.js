@@ -99,8 +99,8 @@ function bridgeLogDisplay(){
 					var yvID = matchYoutubeUrl(url);
 					imgSrc = 'https://img.youtube.com/vi/' + yvID
 					+ '/mqdefault.jpg';
-					j = '<img class = "VideoArt" id = Image' + k[i][0] + ' src = ' + imgSrc
-					+ '>';
+					j = '<div class = "ProjectFrame"><img class = "VideoArt" id = Image' + k[i][0] + ' src = ' + imgSrc
+					+ '><p class="credit">credit</p><div class="detail"><p class="name">Project Name</p><p class="position">Position</p></div></div>';
 
 					$('#profileBody').append(j);
 
@@ -110,14 +110,14 @@ function bridgeLogDisplay(){
 						+ '.json?callback=?', {
 							format : "json"
 						}, function(data) {
-							j = '<img class "VideoArt" id = Image' + k[i][0] + ' src = ' + data[0].thumbnail_large
-							+ '>';
+							j = '<div class = "ProjectFrame"><img class "VideoArt" id = Image' + k[i][0] + ' src = ' + data[0].thumbnail_large
+					+ '><p class="credit">credit</p><div class="detail"><p class="name">Project Name</p><p class="position">Position</p></div></div>';
 
 							$('#profileBody').append(j);
 });
 				} else {
-					j = '<img class = "VideoArt" id = Image' + k[i][0] + ' src = ' + url
-					+ '>';
+					j = '<div class = "ProjectFrame"><img class = "VideoArt" id = Image' + k[i][0] + ' src = ' + url
+					+ '><p class="credit">credit</p><div class="detail"><p class="name">Project Name</p><p class="position">Position</p></div></div>';
 
 					$('#profileBody').append(j);// skip
 				}

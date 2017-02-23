@@ -1,13 +1,20 @@
 #header{
 	border-bottom : 1px solid black;
 	height : 60px;
+	width: 100%;
+    position: fixed;
+    background: rgba(255, 255, 255, 0.97);
+    top: 0;
 }
-
+img{
+	cursor: pointer;
+}
+button{
+	cursor:pointer;
+}
 #credImage{
 	float : left;
-	margin:10px;
-	max-width:40px;
-	max-height:40px;
+	max-height:60px;
 }
 
 .headIcons{
@@ -15,6 +22,7 @@
 	float:right;
 	height : 40px;
 	margin-top: 10px;
+	margin-right: 30px;
 	white-space:nowrap;
 }
 #profile{
@@ -25,12 +33,15 @@
 }
 
 #profileImage{
+	border-radius: 100%;
 	float : left;
 	width : 40px;
 	height : 40px;
+	margin-right: 10px;
 }
 
 #profileName{
+	cursor:pointer;
 	margin:9px;
 	word-wrap:normal;
 }
@@ -46,9 +57,13 @@
 }
 
 #logout{
-	
 	margin-top: 10px;
-	margin-left: 5px;
+	margin-left: 25px;
 	background-color:#ffffff;
+	background-image:url('/mainImage/logouticon.png');
+	background-size: 20px 20px;
 	height:20px;
+	width:20px;
+	border: none;
+	
 }

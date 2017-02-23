@@ -1,6 +1,8 @@
 var Upload = document.getElementById('upload');
 var Logout = document.getElementById('logout');
 var Home = document.getElementById('credImage');
+var profileImage = document.getElementById('profileImage');
+var profileName = document.getElementById('profileName');
 
 Upload.addEventListener("click", function() {
 
@@ -15,6 +17,17 @@ Logout.addEventListener("click", function() {
 });
 
 Home.addEventListener("click", function() {
+
+	$(location).attr('href', './main');
+
+});
+
+profileImage.addEventListener("click", function() {
+
+	$(location).attr('href', './main');
+
+});
+profileName.addEventListener("click", function() {
 
 	$(location).attr('href', './main');
 

@@ -1,5 +1,8 @@
 @CHARSET "UTF-8";
+button{
+	cursor: pointer;
 
+}
 #ContentMain {
 	/*border: 1px solid black;
 	*/
@@ -9,11 +12,11 @@
 }
 
 #first {
-	/*border-bottom: 1px solid black;
-	*/
 	
 }
-
+#first .PostWork{
+	max-width: 100%;
+}
 #second {
 	font-weight: bold;
 	font-size: 40px;
@@ -43,17 +46,21 @@
 }
 
 .positionFrame {
-	line-height: 150%;
+	line-height: 100%;
 	float: left;
 	text-align: right;
 	width: 230px;
 }
 
 .nameFrame {
-	line-height: 150%;
+	line-height: 100%;
 	float: right;
 	text-align: left;
 	width: 230px;
+}
+p.positionFrame, p.nameFrame{
+	margin:5px;
+	cursor: pointer;
 }
 
 #position {
@@ -69,6 +76,7 @@
 
 #addCredit{
 	color: gray;
+	cursor: pointer;
 
 }
 #addCredit:hover{
@@ -82,7 +90,7 @@
 
 #close{
 	color:gray;
-	margin-left: 1200px;
+	margin-left: 1300px;
 }
 #close:hover{
 	background-color: #A8A8A8;

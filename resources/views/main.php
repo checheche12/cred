@@ -6,7 +6,7 @@ if(!isset($_SESSION['is_login'])){
 }
 ?>
 
-<link rel="stylesheet" type ="text/css" href="css/main.css">
+<link rel="stylesheet" type ="text/css" href="css/main.css?v=1">
 
 <div id ='header'>
 

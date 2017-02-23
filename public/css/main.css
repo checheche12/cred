@@ -1,10 +1,32 @@
-.videoArt{
-	float : left;
+.ProjectFrame{
+	float:left;
 	width : 232px;
 	margin-right : 50px;
 	margin-bottom : 50px;
 }
+.ProjectFrame .detail{
 
+}
+.videoArt{
+	cursor:pointer;
+	float : left;
+	width : 232px;
+	/*margin-right : 50px;
+	margin-bottom : 50px;*/
+}
+.ProjectFrame .name{
+	margin: 0px;
+}
+.ProjectFrame .position{
+	float:left;
+	margin: 0px;
+	font-weight: lighter;
+    font-size: 13px;
+}
+.ProjectFrame .credit{
+	float:right;
+	margin:0px;
+}
 .ProfileBasicInfo{
 	float:left;
 	margin : 50px;
@@ -16,9 +38,8 @@
 }
 
 #profileContent{
-	width : 900px;
 	height : 800px;
-	margin-left : 500px;
+	margin-left : 450px;
 	margin-top : 80px;
 }
 
