@@ -47,9 +47,7 @@
                 )');
 
                 DB::statement('CREATE TABLE '.$userNumber.'keyword (
-                	keywordPK int NOT NULL AUTO_INCREMENT,
-                	keyword tinytext,
-                	PRIMARY KEY(keywordPK)
+                	keyword tinytext
                 )');
 
                 DB::statement('CREATE TABLE '.$userNumber.'career (

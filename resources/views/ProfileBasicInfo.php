@@ -2,7 +2,7 @@
     session_start();
 ?>
 
-<link rel="stylesheet" type ="text/css" href="css/ProfileBasicInfo.css">
+<link rel="stylesheet" type ="text/css" href="css/ProfileBasicInfo.css?v=1">
 
 <?php
     echo '<img id = "profileImage2" src = "mainImage/profile.jpg">';

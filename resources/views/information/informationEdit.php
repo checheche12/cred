@@ -21,6 +21,15 @@
                   $GLOBALS['career'] = $user->career;
                   $GLOBALS['education'] = $user->education;
             }
+            $Sentence = "select * from ".$_SESSION['userPK']."keyword";
+
+            $users2 = DB::select(DB::raw($Sentence));
+            $GLOBALS['keyword'] = "";
+            foreach($users2 as $usera){
+                  $a=$usera->keyword;
+                  $GLOBALS['keyword'].=$a.',';
+            }
+            $GLOBALS['keyword'] = substr($GLOBALS['keyword'],0,-1);
       }
   }
 
@@ -47,12 +56,11 @@ $A->getUserData();
 
       <div id = "uploadSource">
 
-        이름 <input type = "text" value = <?=$GLOBALS['name']?> id = "name"></input><br>
-        경력 <input type = "text" value = <?=$GLOBALS['career']?> id = "career"></input><br>
-        학력 <input type = "text" value = <?=$GLOBALS['education']?> id = "education"></input><br>
+        이름 <input type = "text" value = "<?= $GLOBALS['name']?>" id = "name"></input><br>
+        경력 <input type = "text" value = "<?= $GLOBALS['career']?>" id = "career"></input><br>
+        학력 <input type = "text" value = "<?= $GLOBALS['education']?>" id = "education"></input><br>
 
-        키워드 <textarea rows="5" cols="30" name="contents">
-        </textarea><br>
+        키워드 <textarea rows="5" cols="30" name="contents"><?= $GLOBALS['keyword']?></textarea><br>
 
         <button id="edit">수정</button>
 

@@ -114,8 +114,6 @@ function bridgeLogDisplay(){
 							+ '>';
 
 							$('#profileBody').append(j);
-
-//						$('#profileBody').attr('src', data[0].thumbnail_large);
 });
 				} else {
 					j = '<img class = "VideoArt" id = Image' + k[i][0] + ' src = ' + url
@@ -123,14 +121,7 @@ function bridgeLogDisplay(){
 
 					$('#profileBody').append(j);// skip
 				}
-				// ///////////////////////////////////
-				// j = '<img id = Image' + k[i][0] + ' src = ' + imgSrc
-				// + ' width = "232px" height ="232px">';
-				//
 				var IDValue = '#Image' + k[i][0];
-				//
-				// $('#profileBody').append(j);
-				// ///////////////////
 				$(IDValue).bind('click', function() {
 
 					var t = $(this).attr('id').substr(5, 1000);
@@ -165,19 +156,26 @@ Project.addEventListener("click", function() {
 
 Bridge.addEventListener("click", function() {
 
-	$(location).attr('href','/bridge');
-	// $.ajax({
+	// $(location).attr('href','/bridge');
+	$('#profileBody').text('');
 
-	// 	url : './UserInfo',
+	var q = '<table class="bridgeCard"> '
+	+'<tr> '
+	+'<td class="personalImageFrame">'
+	+'<img class="personalImage"src="mainImage/mina3.jpg"> '
+	+'</td> '+'<td class="personalInfo"> '
+	+'<p class="name">Lil Yachty</p>'
+	+' <p class="organization">Dope Music</p>'
+	+'<p class="position">High</p> '
+	+'<p class="location">NY,NY</p>'
+	+'</td> '
+	+'<td class="workImageFrame">'
+	+'<img class="workImage"src="mainImage/mainBackground.png"> '
+	+'</td>'
+	+'</tr>'
+	+'</table>';
 
-	// 	success : function(data) {
-
-	// 		$('#profileBody').html(data);
-
-
-	// 	}
-
-	// })
+	$('#profileBody').append(q);
 
 });
 

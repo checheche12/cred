@@ -16,3 +16,27 @@
 	word-wrap:break-word;
 	line-height:120%
 }
+
+/* 
+.mainProfile{
+	float:left;
+	margin : 50px;
+	margin-top:80px;
+	height : 800px;
+	width : 300px;
+	text-align:center;
+	line-height:30%
+}
+.mainProfile .email{
+	margin-top:50px;
+}
+.mainProfile .personalDescription{
+	text-align:left;
+	margin-top:20px;
+word-wrap:break-word;
+line-height:120%
+}
+#profileImage2{
+	width : 80px;
+	height : 80px;
+} */

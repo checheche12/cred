@@ -84,10 +84,6 @@ Route::get('/informationEdit',function(){
 	return view('information.informationEdit');
 });
 
-Route::get('/bridge',function(){
-	return view('bridge');
-});
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
