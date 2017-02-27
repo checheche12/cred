@@ -1,12 +1,15 @@
 .ProjectFrame{
+	float:left;
 	width : 232px;
-	margin-bottom : 20px;
+	margin-right : 50px;
+	margin-bottom : 50px;
 }
 .ProjectFrame .detail{
-	display: inline-block;
+
 }
 .videoArt{
 	cursor:pointer;
+	float : left;
 	width : 232px;
 	/*margin-right : 50px;
 	margin-bottom : 50px;*/
@@ -18,7 +21,7 @@
 	float:left;
 	margin: 0px;
 	font-weight: lighter;
-	font-size: 13px;
+    font-size: 13px;
 }
 .ProjectFrame .credit{
 	float:right;
@@ -42,12 +45,12 @@
 
 #profileSelection{
 	text-align : center;
+	display : block-inline;
+	width : 900px;
 	height : 100px;
 }
 #profileBody{
 	width:100%;
-	/*column-width: 232px;*/
-	column-gap: 20px;
 }
 ul{
 	list-style:none;
@@ -58,15 +61,6 @@ li{
 	margin-right : 100px;
 	cursor:pointer;
 }
-li:hover:not(.active) {
-	font-weight: lighter;
-	text-decoration: underline;
-}
-
-li.active {
-	font-weight: bold;
-	color:#000000;
-}
 .bridgeCard{
 	height:100px;
 	width:344px;
@@ -74,8 +68,8 @@ li.active {
 	border-right:2px solid black;
 	border-bottom-color: #e2e2e2;
 	border-right-color: #e2e2e2;
+	float:left;
 	margin:10px;
-	display: inline-block;
 }
 .bridgeCard .personalImageFrame{
 	height:100px;
@@ -88,26 +82,20 @@ li.active {
 	margin:10px;
 }
 .bridgeCard .personalInfo{
-	padding-bottom: :5px;
-	padding-top: :5px;
+	margin:5px;
 	width:95px;
 	float:left;
-	line-height:100%
-
-}
-.bridgeCard .name, .bridgeCard .organization, .bridgeCard .position{
-	margin-bottom: 5px;
-	margin-top: 5px;
+	line-height:30%
 }
 .bridgeCard .name{
-	font-size:18px;
+	font-size:20px;
 	font-weight:bold;
 }
 .bridgeCard .organization{
-	font-size:12px;
+	font-size:13px;
 }
 .bridgeCard .position{
-	font-size:12px;
+	font-size:13px;
 	font-weight:bold;
 }
 .bridgeCard .location{

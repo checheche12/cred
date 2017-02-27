@@ -15,8 +15,8 @@
         echo '</div>';
         ?>
 
-                <button id = "upload"></button>
-                <button id = "logout"></button>
+                <button id = "upload" title="upload"></button>
+                <button id = "logout" title="logout"></button>
         </div>
     </div>
 

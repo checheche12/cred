@@ -57,7 +57,7 @@ class UserController extends Controller
     <div id ='header'>
 
     </div>
-    <div><input id="close" type=button value="close"></input></div>
+    <div><button id="close">close</button></div>
 
     <!--
         아래에 있는 코드는 DB에서 값을 가져 온 뒤에 동적으로 수정해야 한다. (수정 2)
@@ -101,7 +101,7 @@ class UserController extends Controller
           <br><br><br>
           <input id="position" placeholder="담당 position"></input>
           <input id="Email" placeholder="계졍 Email"></input>
-          <input id="addCredit" type="button" value="creidt 추가"></input>
+          <button id="addCredit">creidt 추가</button>
           
         </div>
       </div>

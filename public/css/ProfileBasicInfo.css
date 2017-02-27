@@ -31,6 +31,7 @@
 }
 .ProfileBasicInfo .email{
 	margin: 45px;
+	margin-bottom: 35;
 }
 
 .ProfileBasicInfo .personalDescription{
@@ -42,8 +43,8 @@
 
 #informationEdit {
 	display: inline-block;
-	padding: 10px 20px;
-	font-size: 16px;
+	padding: 0px 10px;
+	font-size: 12px;
 	cursor: pointer;
 	text-align: center;
 	text-decoration: none;

@@ -1,23 +1,3 @@
-// Header section 추가
-$(document).ready( function() {
-
-	$("#pfpf").load("/ProfileBasicInfo");
-	$("#header").load("/header");
-
-});
-
-var Project = document.getElementById('Project');
-
-var Bridge = document.getElementById('Bridge');
-
-var token;
-
-// js 에서 php 로 값을 넘겨서 php 페이지를 띄우기 위한 함수.
-
-// js만으로 post 값 전달 방식을 사용 할 수 있지만 모든 태그를 a 태그화 해야함.
-
-// 첫번째 인수는 이동할 url 두번째는 전달할 값 세번째는 전송 방식.(기본이 post)
-
 function post_to_url(path, int, method) {
 
 	method = method || "post"; // 전송 방식 기본값을 POST로
@@ -60,14 +40,43 @@ function post_to_url(path, int, method) {
 
 }
 
-// GetContentByDB 함수에서 URL 을 json 형태로 변환하여 전달해준다. 그러므로
+var token;
 
-// 이 함수에서 json 형태를 다시 URL 배열로 풀어서
+	$.ajax({
 
-// 3행짜리 동영상의 table 을 구성한다.
+		url : './token',
 
-// 현재 제작 과정. post 페이지로 잘 이동한다.
-bridgeLogDisplay();
+		success : function(data) {
+
+			token = data;
+
+		}
+
+	})
+
+$(document).ready( function() {
+
+	var Data = {"_token" : token };
+	Data['userPK'] = userPK;
+
+	$("#header").load("/header");
+
+	$.ajax({
+			type:'GET',
+			url:'/ProfileAnotherBasicInfo',
+			data : Data,
+			success:function(data){
+
+				$('#pfpf').text('');
+				var q = data;
+				$('#pfpf').html(q);
+			},
+			error: function(){
+				alert('error');
+			}
+	});
+});
+
 
 function bridgeLogDisplay(){
 	$.ajax({
@@ -83,10 +92,11 @@ function bridgeLogDisplay(){
 	})
 
 	$('#profileBody').text('');
-	document.getElementById("profileBody").style.columnWidth="232px";
+	var Data2 = {"userPK" : userPK };
 	$.ajax({
-
-		url : './getContentURL',
+		type : 'GET',
+		url : './getContentAnother',
+		data :Data2,
 
 		success : function(data) {
 			var k = JSON.parse(data);
@@ -111,10 +121,10 @@ function bridgeLogDisplay(){
 							format : "json"
 						}, function(data) {
 							j = '<div class = "ProjectFrame"><img class "VideoArt" id = Image' + k[i][0] + ' src = ' + data[0].thumbnail_large
-							+ '><p class="credit">credit</p><div class="detail"><p class="name">Project Name</p><p class="position">Position</p></div></div>';
+					+ '><p class="credit">credit</p><div class="detail"><p class="name">Project Name</p><p class="position">Position</p></div></div>';
 
 							$('#profileBody').append(j);
-						});
+});
 				} else {
 					j = '<div class = "ProjectFrame"><img class = "VideoArt" id = Image' + k[i][0] + ' src = ' + url
 					+ '><p class="credit">credit</p><div class="detail"><p class="name">Project Name</p><p class="position">Position</p></div></div>';
@@ -156,54 +166,53 @@ Project.addEventListener("click", function() {
 
 Bridge.addEventListener("click", function() {
 
-	var Data = {"_token" : token};
-	Data['userPK'] = userPK;
+	    var Data = {"_token" : token};
+			Data['userPK'] = userPK;
 
-	$.ajax({
-		type:'POST',
-		url:'/bridgeLoader',
-		data : Data,
-		success:function(data){
+	    $.ajax({
+	        type:'POST',
+	        url:'/bridgeLoader',
+	        data : Data,
+	        success:function(data){
 
-			$('#profileBody').text('');
+						$('#profileBody').text('');
 
 						var obj = JSON.parse(data); // 0 email, 1 name 2 포토 url 3 career 4 education 5 userPK
 
-						for(var i =0;i<obj.length;i++){
+							for(var i =0;i<obj.length;i++){
 
-							var q = '<table class="bridgeCard" id = '+obj[i][5]+'>'
-							+'<tr> '
-							+'<td class="personalImageFrame">'
-							+'<img class="personalImage"src="mainImage/mina3.jpg"> '
-							+'</td> '+'<td class="personalInfo"> '
-							+'<p class="name">'+obj[i][1]+'</p>'
-							+'<p class="organization">'+obj[i][3]+'</p>'
-							+'<p class="position">'+obj[i][4]+'</p> '
-							+'</td> '
-							+'<td class="workImageFrame">'
-							+'<img class="workImage"src="mainImage/mainBackground.png"> '
-							+'</td>'
-							+'</tr>'
-							+'</table>';
+									var q = '<table class="bridgeCard" id = '+obj[i][5]+'>'
+									+'<tr> '
+									+'<td class="personalImageFrame">'
+									+'<img class="personalImage"src="mainImage/mina3.jpg"> '
+									+'</td> '+'<td class="personalInfo"> '
+									+'<p class="name">'+obj[i][1]+'</p>'
+									+' <p class="organization">'+obj[i][3]+'</p>'
+									+'<p class="position">'+obj[i][4]+'</p> '
+									+'</td> '
+									+'<td class="workImageFrame">'
+									+'<img class="workImage"src="mainImage/mainBackground.png"> '
+									+'</td>'
+									+'</tr>'
+									+'</table>';
 
-							$('#profileBody').append(q);
-							document.getElementById("profileBody").style.columnWidth="344px";
+									$('#profileBody').append(q);
 
-							var IDValue2 = '#' + obj[i][5];
-							$(IDValue2).bind('click', function() {
+									var IDValue2 = '#' + obj[i][5];
+									$(IDValue2).bind('click', function() {
 
-								var t = $(this).attr('id').substr(0, 300);
-								t *= 1;
+										var t = $(this).attr('id').substr(0, 300);
+										t *= 1;
 
-								post_to_url("./anotherProfile", t);
+										post_to_url("/anotherProfile", t);
 
-							});
-						}
-					},
-					error: function(){
-						alert('error');
-					}
-				})
+									});
+							}
+	        },
+	        error: function(){
+	          alert('error');
+	        }
+	    })
 
 	// $(location).attr('href','/bridge');
 

@@ -8,7 +8,7 @@
 
 #uploadtext{
 	margin-left: 100px;
-	margin-top:10px;
+	margin-top: 80px;
 	margin-bottom: 10px;
 	font-size: 40px;
 	font-weight: bold;
@@ -16,8 +16,9 @@
 
 #video{
 	border : 1px inset black;
-	width : 320px;
-	height : 178px;
+	border-color: #eeeeee;
+	width : 322px;
+	height : 180px;
 	margin-left : 50px;
 	float:left;
 }
@@ -48,18 +49,25 @@
 
 .creditContext{ 
 	/*upload.js 에서 실행되는 dynamic credit form*/
+	text-align: center;
 	float:left;
 	border-bottom: 1px solid black;
 	border-right: 1px solid black;
 	border-bottom-color: #e2e2e2;
 	border-right-color: #e2e2e2;
 	margin : 3px;
+	width:100px;
+	border-radius:10px;
+	background: lightgray;
 }
 .creditContext .name{
+	margin-top: 5px;
 	font-size: 20px;
 	font-weight: bold;
 }
 .creditContext .position{
+	margin-top: -25px;
+	margin-bottom: 5px;	
 	font-size: 14px;
 	font-weight: light;
 }
@@ -85,4 +93,10 @@ button{
 button:hover {
 	background-color: #555555 ;
 	color: white;
+}
+.PostWork{
+	width : 320px;
+	height : 178px;
+	object-fit: contain;
+	outline: none;
 }

@@ -23,6 +23,10 @@ Route::get('/ProfileBasicInfo',function(){
 	return view('ProfileBasicInfo');
 });
 
+Route::get('/ProfileAnotherBasicInfo',function(){
+	return view('ProfileAnotherBasicInfo');
+});
+
 Route::get('UserInfo',function(){
 	return view('DBSelect.DB');
 });
@@ -85,6 +89,14 @@ Route::get('/informationEdit',function(){
 
 Route::post('/bridgeLoader',function(){
 	return view('bridgeLoader');
+});
+
+Route::post('/anotherProfile',function(){
+	return view('anotherProfile');
+});
+
+Route::get('/getContentAnother',function(){
+	return view('DBSelect.GetContentByAnotherDB');
 });
 
 Auth::routes();
