@@ -47,6 +47,10 @@ Route::post('/post',function(){
 	return view('post');
 });
 
+Route::get('/postUp',function(){
+	return view('postUpdate');
+/////////////////////////////////////////////////////////////맞나??
+});
 Route::get('/getContentURL',function(){
 	return view('DBSelect.GetContentByDB');
 });
@@ -97,6 +101,10 @@ Route::post('/anotherProfile',function(){
 
 Route::get('/getContentAnother',function(){
 	return view('DBSelect.GetContentByAnotherDB');
+});
+
+Route::get('/getNameSuggest',function(){
+	return view('NameSuggest');
 });
 
 Auth::routes();

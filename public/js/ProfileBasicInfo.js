@@ -8,6 +8,6 @@ if(another=='no'){
 }
 
 
-profileImage2.addEventListener("click",function(){
-		$(location).attr('href', './main');
-})
+// profileImage2.addEventListener("click",function(){
+// 		$(location).attr('href', './main');
+// })

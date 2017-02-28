@@ -77,7 +77,7 @@ $(document).ready( function() {
 	});
 });
 
-
+bridgeLogDisplay();
 function bridgeLogDisplay(){
 	$.ajax({
 
@@ -92,6 +92,8 @@ function bridgeLogDisplay(){
 	})
 
 	$('#profileBody').text('');
+	document.getElementById("profileBody").style.columnWidth="232px";
+
 	var Data2 = {"userPK" : userPK };
 	$.ajax({
 		type : 'GET',
@@ -110,7 +112,7 @@ function bridgeLogDisplay(){
 					imgSrc = 'https://img.youtube.com/vi/' + yvID
 					+ '/mqdefault.jpg';
 					j = '<div class = "ProjectFrame"><img class = "VideoArt" id = Image' + k[i][0] + ' src = ' + imgSrc
-					+ '><p class="credit">credit</p><div class="detail"><p class="name">Project Name</p><p class="position">Position</p></div></div>';
+					+ '><p class="credit">credit</p><div class="detail"><p class="name">'+k[i][2]+'</p><p class="position">Position</p></div></div>';
 
 					$('#profileBody').append(j);
 
@@ -197,6 +199,7 @@ Bridge.addEventListener("click", function() {
 									+'</table>';
 
 									$('#profileBody').append(q);
+									document.getElementById("profileBody").style.columnWidth="344px";
 
 									var IDValue2 = '#' + obj[i][5];
 									$(IDValue2).bind('click', function() {

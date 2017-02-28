@@ -8,8 +8,60 @@ $(document).ready( function() {
 var addCreditButton = document.getElementById('addCredit');
 var closeButton = document.getElementById('close');
 
+var position = document.getElementById('position');
+var token;
+
+$.ajax({
+  url:'./token',
+  success:function(data){
+    token = data;
+  }
+})
+
+
 addCreditButton.addEventListener("click",function(){
-	alert("추가");
+
+	var Data = {"_token" : token};
+
+	Data['email'] = $("#Email").val();	
+
+	$.ajax({
+		type:'POST',
+		url:'/checkAddcredit',	//email Check
+		data : Data,
+		success:function(data){
+			if(data == 'There is no Email'){
+				alert("등록되지 않은 이메일입니다. 이메일을 다시 확인해주세요.");
+			}else{
+				var k = JSON.parse(data);
+				var t = [k[1],position.value];	// [userPK,position]
+
+				/** ArtPK, credit, userPK postUpdate.php 로 보내기**/
+				var Data2 = {"credit" : t};
+
+				Data2['ArtPK'] = ArtPK;
+
+				$.ajax({
+					type:'GET',
+					url:'/postUp',
+					data : Data2,
+					success:function(data){
+						/* Credit에 바로 더해주기*/
+						$('#positionFrame').append('<p class=positionFrame>'+position.value+'</p>');
+						$('#nameFrame').append('<p class=nameFrame>'+k[0]+'</p>');
+						alert('success  '+ data);
+
+					},
+					error: function(){
+						alert('error');
+					}
+				})
+			}
+		},
+		error: function(){
+			alert('error 서버 연결 안됨!');
+		}
+	})
 });
 
 closeButton.addEventListener("click",function(){
@@ -17,6 +69,8 @@ closeButton.addEventListener("click",function(){
 });
 
 $('#first').html(urlCheck(SourceURL));
+
+
 
 function imageExists(url, callback) {
 	var img = new Image();
@@ -94,9 +148,9 @@ return "<iframe src='https://player.vimeo.com/video/"
 + id
 + "?title=0&byline=0&portrait=0&badge=0' width='"+width+"' height='"+height+"' frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>";
 } else {
-	return "<image class='postWork'src = " + url + ">";
+	return "<image class='PostWork'src = " + url + ">";
 }
 }
 function goBack() {
-    window.history.back();
+	window.history.back();
 }

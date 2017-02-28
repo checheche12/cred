@@ -23,7 +23,8 @@
 }
 
 #third {
-	display: inline-block;
+	width: 100%;
+	column-width: 500px;
 }
 
 .creditFrame {
@@ -32,8 +33,6 @@
 	overflow: hidden;
 	width: 500px;
 	padding-bottom: 30px;
-	overflow: hidden;
-	float: left;
 }
 
 .credit {
@@ -73,6 +72,10 @@ p.positionFrame, p.nameFrame{
 	
 }
 
+.outCreditFrame{
+	display: inline-block;
+}
+
 #addCredit{
 	color: gray;
 	cursor: pointer;
@@ -108,7 +111,7 @@ button:hover {
 }
 
 #description{
-	width: 500px;
-	margin-left: 45px;
-	display: inline-block;	
+}
+#insertCredit{
+	margin-top: 20px;
 }

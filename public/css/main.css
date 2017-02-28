@@ -1,6 +1,7 @@
 .ProjectFrame{
 	width : 232px;
 	margin-bottom : 20px;
+	display: inline-block;
 }
 .ProjectFrame .detail{
 	display: inline-block;
@@ -68,6 +69,7 @@ li.active {
 	color:#000000;
 }
 .bridgeCard{
+	cursor: pointer;
 	height:100px;
 	width:344px;
 	border-bottom:2px solid black;

@@ -81,36 +81,38 @@ class UserController extends Controller
           ?>
         </div>
 
-        <div>
-          <div id = "third">
+        <div id = "third">
+          <div class="outCreditFrame">
+
             <div class="creditFrame">
               <p class="credit">Credit</p>
-              <div class="positionFrame">
+              <div class="positionFrame" id="positionFrame">
                 <p class="titleText">position</p>
                 <?php
                 $A->getWorkPositionList();
                 ?>
               </div>
-              <div class="nameFrame">
+              <div class="nameFrame" id="nameFrame">
                 <p class="titleText">name</p>
                 <?php
                 $A->getWorkNameList();
                 ?>
               </div>
             </div>
-            <div id="description">"<?= $GLOBALS['Description']?>"</div>
+            <div id="insertCredit">
+              <input id="position" placeholder="담당 position"></input>
+              <input id="Email" placeholder="계졍 Email"></input>
+              <button id="addCredit">creidt 추가</button>
+            </div>
           </div>
-
-          <br><br><br>
-          <div>
-            <input id="position" placeholder="담당 position"></input>
-            <input id="Email" placeholder="계졍 Email"></input>
-            <button id="addCredit">creidt 추가</button>
-          </div>
+          <div id="description">"<?= $GLOBALS['Description']?>"</div>
         </div>
 
       </div>
 
+      <script>
+          var ArtPK =<?=$_POST['int']?>;
+      </script>
 
       <script type = "text/javascript" src = "js/jquery-3.1.1.min.js"></script>
       <script type = "text/javascript" src = "js/post.js"></script>

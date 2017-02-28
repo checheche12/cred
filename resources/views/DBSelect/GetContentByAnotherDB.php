@@ -17,13 +17,13 @@ class UserController extends Controller
         session_start();
         $userArt = array();
         $user = $_GET['userPK'].'artDB';
-        $Sentence = 'select A.artPK, artURL from totalart A Inner Join '.$user.' B on A.artPK = B.artPK';
+        $Sentence = 'select A.artPK, artURL, title from totalart A Inner Join '.$user.' B on A.artPK = B.artPK';
         $users = DB::select(DB::raw($Sentence));
 
         // 루프를 돌면서 userArt 배열에 artPK 값과 artURL 의 값을 배열로 저장 중.
         foreach($users as $user){
             $imshi = array();
-            $imshi = array($user->artPK,$user->artURL);
+            $imshi = array($user->artPK,$user->artURL,$user->title);
             array_push($userArt,$imshi);
         }
 
