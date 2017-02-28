@@ -1,3 +1,39 @@
+<?php
+
+namespace App\Http\Controllers;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+
+session_start();
+
+if(!isset($_SESSION['is_login'])){
+  header('Location: ./');
+  exit;
+}
+
+class UserController extends Controller
+{
+      /**
+       * Show a list of all of the application's users.
+       *
+       * @return Response
+       */
+      public function index()
+      {
+        $Sentence = "select * from userinfo where userPK = ".$_SESSION['userPK'];
+        $users = DB::select(DB::raw($Sentence));
+        foreach($users as $user){
+          $GLOBALS['name'] = $user->Name;
+          $GLOBALS['photoURL'] = $user->ProfilePhotoURL;
+        }
+      }
+}
+
+      $A = new UserController();
+      $A->index();
+
+?>
+
 <link rel="stylesheet" type ="text/css" href="css/header.css?v=1">
 
 <div id = "header">
@@ -10,8 +46,8 @@
         <div class="headIcons">
     <?php
         echo '<div id = "profile">';
-        echo '<img id = "profileImage" src = "mainImage/profile.jpg">';
-        echo '<div id = "profileName">mina</div>';
+        echo '<img id = "profileImage" src = '.$GLOBALS['photoURL'].'>';
+        echo '<div id = "profileName">'.$GLOBALS['name'].'</div>';
         echo '</div>';
         ?>
 

@@ -23,6 +23,7 @@
 }
 
 #third {
+	display: inline-block;
 }
 
 .creditFrame {
@@ -31,8 +32,8 @@
 	overflow: hidden;
 	width: 500px;
 	padding-bottom: 30px;
-	width: 500px;
 	overflow: hidden;
+	float: left;
 }
 
 .credit {
@@ -63,6 +64,7 @@ p.positionFrame, p.nameFrame{
 #position {
 	border:none;
 	outline:none;
+	clear: left;
 }
 
 #Email {
@@ -86,8 +88,8 @@ p.positionFrame, p.nameFrame{
 }
 
 #close{
-float:right;
-font-size: 20px;
+	float:right;
+	font-size: 20px;
 }
 .titleText{
 	font-weight: bold;
@@ -103,4 +105,10 @@ button{
 button:hover {
 	background-color: #555555 ;
 	color: white;
+}
+
+#description{
+	width: 500px;
+	margin-left: 45px;
+	display: inline-block;	
 }

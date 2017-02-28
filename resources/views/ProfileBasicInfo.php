@@ -26,6 +26,7 @@
                   $GLOBALS['name'] = $user->Name;
                   $GLOBALS['career'] = $user->career;
                   $GLOBALS['education'] = $user->education;
+                  $GLOBALS['photoURL'] = $user->ProfilePhotoURL;
             }
 
             $Sentence = "select * from ".$_SESSION['userPK']."keyword";
@@ -47,7 +48,7 @@
 <link rel="stylesheet" type ="text/css" href="css/ProfileBasicInfo.css">
 
 <?php
-    echo '<img id = "profileImage2" src = "mainImage/profile.jpg">';
+    echo '<img id = "profileImage2" src = '.$GLOBALS['photoURL'].'>';
     echo '<p class="name">'.$GLOBALS['name'].'</p>';
     echo '<p class="organization">'.$GLOBALS['education'].'</p>';
     echo '<p class="position">'.$GLOBALS['career'].'</p>';
@@ -59,5 +60,8 @@
     echo '<p class="personalDescription">'.$GLOBALS['keyword']."</p>"
 ?>
 
+<script>
+  var another = 'no';
+</script>
 <script type = "text/javascript" src = "js/jquery-3.1.1.min.js"></script>
 <script type = "text/javascript" src = "js/ProfileBasicInfo.js"></script>

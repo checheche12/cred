@@ -30,7 +30,7 @@ var creditArray = [];
 $(document).ready(function(){
   $("#URLBox").blur(function(){
     var urlinput = document.getElementById("URLBox").value;
-    console.log(urlinput);
+    console.log(urlCheck(urlinput));
     $('#video').html(urlCheck(urlinput));
       // $('#URLBox').val("");
     });

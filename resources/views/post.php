@@ -57,7 +57,7 @@ class UserController extends Controller
     <div id ='header'>
 
     </div>
-    <div><button id="close">close</button></div>
+    <div><button id="close">X</button></div>
 
     <!--
         아래에 있는 코드는 DB에서 값을 가져 온 뒤에 동적으로 수정해야 한다. (수정 2)
@@ -77,33 +77,38 @@ class UserController extends Controller
 
         <div id = "second">
           <?php
-          echo $GLOBALS['Description'];
+          echo $GLOBALS['Title'];
           ?>
         </div>
 
-        <div id = "third">
-          <div class="creditFrame">
-            <p class="credit">Credit</p>
-            <div class="positionFrame">
-            <p class="titleText">position</p>
-              <?php
-              $A->getWorkPositionList();
-              ?>
+        <div>
+          <div id = "third">
+            <div class="creditFrame">
+              <p class="credit">Credit</p>
+              <div class="positionFrame">
+                <p class="titleText">position</p>
+                <?php
+                $A->getWorkPositionList();
+                ?>
+              </div>
+              <div class="nameFrame">
+                <p class="titleText">name</p>
+                <?php
+                $A->getWorkNameList();
+                ?>
+              </div>
             </div>
-            <div class="nameFrame">
-              <p class="titleText">name</p>
-              <?php
-              $A->getWorkNameList();
-              ?>
-            </div>
+            <div id="description">"<?= $GLOBALS['Description']?>"</div>
           </div>
-          
+
           <br><br><br>
-          <input id="position" placeholder="담당 position"></input>
-          <input id="Email" placeholder="계졍 Email"></input>
-          <button id="addCredit">creidt 추가</button>
-          
+          <div>
+            <input id="position" placeholder="담당 position"></input>
+            <input id="Email" placeholder="계졍 Email"></input>
+            <button id="addCredit">creidt 추가</button>
+          </div>
         </div>
+
       </div>
 
 
