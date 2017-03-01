@@ -20,10 +20,10 @@ class UserController extends Controller
       public function index()
       {
         $GLOBALS['userPKArray']=array();
-        $Sentence = "select artPK from ".$_POST['userPK']."artDB";
+        $Sentence = "select artPK from artDB where userPK = ".$_POST['userPK'];
         $users = DB::select(DB::raw($Sentence));
         foreach($users as $user){
-            $Sentence = "select userPK from ".$user->artPK."workDB";
+            $Sentence = "select userPK from workDB where artPK = ".$user->artPK;
             $V = DB::select(DB::raw($Sentence));
             foreach($V as $v1){
                   array_push($GLOBALS['userPKArray'],$v1->userPK);
@@ -41,7 +41,7 @@ class UserController extends Controller
                   array_push($A,$user->Email);
                   array_push($A,$user->Name);
                   array_push($A,$user->ProfilePhotoURL);
-                  array_push($A,$user->career);
+                  array_push($A,$user->Career);
                   array_push($A,$user->education);
                   array_push($A,$user->userPK);
                   array_push($GLOBALS['userinfoArray'],$A);

@@ -27,7 +27,7 @@ class UserController extends Controller
               array_push($GLOBALS['userinfoArray'],$user->Email);
               array_push($GLOBALS['userinfoArray'],$user->Name);
               array_push($GLOBALS['userinfoArray'],$user->ProfilePhotoURL);
-              array_push($GLOBALS['userinfoArray'],$user->career);
+              array_push($GLOBALS['userinfoArray'],$user->Career);
               array_push($GLOBALS['userinfoArray'],$user->education);
               array_push($GLOBALS['userinfoArray'],$user->userPK);
           }

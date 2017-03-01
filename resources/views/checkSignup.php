@@ -25,40 +25,6 @@
             //이메일 인증을 구현할때 바꿀 것이다.
           if($sameEmail){
               DB::insert('insert into userinfo (Email, Password, Name, Certification) values (?, ?, ?, ?)',[$_POST['emailemail'],$_POST['pwpw'],$_POST['namename'],1]);
-
-              $users = DB::select(DB::raw("select * from userinfo where Email = '".$_POST['emailemail']."'" ));
-              foreach($users as $user){
-                  $userNumber=$user->userPK;
-              }
-
-              DB::statement('CREATE TABLE '.$userNumber.'artDB (
-                  number bigint(20) not null auto_increment,
-                  artPK bigint(20) not null,
-                  primary key(number)
-                )');
-
-              DB::statement('CREATE TABLE '.$userNumber.'education (
-                	educationPK int NOT NULL AUTO_INCREMENT,
-                	Location tinytext,
-                  Startdate date,
-                  enddate date,
-                  education tinytext,
-                  PRIMARY KEY(educationPK)
-                )');
-
-                DB::statement('CREATE TABLE '.$userNumber.'keyword (
-                	keyword tinytext
-                )');
-
-                DB::statement('CREATE TABLE '.$userNumber.'career (
-                  careerPK int NOT NULL AUTO_INCREMENT,
-                  position tinytext,
-                  homepageURL text,
-                  startdate date,
-                  enddate date,
-                  location tinytext,
-                  PRIMARY KEY(careerPK)
-                )');
           }
           else{
               echo "이미 존재하는 회원 email 입니다.";

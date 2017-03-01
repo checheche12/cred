@@ -22,7 +22,7 @@ class RunQuery extends Controller
         {
           $Sentence = "update userinfo set ProfilePhotoURL = '".$_POST['ProfilePhotoURL']."' where userPK = '".$_SESSION['userPK']."'";
           $users = DB::update(DB::raw($Sentence));
-          
+
           $Sentence = "update userinfo set Name = '".$_POST['name']."' where userPK = '".$_SESSION['userPK']."'";
           $users = DB::update(DB::raw($Sentence));
 
@@ -32,15 +32,15 @@ class RunQuery extends Controller
           $Sentence = "update userinfo set education = '".$_POST['education']."' where userPK = '".$_SESSION['userPK']."'";
           $users = DB::update(DB::raw($Sentence));
 
-          $Sentence = "delete from ".$_SESSION['userPK']."keyword";
+          $Sentence = "delete from keywordDB where userPK = ".$_SESSION['userPK'];
           $users = DB::delete(DB::raw($Sentence));
 
-          $Sentence = "insert into ".$_SESSION['userPK']."keyword (keyword) values ";
+          $Sentence = "insert into keywordDB (keyword, userPK) values ";
 
           $a = array();
           $a = explode(",",$_POST['keyword']);
           foreach($a as $v1){
-            $Sentence.="('".$v1."'),";
+            $Sentence.="('".$v1."','".$_SESSION['userPK']."'),";
           }
           $Sentence = substr($Sentence, 0, -1);
           $users = DB::insert(DB::raw($Sentence));

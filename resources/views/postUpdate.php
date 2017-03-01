@@ -23,10 +23,10 @@ class RunQuery extends Controller
           $artNumber = $_GET['ArtPK'];
           $credit = $_GET['credit'];
 
-          DB::insert('insert into '.$artNumber.'workDB (userPK, position)
-            values (?, ?)',array($credit[0],$credit[1]));
-          DB::insert('insert into '.$credit[0].'artDB (artPK)
-            values (?)',array($artNumber));
+          DB::insert('insert into workDB (userPK, position, artPK)
+            values (?, ?, ?)',array($credit[0],$credit[1],$artNumber));
+          DB::insert('insert into artDB (artPK, userPK)
+            values (?,?)',array($artNumber,$credit[0]));
 
         }
       }

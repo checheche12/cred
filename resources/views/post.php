@@ -32,7 +32,7 @@ class UserController extends Controller
       }
 
       public function getWorkNameList(){
-        $Sentence2 = "select position, A.userPK, Name from ".$_POST['int']."workDB as A join userinfo as B ON A.userPK = B.userPK";
+        $Sentence2 = "select position, A.userPK, Name from workDB as A join userinfo as B ON A.userPK = B.userPK and artPK = ".$_POST['int'];
         $users2 = DB::select(DB::raw($Sentence2));
         foreach($users2 as $user){
           echo "<p class = 'nameFrame'>".$user->Name."</p>";
@@ -40,7 +40,7 @@ class UserController extends Controller
       }
 
       public function getWorkPositionList(){
-        $Sentence2 = "select position, A.userPK, Name from ".$_POST['int']."workDB as A join userinfo as B ON A.userPK = B.userPK";
+        $Sentence2 = "select position, A.userPK, Name from workDB as A join userinfo as B ON A.userPK = B.userPK and artPK = ".$_POST['int'];
         $users2 = DB::select(DB::raw($Sentence2));
         foreach($users2 as $user){
           echo "<p class = 'positionFrame'>".$user->position."</p>";

@@ -24,12 +24,12 @@
             foreach($users as $user){
                   $GLOBALS['email'] = $user->Email;
                   $GLOBALS['name'] = $user->Name;
-                  $GLOBALS['career'] = $user->career;
+                  $GLOBALS['career'] = $user->Career;
                   $GLOBALS['education'] = $user->education;
                   $GLOBALS['photoURL'] = $user->ProfilePhotoURL;
             }
 
-            $Sentence = "select * from ".$_SESSION['userPK']."keyword";
+            $Sentence = "select * from keywordDB where userPK = ".$_SESSION['userPK'];
 
             $users2 = DB::select(DB::raw($Sentence));
             $GLOBALS['keyword'] = "";
