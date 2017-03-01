@@ -25,6 +25,7 @@
 #third {
 	width: 100%;
 	column-width: 500px;
+
 }
 
 .creditFrame {
@@ -33,6 +34,7 @@
 	overflow: hidden;
 	width: 500px;
 	padding-bottom: 30px;
+	display: inline-block;
 }
 
 .credit {
@@ -74,6 +76,7 @@ p.positionFrame, p.nameFrame{
 
 .outCreditFrame{
 	display: inline-block;
+	float: left;
 }
 
 #addCredit{
@@ -111,6 +114,7 @@ button:hover {
 }
 
 #description{
+display: inline-block;
 }
 #insertCredit{
 	margin-top: 20px;
