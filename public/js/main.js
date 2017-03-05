@@ -29,16 +29,21 @@ function post_to_url(path, int, method) {
 	form.setAttribute("action", path);
 
 	// 히든으로 값을 주입시킨다.
+	if(method == "post"){
 
-	var hiddenField = document.createElement("input");
+			var hiddenField = document.createElement("input");
 
-	hiddenField.setAttribute("id", "IDID");
+			hiddenField.setAttribute("id", "IDID");
 
-	hiddenField.setAttribute("type", "hidden");
+			hiddenField.setAttribute("type", "hidden");
 
-	hiddenField.setAttribute('name', '_token');
+			hiddenField.setAttribute('name', '_token');
 
-	hiddenField.setAttribute('value', token);
+			hiddenField.setAttribute('value', token);
+
+			form.appendChild(hiddenField);
+	}
+
 
 	var hiddenField2 = document.createElement("input");
 
@@ -49,8 +54,6 @@ function post_to_url(path, int, method) {
 	hiddenField2.setAttribute('name', "int");
 
 	hiddenField2.setAttribute('value', int);
-
-	form.appendChild(hiddenField);
 
 	form.appendChild(hiddenField2);
 
@@ -128,7 +131,7 @@ function bridgeLogDisplay(){
 
 					t *= 1;
 
-					post_to_url("./post", t);
+					post_to_url("./post", t,"get");
 
 				});
 
@@ -195,7 +198,7 @@ Bridge.addEventListener("click", function() {
 								var t = $(this).attr('id').substr(0, 300);
 								t *= 1;
 
-								post_to_url("./anotherProfile", t);
+								post_to_url("./anotherProfile", t, "get");
 
 							});
 						}

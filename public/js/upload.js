@@ -17,15 +17,18 @@ var CreditBox = document.getElementById('creditBox');
 var submitButton = document.getElementById('saveButton');
 var cancelButton = document.getElementById('cancelButton');
 
-/*항상 끼고 싶은 1인*/
-$('#email').val("soosong@gmail.com");
-$('#position').val("I'm the Boss");
-
-
-
 var token;
 
 var creditArray = [];
+
+$.ajax({
+  url:'./email',
+  success:function(data){
+    var t = JSON.parse(data)
+    $("#email").val(t);
+  }
+})
+
 
 $(document).ready(function(){
   $("#URLBox").blur(function(){
@@ -132,7 +135,6 @@ submitButton.addEventListener("click",function(){
   Data2['Title'] = TitleBox.value;
   Data2['ArtURL'] = URLBox.value;
   Data2['Description'] = Description.value;
-
   Data2['main'] = creditArray;
 
   $.ajax({

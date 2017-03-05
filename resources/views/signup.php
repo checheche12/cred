@@ -23,7 +23,7 @@
 		</div>
 		<div id="signupD">
 			<input id="signUp" type="image"
-				src="https://files.slack.com/files-pri/T2Z0F0H1A-F45JKFU1Z/_____________________________________________.png" />
+				src="/mainImage/signup2.png" />
 		</div>
 	</form>
 </div>

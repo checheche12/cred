@@ -43,7 +43,7 @@ Route::get('/Logout',function(){
 	return view('auth.Logout');
 });
 
-Route::post('/post',function(){
+Route::get('/post',function(){
 	return view('post');
 });
 
@@ -95,7 +95,7 @@ Route::post('/bridgeLoader',function(){
 	return view('bridgeLoader');
 });
 
-Route::post('/anotherProfile',function(){
+Route::get('/anotherProfile',function(){
 	return view('anotherProfile');
 });
 

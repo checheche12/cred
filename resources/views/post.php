@@ -20,7 +20,7 @@ class UserController extends Controller
        */
       public function index()
       {
-        $Sentence = "select * from totalart where artPK = ".$_POST['int'];
+        $Sentence = "select * from totalart where artPK = ".$_GET['int'];
         $users = DB::select(DB::raw($Sentence));
         foreach($users as $user){
           $GLOBALS['Title'] = $user->title;
@@ -32,15 +32,17 @@ class UserController extends Controller
       }
 
       public function getWorkNameList(){
-        $Sentence2 = "select position, A.userPK, Name from workDB as A join userinfo as B ON A.userPK = B.userPK and artPK = ".$_POST['int'];
+        $Sentence2 = "select position, A.userPK, Name from workDB as A join userinfo as B ON A.userPK = B.userPK and artPK = ".$_GET['int'];
         $users2 = DB::select(DB::raw($Sentence2));
+        $a = 1;
         foreach($users2 as $user){
-          echo "<p class = 'nameFrame'>".$user->Name."</p>";
+          echo "<p class = 'nameFrame' id = ".$a.">".$user->Name."</p>";
+          $a+=1;
         }
       }
 
       public function getWorkPositionList(){
-        $Sentence2 = "select position, A.userPK, Name from workDB as A join userinfo as B ON A.userPK = B.userPK and artPK = ".$_POST['int'];
+        $Sentence2 = "select position, A.userPK, Name from workDB as A join userinfo as B ON A.userPK = B.userPK and artPK = ".$_GET['int'];
         $users2 = DB::select(DB::raw($Sentence2));
         foreach($users2 as $user){
           echo "<p class = 'positionFrame'>".$user->position."</p>";
@@ -111,7 +113,7 @@ class UserController extends Controller
       </div>
 
       <script>
-          var ArtPK =<?=$_POST['int']?>;
+          var ArtPK =<?=$_GET['int']?>;
       </script>
 
       <script type = "text/javascript" src = "js/jquery-3.1.1.min.js"></script>

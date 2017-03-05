@@ -9,21 +9,84 @@ var addCreditButton = document.getElementById('addCredit');
 var closeButton = document.getElementById('close');
 
 var position = document.getElementById('position');
+
+var creditNameArray = document.getElementsByClassName('nameFrame');
+
 var token;
 
+function post_to_url(path, int, method) {
+
+	method = method || "post"; // 전송 방식 기본값을 POST로
+
+	var form = document.createElement("form");
+
+	form.setAttribute("method", method);
+
+	form.setAttribute("action", path);
+
+	// 히든으로 값을 주입시킨다.
+	if(method == "post"){
+
+			var hiddenField = document.createElement("input");
+
+			hiddenField.setAttribute("id", "IDID");
+
+			hiddenField.setAttribute("type", "hidden");
+
+			hiddenField.setAttribute('name', '_token');
+
+			hiddenField.setAttribute('value', token);
+
+			form.appendChild(hiddenField);
+
+	}
+
+	var hiddenField2 = document.createElement("input");
+
+	hiddenField2.setAttribute("id", "intint");
+
+	hiddenField2.setAttribute("type", "hidden");
+
+	hiddenField2.setAttribute('name', "int");
+
+	hiddenField2.setAttribute('value', int);
+
+	form.appendChild(hiddenField2);
+
+	document.body.appendChild(form);
+
+	form.submit();
+
+}
+
 $.ajax({
-  url:'./token',
-  success:function(data){
-    token = data;
-  }
+	url:'./token',
+	success:function(data){
+		token = data;
+	}
 })
+
+for (var i = 1;i<creditNameArray.length;i++){
+	var numb = creditNameArray[i].id;
+	var IDValue = '#'+numb;
+	console.log(IDValue);
+	$(IDValue).bind('click', function() {
+
+		var t = $(this).attr('id').substr(0,300);
+
+		t *= 1;
+
+		post_to_url("./anotherProfile", t, "get");
+
+	});
+}
 
 
 addCreditButton.addEventListener("click",function(){
 
 	var Data = {"_token" : token};
 
-	Data['email'] = $("#Email").val();	
+	Data['email'] = $("#Email").val();
 
 	$.ajax({
 		type:'POST',
@@ -48,8 +111,17 @@ addCreditButton.addEventListener("click",function(){
 					success:function(data){
 						/* Credit에 바로 더해주기*/
 						$('#positionFrame').append('<p class=positionFrame>'+position.value+'</p>');
-						$('#nameFrame').append('<p class=nameFrame>'+k[0]+'</p>');
+						$('#nameFrame').append('<p class=nameFrame id='+k[1]+'>'+k[0]+'</p>');
 						alert('success  '+ data);
+
+						var IDValue2 = '#' + k[1];
+						$(IDValue2).bind('click', function() {
+							t *= 1;
+
+							post_to_url("./anotherProfile", t);
+
+						});
+
 
 					},
 					error: function(){
@@ -122,7 +194,7 @@ function matchYoutubeUrl(url) {
 
 	/** urlCheck**/
 	function urlCheck(urlInput) {
-		
+
 		var width = 1050;
 		var height = 484;
 		var url = urlInput;

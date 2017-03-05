@@ -23,6 +23,7 @@
 }
 
 #third {
+	display: flex;
 	width: 100%;
 	column-width: 500px;
 
@@ -76,7 +77,7 @@ p.positionFrame, p.nameFrame{
 
 .outCreditFrame{
 	display: inline-block;
-	float: left;
+	/*float: left;*/
 }
 
 #addCredit{

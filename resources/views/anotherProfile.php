@@ -20,7 +20,7 @@ class UserController extends Controller
 
       public function userinfoMake(){
           $GLOBALS['userinfoArray']=array();
-          $Sentence = "select * from userinfo where userPK = '".$_POST['int']."'";
+          $Sentence = "select * from userinfo where userPK = '".$_GET['int']."'";
           $users = DB::select(DB::raw($Sentence));
           foreach($users as $user){
               $A = array();
@@ -64,7 +64,7 @@ $A->userinfoMake();
 
 
 <script>
-  var userPK = <?=$_POST['int']?>;
+  var userPK = <?=$_GET['int']?>;
 </script>
 <script type = "text/javascript" src = "js/jquery-3.1.1.min.js"></script>
 <script type = "text/javascript" src = "js/anotherProfile.js"></script>
