@@ -32,7 +32,7 @@ class UserController extends Controller
       }
 
       public function getWorkNameList(){
-        $Sentence2 = "select position, A.userPK, Name from workDB as A join userinfo as B ON A.userPK = B.userPK and artPK = ".$_GET['int'];
+        $Sentence2 = "select Name from workDB as A join userinfo as B ON A.userPK = B.userPK and artPK = ".$_GET['int'];
         $users2 = DB::select(DB::raw($Sentence2));
         $a = 1;
         foreach($users2 as $user){
@@ -42,13 +42,21 @@ class UserController extends Controller
       }
 
       public function getWorkPositionList(){
-        $Sentence2 = "select position, A.userPK, Name from workDB as A join userinfo as B ON A.userPK = B.userPK and artPK = ".$_GET['int'];
+        $Sentence2 = "select position from workDB as A join userinfo as B ON A.userPK = B.userPK and artPK = ".$_GET['int'];
         $users2 = DB::select(DB::raw($Sentence2));
         foreach($users2 as $user){
           echo "<p class = 'positionFrame'>".$user->position."</p>";
         }
       }
 
+      public function getUserCreditList(){
+        $Sentence2 = "select B.userPK from workDB as A join userinfo as B ON A.userPK = B.userPK and artPK = ".$_GET['int'];
+        $GLOBALS['userPKArray'] = array();
+        $users2 = DB::select(DB::raw($Sentence2));
+        foreach($users2 as $user){
+          array_push($GLOBALS['userPKArray'],$user->userPK);
+        }
+      }
     }
 
     ?>
@@ -108,6 +116,21 @@ class UserController extends Controller
             </div>
           </div>
           <div id="description">"<?= $GLOBALS['Description']?>"</div>
+        </div>
+
+        <!--
+          수정, 삭제 버튼이 여기서 달려있게 된다.
+        -->
+        <div>
+            <?php
+                $A->getUserCreditList();
+                foreach($GLOBALS['userPKArray'] as $user){
+                  if($user == $_SESSION['userPK']){
+                      echo '<button id="fixed">수정</button>';
+                      break;
+                  }
+                }
+             ?>
         </div>
 
       </div>

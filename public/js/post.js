@@ -226,3 +226,10 @@ return "<iframe src='https://player.vimeo.com/video/"
 function goBack() {
 	window.history.back();
 }
+
+var fixedButton = document.getElementById('fixed');
+if(fixedButton != null){
+	fixedButton.addEventListener("click",function(){
+			post_to_url('./fixed', ArtPK, 'get')
+	});
+}

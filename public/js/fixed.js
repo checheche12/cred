@@ -17,6 +17,7 @@ var CreditBox = document.getElementById('creditBox');
 var submitButton = document.getElementById('saveButton');
 var cancelButton = document.getElementById('cancelButton');
 
+
 var token;
 
 var creditArray = [];
@@ -131,7 +132,7 @@ submitButton.addEventListener("click",function(){
 
   $.ajax({
     type:'POST',
-    url:'/uploadWriteDB',
+    url:'/uploadFixedDB',
     data : Data2,
     success:function(data){
       alert('success  '+ data);

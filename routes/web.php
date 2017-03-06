@@ -83,6 +83,10 @@ Route::post('/uploadWriteDB',function(){
 	return view('upload.uploadWriteDB');
 });
 
+Route::post('/uploadFixedDB',function(){
+	return view('upload.uploadFixedDB');
+});
+
 Route::post('/informationEdit/informationUp',function(){
 	return view('information.informationUpdate');
 });
@@ -105,6 +109,10 @@ Route::get('/getContentAnother',function(){
 
 Route::get('/getNameSuggest',function(){
 	return view('NameSuggest');
+});
+
+Route::get('/fixed',function(){
+	return view('upload.fixed');
 });
 
 Auth::routes();
