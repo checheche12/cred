@@ -95,6 +95,9 @@ addCreditButton.addEventListener("click",function(){
 		success:function(data){
 			if(data == 'There is no Email'){
 				alert("등록되지 않은 이메일입니다. 이메일을 다시 확인해주세요.");
+			}else if(!position.value){
+				alert("position 이 비어있습니다. (please type in position.)");
+
 			}else{
 				var k = JSON.parse(data);
 				var t = [k[1],position.value];	// [userPK,position]
@@ -228,8 +231,28 @@ function goBack() {
 }
 
 var fixedButton = document.getElementById('fixed');
+var deleteButton = document.getElementById('delete');
 if(fixedButton != null){
 	fixedButton.addEventListener("click",function(){
-			post_to_url('./fixed', ArtPK, 'get')
+			post_to_url('./fixed', ArtPK, 'get');
+	});
+	var Data3 = {"ArtPK" : ArtPK};
+	deleteButton.addEventListener("click",function(){
+		$.ajax({
+			url:'./delete',
+			type:'GET',
+			data: Data3,
+			success:function(data){
+				//alert('글 삭제 성공 메인으로 돌아갑니다.');
+				alert(data);
+				$(location).attr('href','/main');
+			},
+
+			error: function(){
+				alert('글 삭제 실패');
+			}
+
+		})
+
 	});
 }

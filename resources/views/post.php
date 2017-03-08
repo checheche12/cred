@@ -127,6 +127,7 @@ class UserController extends Controller
                 foreach($GLOBALS['userPKArray'] as $user){
                   if($user == $_SESSION['userPK']){
                       echo '<button id="fixed">수정</button>';
+                      echo '<button id="delete">삭제</button>';
                       break;
                   }
                 }

@@ -188,7 +188,7 @@ Bridge.addEventListener("click", function() {
 									var q = '<table class="bridgeCard" id = '+obj[i][5]+'>'
 									+'<tr> '
 									+'<td class="personalImageFrame">'
-									+'<img class="personalImage"src="mainImage/mina3.jpg"> '
+									+'<img class="personalImage"src="'+obj[i][2]+'"> '
 									+'</td> '+'<td class="personalInfo"> '
 									+'<p class="name">'+obj[i][1]+'</p>'
 									+' <p class="organization">'+obj[i][3]+'</p>'

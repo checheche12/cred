@@ -115,6 +115,11 @@ Route::get('/fixed',function(){
 	return view('upload.fixed');
 });
 
+Route::get('/delete',function(){
+	return view('upload.delete');
+});
+
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');

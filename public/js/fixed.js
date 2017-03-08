@@ -5,6 +5,8 @@ $(document).ready( function() {
 
 });
 
+console.log(creditArray);
+
 var TitleBox = document.getElementById('titleBox');
 var URLBox = document.getElementById('URLBox');
 var Description = document.getElementById('context');
@@ -20,7 +22,13 @@ var cancelButton = document.getElementById('cancelButton');
 
 var token;
 
-var creditArray = [];
+$(document).ready(function(){
+    var urlinput = document.getElementById("URLBox").value;
+    console.log(urlCheck(urlinput));
+    $('#video').html(urlCheck(urlinput));
+      // $('#URLBox').val("");
+});
+
 
 $(document).ready(function(){
   $("#URLBox").blur(function(){
@@ -127,6 +135,7 @@ submitButton.addEventListener("click",function(){
   Data2['Title'] = TitleBox.value;
   Data2['ArtURL'] = URLBox.value;
   Data2['Description'] = Description.value;
+  Data2['artPK'] = artPK;
 
   Data2['main'] = creditArray;
 

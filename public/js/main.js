@@ -103,7 +103,7 @@ function bridgeLogDisplay(){
 					imgSrc = 'https://img.youtube.com/vi/' + yvID
 					+ '/mqdefault.jpg';
 					j = '<div class = "ProjectFrame"><img class = "VideoArt" id = Image' + k[i][0] + ' src = ' + imgSrc
-					+ '><p class="credit">credit</p><div class="detail"><p class="name">'+k[i][2]+'</p><p class="position">Position</p></div></div>';
+					+ '><div class="detail"><p class="name">'+k[i][2]+'</p><p class="position">Position</p></div></div>';
 
 					$('#profileBody').append(j);
 
@@ -114,13 +114,13 @@ function bridgeLogDisplay(){
 							format : "json"
 						}, function(data) {
 							j = '<div class = "ProjectFrame"><img class "VideoArt" id = Image' + k[i][0] + ' src = ' + data[0].thumbnail_large
-							+ '><p class="credit">credit</p><div class="detail"><p class="name">'+k[i][2]+'</p><p class="position">Position</p></div></div>';
+							+ '><div class="detail"><p class="name">'+k[i][2]+'</p><p class="position">Position</p></div></div>';
 
 							$('#profileBody').append(j);
 						});
 				} else {
 					j = '<div class = "ProjectFrame"><img class = "VideoArt" id = Image' + k[i][0] + ' src = ' + url
-					+ '><p class="credit">credit</p><div class="detail"><p class="name">'+k[i][2]+'</p><p class="position">Position</p></div></div>';
+					+ '><div class="detail"><p class="name">'+k[i][2]+'</p><p class="position">Position</p></div></div>';
 
 					$('#profileBody').append(j);// skip
 				}
@@ -143,8 +143,8 @@ function bridgeLogDisplay(){
 
 }//bridgeLogDisplay()
 
-Project.addEventListener("click", function() {
-
+// Project.addEventListener("click", function() {	//	<-- 중복 클릭이 되서 .one 이라는 jquery 로 바꿨음. 확인 시 지울것. -soo
+$("#Project").one("click",function(){
 	console.log("SUCCESS POINT01");
 
 	// 토큰값을 가지고 와야한다. 토큰용 php 파일을 하나 만든다.
@@ -177,7 +177,7 @@ Bridge.addEventListener("click", function() {
 							var q = '<table class="bridgeCard" id = '+obj[i][5]+'>'
 							+'<tr> '
 							+'<td class="personalImageFrame">'
-							+'<img class="personalImage"src="mainImage/mina3.jpg"> '
+							+'<img class="personalImage"src="'+obj[i][2]+'"> '
 							+'</td> '+'<td class="personalInfo"> '
 							+'<p class="name">'+obj[i][1]+'</p>'
 							+'<p class="organization">'+obj[i][3]+'</p>'
