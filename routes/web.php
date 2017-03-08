@@ -119,6 +119,11 @@ Route::get('/delete',function(){
 	return view('upload.delete');
 });
 
+Route::get('/getuserPK',function(){
+	return view('DBSelect.getuserPK');
+});
+
+
 
 Auth::routes();
 

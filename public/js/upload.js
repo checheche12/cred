@@ -79,13 +79,14 @@ Email.addEventListener("blur",function(){
 
     });
 
-var userPkArr =[];
+var userPkArr =[];  //중복 크레딧 체크용 배열
 addCredit.addEventListener("click",function(){
 
   var Data = {"_token" : token};
 
   Data['email'] = Email.value;
-  var dC = function duplicateCheck(){
+
+  var dC = function duplicateCheck(){ // 중복 크레딧 체크해 주는 함수
     console.log(userPkArr);
     for(i=0;i<userPkArr.length;i++){
       if(userPkArr[i]==Email.value){return true;}
@@ -103,6 +104,9 @@ addCredit.addEventListener("click",function(){
       }else if(dC()){
         alert("동일한 아이디가 미리 크레딧 되어있습니다. (this user is already credited)")
         //중복 이메일/USER PK 발견시 Alarm 또는 표시
+      }else if(!position.value){
+        alert("position 이 비어있습니다. (please type in position.)");
+
       }else{
         var k = JSON.parse(data);
 
@@ -115,7 +119,6 @@ addCredit.addEventListener("click",function(){
         creditArray.push(t);
 
       userPkArr.push(Email.value); //중복 확인 용 array
-      console.log(userPkArr);
       $('#email').val("");
       $('#position').val("");
       console.log("CHEKING POINT");

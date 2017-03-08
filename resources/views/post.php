@@ -138,6 +138,7 @@ class UserController extends Controller
 
       <script>
           var ArtPK =<?=$_GET['int']?>;
+          var userPKArr = new Array("<?=implode("\",\"" , $GLOBALS['userPKArray']);?>");
       </script>
 
       <script type = "text/javascript" src = "js/jquery-3.1.1.min.js"></script>

@@ -23,11 +23,11 @@ var cancelButton = document.getElementById('cancelButton');
 var token;
 
 $(document).ready(function(){
-    var urlinput = document.getElementById("URLBox").value;
-    console.log(urlCheck(urlinput));
-    $('#video').html(urlCheck(urlinput));
+  var urlinput = document.getElementById("URLBox").value;
+  console.log(urlCheck(urlinput));
+  $('#video').html(urlCheck(urlinput));
       // $('#URLBox').val("");
-});
+    });
 
 
 $(document).ready(function(){
@@ -54,53 +54,71 @@ Email.addEventListener("blur",function(){
   if(Email.value.length>1){
     /*
         이 함수는 email 에 글이 완성되면 추천 리스트를 띄워주는 역할을 한다....
-    */
-    var Data = {"_token" : token};
+        */
+        var Data = {"_token" : token};
 
-    Data['email'] = Email.value;
+        Data['email'] = Email.value;
 
-    $.ajax({
-      type:'GET',
-      url:'/getNameSuggest',
-      data : Data,
-      success:function(data){
-        var obj = JSON.parse(data);
-        for(var i = 0;i<obj.length;i++){
+        $.ajax({
+          type:'GET',
+          url:'/getNameSuggest',
+          data : Data,
+          success:function(data){
+            var obj = JSON.parse(data);
+            for(var i = 0;i<obj.length;i++){
 
             console.log(obj[i][0]); // 이름
             console.log(obj[i][1]); // 이메일
 
-          Sentence = '<li class = "suggest" id = "suggestList'+i+'"'+'> name : '+obj[i][0]+' email : '+obj[i][1]+'</li>';
-          $('#emailsuggest').append(Sentence);
-          var sen = '#suggestList'+i;
-          $(sen).bind("click",function(){
-            var t = $(this).attr('id').substr(11, 300);
-            $('#email').val(obj[t][1]);
-          });
+            Sentence = '<li class = "suggest" id = "suggestList'+i+'"'+'> name : '+obj[i][0]+' email : '+obj[i][1]+'</li>';
+            $('#emailsuggest').append(Sentence);
+            var sen = '#suggestList'+i;
+            $(sen).bind("click",function(){
+              var t = $(this).attr('id').substr(11, 300);
+              $('#email').val(obj[t][1]);
+            });
+          }
+        },
+        error: function(){
+          alert('server connect error');
         }
-      },
-      error: function(){
-        alert('server connect error');
+      })
+
       }
-    })
 
-  }
-
-});
-
+    });
+ var userPkArr =[];  //중복 크레딧 체크용 배열
+ for(i=0;i<creditArray.length;i++){
+  userPkArr.push(creditArray[i][0]);
+}
 addCredit.addEventListener("click",function(){
 
   var Data = {"_token" : token};
 
   Data['email'] = Email.value;
 
+
   $.ajax({
     type:'POST',
     url:'/checkAddcredit',
     data : Data,
     success:function(data){
+        // var k = JSON.parse(data); //여기에 두면 "등록되지 않은 이메일입니다" 가 뜨지 않음.
+      var dC = function duplicateCheck(){ // 중복 크레딧 체크해 주는 함수
+        var k = JSON.parse(data);
+        for(i=0;i<userPkArr.length;i++){
+          if(userPkArr[i]==k[1]){return true;}
+        }
+        return false;
+      }
       if(data == 'There is no Email'){
         alert("등록되지 않은 이메일입니다. 이메일을 다시 확인해주세요.");
+      }else if(dC()){
+        alert("동일한 아이디가 미리 크레딧 되어있습니다. (this user is already credited)")
+        //중복 이메일/USER PK 발견시 Alarm 또는 표시
+      }else if(!position.value){
+        alert("position 이 비어있습니다. (please type in position.)");
+
       }else{
         var k = JSON.parse(data);
 
@@ -112,6 +130,7 @@ addCredit.addEventListener("click",function(){
         var t = [k[1],position.value];
         creditArray.push(t);
 
+        userPkArr.push(k[1]); //중복 확인 용 array
         $('#email').val("");
         $('#position').val("");
         console.log("CHEKING POINT");
