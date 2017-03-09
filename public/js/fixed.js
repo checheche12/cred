@@ -46,6 +46,24 @@ $.ajax({
   }
 })
 
+$(".xImage").click(function(){
+    var xButton = $(this).closest('div');
+    var xButtonID = $(this).attr('id');
+    xButtonID = xButtonID * 1;
+
+    userPKArr = jQuery.grep(userPKArr, function(value) {
+       return value != xButtonID;
+     });
+
+    for(var k = 0; k<creditArray.length;k++){
+      if(creditArray[k].indexOf(xButtonID)!=-1){
+        creditArray.splice(k,1);
+        break;
+      }
+    }
+    $(xButton).remove();
+});
+
 $('body').click(function(){
   $('#emailsuggest').html('');
 });
@@ -87,9 +105,9 @@ Email.addEventListener("blur",function(){
       }
 
     });
- var userPkArr =[];  //중복 크레딧 체크용 배열
+ var userPKArr =[];  //중복 크레딧 체크용 배열
  for(i=0;i<creditArray.length;i++){
-  userPkArr.push(creditArray[i][0]);
+  userPKArr.push(creditArray[i][0]);
 }
 addCredit.addEventListener("click",function(){
 
@@ -103,11 +121,12 @@ addCredit.addEventListener("click",function(){
     url:'/checkAddcredit',
     data : Data,
     success:function(data){
+      var k = JSON.parse(data);
         // var k = JSON.parse(data); //여기에 두면 "등록되지 않은 이메일입니다" 가 뜨지 않음.
       var dC = function duplicateCheck(){ // 중복 크레딧 체크해 주는 함수
         var k = JSON.parse(data);
-        for(i=0;i<userPkArr.length;i++){
-          if(userPkArr[i]==k[1]){return true;}
+        for(i=0;i<userPKArr.length;i++){
+          if(userPKArr[i]==k[1]){return true;}
         }
         return false;
       }
@@ -120,17 +139,35 @@ addCredit.addEventListener("click",function(){
         alert("position 이 비어있습니다. (please type in position.)");
 
       }else{
-        var k = JSON.parse(data);
 
         var j = "<div class = 'creditContext'>";
+        j += ("<img class = 'xImage' id = "+k[1]+" src ='/mainImage/uploadImage/x.jpg'></img>");
         j += ("<div class='name'>"+k[0] + "</div><br>");
         j += ("<div class='position'>"+position.value+"</div></div>");
         $('#creditBox').append(j);
 
+        $(".xImage").click(function(){
+            var xButton = $(this).closest('div');
+            var xButtonID = $(this).attr('id');
+            xButtonID = xButtonID * 1;
+
+            userPKArr = jQuery.grep(userPKArr, function(value) {
+               return value != xButtonID;
+             });
+
+            for(var k = 0; k<creditArray.length;k++){
+              if(creditArray[k].indexOf(xButtonID)!=-1){
+                creditArray.splice(k,1);
+                break;
+              }
+            }
+            $(xButton).remove();
+        });
+
         var t = [k[1],position.value];
         creditArray.push(t);
 
-        userPkArr.push(k[1]); //중복 확인 용 array
+        userPKArr.push(k[1]); //중복 확인 용 array
         $('#email').val("");
         $('#position').val("");
         console.log("CHEKING POINT");

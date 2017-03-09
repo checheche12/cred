@@ -38,15 +38,16 @@ Edit.addEventListener("click",function(){
 
 });
 
-$(document).ready(function(){
-	$("#ProfilePhotoURL").blur(function(){
-		var urlinput = document.getElementById("ProfilePhotoURL").value;
-		$('#profileImage').html(urlCheck(urlinput));
-		console.log(urlCheck(urlinput));
-      // $('#URLBox').val("");
-  });
-});
 
+$(document).ready(function(){
+  $("#ProfilePhotoURL").blur(function(){
+    var urlinput = document.getElementById("ProfilePhotoURL").value;
+    console.log(urlCheck(urlinput));
+    $('#pImage').html(urlCheck(urlinput));
+    console.log("execute");
+      // $('#URLBox').val("");
+    });
+});
 
 // urlCheck functions
 function imageExists(url, callback) {
@@ -105,6 +106,6 @@ function urlCheck(urlInput) {
       + id
       + "?title=0&byline=0&portrait=0&badge=0' width='"+width+"' height='"+height+"' frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>";
   } else {
-  	return "<image class='profileImagePreview' src = " + url + ">";
+  	return "<img class='profileImagePreview' src = " + url + ">";
   }
 }

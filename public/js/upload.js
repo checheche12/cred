@@ -79,17 +79,18 @@ Email.addEventListener("blur",function(){
 
     });
 
-var userPkArr =[];  //중복 크레딧 체크용 배열
+var userPKArr =[];  //중복 크레딧 체크용 배열
+
 addCredit.addEventListener("click",function(){
 
   var Data = {"_token" : token};
 
   Data['email'] = Email.value;
 
-  var dC = function duplicateCheck(){ // 중복 크레딧 체크해 주는 함수
-    console.log(userPkArr);
-    for(i=0;i<userPkArr.length;i++){
-      if(userPkArr[i]==Email.value){return true;}
+  var dC = function duplicateCheck(k){ // 중복 크레딧 체크해 주는 함수
+    console.log(userPKArr);
+    for(i=0;i<userPKArr.length;i++){
+      if(userPKArr[i]==k){return true;}
     }
     return false;
   }
@@ -99,26 +100,45 @@ addCredit.addEventListener("click",function(){
     url:'/checkAddcredit',
     data : Data,
     success:function(data){
+      var k = JSON.parse(data);
       if(data == 'There is no Email'){
         alert("등록되지 않은 이메일입니다. 이메일을 다시 확인해주세요.");
-      }else if(dC()){
+      }else if(dC(k[1])){
         alert("동일한 아이디가 미리 크레딧 되어있습니다. (this user is already credited)")
         //중복 이메일/USER PK 발견시 Alarm 또는 표시
       }else if(!position.value){
         alert("position 이 비어있습니다. (please type in position.)");
 
       }else{
-        var k = JSON.parse(data);
 
         var j = "<div class = 'creditContext'>";
+        j += ("<img class = 'xImage' id = "+k[1]+" src ='/mainImage/uploadImage/x.jpg'></img>");
         j += ("<div class='name'>"+k[0] + "</div><br>");
         j += ("<div class='position'>"+position.value+"</div></div>");
         $('#creditBox').append(j);
 
+        $(".xImage").click(function(){
+            var xButton = $(this).closest('div');
+            var xButtonID = $(this).attr('id');
+            xButtonID = xButtonID * 1;
+
+            userPKArr = jQuery.grep(userPKArr, function(value) {
+               return value != xButtonID;
+             });
+
+            for(var k = 0; k<creditArray.length;k++){
+              if(creditArray[k].indexOf(xButtonID)!=-1){
+                creditArray.splice(k,1);
+                break;
+              }
+            }
+            $(xButton).remove();
+        });
+
         var t = [k[1],position.value];
         creditArray.push(t);
 
-      userPkArr.push(Email.value); //중복 확인 용 array
+      userPKArr.push(k[1]); //중복 확인 용 array
       $('#email').val("");
       $('#position').val("");
       console.log("CHEKING POINT");

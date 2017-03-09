@@ -112,7 +112,7 @@ class UserController extends Controller
             <div id="insertCredit">
               <input id="position" placeholder="담당 position"></input>
               <input id="Email" placeholder="계졍 Email"></input>
-              <button id="addCredit">creidt 추가</button>
+              <button id="addCredit">credit 추가</button>
             </div>
           </div>
           <div id="description">"<?= $GLOBALS['Description']?>"</div>

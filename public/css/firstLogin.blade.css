@@ -7,39 +7,59 @@
     vertical-align:middle;
     text-align:center;
    }
-*/
-.logo{
-text-align:center;
-  margin-top:5%;
+   */
 
-}
-.quote{
-  color:black;
-  font-size:20px;
-  font-weight: bold;
-  text-align:center;
-  margin-top:5%;
-  margin-bottom:10%;
-}
-.infoFrame{
-  color:#999999;
-  margin-left:40%;
-  margin-right:40%;
+   html{
+    background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
+    opacity: 0.95;
+  }
+  .logo{
+    text-align:center;
+    /*margin-top:5%;*/
+    margin-top: 75px;
 
-}
-.BOX{
-	//margin-left : 210px;
-	border : 0px;
-	border-bottom : 1px gray solid;
-	width : 100%;
-	height: 30px;
-}
+  }
+  .quote{
+    color:white;
+    font-size:20px;
+    font-weight: lighter;
+    text-align:center;
+    /*margin-top:5%;*/
+    margin-top: 75px;
+    /*margin-bottom:10%;*/
+    margin-bottom: 150px;
+  }
+  #form{
+    text-align: center;
+  }
+  .infoFrame{
+    display: inline-block;
+    color:#999999;
+    width: 400px;
 
-.buttons{
+  }
+  .labels{
+    text-align: left;
+    color: white;
+  }
+  .BOX{
+   //margin-left : 210px;
+   border : 1px solid white;
+   border-radius:7px;
+   width : 100%;
+   height: 30px;
+   background: rgba(255, 255, 255, 0.5); 
+ }
+
+ .buttons{
   text-align:center;
 }
 
 #subsub{
- //   margin-left : 270px;
-    margin-right : 180px;
+  margin-right: 100px;
+  width: 150px;
 }
+#signupBt{
+  width: 150px;
+}
+

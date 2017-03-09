@@ -98,6 +98,7 @@
           <?php
               foreach($GLOBALS['userData'] as $i){
                   echo "<div class = 'creditContext'>";
+                  echo "<img class = 'xImage' id = ".$i[0]." src ='/mainImage/uploadImage/x.jpg'></img>";
                   echo "<div class='name'>".$i[1]."</div><br>";
                   echo "<div class='position'>".$i[2]."</div></div>";
                   echo "<script>";
