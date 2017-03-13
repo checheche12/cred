@@ -123,6 +123,9 @@ Route::get('/getuserPK',function(){
 	return view('DBSelect.getuserPK');
 });
 
+Route::get('/email',function(){
+	return view('DBSelect.email');
+});
 
 
 Auth::routes();

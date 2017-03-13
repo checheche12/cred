@@ -30,7 +30,13 @@ class LoginController extends Controller
           $idid = $GLOBALS['IDCheck'];
           $pwpw = $GLOBALS['PasswordCheck'];
           $pkpk = $GLOBALS['UserPK'];
-          if(($_POST['ID']==$idid)&&($_POST['PW']==$pwpw)) {
+          $PasswordLockss = DB::select(DB::raw('select PASSWORD("'.$_POST['PW'].'")'));
+          foreach($PasswordLockss as $PasswordLocks){
+            foreach($PasswordLocks as $PasswordLock){
+              $GLOBALS['pLock'] = $PasswordLock;
+            }
+          }
+          if(($_POST['ID']==$idid)&&($PasswordLock==$pwpw)) {
               // Authentication passed...
               $_SESSION['is_login'] = true;
               $_SESSION['userPK'] = $pkpk;
@@ -38,8 +44,7 @@ class LoginController extends Controller
               exit;
           }else{
               header('Location: ./');
-              echo "당신이 친 값인 id : ".$_POST['ID']."  password : ".$_POST['PW']."은 비밀번호가
-              틀렸습니다.";
+              echo "id 혹은 비밀번호가 틀렸습니다. 3초뒤에 메인화면으로 돌아갑니다.";
               echo "<script type='text/javascript'>setTimeout(function(){
                   document.location.href='./';
               },3000);</script>";

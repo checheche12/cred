@@ -11,7 +11,7 @@ $.ajax({
 })
 
 
-var Edit = document.getElementById('eeddiitt');
+var Edit = document.getElementById('edit');
 
 Edit.addEventListener("click",function(){
 
@@ -44,7 +44,6 @@ $(document).ready(function(){
     var urlinput = document.getElementById("ProfilePhotoURL").value;
     console.log(urlCheck(urlinput));
     $('#pImage').html(urlCheck(urlinput));
-    console.log("execute");
       // $('#URLBox').val("");
     });
 });

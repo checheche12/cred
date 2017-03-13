@@ -27,8 +27,8 @@
 }
 .ProfileBasicInfo{
 	float:left;
-	margin : 50px;
-	margin-top:80px;
+	margin-left: 50px;
+    margin-top: 20px;
 	height : 800px;
 	width : 300px;
 	text-align:center;

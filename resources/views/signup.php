@@ -22,7 +22,7 @@
 				class="BOX" type="password" id='pw' name="pwpw" placeholder=" 비밀번호">
 		</div>
 		<div id="signupD">
-			<input id="signUp" type="image"
+			<img id="signUp"
 				src="/mainImage/signup2.png" />
 		</div>
 	</form>

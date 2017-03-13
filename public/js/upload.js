@@ -37,15 +37,25 @@ $.ajax({
   }
 })
 
+$.ajax({
+  url:'./email',
+  success:function(data){
+    data = JSON.parse(data);
+    $("#email").val(data[0]);
+  }
+})
+
 $('body').click(function(){
   $('#emailsuggest').html('');
 });
 
-Email.addEventListener("blur",function(){
+Email.addEventListener("keyup",function(){
+
   if(Email.value.length>1){
     /*
-        이 함수는 email 에 글이 완성되면 추천 리스트를 띄워주는 역할을 한다....
-        */
+      이 함수는 email 에 글이 들어오게 되면 추천 리스트를 띄워주는 역할을 한다....
+    */
+
         var Data = {"_token" : token};
 
         Data['email'] = Email.value;
@@ -56,11 +66,11 @@ Email.addEventListener("blur",function(){
           data : Data,
           success:function(data){
             var obj = JSON.parse(data);
+
+            $('#emailsuggest').html('');
+
             for(var i = 0;i<obj.length;i++){
-
-            console.log(obj[i][0]); // 이름
-            console.log(obj[i][1]); // 이메일
-
+            //obj[i][0] 은 이름 obj[i][1] 은 이메일
             Sentence = '<li class = "suggest" id = "suggestList'+i+'"'+'> name : '+obj[i][0]+' email : '+obj[i][1]+'</li>';
             $('#emailsuggest').append(Sentence);
             var sen = '#suggestList'+i;
@@ -68,6 +78,7 @@ Email.addEventListener("blur",function(){
               var t = $(this).attr('id').substr(11, 300);
               $('#email').val(obj[t][1]);
             });
+
           }
         },
         error: function(){

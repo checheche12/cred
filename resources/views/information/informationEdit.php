@@ -71,59 +71,62 @@ class UserController extends Controller
           <div id="graduateYearD">
             <div class="labelsD"><label class="labels" for="education">졸업(예정)</label></div><input class="inputs" type = "number" min="1900" max="2030" id = "education" placeholder="YYYY" value = "<?= $GLOBALS['education']?>"></input>
           </div>
-        </div><br>
+        </div>
+      </div><br>
+      <div id="company">
         <div id="current_organizationD">
           <div class="labelsD"><label class="labels" for="">현 소속</label></div><input class="inputs" type = "text" id = "current_organization" value = "<?= $GLOBALS['name']?>"></input>
         </div><br>
         <div id="current_positionD">
           <div class="labelsD"><label class="labels" for="">현 직책</label></div><input class="inputs" type = "text" id = "current_position" value = "<?= $GLOBALS['name']?>"></input>
-        </div><br>
-        <div id="locationD">
-          <div class="labelsD"><label class="labels" for="location">위치</label></div><input class="inputs" type = "text" id = "location" value = "<?= $GLOBALS['name']?>"></input>
-        </div><br>
-        <div id="keywordD">
-          <div class="labelsD"><label class="labels" for="keyword">키워드</label></div><textarea rows="3" id = "keyword" cols="30" name="contents"><?= $GLOBALS['keyword']?></textarea>
-        </div><br>
-        <div id="experienceD">
-          <div class="labelsD"><label class="labels">경력</label></div><br>
-          <div id="company">
-            <div id="positionD">
-              <div class="labelsD"><label class="labels" for="position">직함</label></div><input class="inputs" type = "text" id = "position" value = "<?= $GLOBALS['career']?>"></input>
-            </div>
-            <div id="organizationD">
-              <div class="labelsD"><label class="labels" for="origanzation">소속</label></div><input class="inputs" type = "text" id = "origanzation" value = "<?= $GLOBALS['career']?>"></input><br>
-            </div>
+        </div>
+      </div><br>
+      <div id="locationD">
+        <div class="labelsD"><label class="labels" for="location">위치</label></div><input class="inputs" type = "text" id = "location" value = "<?= $GLOBALS['name']?>"></input>
+      </div><br>
+      <div id="keywordD">
+        <div class="labelsD"><label class="labels" for="keyword">전문기술</label></div><textarea rows="3" id = "keyword" cols="30" name="contents"><?= $GLOBALS['keyword']?></textarea>
+      </div><br>
+      <div id="experienceD">
+        <div id="labelEx"><label class="labels">경력</label></div>
+        <div id="companyEx">
+          <div id="positionD">
+            <div class="labelsD"><label class="labels" for="position">직함</label></div><input class="inputs" type = "text" id = "position" value = "<?= $GLOBALS['career']?>"></input>
           </div>
-          <br>
-          <div id="workPeriodD">
-            <div class="labelsD"><label class="labels">근무기간</label></div>
+          <div id="organizationD">
+            <div class="labelsD"><label class="labels" for="origanzation">소속</label></div><input class="inputs" type = "text" id = "origanzation" value = "<?= $GLOBALS['career']?>"></input><br>
           </div>
-          <div id="start">
-            <div class="labelsD"><label class="labels">시작</label></div><br>
-            <div class="start_year">
+        </div>
+        <br>
+        <div id="workPeriodD">
+          <div id="labelEx"><label class="labels">근무기간</label></div>
+        </div>
+        <div id="start">
+          <div class="labelsD"><label class="labels">시작</label></div><br>
+          <div class="start_year">
             <div class="labelsD"><label for="start_year">연도(YYYY)</label></div><input class="inputs" type="number" min="1900" max="2030" value = "<?= $GLOBALS['career']?>" id = "start_year" placeholder="YYYY"></input>
-            </div>
-            <div class="start_month">
-              <div class="labelsD"><label for="start_month">월(MM)</label></div><input class="inputs" type="number" min="1" max="12" id = "start_month" value = "<?= $GLOBALS['career']?>" placeholder="MM"></input><br>
-            </div>
           </div>
-          <div id="end">
-            <div class="labelsD"><label class="labels">끝</label></div><br>
-            <div class="end_year">
-              <div class="labelsD"><label for="end_year">연도(YYYY)</label></div><input class="inputs" type="number" min="1900" max="2030" value = "<?= $GLOBALS['career']?>" id = "end_year" placeholder="YYYY"></input>
-            </div>
-            <div class="end_month">
-              <div class="labelsD"><label for="end_month">월(MM)</label></div><input class="inputs" type="number" min="1" max="12" id = "end_month" value = "<?= $GLOBALS['career']?>" placeholder="MM"></input><br>
-            </div>
+          <div class="start_month">
+            <div class="labelsD"><label for="start_month">월(MM)</label></div><input class="inputs" type="number" min="1" max="12" id = "start_month" value = "<?= $GLOBALS['career']?>" placeholder="MM"></input>
+          </div>
+        </div><br>
+        <div id="end">
+        <div class="labelsD"><label class="labels">종료</label></div><br>
+          <div class="end_year">
+            <div class="labelsD"><label for="end_year">연도(YYYY)</label></div><input class="inputs" type="number" min="1900" max="2030" value = "<?= $GLOBALS['career']?>" id = "end_year" placeholder="YYYY"></input>
+          </div>
+          <div class="end_month">
+            <div class="labelsD"><label for="end_month">월(MM)</label></div><input class="inputs" type="number" min="1" max="12" id = "end_month" value = "<?= $GLOBALS['career']?>" placeholder="MM"></input><br>
           </div>
         </div>
         <div id="descriptionD">
           <div class="labelsD"><label class="labels" for="">설명</label></div><input class="inputs" type = "text" id = "career" value = "<?= $GLOBALS['career']?>" id = "career"></input><br>
         </div>
-        <button id="addExperience">+</button><br>
       </div>
-      <button id="eeddiitt">수정</button>
-
+      <div id="editBox">
+        <button id="addExperience">+추가</button><br>
+      </div>
+      <button id="edit">수정</button>
     </div>
 
     <script type = "text/javascript" src = "js/jquery-3.1.1.min.js"></script>

@@ -8,29 +8,27 @@
 	border-radius: 100%;
 }
 .ProfileBasicInfo .name{
-	font-size:25px;
+	font-size:28px;
 	font-weight:bold;
-	margin: 45px;
+	margin: 30px;
 
 }
-.ProfileBasicInfo .organization{
+.ProfileBasicInfo .curOrganization{
 	font-size: 17px;
-	margin-bottom: 20px;
-
 }
-.ProfileBasicInfo .position{
+.ProfileBasicInfo .curPosition{
 	font-weight:bold;
 	font-size: 17px;
-	margin-bottom: 20px;
 }
 .ProfileBasicInfo .location{
 	font-weight:lighter;
-	font-size: 17px;
-	margin-bottom: 20px;
+	font-size: 12px;
+}
+.upperInfo{
+	margin-bottom: 40px;
 }
 .ProfileBasicInfo .email{
-	margin: 45px;
-	margin-bottom: 35;
+	/*	45px;*/
 }
 
 .ProfileBasicInfo .personalDescription{
@@ -39,7 +37,34 @@
 	word-wrap:break-word;
 	line-height:120%
 }
-
+.lowerInfo{
+	font-size: 14px;
+}
+.infoD{
+	display: inline-flex;
+	width: 100%;
+	line-height: 120%;
+}
+.infoD .infoLabel{
+	width: 120px;
+	text-align: left;
+}
+.infoDetail{
+	text-align: left;
+}
+#exInfo{
+	display: inline-block;
+}
+#exInfoDetail{
+	text-align: left;
+}
+.exP{
+	margin: 0px;
+}
+#exOrganization{
+	color: gray;
+    font-size: 12px;
+}
 #informationEdit {
 	display: inline-block;
 	padding: 0px 10px;
