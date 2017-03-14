@@ -27,32 +27,46 @@ class UserController extends Controller
           $GLOBALS['photoURL'] = $user->ProfilePhotoURL;
         }
       }
-}
+    }
 
-      $A = new UserController();
-      $A->index();
+    $A = new UserController();
+    $A->index();
 
-?>
-
-<link rel="stylesheet" type ="text/css" href="css/header.css?v=1">
-
-<div id = "header">
-    <img id = "credImage" src = "mainImage/signupImage/signupLogo.png">
+    ?>
+    
+    <head>
+      <style type="text/css">
+        .headerFrame{
+          display: none;
+        }
+      </style>
+    </head>
+    <link rel="stylesheet" type ="text/css" href="css/header.css?v=1">
+    <div class="headerFrame">
+      <div id = "header">
+        <img id = "credImage" src = "mainImage/signupImage/signupLogo.png">
 
     <!--
         아래에 있는 코드는 DB에서 값을 가져 온 뒤에 동적으로 수정해야 한다. (수정 1)
-    -->
+      -->
 
-        <div class="headIcons">
-    <?php
+      <div class="headIcons">
+        <?php
         echo '<div id = "profile">';
         echo '<img id = "profileImage" src = '.$GLOBALS['photoURL'].'>';
         echo '<div id = "profileName">'.$GLOBALS['name'].'</div>';
         echo '</div>';
         ?>
 
-                <button id = "upload" title="upload"></button>
-                <button id = "logout" title="logout"></button>
-        </div>
+        <button id = "upload" title="upload"></button>
+        <button id = "logout" title="logout"></button>
+      </div>
     </div>
-    <script type = "text/javascript" src = "js/header.js"></script>
+  </div>
+
+  <script type = "text/javascript" src = "js/header.js"></script>
+  <script type="text/javascript"> //FOUC(Flash Of Unstyled Content) 방지 용
+    $(function(){
+      $('.headerFrame').css('display','block'); 
+    });
+  </script>

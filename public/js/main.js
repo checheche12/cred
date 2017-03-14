@@ -5,7 +5,6 @@ $(document).ready( function() {
 	$("#header").load("/header");
 
 });
-
 var Project = document.getElementById('Project');
 
 var Bridge = document.getElementById('Bridge');
@@ -71,7 +70,6 @@ function post_to_url(path, int, method) {
 
 // 현재 제작 과정. post 페이지로 잘 이동한다.
 bridgeLogDisplay();
-
 function bridgeLogDisplay(){
 	$.ajax({
 
@@ -101,56 +99,57 @@ function bridgeLogDisplay(){
 				// url check 후 비디오일 시 썸내일로 전환 후 post
 				var url = String(k[i][1]);
 				var urlType = urlCheck(url);
-				// if (urlType == "youtube") {
-				// 	var yvID = matchYoutubeUrl(url);
-				// 	imgSrc = 'https://img.youtube.com/vi/' + yvID
-				// 	+ '/mqdefault.jpg';
-				// 	j = '<div class = "ProjectFrame"><img class = "VideoArt" id = Image' + k[i][0] + ' src = ' + imgSrc
-				// 	+ '><div class="detail"><p class="name">'+k[i][2]+'</p><p class="position">'+ k[i][3] +'</p></div></div>';
-
-				// 	$('#profileBody').append(j);
-
-				// } else if (urlType == "vimeo") {
-				// 	var vvID = matchVimeoUrl(url);
-				// 	console.log(i +' | '+urlType+" Entered | vvID:"+vvID);
-				// 	$.getJSON('http://www.vimeo.com/api/v2/video/' + vvID
-				// 		+ '.json?callback=?', {
-				// 			format : "json"
-				// 		}) .done(function(data) {
-				// 			j = '<div class = "ProjectFrame"><img class="VideoArt" id = Image' + xx + ' src = ' + data[0].thumbnail_large
-				// 			+ '><div class="detail"><p class="name">'+yy+'</p><p class="position">'+zz+'</p></div></div>';
-				// 			$('#profileBody').append(j);
-				// 		});
-				// } else {
-				// 	j = '<div class = "ProjectFrame"><img class = "VideoArt" id = Image' + k[i][0] + ' src = ' + url
-				// 	+ '><div class="detail"><p class="name">'+k[i][2]+'</p><p class="position">'+k[i][3]+'</p></div></div>';
-
-				// 	$('#profileBody').append(j);// skip
-				// }
-				$("span").data("value", "a");
 				if (urlType == "youtube") {
 					var yvID = matchYoutubeUrl(url);
 					imgSrc = 'https://img.youtube.com/vi/' + yvID
 					+ '/mqdefault.jpg';
-				} else if (urlType == "vimeo") {
-					
+					j = '<div class = "ProjectFrame"><img class = "VideoArt" id = Image' + k[i][0] + ' src = ' + imgSrc
+					+ '><div class="detail"><p class="name">'+k[i][2]+'</p><p class="position">'+ k[i][3] +'</p></div></div>';
 
+					$('#profileBody').append(j);
+
+				} else if (urlType == "vimeo") {
 					var vvID = matchVimeoUrl(url);
+					console.log(i +' | '+urlType+" Entered | vvID:"+vvID);
 					$.getJSON('http://www.vimeo.com/api/v2/video/' + vvID
 						+ '.json?callback=?', {
 							format : "json"
 						}) .done(function(data) {
-							$("span").data("value", data[0].thumbnail_large);
+							j = '<div class = "ProjectFrame"><img class="VideoArt" id = Image' + xx + ' src = ' + data[0].thumbnail_large
+							+ '><div class="detail"><p class="name">'+yy+'</p><p class="position">'+zz+'</p></div></div>';
+							$('#profileBody').append(j);
 						});
-						imgSrc=JSON.stringify($("span").data("value"));
 					} else {
-						imgSrc = url;
-					}
-					console.log(imgSrc);
-					j = '<div class = "ProjectFrame"><img class = "VideoArt" id = Image' + k[i][0] + ' src = ' + imgSrc
-					+ '><div class="detail"><p class="name">'+k[i][2]+'</p><p class="position">'+k[i][3]+'</p></div></div>';
+						j = '<div class = "ProjectFrame"><img class = "VideoArt" id = Image' + k[i][0] + ' src = ' + url
+						+ '><div class="detail"><p class="name">'+k[i][2]+'</p><p class="position">'+k[i][3]+'</p></div></div>';
+
 					$('#profileBody').append(j);// skip
-				////////
+				}
+				// /** Refactoring 리펙토링 중....**/
+				// $("span").data("value", "a");
+				// if (urlType == "youtube") {
+				// 	var yvID = matchYoutubeUrl(url);
+				// 	imgSrc = 'https://img.youtube.com/vi/' + yvID
+				// 	+ '/mqdefault.jpg';
+				// } else if (urlType == "vimeo") {
+					
+
+				// 	var vvID = matchVimeoUrl(url);
+				// 	$.getJSON('http://www.vimeo.com/api/v2/video/' + vvID
+				// 		+ '.json?callback=?', {
+				// 			format : "json"
+				// 		}) .done(function(data) {
+				// 			$("span").data("value", data[0].thumbnail_large);
+				// 		});
+				// 		imgSrc=JSON.stringify($("span").data("value"));
+				// 	} else {
+				// 		imgSrc = url;
+				// 	}
+				// 	console.log(imgSrc);
+				// 	j = '<div class = "ProjectFrame"><img class = "VideoArt" id = Image' + k[i][0] + ' src = ' + imgSrc
+				// 	+ '><div class="detail"><p class="name">'+k[i][2]+'</p><p class="position">'+k[i][3]+'</p></div></div>';
+				// 	$('#profileBody').append(j);// skip
+				// ////////
 				var IDValue = '#Image' + k[i][0];
 				$(IDValue).bind('click', function() {
 
@@ -299,3 +298,9 @@ return "vimeo";
 	validateImageURL(url);
 }
 }
+/*var htmlDisplay = document.getElementById("js");
+$(htmlDisplay).ready(function(){
+	htmlDisplay.style.display="block";
+// document.addEventListener("load", function(event) {
+});
+console.log("testing display");*/

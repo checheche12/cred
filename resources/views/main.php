@@ -5,6 +5,17 @@ if(!isset($_SESSION['is_login'])){
   exit;
 }
 ?>
+<!-- FOUC(Flash Of Unstyled Content) 방지 용 head-->
+<head>
+  <style type="text/css">
+    .noJs {display: none;}
+    /*#pfpf{display: none;}*/
+    /*#header{display: none;}*/
+  </style>
+  <script type="text/javascript">
+    document.documentElement.className = 'noJs';
+  </script>
+</head>
 
 <link rel="stylesheet" type ="text/css" href="css/main.css?v=1">
 
@@ -32,18 +43,20 @@ if(!isset($_SESSION['is_login'])){
       </div>
 
       <?php
-
 /**
  * Laravel - A PHP Framework For Web Artisans
  *
  * @package  Laravel
  * @author   Taylor Otwell <taylor@laravel.com>
  */
-
-
 ?>
 <script>
   var userPK = <?=$_SESSION['userPK']?>;
 </script>
 <script type = "text/javascript" src = "js/jquery-3.1.1.min.js"></script>
 <script type = "text/javascript" src = "js/main.js"></script>
+<script type="text/javascript">//FOUC(Flash Of Unstyled Content) 방지 용
+  $(function(){
+            $('.noJs').css('display','block'); 
+          });
+</script>

@@ -57,10 +57,17 @@ class checkAddCredit extends Controller
       $A = new checkAddCredit();
       $A->checkEmailCredit();
       ?>
-
+      <head>
+        <style type="text/css">
+          .profileFrame{
+            display: none;
+          }
+        </style>
+      </head>
       <link rel="stylesheet" type ="text/css" href="css/ProfileBasicInfo.css">
 
       <?php
+      echo '<div class="profileFrame">';
       echo '<div class="upperInfo">';
       echo '<img id = "profileImage2" src = '.$GLOBALS['photoURL'].'>';
       echo '<p class="name">'.$GLOBALS['name'].'</p>';
@@ -84,9 +91,17 @@ class checkAddCredit extends Controller
         </div><p class="exWorkLocation">'.$GLOBALS['exWorkLocation'].'</p></div></div>';
         echo '</div>';
         echo '<button id = "informationEdit">프로필 수정하기</button>';
+        echo '</div>';
         ?>
 
         <script>
           var another = 'no';
         </script>
         <script type = "text/javascript" src = "js/ProfileBasicInfo.js"></script>
+        <script type="text/javascript">//FOUC(Flash Of Unstyled Content) 방지 용
+
+          $(function(){
+            $('.profileFrame').css('display','block'); 
+          });
+        </script>
+

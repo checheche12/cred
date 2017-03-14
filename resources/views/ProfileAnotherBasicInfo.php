@@ -57,9 +57,18 @@ class checkAddCredit extends Controller
       $A->checkEmailCredit();
       ?>
 
+      <head>
+        <style type="text/css">
+          .profileFrame{
+            display: none;
+          }
+        </style>
+      </head>
+
       <link rel="stylesheet" type ="text/css" href="css/ProfileBasicInfo.css">
 
       <?php
+      echo '<div class="profileFrame">';
       echo '<div class="upperInfo">';
       echo '<img id = "profileImage2" src = '.$GLOBALS['photoURL'].'>';
       echo '<p class="name">'.$GLOBALS['name'].'</p>';
@@ -82,9 +91,16 @@ class checkAddCredit extends Controller
           <p class="exP" class="exOrganization">'.$GLOBALS['exOrganization'].'</p>
         </div><p class="exWorkLocation">'.$GLOBALS['exWorkLocation'].'</p></div></div>';
         echo '</div>';
+        echo '</div>';
         ?>
 
         <script>
           var another = 'yes';
         </script>
         <script type = "text/javascript" src = "js/ProfileBasicInfo.js"></script>
+        <script type="text/javascript">//FOUC(Flash Of Unstyled Content) 방지 용
+
+          $(function(){
+            $('.profileFrame').css('display','block'); 
+          });
+        </script>
