@@ -32,11 +32,11 @@ class UserController extends Controller
       }
 
       public function getWorkNameList(){
-        $Sentence2 = "select Name from workDB as A join userinfo as B ON A.userPK = B.userPK and artPK = ".$_GET['int'];
+        $Sentence2 = "select A.userPK, Name from workDB as A join userinfo as B ON A.userPK = B.userPK and artPK = ".$_GET['int'];
         $users2 = DB::select(DB::raw($Sentence2));
         $a = 1;
         foreach($users2 as $user){
-          echo "<p class = 'nameFrame' id = ".$a.">".$user->Name."</p>";
+          echo "<p class = 'nameFrame' id = ".$user->userPK.">".$user->Name."</p>";
           $a+=1;
         }
       }

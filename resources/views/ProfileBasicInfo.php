@@ -27,6 +27,8 @@ class checkAddCredit extends Controller
             $GLOBALS['career'] = $user->Career;
             $GLOBALS['education'] = $user->education;
             $GLOBALS['photoURL'] = $user->ProfilePhotoURL;
+            $GLOBALS['location'] = $user->location;
+            $GLOBALS['current_organization'] = $user->belong;
           }
 
           $Sentence = "select * from keywordDB where userPK = ".$_SESSION['userPK'];
@@ -38,6 +40,17 @@ class checkAddCredit extends Controller
             $GLOBALS['keyword'].=$a.',';
           }
           $GLOBALS['keyword'] = substr($GLOBALS['keyword'],0,-1);
+
+          $Sentence2 = "select * from userExperience where userPK = ".$_SESSION['userPK'];
+          $users2 = DB::select(DB::raw($Sentence2));
+          $GLOBALS['exOrganization'] = "";
+          $GLOBALS['exPosition'] = "";
+          $GLOBALS['exWorkLocation'] = "";
+          foreach($users2 as $user){
+            $GLOBALS['exOrganization'] = $user->Organization;
+            $GLOBALS['exPosition'] = $user->Position;
+            $GLOBALS['exWorkLocation'] = '- '.$user->WorkLocation;
+          }
         }
       }
 
@@ -47,47 +60,33 @@ class checkAddCredit extends Controller
 
       <link rel="stylesheet" type ="text/css" href="css/ProfileBasicInfo.css">
 
-<!-- <?php
-    // echo '<img id = "profileImage2" src = '.$GLOBALS['photoURL'].'>';
-    // echo '<p class="name">'.$GLOBALS['name'].'</p>';
-    // echo '<p class="organization">'.$GLOBALS['education'].'</p>';
-    // echo '<p class="position">'.$GLOBALS['career'].'</p>';
+      <?php
+      echo '<div class="upperInfo">';
+      echo '<img id = "profileImage2" src = '.$GLOBALS['photoURL'].'>';
+      echo '<p class="name">'.$GLOBALS['name'].'</p>';
+      echo '<p class="curOrganization">'.$GLOBALS['current_organization'].'</p>';
+      echo '<p class="curPosition">'.$GLOBALS['career'].'</p>';
+      echo '<p class="location">'.$GLOBALS['location'].'</p>';
+      echo '</div>';
+      echo '<div class="lowerInfo">';
+      echo '<div class="infoD"><p class="infoLabel">Contact</p><p class="infoDetail">'.$GLOBALS['email'].'</p></div>';
+      echo '<hr>';
+      echo '<div class="infoD"><p class="infoLabel">학교</p><p class="infoDetail">'.$GLOBALS['education'].'</p></div>';
+      echo '<hr>';
+      echo '<div class="infoD"><p class="infoLabel">전문기술</p><p class="infoDetail">'.$GLOBALS['keyword'].'</p></div>';
+      echo '<hr>';
+      echo '<div class="infoD" id="exInfo">
+      <p class="infoLabel">경력</p>
+      <div class="exInfoDetail">
+        <div class="ex_pos_org">
+          <p class="exP">'.$GLOBALS['exPosition'].'&nbsp;</p>
+          <p class="exP" class="exOrganization">'.$GLOBALS['exOrganization'].'</p>
+        </div><p class="exWorkLocation">'.$GLOBALS['exWorkLocation'].'</p></div></div>';
+        echo '</div>';
+        echo '<button id = "informationEdit">프로필 수정하기</button>';
+        ?>
 
-    // echo '<p class="location">GangNam</p>';
-    // echo '<p class="email">'.$GLOBALS['email'].'</p>';
-    // echo '<button id = "informationEdit">프로필 수정하기</button>';
-    // echo '<hr>';
-    // echo '<p class="personalDescription">'.$GLOBALS['keyword']."</p>"
-?>
--->
-<?php
-echo '<div class="upperInfo">';
-echo '<img id = "profileImage2" src = '.$GLOBALS['photoURL'].'>';
-echo '<p class="name">'.$GLOBALS['name'].'</p>';
-      // echo '<p class="curOrganization">'.$GLOBALS['curOrganization'].'</p>';
-echo '<p class="curOrganization">curOrganization</p>';
-      // echo '<p class="curPosition">'.$GLOBALS['curPosition'].'</p>';
-echo '<p class="curPosition">curPosition</p>';
-
-echo '<p class="location">location</p>';
-echo '</div>';
-echo '<div class="lowerInfo">';
-echo '<div class="infoD"><p class="infoLabel">Contact</p><p class="infoDetail">'.$GLOBALS['email'].'</p></div>';
-echo '<hr>';
-echo '<div class="infoD"><p class="infoLabel">학교</p><p class="infoDetail">'.$GLOBALS['education'].'</p></div>';
-echo '<hr>';
-echo '<div class="infoD"><p class="infoLabel">전문기술</p><p class="infoDetail">'.$GLOBALS['keyword'].'</p></div>';
-echo '<hr>';
-echo '<div class="infoD" id="exInfo"><p class="infoLabel">경력</p><div id="exInfoDetail"><p class="exP">exPosition</p><p class="exP" id="exOrganization">exOrganization</p></div></div>';
-// echo '<p class="exPosition">exPosition</p>';
-// echo '<p class="exOrganization">exOrganization</p>';
-echo '</div>';
-
-echo '<button id = "informationEdit">프로필 수정하기</button>';
-?>
-
-<script>
-  var another = 'no';
-</script>
-<script type = "text/javascript" src = "js/jquery-3.1.1.min.js"></script>
-<script type = "text/javascript" src = "js/ProfileBasicInfo.js"></script>
+        <script>
+          var another = 'no';
+        </script>
+        <script type = "text/javascript" src = "js/ProfileBasicInfo.js"></script>

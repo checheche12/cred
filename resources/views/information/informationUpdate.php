@@ -32,6 +32,15 @@ class RunQuery extends Controller
           $Sentence = "update userinfo set education = '".$_POST['education']."' where userPK = '".$_SESSION['userPK']."'";
           $users = DB::update(DB::raw($Sentence));
 
+          $Sentence = "update userinfo set belong = '".$_POST['current_organization']."' where userPK = '".$_SESSION['userPK']."'";
+          $users = DB::update(DB::raw($Sentence));
+
+          $Sentence = "update userinfo set graduateDate = ".$_POST['education2']." where userPK = '".$_SESSION['userPK']."'";
+          $users = DB::update(DB::raw($Sentence));
+
+          $Sentence = "update userinfo set location = '".$_POST['location']."' where userPK = '".$_SESSION['userPK']."'";
+          $users = DB::update(DB::raw($Sentence));
+
           $Sentence = "delete from keywordDB where userPK = ".$_SESSION['userPK'];
           $users = DB::delete(DB::raw($Sentence));
 
@@ -45,6 +54,18 @@ class RunQuery extends Controller
           $Sentence = substr($Sentence, 0, -1);
           $users = DB::insert(DB::raw($Sentence));
 
+          /* userExperience Table 수정*/
+          $Sentence = "update userExperience set Position = '".$_POST['exPosition']."' where userPK = '".$_SESSION['userPK']."'";
+          $users = DB::update(DB::raw($Sentence));
+
+          $Sentence = "update userExperience set Organization = '".$_POST['exOrganization']."' where userPK = '".$_SESSION['userPK']."'";
+          $users = DB::update(DB::raw($Sentence));
+
+          $Sentence = "update userExperience set WorkLocation = '".$_POST['exWorkLocation']."' where userPK = '".$_SESSION['userPK']."'";
+          $users = DB::update(DB::raw($Sentence));
+
+          $Sentence = "update userExperience set Explainn = '".$_POST['explainn']."' where userPK = '".$_SESSION['userPK']."'";
+          $users = DB::update(DB::raw($Sentence));
         }
       }
 

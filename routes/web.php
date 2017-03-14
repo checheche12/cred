@@ -91,6 +91,10 @@ Route::post('/informationEdit/informationUp',function(){
 	return view('information.informationUpdate');
 });
 
+Route::post('/informationEdit/informationCareer',function(){
+	return view('information.informationCareer');
+});
+
 Route::get('/informationEdit',function(){
 	return view('information.informationEdit');
 });

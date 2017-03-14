@@ -17,8 +17,8 @@
 	font-size: 17px;
 }
 .ProfileBasicInfo .curPosition{
-	font-weight:bold;
 	font-size: 17px;
+	font-weight: bold;
 }
 .ProfileBasicInfo .location{
 	font-weight:lighter;
@@ -55,15 +55,23 @@
 #exInfo{
 	display: inline-block;
 }
-#exInfoDetail{
+.exInfoDetail{
 	text-align: left;
+}
+.exWorkLocation{
+	color: gray;
+	margin: 0px;
+	font-size: 12px;
+}
+.ex_pos_org{
+	display: flex;
 }
 .exP{
 	margin: 0px;
 }
-#exOrganization{
-	color: gray;
-    font-size: 12px;
+.exOrganization{
+	/*color: gray;
+    font-size: 12px;*/
 }
 #informationEdit {
 	display: inline-block;

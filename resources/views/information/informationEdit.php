@@ -21,6 +21,11 @@ class UserController extends Controller
           $GLOBALS['career'] = $user->Career;
           $GLOBALS['education'] = $user->education;
           $GLOBALS['ProfilePhotoURL'] = $user->ProfilePhotoURL;
+
+          $GLOBALS['current_organization'] = $user->belong;
+          $GLOBALS['location'] = $user->location;
+          $GLOBALS['education2'] = $user->graduateDate;
+
         }
         $Sentence = "select * from keywordDB where userPK = ".$_SESSION['userPK'];
 
@@ -31,6 +36,23 @@ class UserController extends Controller
           $GLOBALS['keyword'].=$a.',';
         }
         $GLOBALS['keyword'] = substr($GLOBALS['keyword'],0,-1);
+
+        $Sentence2 = "select * from userExperience where userPK = ".$_SESSION['userPK'];
+          $users2 = DB::select(DB::raw($Sentence2));
+          $GLOBALS['exOrganization'] = "";
+          $GLOBALS['exPosition'] = "";
+          $GLOBALS['StartDate'] = "";
+          $GLOBALS['EndDate'] = "";
+          $GLOBALS['exWorkLocation'] = "";
+          $GLOBALS['Explainn'] = "";
+          foreach($users2 as $user){
+            $GLOBALS['exOrganization'] = $user->Organization;
+            $GLOBALS['exPosition'] = $user->Position;
+            $GLOBALS['StartDate'] = $user->StartDate;
+            $GLOBALS['EndDate'] = $user->EndDate;
+            $GLOBALS['exWorkLocation'] = $user->WorkLocation;
+            $GLOBALS['Explainn'] = $user->Explainn;
+          }
       }
     }
 
@@ -69,20 +91,20 @@ class UserController extends Controller
         <div id="schoolD">
           <div class="labelsD"><label class="labels" for="education">학력</label></div><input class="inputs" type = "text" id = "education" value = "<?= $GLOBALS['education']?>"></input>
           <div id="graduateYearD">
-            <div class="labelsD"><label class="labels" for="education">졸업(예정)</label></div><input class="inputs" type = "number" min="1900" max="2030" id = "education" placeholder="YYYY" value = "<?= $GLOBALS['education']?>"></input>
+            <div class="labelsD"><label class="labels" for="education">졸업(예정)</label></div><input class="inputs" type = "number" min="1900" max="2030" id = "education2" placeholder="YYYY" value = "<?= $GLOBALS['education2']?>"></input>
           </div>
         </div>
       </div><br>
       <div id="company">
         <div id="current_organizationD">
-          <div class="labelsD"><label class="labels" for="">현 소속</label></div><input class="inputs" type = "text" id = "current_organization" value = "<?= $GLOBALS['name']?>"></input>
+          <div class="labelsD"><label class="labels" for="">현 소속</label></div><input class="inputs" type = "text" id = "current_organization" value = "<?= $GLOBALS['current_organization']?>"></input>
         </div><br>
         <div id="current_positionD">
-          <div class="labelsD"><label class="labels" for="">현 직책</label></div><input class="inputs" type = "text" id = "current_position" value = "<?= $GLOBALS['name']?>"></input>
+          <div class="labelsD"><label class="labels" for="">현 직책</label></div><input class="inputs" type = "text" id = "current_position" value = "<?= $GLOBALS['career']?>"></input>
         </div>
       </div><br>
       <div id="locationD">
-        <div class="labelsD"><label class="labels" for="location">위치</label></div><input class="inputs" type = "text" id = "location" value = "<?= $GLOBALS['name']?>"></input>
+        <div class="labelsD"><label class="labels" for="location">위치</label></div><input class="inputs" type = "text" id = "location" value = "<?= $GLOBALS['location']?>"></input>
       </div><br>
       <div id="keywordD">
         <div class="labelsD"><label class="labels" for="keyword">전문기술</label></div><textarea rows="3" id = "keyword" cols="30" name="contents"><?= $GLOBALS['keyword']?></textarea>
@@ -91,10 +113,13 @@ class UserController extends Controller
         <div id="labelEx"><label class="labels">경력</label></div>
         <div id="companyEx">
           <div id="positionD">
-            <div class="labelsD"><label class="labels" for="position">직함</label></div><input class="inputs" type = "text" id = "position" value = "<?= $GLOBALS['career']?>"></input>
+          <div class="labelsD"><label class="labels" for="position">직함</label></div><input class="inputs" type = "text" id = "position" value = "<?= $GLOBALS['exPosition']?>"></input>
           </div>
           <div id="organizationD">
-            <div class="labelsD"><label class="labels" for="origanzation">소속</label></div><input class="inputs" type = "text" id = "origanzation" value = "<?= $GLOBALS['career']?>"></input><br>
+            <div class="labelsD2"><label class="labels" for="organization">소속</label></div><input class="inputs" type = "text" id = "organization" value = "<?= $GLOBALS['exOrganization']?>"></input><br>
+          </div>
+          <div id="organizationD">
+            <div class="labelsD2"><label class="labels" for="exWorkLocation">위치</label></div><input class="inputs" type = "text" id = "exWorkLocation" value = "<?= $GLOBALS['exWorkLocation']?>"></input><br>
           </div>
         </div>
         <br>
@@ -104,23 +129,24 @@ class UserController extends Controller
         <div id="start">
           <div class="labelsD"><label class="labels">시작</label></div><br>
           <div class="start_year">
-            <div class="labelsD"><label for="start_year">연도(YYYY)</label></div><input class="inputs" type="number" min="1900" max="2030" value = "<?= $GLOBALS['career']?>" id = "start_year" placeholder="YYYY"></input>
+            <div class="labelsD2"><label for="start_year">연도(YYYY)</label></div><input class="inputs" type="number" min="1900" max="2130" value = "" id = "start_year" placeholder="YYYY"></input>
           </div>
           <div class="start_month">
-            <div class="labelsD"><label for="start_month">월(MM)</label></div><input class="inputs" type="number" min="1" max="12" id = "start_month" value = "<?= $GLOBALS['career']?>" placeholder="MM"></input>
+            <div class="labelsD2"><label for="start_month">월(MM)</label></div><input class="inputs" type="number" min="1" max="12" id = "start_month" value = "" placeholder="MM"></input>
           </div>
         </div><br>
         <div id="end">
-        <div class="labelsD"><label class="labels">종료</label></div><br>
+          <div class="labelsD"><label class="labels">종료</label></div><br>
           <div class="end_year">
-            <div class="labelsD"><label for="end_year">연도(YYYY)</label></div><input class="inputs" type="number" min="1900" max="2030" value = "<?= $GLOBALS['career']?>" id = "end_year" placeholder="YYYY"></input>
+            <div class="labelsD2"><label for="end_year">연도(YYYY)</label></div><input class="inputs" type="number" min="1900" max="2130" value = "" id = "end_year" placeholder="YYYY"></input>
           </div>
           <div class="end_month">
-            <div class="labelsD"><label for="end_month">월(MM)</label></div><input class="inputs" type="number" min="1" max="12" id = "end_month" value = "<?= $GLOBALS['career']?>" placeholder="MM"></input><br>
+            <div class="labelsD2"><label for="end_month">월(MM)</label></div><input class="inputs" type="number" min="1" max="12" id = "end_month" value = "" placeholder="MM"></input><br>
           </div>
+          
         </div>
         <div id="descriptionD">
-          <div class="labelsD"><label class="labels" for="">설명</label></div><input class="inputs" type = "text" id = "career" value = "<?= $GLOBALS['career']?>" id = "career"></input><br>
+          <div class="labelsD"><label class="labels" for="">설명</label></div><input class="inputs" type = "text" id = "career" value = "<?= $GLOBALS['Explainn']?>" id = "career"></input><br>
         </div>
       </div>
       <div id="editBox">

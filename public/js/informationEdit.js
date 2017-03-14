@@ -12,6 +12,58 @@ $.ajax({
 
 
 var Edit = document.getElementById('edit');
+var addExperience = document.getElementById('addExperience');
+
+
+addExperience.addEventListener("click",function(){
+
+	var Data = {"_token" : token};
+
+	Data['exPosition'] = $("#postion").val();
+	Data['exOrganization'] = $("#organization").val();
+	Data['explain'] = $("#career").val();
+
+	var s_year = $("#start_year").val();
+	var s_month =$("#start_month").val();
+
+	var e_year = $("#end_year").val();
+	var e_month =$("#end_month").val();
+
+	s_month *= 1;
+	e_month *= 1;
+
+	if(s_month <10){
+		s_month = '0'+s_month;
+	}else{
+		s_month += '';
+	}
+
+	if(e_month <10){
+		e_month = '0'+e_month;
+	}else{
+		e_month += '';
+	}
+
+	start_date = s_year+s_month+'01';
+	end_date = e_year+e_month+'01';
+
+	Data['start_date'] = start_date;
+	Data['end_date'] = end_date;
+
+	$.ajax({
+		type:'POST',
+		url:'/informationEdit/informationCareer',
+		data : Data,
+		success:function(data){
+			alert(data);
+		},
+		error: function(){
+			alert('error 서버 연결 안됨!');
+		}
+	})
+
+});
+
 
 Edit.addEventListener("click",function(){
 
@@ -19,9 +71,18 @@ Edit.addEventListener("click",function(){
 
 	Data['ProfilePhotoURL'] = $("#ProfilePhotoURL").val();
 	Data['name'] = $("#name").val();
-	Data['career'] = $("#career").val();
+	Data['career'] = $("#current_position").val();
 	Data['education'] = $("#education").val();
 	Data['keyword'] = $("#keyword").val();
+
+	Data['current_organization'] = $("#current_organization").val();
+	Data['location'] = $("#location").val();
+	Data['education2'] = $("#education2").val();
+
+	Data['exPosition'] = $("#position").val();
+	Data['exOrganization'] = $("#organization").val();
+	Data['exWorkLocation'] = $("#exWorkLocation").val();
+	Data['explainn'] = $("#career").val();
 
 	$.ajax({
 		type:'POST',
@@ -37,6 +98,10 @@ Edit.addEventListener("click",function(){
 	})
 
 });
+
+$(addExperience).click(function(){
+
+})
 
 
 $(document).ready(function(){

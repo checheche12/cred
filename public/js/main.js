@@ -31,17 +31,17 @@ function post_to_url(path, int, method) {
 	// 히든으로 값을 주입시킨다.
 	if(method == "post"){
 
-			var hiddenField = document.createElement("input");
+		var hiddenField = document.createElement("input");
 
-			hiddenField.setAttribute("id", "IDID");
+		hiddenField.setAttribute("id", "IDID");
 
-			hiddenField.setAttribute("type", "hidden");
+		hiddenField.setAttribute("type", "hidden");
 
-			hiddenField.setAttribute('name', '_token');
+		hiddenField.setAttribute('name', '_token');
 
-			hiddenField.setAttribute('value', token);
+		hiddenField.setAttribute('value', token);
 
-			form.appendChild(hiddenField);
+		form.appendChild(hiddenField);
 	}
 
 
@@ -93,37 +93,64 @@ function bridgeLogDisplay(){
 
 		success : function(data) {
 			var k = JSON.parse(data);
-			for (var i = 0; i < k.length; i++) {
 
+			for (var i = 0; i < k.length; i++) {
+				var xx = k[i][0];	//임시변수
+				var yy = k[i][2];
+				var zz = k[i][3];
 				// url check 후 비디오일 시 썸내일로 전환 후 post
 				var url = String(k[i][1]);
 				var urlType = urlCheck(url);
+				// if (urlType == "youtube") {
+				// 	var yvID = matchYoutubeUrl(url);
+				// 	imgSrc = 'https://img.youtube.com/vi/' + yvID
+				// 	+ '/mqdefault.jpg';
+				// 	j = '<div class = "ProjectFrame"><img class = "VideoArt" id = Image' + k[i][0] + ' src = ' + imgSrc
+				// 	+ '><div class="detail"><p class="name">'+k[i][2]+'</p><p class="position">'+ k[i][3] +'</p></div></div>';
+
+				// 	$('#profileBody').append(j);
+
+				// } else if (urlType == "vimeo") {
+				// 	var vvID = matchVimeoUrl(url);
+				// 	console.log(i +' | '+urlType+" Entered | vvID:"+vvID);
+				// 	$.getJSON('http://www.vimeo.com/api/v2/video/' + vvID
+				// 		+ '.json?callback=?', {
+				// 			format : "json"
+				// 		}) .done(function(data) {
+				// 			j = '<div class = "ProjectFrame"><img class="VideoArt" id = Image' + xx + ' src = ' + data[0].thumbnail_large
+				// 			+ '><div class="detail"><p class="name">'+yy+'</p><p class="position">'+zz+'</p></div></div>';
+				// 			$('#profileBody').append(j);
+				// 		});
+				// } else {
+				// 	j = '<div class = "ProjectFrame"><img class = "VideoArt" id = Image' + k[i][0] + ' src = ' + url
+				// 	+ '><div class="detail"><p class="name">'+k[i][2]+'</p><p class="position">'+k[i][3]+'</p></div></div>';
+
+				// 	$('#profileBody').append(j);// skip
+				// }
+				$("span").data("value", "a");
 				if (urlType == "youtube") {
 					var yvID = matchYoutubeUrl(url);
 					imgSrc = 'https://img.youtube.com/vi/' + yvID
 					+ '/mqdefault.jpg';
-					j = '<div class = "ProjectFrame"><img class = "VideoArt" id = Image' + k[i][0] + ' src = ' + imgSrc
-					+ '><div class="detail"><p class="name">'+k[i][2]+'</p><p class="position">'+ k[i][3] +'</p></div></div>';
-
-					$('#profileBody').append(j);
-
 				} else if (urlType == "vimeo") {
+					
+
 					var vvID = matchVimeoUrl(url);
 					$.getJSON('http://www.vimeo.com/api/v2/video/' + vvID
 						+ '.json?callback=?', {
 							format : "json"
-						}, function(data) {
-							j = '<div class = "ProjectFrame"><img class "VideoArt" id = Image' + k[i][0] + ' src = ' + data[0].thumbnail_large
-							+ '><div class="detail"><p class="name">'+k[i][2]+'</p><p class="position">'+k[i][3]+'</p></div></div>';
-
-							$('#profileBody').append(j);
+						}) .done(function(data) {
+							$("span").data("value", data[0].thumbnail_large);
 						});
-				} else {
-					j = '<div class = "ProjectFrame"><img class = "VideoArt" id = Image' + k[i][0] + ' src = ' + url
+						imgSrc=JSON.stringify($("span").data("value"));
+					} else {
+						imgSrc = url;
+					}
+					console.log(imgSrc);
+					j = '<div class = "ProjectFrame"><img class = "VideoArt" id = Image' + k[i][0] + ' src = ' + imgSrc
 					+ '><div class="detail"><p class="name">'+k[i][2]+'</p><p class="position">'+k[i][3]+'</p></div></div>';
-
 					$('#profileBody').append(j);// skip
-				}
+				////////
 				var IDValue = '#Image' + k[i][0];
 				$(IDValue).bind('click', function() {
 
@@ -144,8 +171,8 @@ function bridgeLogDisplay(){
 }//bridgeLogDisplay()
 
 // Project.addEventListener("click", function() {	//	<-- 중복 클릭이 되서 .one 이라는 jquery 로 바꿨음. 확인 시 지울것. -soo
-$("#Project").one("click",function(){
-	console.log("SUCCESS POINT01");
+	$("#Project").one("click",function(){
+		console.log("SUCCESS POINT01");
 
 	// 토큰값을 가지고 와야한다. 토큰용 php 파일을 하나 만든다.
 	bridgeLogDisplay();
