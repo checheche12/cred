@@ -35,8 +35,10 @@ class RunQuery extends Controller
           $Sentence = "update userinfo set belong = '".$_POST['current_organization']."' where userPK = '".$_SESSION['userPK']."'";
           $users = DB::update(DB::raw($Sentence));
 
-          $Sentence = "update userinfo set graduateDate = ".$_POST['education2']." where userPK = '".$_SESSION['userPK']."'";
-          $users = DB::update(DB::raw($Sentence));
+          if($_POST['education2']!=null){
+                $Sentence = "update userinfo set graduateDate = ".$_POST['education2']." where userPK = '".$_SESSION['userPK']."'";
+                $users = DB::update(DB::raw($Sentence));
+          }
 
           $Sentence = "update userinfo set location = '".$_POST['location']."' where userPK = '".$_SESSION['userPK']."'";
           $users = DB::update(DB::raw($Sentence));
