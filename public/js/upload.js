@@ -5,6 +5,8 @@ $(document).ready( function() {
 
 });
 
+$('body').append("<script src = 'js/makedFunction.js'>");
+
 var TitleBox = document.getElementById('titleBox');
 var URLBox = document.getElementById('URLBox');
 var Description = document.getElementById('context');
@@ -24,8 +26,7 @@ var creditArray = [];
 $(document).ready(function(){
   $("#URLBox").blur(function(){
     var urlinput = document.getElementById("URLBox").value;
-    console.log(urlCheck(urlinput));
-    $('#video').html(urlCheck(urlinput));
+    $('#video').html(getImage(urlinput));
       // $('#URLBox').val("");
     });
 });
@@ -195,50 +196,8 @@ function goBack() {
   window.history.back();
 }
 
-// urlCheck functions
-function imageExists(url, callback) {
-  var img = new Image();
-  img.onload = function() {
-    callback(true);
-  };
-  img.onerror = function() {
-    callback(false);
-  };
-  img.src = url;
-}
-
-function validateImageURL(imageUrl) {
-  imageExists(imageUrl, function(exists) {
-    if (exists == true) { // Image 가 맞을 시
-    // alert("This is ImageUrl");
-
-    } else { // Image 가 아닐 시
-    // alert("Invalid URL");
-
-  }
-});
-
-}
-function matchYoutubeUrl(url) {
-  var p = /^(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/;
-  var matches = url.match(p);
-  if (matches) {
-    return matches[1]; // returns Youtube ID
-  }
-  return false;
-}
-function matchVimeoUrl(url) {
-  // https://vimeo.com/188244587
-  var p = /https?:\/\/(?:www\.|player\.)?vimeo.com\/(?:channels\/(?:\w+\/)?|groups\/([^\/]*)\/videos\/|album\/(\d+)\/video\/|video\/|)(\d+)(?:$|\/|\?)/;
-  var matches = url.match(p);
-  if (matches) {
-    return matches[3]; // returns Youtube ID <- 왜 인덱스 3이야 ㅡ.ㅡ 모르겠다
-  }
-  return false;
-}
-
-/** urlCheck* */
-function urlCheck(urlInput) {
+/** getImage* */
+function getImage(urlInput) {
 
   var width = 1050;
   var height = 484;

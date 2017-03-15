@@ -38,6 +38,7 @@ $(document).ready( function() {
 });
 
 bridgeLogDisplay();
+
 function bridgeLogDisplay(){
 	$.ajax({
 
@@ -77,15 +78,10 @@ function bridgeLogDisplay(){
 
 }//bridgeLogDisplay()
 
-Project.addEventListener("click", function() {
-
-	console.log("SUCCESS POINT01");
-
+$("#Project").one("click",function(){
 	// 토큰값을 가지고 와야한다. 토큰용 php 파일을 하나 만든다.
 	bridgeLogDisplay();
-
 });
-
 // DB에서 값 긁어 오는지 볼려고 만든 함수인데 잘 긁어 와짐. 만족함. 당연히 나중에
 
 // 수정 해야함.

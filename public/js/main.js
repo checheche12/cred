@@ -63,7 +63,6 @@ function bridgeLogDisplay(){
 
 // Project.addEventListener("click", function() {	//	<-- 중복 클릭이 되서 .one 이라는 jquery 로 바꿨음. 확인 시 지울것. -soo
 	$("#Project").one("click",function(){
-		console.log("SUCCESS POINT01");
 
 	// 토큰값을 가지고 와야한다. 토큰용 php 파일을 하나 만든다.
 	bridgeLogDisplay();
