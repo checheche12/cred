@@ -5,7 +5,7 @@ function urlCheck_Ssumnail(urlType,url,k,i){
   					imgSrc = 'https://img.youtube.com/vi/' + yvID
   					+ '/mqdefault.jpg';
   					j = '<div class = "ProjectFrame"><img class = "VideoArt" id = Image' + k[i][0] + ' src = ' + imgSrc
-  					+ '><p class="credit">credit</p><div class="detail"><p class="name">'+k[i][2]+'</p><p class="position">'+k[i][3]+'</p></div></div>';
+  					+ '><div class="detail"><p class="name">'+k[i][2]+'</p><p class="position">'+k[i][3]+'</p></div></div>';
 
   					$('#profileBody').append(j);
 
@@ -15,14 +15,14 @@ function urlCheck_Ssumnail(urlType,url,k,i){
   						+ '.json?callback=?', {
   							format : "json"
   						}, function(data) {
-  							j = '<div class = "ProjectFrame"><img class "VideoArt" id = Image' + k[i][0] + ' src = ' + data[0].thumbnail_large
-  					+ '><p class="credit">credit</p><div class="detail"><p class="name">'+k[i][2]+'</p><p class="position">'+k[i][3]+'</p></div></div>';
+  							j = '<div class = "ProjectFrame"><img class ="VideoArt" id = Image' + k[i][0] + ' src = ' + data[0].thumbnail_large
+  					+ '><div class="detail"><p class="name">'+k[i][2]+'</p><p class="position">'+k[i][3]+'</p></div></div>';
 
   							$('#profileBody').append(j);
   					});
   				} else {
   					j = '<div class = "ProjectFrame"><img class = "VideoArt" id = Image' + k[i][0] + ' src = ' + url
-  					+ '><p class="credit">credit</p><div class="detail"><p class="name">'+k[i][2]+'</p><p class="position">'+k[i][3]+'</p></div></div>';
+  					+ '><div class="detail"><p class="name">'+k[i][2]+'</p><p class="position">'+k[i][3]+'</p></div></div>';
 
   					$('#profileBody').append(j);// skip
   				}
@@ -107,9 +107,9 @@ function bridge(Data){
   									+' <p class="organization">'+obj[i][3]+'</p>'
   									+'<p class="position">'+obj[i][4]+'</p> '
   									+'</td> '
-  									+'<td class="workImageFrame">'
-  									+'<img class="workImage"src="mainImage/mainBackground.png"> '
-  									+'</td>'
+  									// +'<td class="workImageFrame">'
+  									// +'<img class="workImage"src="mainImage/mainBackground.png"> '
+  									// +'</td>'
   									+'</tr>'
   									+'</table>';
 

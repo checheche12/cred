@@ -1,3 +1,9 @@
+@import url('http://fonts.googleapis.com/earlyaccess/nanumgothic.css');
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+* {
+  font-family: 'Montserrat', sans-serif,'Nanum Gothic';
+}
 /*
     body{
     background-image: url("/mainImage/mainBackground.png");
@@ -53,13 +59,51 @@
 
  .buttons{
   text-align:center;
+  white-space: nowrap;
 }
 
 #subsub{
   margin-right: 100px;
-  width: 150px;
+  width: 130px;
+  height: 40px;
+
+  background-color: white; 
+  color: black; 
+  border:2px solid #008CBA ;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+
+  cursor: pointer;
+
+  border-radius: 4px;
 }
+
+#subsub:hover {
+ background-color: #008CBA ;
+ color: white;
+}
+
 #signupBt{
-  width: 150px;
+  width: 130px;
+  height: 40px;
+
+  background-color: white; 
+  color: black; 
+  border:2px solid #008CBA ;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+
+  cursor: pointer;
+
+  border-radius: 4px;
+}
+
+#signupBt:hover {
+ background-color: #008CBA ;
+ color: white;
 }
 

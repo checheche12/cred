@@ -7,6 +7,7 @@ if(!isset($_SESSION['is_login'])){
 ?>
 <!-- FOUC(Flash Of Unstyled Content) 방지 용 head-->
 <head>
+<link href=“https://fonts.googleapis.com/css?family=Montserrat|Roboto” rel=“stylesheet” type="text/css">
   <style type="text/css">
     .noJs {display: none;}
     /*#pfpf{display: none;}*/
@@ -16,6 +17,35 @@ if(!isset($_SESSION['is_login'])){
     document.documentElement.className = 'noJs';
   </script>
 </head>
+
+<!-- Facebook API -->
+<script>
+
+
+  function checkLoginState() {
+    FB.getLoginStatus(function(response) {
+      statusChangeCallback(response);
+    });
+  }
+  
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '278220249266484',
+      cookie     : true,
+      xfbml      : true,
+      version    : 'v2.8'
+    });
+    FB.AppEvents.logPageView();   
+  };
+
+  (function(d, s, id){
+   var js, fjs = d.getElementsByTagName(s)[0];
+   if (d.getElementById(id)) {return;}
+   js = d.createElement(s); js.id = id;
+   js.src = "//connect.facebook.net/en_US/sdk.js";
+   fjs.parentNode.insertBefore(js, fjs);
+ }(document, 'script', 'facebook-jssdk'));
+</script>
 
 <link rel="stylesheet" type ="text/css" href="css/main.css?v=1">
 
@@ -57,6 +87,6 @@ if(!isset($_SESSION['is_login'])){
 <script type = "text/javascript" src = "js/main.js"></script>
 <script type="text/javascript">//FOUC(Flash Of Unstyled Content) 방지 용
   $(function(){
-            $('.noJs').css('display','block'); 
-          });
+    $('.noJs').css('display','block'); 
+  });
 </script>

@@ -61,6 +61,17 @@ class UserController extends Controller
 
     ?>
 
+    <head>
+      <style type="text/css">
+        .noJs {display: none;}
+        /*#pfpf{display: none;}*/
+        /*#header{display: none;}*/
+      </style>
+      <script type="text/javascript">
+        document.documentElement.className = 'noJs';
+      </script>
+    </head>
+    
     <link rel="stylesheet" type ="text/css" href="css/main.css">
     <link rel="stylesheet" type ="text/css" href="css/post.css">
 
@@ -117,24 +128,29 @@ class UserController extends Controller
           수정, 삭제 버튼이 여기서 달려있게 된다.
         -->
         <div>
-            <?php
-                $A->getUserCreditList();
-                foreach($GLOBALS['userPKArray'] as $user){
-                  if($user == $_SESSION['userPK']){
-                      echo '<button id="fixed">수정</button>';
-                      echo '<button id="delete">삭제</button>';
-                      break;
-                  }
-                }
-             ?>
+          <?php
+          $A->getUserCreditList();
+          foreach($GLOBALS['userPKArray'] as $user){
+            if($user == $_SESSION['userPK']){
+              echo '<button id="fixed">수정</button>';
+              echo '<button id="delete">삭제</button>';
+              break;
+            }
+          }
+          ?>
         </div>
 
       </div>
 
       <script>
-          var ArtPK =<?=$_GET['int']?>;
-          var userPKArr = new Array("<?=implode("\",\"" , $GLOBALS['userPKArray']);?>");
+        var ArtPK =<?=$_GET['int']?>;
+        var userPKArr = new Array("<?=implode("\",\"" , $GLOBALS['userPKArray']);?>");
       </script>
 
       <script type = "text/javascript" src = "js/jquery-3.1.1.min.js"></script>
       <script type = "text/javascript" src = "js/post.js"></script>
+   <script type="text/javascript">//FOUC(Flash Of Unstyled Content) 방지 용
+    $(function(){
+      $('.noJs').css('display','block'); 
+    });
+  </script>

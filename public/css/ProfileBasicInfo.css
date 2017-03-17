@@ -1,16 +1,24 @@
+@import url('http://fonts.googleapis.com/earlyaccess/nanumgothic.css');
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+* {
+	font-family: 'Montserrat', sans-serif,'Nanum Gothic';
+}
+
 .ProfileBasicInfo{
 	position: fixed;
 	background: rgba(255, 255, 255, 0.97);
+	margin-top: 97px width: 340px;
 }
 #profileImage2{
-	width : 80px;
-	height : 80px;
+	width: 100px;
+	height: 100px;
 	border-radius: 100%;
+	margin-top: 50px;
 }
 .ProfileBasicInfo .name{
 	font-size:28px;
-	font-weight:bold;
-	margin: 30px;
+	margin: 25px;
 	line-height: 80%
 
 }
@@ -72,7 +80,7 @@
 }
 .exOrganization{
 	/*color: gray;
-    font-size: 12px;*/
+	font-size: 12px;*/
 }
 #informationEdit {
 	display: inline-block;

@@ -131,6 +131,10 @@ Route::get('/email',function(){
 	return view('DBSelect.email');
 });
 
+//Facebook 연동을 위한 자료이동
+Route::post('/newMember',function(){
+	return view('newMember');
+});
 
 Auth::routes();
 

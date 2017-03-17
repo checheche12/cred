@@ -1,5 +1,12 @@
+@import url('http://fonts.googleapis.com/earlyaccess/nanumgothic.css');
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+* {
+	font-family: 'Montserrat', sans-serif,'Nanum Gothic';
+}
 #header{
-	border-bottom : 1px solid black;
+
+	border-bottom : 1px solid #e6e6e6;
 	height : 60px;
 	width: 100%;
 	position: fixed;
@@ -68,6 +75,6 @@ button{
 	height:20px;
 	width:20px;
 	border: none;
-	
+
 }
 

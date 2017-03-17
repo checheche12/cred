@@ -1,5 +1,12 @@
 @CHARSET "UTF-8";
 
+@import url('http://fonts.googleapis.com/earlyaccess/nanumgothic.css');
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+* {
+	font-family: 'Montserrat', sans-serif,'Nanum Gothic';
+}
+
 #ContentMain {
 	/*border: 1px solid black;
 	*/

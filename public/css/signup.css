@@ -1,3 +1,10 @@
+@import url('http://fonts.googleapis.com/earlyaccess/nanumgothic.css');
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+* {
+	font-family: 'Montserrat', sans-serif,'Nanum Gothic';
+}
+
 #logoImage{
 	cursor: pointer;
 }

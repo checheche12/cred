@@ -45,9 +45,6 @@ function bridgeLogDisplay(){
 			var k = JSON.parse(data);
 
 			for (var i = 0; i < k.length; i++) {
-				var xx = k[i][0];	//임시변수
-				var yy = k[i][2];
-				var zz = k[i][3];
 				// url check 후 비디오일 시 썸내일로 전환 후 post
 				var url = String(k[i][1]);
 				var urlType = urlCheck(url);

@@ -1,14 +1,36 @@
-.ProjectFrame{
-	width : 232px;
-	margin-bottom : 20px;
-	display: inline-block;
+@import url('http://fonts.googleapis.com/earlyaccess/nanumgothic.css');
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+body, table, div, p {
+	font-family: 'Montserrat', sans-serif,'Nanum Gothic';
 }
-.ProjectFrame .detail{
-	display: inline-block;
+/*body, table, div, p {
+	font-family:'Nanum Gothic';
+	unicode-range: U+AC00-D7F;
+}*/
+
+
+/*body, table, div, p {
+	font-family:'Nanum Gothic';
+	unicode-range: U+AC00-D7F;
+	font-family: ‘Roboto’, sans-serif;
 }
-.videoArt{
-	cursor:pointer;
-	width : 232px;
+
+body, table, div, p {
+	font-family:‘Montserrat’, sans-serif;
+	}	*/
+
+	.ProjectFrame{
+		width : 232px;
+		margin-bottom : 20px;
+		display: inline-block;
+	}
+	.ProjectFrame .detail{
+		display: inline-block;
+	}
+	.videoArt{
+		cursor:pointer;
+		width : 232px;
 	/*margin-right : 50px;
 	margin-bottom : 50px;*/
 }
@@ -26,11 +48,12 @@
 	margin:0px;
 }
 .ProfileBasicInfo{
+	border: 1px solid #e6e6e6;
+	margin-top: 97px; 
+	width: 340px;
 	float:left;
 	margin-left: 50px;
-    margin-top: 20px;
 	height : 800px;
-	width : 300px;
 	text-align:center;
 	line-height:30%
 }
