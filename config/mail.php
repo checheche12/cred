@@ -16,7 +16,7 @@ return [
     |
     */
 
-    'driver' => env('mailgun', 'smtp'),
+    'driver' => env('MAIL_DRIVER', 'mailgun'),
 
     /*
     |--------------------------------------------------------------------------
@@ -56,8 +56,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
+        'address' => env('MAIL_FROM_ADDRESS', 'cred_official@naver.com'),
+        'name' => env('MAIL_FROM_NAME', 'cred_official'),
     ],
 
     /*
@@ -71,7 +71,7 @@ return [
     |
     */
 
-    'encryption' => env('MAIL_ENCRYPTION', 'tls'),
+    'encryption' => env('MAIL_ENCRYPTION', 'tsl'),
 
     /*
     |--------------------------------------------------------------------------
@@ -84,9 +84,9 @@ return [
     |
     */
 
-    'username' => env('MAIL_USERNAME'),
+    'username' => env('cred_official@naver.com'),
 
-    'password' => env('MAIL_PASSWORD'),
+    'password' => env('ghkfkd001!'),
 
     /*
     |--------------------------------------------------------------------------

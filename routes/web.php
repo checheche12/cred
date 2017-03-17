@@ -11,6 +11,19 @@
 |
 */
 
+Route::get('mail',function(){
+	$to = 'checheche12@naver.com';
+	$subject = 'studying laravel';
+	$data = [
+		'title' => 'Hi Title',
+		'body' => 'Hi body',
+		'user' => 'Hello user!'
+	];
+	return Mail::send('email.certification',$data,function($message) use($to, $subject){
+		$message->to($to)->subject($subject);
+	});
+});
+
 Route::get('/',function(){
 	return view('firstLogin');
 });
@@ -131,10 +144,6 @@ Route::get('/email',function(){
 	return view('DBSelect.email');
 });
 
-//Facebook 연동을 위한 자료이동
-Route::post('/newMember',function(){
-	return view('newMember');
-});
 
 Auth::routes();
 

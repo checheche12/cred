@@ -52190,3 +52190,191 @@ Laravel development server started: <http://0.0.0.0:80>
 [Fri Mar 17 14:53:13 2017] 211.244.120.82:54713 [200]: /mainImage/signupImage/signupLogo.png
 [Fri Mar 17 14:53:14 2017] 211.244.120.82:54715 [200]: /mainImage/uploadicon.png
 [Fri Mar 17 14:53:14 2017] 211.244.120.82:54717 [200]: /mainImage/logouticon.png
+[Fri Mar 17 15:37:45 2017] 180.230.150.126:9286 [200]: /favicon.ico
+[Fri Mar 17 15:37:56 2017] 180.230.150.126:9284 Invalid request (Unexpected EOF)
+[Fri Mar 17 15:37:56 2017] 180.230.150.126:9282 Invalid request (Unexpected EOF)
+[Fri Mar 17 15:37:56 2017] 180.230.150.126:9285 Invalid request (Unexpected EOF)
+[Fri Mar 17 15:37:56 2017] 180.230.150.126:9287 Invalid request (Unexpected EOF)
+[Fri Mar 17 15:38:03 2017] 180.230.150.126:9300 [200]: /mainImage/signupImage/credlogowhite.png
+[Fri Mar 17 15:38:03 2017] 180.230.150.126:9299 [200]: /css/firstLogin.blade.css
+[Fri Mar 17 15:38:03 2017] 180.230.150.126:9301 [200]: /js/jquery-3.1.1.min.js
+[Fri Mar 17 15:38:06 2017] 180.230.150.126:9303 [200]: /favicon.ico
+[Fri Mar 17 15:38:08 2017] 180.230.150.126:9319 [200]: /favicon.ico
+[Fri Mar 17 15:38:50 2017] 180.230.150.126:9318 Invalid request (Unexpected EOF)
+[Fri Mar 17 15:38:50 2017] 180.230.150.126:9317 Invalid request (Unexpected EOF)
+[Fri Mar 17 15:38:51 2017] 180.230.150.126:9325 [200]: /favicon.ico
+[Fri Mar 17 15:39:45 2017] 180.230.150.126:9324 Invalid request (Unexpected EOF)
+[Fri Mar 17 15:41:27 2017] 180.230.150.126:9336 [200]: /favicon.ico
+[Fri Mar 17 15:41:29 2017] 180.230.150.126:9340 [200]: /favicon.ico
+[Fri Mar 17 15:42:40 2017] 180.230.150.126:9341 Invalid request (Unexpected EOF)
+[Fri Mar 17 15:42:41 2017] 180.230.150.126:9346 [200]: /favicon.ico
+[Fri Mar 17 15:44:37 2017] 180.230.150.126:9345 Invalid request (Unexpected EOF)
+[Fri Mar 17 15:45:56 2017] 180.230.150.126:9355 [200]: /favicon.ico
+[Fri Mar 17 15:45:57 2017] 180.230.150.126:9358 [200]: /favicon.ico
+[Fri Mar 17 15:46:11 2017] 180.230.150.126:9357 Invalid request (Unexpected EOF)
+[Fri Mar 17 15:46:12 2017] 180.230.150.126:9359 [200]: /favicon.ico
+[Fri Mar 17 15:46:41 2017] 180.230.150.126:9360 Invalid request (Unexpected EOF)
+[Fri Mar 17 15:47:12 2017] 180.230.150.126:9450 [200]: /favicon.ico
+[Fri Mar 17 15:48:10 2017] 180.230.150.126:9547 [200]: /favicon.ico
+[Fri Mar 17 15:50:10 2017] 180.230.150.126:9553 [200]: /favicon.ico
+[Fri Mar 17 15:50:23 2017] 180.230.150.126:9552 Invalid request (Unexpected EOF)
+[Fri Mar 17 15:54:30 2017] 180.230.150.126:9567 [200]: /favicon.ico
+[Fri Mar 17 15:55:19 2017] 180.230.150.126:9570 [200]: /favicon.ico
+[Fri Mar 17 15:57:50 2017] 180.230.150.126:54815 [200]: /favicon.ico
+[Fri Mar 17 15:58:04 2017] 180.230.150.126:54813 Invalid request (Unexpected EOF)
+[Fri Mar 17 15:58:04 2017] 180.230.150.126:54811 Invalid request (Unexpected EOF)
+[Fri Mar 17 15:58:04 2017] 180.230.150.126:54816 Invalid request (Unexpected EOF)
+[Fri Mar 17 15:58:04 2017] 180.230.150.126:54819 Invalid request (Unexpected EOF)
+[Fri Mar 17 15:58:04 2017] 180.230.150.126:54820 Invalid request (Unexpected EOF)
+[Fri Mar 17 15:58:05 2017] 180.230.150.126:54823 [200]: /favicon.ico
+[Fri Mar 17 15:58:09 2017] 180.230.150.126:54824 [200]: /favicon.ico
+[Fri Mar 17 15:58:09 2017] 180.230.150.126:54828 [200]: /favicon.ico
+[Fri Mar 17 15:58:50 2017] 180.230.150.126:54825 Invalid request (Unexpected EOF)
+[Fri Mar 17 15:58:50 2017] 180.230.150.126:54826 Invalid request (Unexpected EOF)
+[Fri Mar 17 15:59:04 2017] 180.230.150.126:9636 [200]: /favicon.ico
+[Fri Mar 17 16:01:15 2017] 180.230.150.126:9641 [200]: /favicon.ico
+[Fri Mar 17 16:02:37 2017] 180.230.150.126:54933 [200]: /mainImage/signupImage/credlogowhite.png
+[Fri Mar 17 16:02:37 2017] 180.230.150.126:54930 [200]: /css/firstLogin.blade.css
+[Fri Mar 17 16:02:37 2017] 180.230.150.126:54932 [200]: /js/jquery-3.1.1.min.js
+[Fri Mar 17 16:02:39 2017] 180.230.150.126:54936 [200]: /favicon.ico
+[Fri Mar 17 16:02:43 2017] 180.230.150.126:54941 [200]: /css/firstLogin.blade.css
+[Fri Mar 17 16:02:43 2017] 180.230.150.126:54940 [200]: /mainImage/signupImage/credlogowhite.png
+[Fri Mar 17 16:02:43 2017] 180.230.150.126:54942 [200]: /js/jquery-3.1.1.min.js
+[Fri Mar 17 16:02:45 2017] 180.230.150.126:54944 [200]: /favicon.ico
+Killed
+Laravel development server started: <http://0.0.0.0:80>
+Laravel development server started: <http://0.0.0.0:80>
+[Fri Mar 17 16:04:04 2017] 180.230.150.126:55002 [200]: /css/firstLogin.blade.css
+[Fri Mar 17 16:04:04 2017] 180.230.150.126:55003 [200]: /mainImage/signupImage/credlogowhite.png
+[Fri Mar 17 16:04:04 2017] 180.230.150.126:55005 [200]: /js/jquery-3.1.1.min.js
+[Fri Mar 17 16:04:05 2017] 180.230.150.126:55011 [200]: /mainImage/signupImage/credlogowhite.png
+[Fri Mar 17 16:04:05 2017] 180.230.150.126:55008 [200]: /css/firstLogin.blade.css
+[Fri Mar 17 16:04:05 2017] 180.230.150.126:55010 [200]: /js/jquery-3.1.1.min.js
+[Fri Mar 17 16:04:06 2017] 180.230.150.126:55013 [200]: /favicon.ico
+[Fri Mar 17 16:04:18 2017] 180.230.150.126:55017 [200]: /mainImage/signupImage/credlogowhite.png
+[Fri Mar 17 16:04:18 2017] 180.230.150.126:55018 [200]: /css/firstLogin.blade.css
+[Fri Mar 17 16:04:18 2017] 180.230.150.126:55016 [200]: /js/jquery-3.1.1.min.js
+[Fri Mar 17 16:04:19 2017] 180.230.150.126:55019 [200]: /favicon.ico
+[Fri Mar 17 16:05:00 2017] 180.230.150.126:9650 Invalid request (Unexpected EOF)
+[Fri Mar 17 16:05:00 2017] 180.230.150.126:9716 [200]: /favicon.ico
+[Fri Mar 17 16:05:41 2017] 180.230.150.126:55089 Invalid request (Unexpected EOF)
+[Fri Mar 17 16:05:41 2017] 180.230.150.126:55086 Invalid request (Unexpected EOF)
+[Fri Mar 17 16:05:41 2017] 180.230.150.126:55087 Invalid request (Unexpected EOF)
+[Fri Mar 17 16:05:41 2017] 180.230.150.126:55088 Invalid request (Unexpected EOF)
+[Fri Mar 17 16:05:42 2017] 180.230.150.126:55093 [200]: /favicon.ico
+[Fri Mar 17 16:10:07 2017] 180.230.150.126:9733 Invalid request (Unexpected EOF)
+[Fri Mar 17 16:10:07 2017] 180.230.150.126:9735 [200]: /favicon.ico
+[Fri Mar 17 16:14:02 2017] 180.230.150.126:9743 Invalid request (Unexpected EOF)
+[Fri Mar 17 16:14:02 2017] 180.230.150.126:9744 [200]: /favicon.ico
+[Fri Mar 17 16:15:01 2017] 180.230.150.126:9746 Invalid request (Unexpected EOF)
+[Fri Mar 17 16:15:32 2017] 180.230.150.126:9796 [200]: /favicon.ico
+[Fri Mar 17 16:20:11 2017] 180.230.150.126:9809 Invalid request (Unexpected EOF)
+[Fri Mar 17 16:20:11 2017] 180.230.150.126:9810 [200]: /favicon.ico
+[Fri Mar 17 16:20:53 2017] 180.230.150.126:9813 [200]: /favicon.ico
+[Fri Mar 17 16:20:54 2017] 180.230.150.126:9818 [200]: /favicon.ico
+[Fri Mar 17 16:22:15 2017] 180.230.150.126:55630 [200]: /css/firstLogin.blade.css
+[Fri Mar 17 16:22:15 2017] 180.230.150.126:55632 [200]: /mainImage/signupImage/credlogowhite.png
+[Fri Mar 17 16:22:15 2017] 180.230.150.126:55629 [200]: /js/jquery-3.1.1.min.js
+[Fri Mar 17 16:22:16 2017] 180.230.150.126:55633 [200]: /favicon.ico
+[Fri Mar 17 16:22:19 2017] 180.230.150.126:55638 [200]: /favicon.ico
+[Fri Mar 17 16:22:25 2017] 180.230.150.126:55637 [200]: /favicon.ico
+[Fri Mar 17 16:22:44 2017] 180.230.150.126:55639 Invalid request (Unexpected EOF)
+[Fri Mar 17 16:22:44 2017] 180.230.150.126:55640 Invalid request (Unexpected EOF)
+[Fri Mar 17 16:24:38 2017] 180.230.150.126:9816 Invalid request (Unexpected EOF)
+[Fri Mar 17 16:24:38 2017] 180.230.150.126:9817 Invalid request (Unexpected EOF)
+[Fri Mar 17 16:25:09 2017] 180.230.150.126:9877 [200]: /favicon.ico
+[Fri Mar 17 16:25:11 2017] 180.230.150.126:9878 [200]: /favicon.ico
+[Fri Mar 17 16:26:04 2017] 180.230.150.126:9879 Invalid request (Unexpected EOF)
+[Fri Mar 17 16:26:06 2017] 180.230.150.126:9883 [200]: /favicon.ico
+[Fri Mar 17 16:28:46 2017] 180.230.150.126:9881 Invalid request (Unexpected EOF)
+[Fri Mar 17 16:28:48 2017] 180.230.150.126:9895 [200]: /favicon.ico
+[Fri Mar 17 16:28:51 2017] 180.230.150.126:9896 [200]: /favicon.ico
+Killed
+Laravel development server started: <http://0.0.0.0:80>
+[Fri Mar 17 16:30:08 2017] 180.230.150.126:9902 [200]: /favicon.ico
+[Fri Mar 17 16:32:42 2017] 180.230.150.126:9901 Invalid request (Unexpected EOF)
+[Fri Mar 17 16:32:43 2017] 180.230.150.126:9910 [200]: /favicon.ico
+[Fri Mar 17 16:32:46 2017] 180.230.150.126:9913 [200]: /favicon.ico
+[Fri Mar 17 16:33:47 2017] 180.230.150.126:9912 Invalid request (Unexpected EOF)
+[Fri Mar 17 16:33:48 2017] 180.230.150.126:9916 [200]: /favicon.ico
+[Fri Mar 17 16:33:50 2017] 180.230.150.126:9919 [200]: /favicon.ico
+[Fri Mar 17 16:34:13 2017] 180.230.150.126:9920 Invalid request (Unexpected EOF)
+[Fri Mar 17 16:34:15 2017] 180.230.150.126:9922 [200]: /favicon.ico
+[Fri Mar 17 16:34:41 2017] 180.230.150.126:9923 Invalid request (Unexpected EOF)
+[Fri Mar 17 16:38:28 2017] 180.230.150.126:10022 [200]: /favicon.ico
+[Fri Mar 17 16:38:31 2017] 180.230.150.126:10026 [200]: /favicon.ico
+[Fri Mar 17 16:38:42 2017] 180.230.150.126:10025 Invalid request (Unexpected EOF)
+[Fri Mar 17 16:42:27 2017] 180.230.150.126:10115 [200]: /favicon.ico
+[Fri Mar 17 16:42:29 2017] 180.230.150.126:10118 [200]: /favicon.ico
+[Fri Mar 17 16:42:43 2017] 180.230.150.126:10117 Invalid request (Unexpected EOF)
+[Fri Mar 17 16:42:45 2017] 180.230.150.126:10121 [200]: /favicon.ico
+[Fri Mar 17 16:42:46 2017] 180.230.150.126:10123 [200]: /favicon.ico
+[Fri Mar 17 16:43:30 2017] 180.230.150.126:10124 Invalid request (Unexpected EOF)
+[Fri Mar 17 16:43:31 2017] 180.230.150.126:10127 [200]: /favicon.ico
+[Fri Mar 17 16:43:34 2017] 180.230.150.126:10128 [200]: /favicon.ico
+[Fri Mar 17 16:43:49 2017] 180.230.150.126:10129 Invalid request (Unexpected EOF)
+[Fri Mar 17 16:47:15 2017] 180.230.150.126:10214 [200]: /favicon.ico
+[Fri Mar 17 16:50:04 2017] 180.230.150.126:10213 Invalid request (Unexpected EOF)
+[Fri Mar 17 16:50:06 2017] 180.230.150.126:10220 [200]: /favicon.ico
+[Fri Mar 17 16:50:17 2017] 180.230.150.126:10222 Invalid request (Unexpected EOF)
+[Fri Mar 17 16:52:44 2017] 180.230.150.126:10230 [200]: /favicon.ico
+[Fri Mar 17 16:52:46 2017] 180.230.150.126:10233 [200]: /favicon.ico
+[Fri Mar 17 16:54:24 2017] 180.230.150.126:10238 [200]: /favicon.ico
+[Fri Mar 17 16:54:26 2017] 180.230.150.126:10240 [200]: /favicon.ico
+Killed
+Laravel development server started: <http://0.0.0.0:80>
+[Fri Mar 17 16:55:13 2017] 180.230.150.126:10299 [200]: /favicon.ico
+[Fri Mar 17 16:55:42 2017] 180.230.150.126:10303 [200]: /favicon.ico
+[Fri Mar 17 16:55:44 2017] 180.230.150.126:10304 [200]: /favicon.ico
+[Fri Mar 17 16:55:57 2017] 180.230.150.126:10307 [200]: /favicon.ico
+[Fri Mar 17 16:55:59 2017] 180.230.150.126:10309 [200]: /favicon.ico
+[Fri Mar 17 16:56:07 2017] 180.230.150.126:10312 [200]: /favicon.ico
+[Fri Mar 17 16:56:09 2017] 180.230.150.126:10314 [200]: /favicon.ico
+[Fri Mar 17 16:56:47 2017] 180.230.150.126:10315 Invalid request (Unexpected EOF)
+[Fri Mar 17 16:56:48 2017] 180.230.150.126:10318 [200]: /favicon.ico
+sh: 1: /usr/sbin/sendmail: not found
+[Fri Mar 17 17:14:54 2017] 180.230.150.126:10747 [200]: /favicon.ico
+sh: 1: /usr/sbin/sendmail: not found
+[Fri Mar 17 17:14:56 2017] 180.230.150.126:10785 [200]: /favicon.ico
+sh: 1: /usr/sbin/sendmail: not found
+sh: 1: /usr/sbin/sendmail: not found
+sh: 1: /usr/sbin/sendmail: not found
+[Fri Mar 17 17:14:57 2017] 180.230.150.126:10791 [200]: /favicon.ico
+[Fri Mar 17 17:14:57 2017] 180.230.150.126:10792 [200]: /favicon.ico
+sh: 1: /usr/sbin/sendmail: not found
+[Fri Mar 17 17:14:58 2017] 180.230.150.126:10793 [200]: /favicon.ico
+sh: 1: /usr/sbin/sendmail: not found
+[Fri Mar 17 17:15:38 2017] 180.230.150.126:10796 [200]: /favicon.ico
+sh: 1: /usr/sbin/sendmail: not found
+[Fri Mar 17 17:15:39 2017] 180.230.150.126:10799 [200]: /favicon.ico
+sh: 1: /usr/sbin/sendmail: not found
+[Fri Mar 17 17:15:41 2017] 180.230.150.126:10800 [200]: /favicon.ico
+sh: 1: /usr/sbin/sendmail: not found
+[Fri Mar 17 17:15:42 2017] 180.230.150.126:10802 [200]: /favicon.ico
+[Fri Mar 17 17:15:48 2017] 180.230.150.126:10805 [200]: /favicon.ico
+[Fri Mar 17 17:15:50 2017] 180.230.150.126:10816 [200]: /favicon.ico
+[Fri Mar 17 17:15:50 2017] 180.230.150.126:10823 [200]: /mainImage/signupImage/credlogowhite.png
+[Fri Mar 17 17:15:50 2017] 180.230.150.126:10813 [200]: /css/firstLogin.blade.css
+[Fri Mar 17 17:15:51 2017] 180.230.150.126:10824 [200]: /js/jquery-3.1.1.min.js
+[Fri Mar 17 17:15:52 2017] 180.230.150.126:10825 [200]: /favicon.ico
+sh: 1: /usr/sbin/sendmail: not found
+[Fri Mar 17 17:15:54 2017] 180.230.150.126:10827 [200]: /favicon.ico
+[Fri Mar 17 17:16:15 2017] 180.230.150.126:10826 Invalid request (Unexpected EOF)
+[Fri Mar 17 17:16:15 2017] 180.230.150.126:10828 Invalid request (Unexpected EOF)
+[Fri Mar 17 17:16:15 2017] 180.230.150.126:10830 Invalid request (Unexpected EOF)
+sh: 1: /usr/sbin/sendmail: not found
+[Fri Mar 17 17:16:44 2017] 180.230.150.126:10893 [200]: /favicon.ico
+sh: 1: /usr/sbin/sendmail: not found
+[Fri Mar 17 17:16:46 2017] 180.230.150.126:10894 [200]: /favicon.ico
+sh: 1: /usr/sbin/sendmail: not found
+[Fri Mar 17 17:16:46 2017] 180.230.150.126:10899 [200]: /favicon.ico
+sh: 1: /usr/sbin/sendmail: not found
+[Fri Mar 17 17:16:47 2017] 180.230.150.126:10901 [200]: /favicon.ico
+sh: 1: /usr/sbin/sendmail: not found
+[Fri Mar 17 17:16:47 2017] 180.230.150.126:10904 [200]: /favicon.ico
+[Fri Mar 17 17:16:58 2017] 180.230.150.126:10903 Invalid request (Unexpected EOF)
+[Fri Mar 17 17:19:53 2017] 180.230.150.126:11145 Invalid request (Unexpected EOF)
+[Fri Mar 17 17:19:53 2017] 180.230.150.126:11146 Invalid request (Unexpected EOF)
+[Fri Mar 17 17:19:53 2017] 180.230.150.126:11147 [200]: /favicon.ico
+[Fri Mar 17 17:22:14 2017] 180.230.150.126:11211 [200]: /favicon.ico
+Killed
