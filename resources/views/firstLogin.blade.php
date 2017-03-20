@@ -39,6 +39,25 @@ if(isset($_SESSION['is_login'])){
       'into this app.';
     }
   }
+
+
+// /** TESTING **/
+//   function loginProcess(){
+//     console.log('In login Process 1...');
+
+//     FB.login(function(response) {
+//     console.log('In login Process 2...');
+//       if (response.authResponse) {
+//         FB.api('/me', {fields: 'name, email'}, function(response) {
+//           console.log('login Process Successful. '+response.email +'||'+response.name);
+//         //user just authorized your app
+//       });
+//       }
+//     }/*, {scope: 'email, public_profile', return_scopes: true}*/);
+//     // console.log("testAPI: ");
+//     // testAPI();
+//   }
+
 // This function is called when someone finishes with the Login
   // Button.  See the onlogin handler attached to it in the sample
   // code below.
@@ -90,7 +109,10 @@ if(isset($_SESSION['is_login'])){
   <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
   <div class="buttons">
-    <div class="fb-login-button" data-max-rows="1" data-size="icon" data-show-faces="false" data-auto-logout-link="false" onlogin="checkLoginState()"></div>
+    <div class="fb-login-button" data-max-rows="1" data-size="icon" data-show-faces="false" data-auto-logout-link="false" onlogin="checkLoginState()" scope="public_profile,email"></div>
+
+    <!-- Testing Button-->
+    <!-- <div class="fb-login-button" data-max-rows="1" data-size="icon" data-show-faces="false" data-auto-logout-link="false" onlogin="loginProcess()" scope="public_profile,email"></div> -->
 
     <input id = "subsub" type="submit" value="로그인" />
 

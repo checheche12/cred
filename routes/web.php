@@ -144,6 +144,10 @@ Route::get('/email',function(){
 	return view('DBSelect.email');
 });
 
+Route::post('/newMember',function(){
+	return view('newMember');
+});
+
 
 Auth::routes();
 
