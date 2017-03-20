@@ -48,7 +48,8 @@ class UserController extends Controller
         document.documentElement.className = 'noJs';
       </script>
     </head>
-    <link rel="stylesheet" type ="text/css" href="css/anotherProfile.css">
+    <!-- <link rel="stylesheet" type ="text/css" href="css/anotherProfile.css"> -->
+    <link rel="stylesheet" type ="text/css" href="css/main.css">
 
     <div id = "header">
 

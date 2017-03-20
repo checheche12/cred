@@ -14,6 +14,14 @@ var Bridge = document.getElementById('Bridge');
 
 var token;
 
+
+$('#profileBody').scroll(function() {
+    var pos = $('#profileBody').scrollTop();
+    if (pos == 0) {
+        alert('top of the div');
+    }
+});
+
 // GetContentByDB 함수에서 URL 을 json 형태로 변환하여 전달해준다. 그러므로
 
 // 이 함수에서 json 형태를 다시 URL 배열로 풀어서

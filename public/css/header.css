@@ -5,7 +5,7 @@
 	font-family: 'Montserrat', sans-serif,'Nanum Gothic';
 }
 #header{
-
+	box-shadow: 0 1px 5px 0 rgba(41,85,115,.21);
 	border-bottom : 1px solid #e6e6e6;
 	height : 60px;
 	width: 100%;

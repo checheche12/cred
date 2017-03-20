@@ -1,47 +1,44 @@
 @import url('http://fonts.googleapis.com/earlyaccess/nanumgothic.css');
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 
-body, table, div, p {
+* {
 	font-family: 'Montserrat', sans-serif,'Nanum Gothic';
 }
-/*body, table, div, p {
-	font-family:'Nanum Gothic';
-	unicode-range: U+AC00-D7F;
-}*/
 
-
-/*body, table, div, p {
-	font-family:'Nanum Gothic';
-	unicode-range: U+AC00-D7F;
-	font-family: ‘Roboto’, sans-serif;
+body{
+	background-color : #fafafa ;
 }
+.ProjectFrame{
+	width : 232px;
+	margin-bottom : 20px;
+	display: inline-block;
 
-body, table, div, p {
-	font-family:‘Montserrat’, sans-serif;
-	}	*/
-
-	.ProjectFrame{
-		width : 232px;
-		margin-bottom : 20px;
-		display: inline-block;
-	}
-	.ProjectFrame .detail{
-		display: inline-block;
-	}
-	.videoArt{
-		cursor:pointer;
-		width : 232px;
+	border: 1px solid #e6e6e6 ; 
+	padding-bottom: 10px;
+	background-color: white;
+	box-shadow: 0 1px 5px 0 rgba(41, 85, 115, .21);
+}
+.ProjectFrame .detail{
+	display: inline-block;
+}
+.videoArt{
+	cursor:pointer;
+	width : 232px;
 	/*margin-right : 50px;
 	margin-bottom : 50px;*/
 }
 .ProjectFrame .name{
 	margin: 0px;
+	margin-left: 10px;
+	margin-top: 10px;
 }
 .ProjectFrame .position{
 	float:left;
 	margin: 0px;
 	font-weight: lighter;
 	font-size: 13px;
+	margin-left: 10px;
+	color:#008cba;
 }
 .ProjectFrame .credit{
 	float:right;
@@ -82,6 +79,7 @@ li{
 	margin-top : 20px;
 	margin-right : 100px;
 	cursor:pointer;
+	color:#008cba;
 }
 li:hover:not(.active) {
 	font-weight: lighter;

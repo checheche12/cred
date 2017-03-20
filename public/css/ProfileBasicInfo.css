@@ -9,6 +9,7 @@
 	position: fixed;
 	background: rgba(255, 255, 255, 0.97);
 	margin-top: 97px width: 340px;
+	box-shadow: 0 1px 5px 0 rgba(41, 85, 115, .21);
 }
 #profileImage2{
 	width: 100px;
@@ -28,6 +29,7 @@
 .ProfileBasicInfo .curPosition{
 	font-size: 17px;
 	font-weight: bold;
+	color:#008cba;
 }
 .ProfileBasicInfo .location{
 	font-weight:lighter;
@@ -57,6 +59,7 @@
 .infoD .infoLabel{
 	width: 120px;
 	text-align: left;
+	color:#008cba;
 }
 .infoDetail{
 	text-align: left;
