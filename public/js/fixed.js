@@ -7,7 +7,6 @@ $(document).ready( function() {
 
 $('body').append("<script src = 'js/makedFunction.js'>");
 
-console.log(creditArray);
 
 var TitleBox = document.getElementById('titleBox');
 var URLBox = document.getElementById('URLBox');
@@ -63,6 +62,24 @@ $(".xImage").click(function(){
     }
     $(xButton).remove();
 });
+
+$(".xImage2").click(function(){
+    var xButton = $(this).closest('div');
+    var xButtonID = $(this).attr('id');
+    xButtonID = xButtonID * 1;
+
+    for(var k = 0; k<NotUserCreditArray.length;k++){
+      if(NotUserCreditArray[k].indexOf(xButtonID)!=-1){
+        NotUserCreditArray.splice(k,1);
+        break;
+      }
+    }
+    $(xButton).remove();
+
+});
+
+
+
 
 $('body').click(function(){
   $('#emailsuggest').html('');
@@ -131,9 +148,35 @@ addCredit.addEventListener("click",function(){
         }
         return false;
       }
-      if(data == 'There is no Email'){
-        alert("등록되지 않은 이메일입니다. 이메일을 다시 확인해주세요.");
-      }else if(dC()){
+    if(confirm("등록되지 않은 이메일입니다. 만일 가입자가 아닌 사람이라면 확인을 눌러주십시오") == true){
+
+      var j = "<div class = 'creditContext'>";
+      j += ("<img class = 'xImage2' id = "+NotUserCreditNumber+" src ='/mainImage/uploadImage/x.jpg'></img>");
+      j += ("<div class='name'>"+ email.value + "</div><br>");
+      j += ("<div class='position'>"+position.value+"</div></div>");
+      $('#creditBox').append(j);
+
+      var t = [email.value,position.value,NotUserCreditNumber];
+      NotUserCreditArray.push(t);
+      NotUserCreditNumber += 1;
+      $(".xImage2").click(function(){
+          var xButton = $(this).closest('div');
+          var xButtonID = $(this).attr('id');
+          xButtonID = xButtonID * 1;
+
+          for(var k = 0; k<NotUserCreditArray.length;k++){
+            if(NotUserCreditArray[k].indexOf(xButtonID)!=-1){
+              NotUserCreditArray.splice(k,1);
+              break;
+            }
+          }
+          $(xButton).remove();
+
+      });
+
+      $('#email').val("");
+      $('#position').val("");
+    }else if(dC()){
         alert("동일한 아이디가 미리 크레딧 되어있습니다. (this user is already credited)")
         //중복 이메일/USER PK 발견시 Alarm 또는 표시
       }else if(!position.value){
@@ -193,6 +236,7 @@ submitButton.addEventListener("click",function(){
   Data2['ArtURL'] = URLBox.value;
   Data2['Description'] = Description.value;
   Data2['artPK'] = artPK;
+  Data2['Notuser'] = NotUserCreditArray;
 
   Data2['main'] = creditArray;
 

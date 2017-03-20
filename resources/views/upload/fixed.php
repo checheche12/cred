@@ -54,6 +54,18 @@
             array_push($imshi,$user->Position);
             array_push($GLOBALS['userData'],$imshi);
           }
+
+          $Sentence = 'select tagPK, tagUser, position from TagNotUser where ArtPK = '.$_GET['int'];
+          $users = DB::select(DB::raw($Sentence));
+
+          $GLOBALS['notUserData'] = array();
+          foreach($users as $user){
+            $imshi = array();
+            array_push($imshi,$user->tagPK);
+            array_push($imshi,$user->tagUser);
+            array_push($imshi,$user->position);
+            array_push($GLOBALS['notUserData'],$imshi);
+          }
       }
   }
 
@@ -94,6 +106,8 @@
       <div id = "creditBox">
       <script>
         var creditArray = [];
+        var NotUserCreditArray = [];
+        var NotUserCreditNumber = 0;
       </script>
           <?php
               foreach($GLOBALS['userData'] as $i){
@@ -103,6 +117,17 @@
                   echo "<div class='position'>".$i[2]."</div></div>";
                   echo "<script>";
                   echo "var t = [".$i[0].",'".$i[2]."']; creditArray.push(t);";
+                  echo "</script>";
+              }
+              $NotUserCreditNumber = 0;
+              foreach($GLOBALS['notUserData'] as $i){
+                  echo "<div class = 'creditContext'>";
+                  echo "<img class = 'xImage2' id = ".$NotUserCreditNumber." src ='/mainImage/uploadImage/x.jpg'></img>";
+                  $NotUserCreditNumber +=1;
+                  echo "<div class='name'>".$i[1]."</div><br>";
+                  echo "<div class='position'>".$i[2]."</div></div>";
+                  echo "<script>";
+                  echo "var t = ['".$i[1]."', '".$i[2]."', NotUserCreditNumber]; NotUserCreditArray.push(t); NotUserCreditNumber++";
                   echo "</script>";
               }
           ?>

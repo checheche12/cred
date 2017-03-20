@@ -23,6 +23,9 @@
           $Sentence = "delete from artDB where artPK = ".$_POST['artPK'];
           $users = DB::delete(DB::raw($Sentence));
 
+          $Sentence = "delete from TagNotUser where ArtPK = ".$_POST['artPK'];
+          $users = DB::delete(DB::raw($Sentence));
+
           $Array = $_POST['main'];
 
           foreach($Array as $v1){
@@ -30,6 +33,12 @@
               values (?, ?, ?)',array($v1[0],$v1[1],$_POST['artPK']));
               DB::insert('insert into artDB (artPK,userPK)
               values (?,?)',array($_POST['artPK'],$v1[0]));
+          }
+
+          $Array = $_POST['Notuser'];
+          foreach($Array as $v1){
+              DB::insert('insert into TagNotUser (tagUser, position, artPK)
+              values (?, ?, ?)',array($v1[0],$v1[1],$_POST['artPK']));
           }
 
       }

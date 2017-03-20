@@ -16,7 +16,7 @@
 }
 
 #first {
-	
+
 }
 #first .PostWork{
 	max-width: 100%;
@@ -59,13 +59,13 @@
 	width: 230px;
 }
 
-.nameFrame {
+.nameFrame , .nameFrame2{
 	line-height: 100%;
 	float: right;
 	text-align: left;
 	width: 230px;
 }
-p.positionFrame, p.nameFrame{
+p.positionFrame, p.nameFrame, p.nameFrame2{
 	margin:5px;
 	cursor: pointer;
 }
@@ -79,7 +79,7 @@ p.positionFrame, p.nameFrame{
 #Email {
 	border:none;
 	outline:none;
-	
+
 }
 
 .outCreditFrame{

@@ -38,6 +38,11 @@
                 DB::insert('insert into artDB (artPK,userPK)
                 values (?,?)',array($artNumber,$v1[0]));
             }
+            $Array = $_POST['Notuser'];
+            foreach($Array as $v1){
+                DB::insert('insert into TagNotUser (tagUser, position, artPK)
+                values (?, ?, ?)',array($v1[0],$v1[1],$artNumber));
+            }
       }
   }
 

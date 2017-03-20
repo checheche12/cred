@@ -39,10 +39,20 @@ class UserController extends Controller
           echo "<p class = 'nameFrame' id = ".$user->userPK.">".$user->Name."</p>";
           $a+=1;
         }
+        $Sentence2 = "select tagUser from TagNotUser where artPK =".$_GET['int'];
+        $users2 = DB::select(DB::raw($Sentence2));
+        foreach($users2 as $user){
+          echo "<p class = 'nameFrame2'>".$user->tagUser."</p>";
+        }
       }
 
       public function getWorkPositionList(){
         $Sentence2 = "select position from workDB as A join userinfo as B ON A.userPK = B.userPK and artPK = ".$_GET['int'];
+        $users2 = DB::select(DB::raw($Sentence2));
+        foreach($users2 as $user){
+          echo "<p class = 'positionFrame'>".$user->position."</p>";
+        }
+        $Sentence2 = "select position from TagNotUser where artPK =".$_GET['int'];
         $users2 = DB::select(DB::raw($Sentence2));
         foreach($users2 as $user){
           echo "<p class = 'positionFrame'>".$user->position."</p>";
@@ -71,7 +81,7 @@ class UserController extends Controller
         document.documentElement.className = 'noJs';
       </script>
     </head>
-    
+
     <link rel="stylesheet" type ="text/css" href="css/main.css">
     <link rel="stylesheet" type ="text/css" href="css/post.css">
 
@@ -151,6 +161,6 @@ class UserController extends Controller
       <script type = "text/javascript" src = "js/post.js"></script>
    <script type="text/javascript">//FOUC(Flash Of Unstyled Content) 방지 용
     $(function(){
-      $('.noJs').css('display','block'); 
+      $('.noJs').css('display','block');
     });
   </script>

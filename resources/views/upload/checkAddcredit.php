@@ -23,7 +23,7 @@
           $Sentence = "select Name,userPK from userinfo where Email = '".$_POST['email']."'";
           $users = DB::select(DB::raw($Sentence));
           if($users==NULL){
-            echo 'There is no Email';
+            die(json_encode('There is no Email'));
           }else{
 
               $imshi = array();
