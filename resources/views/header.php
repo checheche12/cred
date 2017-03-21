@@ -49,7 +49,10 @@ class UserController extends Controller
     <!--
         아래에 있는 코드는 DB에서 값을 가져 온 뒤에 동적으로 수정해야 한다. (수정 1)
       -->
-
+      <form id="searchbar">
+        <input class="searchSlot" type="text" name="search" placeholder="Search..">
+        <input type="submit" name="submitbutton" value="검색" id="submitbutton">
+      </form>
       <div class="headIcons">
         <?php
         echo '<div id = "profile">';
@@ -57,9 +60,14 @@ class UserController extends Controller
         echo '<div id = "profileName">'.$GLOBALS['name'].'</div>';
         echo '</div>';
         ?>
-
-        <button id = "upload" title="upload"></button>
-        <button id = "logout" title="logout"></button>
+        <div class="dropdown">
+          <button class="dropbtn">메뉴</button>
+          <div class="dropdown-content">
+            <button id = "yourart" class="dropdowns"><div id="yourartBtSp">yourArt</div></button><br>
+            <button id = "upload" class="dropdowns"><div id="upBtSp">업로드</div></button><br>
+            <button id = "logout" class="dropdowns"><div id="logBtSp">로그아웃</div></button>
+          </div>    
+        </div>
       </div>
     </div>
   </div>

@@ -6,18 +6,22 @@
 }
 
 .ProfileBasicInfo{
+	text-align: center;
 	position: fixed;
 	background: rgba(255, 255, 255, 0.97);
-	margin-top: 97px width: 340px;
+	margin-top: 20px ;
+	width: 340px;
 	box-shadow: 0 1px 5px 0 rgba(41, 85, 115, .21);
 }
 #profileImage2{
 	width: 100px;
 	height: 100px;
 	border-radius: 100%;
-	margin-top: 50px;
+	margin-top: 20px;
+	margin-left: 30px;
 }
 .ProfileBasicInfo .name{
+	clear: both;
 	font-size:28px;
 	margin: 25px;
 	line-height: 80%
@@ -36,7 +40,7 @@
 	font-size: 12px;
 }
 .upperInfo{
-	margin-bottom: 40px;
+	margin-bottom: 20px;
 }
 .ProfileBasicInfo .email{
 	/*	45px;*/
@@ -60,15 +64,19 @@
 	width: 120px;
 	text-align: left;
 	color:#008cba;
+	margin-left: 15px;
 }
 .infoDetail{
 	text-align: left;
+	word-break: break-all;
+	width: 200px;
 }
 #exInfo{
 	display: inline-block;
 }
 .exInfoDetail{
 	text-align: left;
+	margin-left: 15px;
 }
 .exWorkLocation{
 	color: gray;
@@ -81,28 +89,38 @@
 .exP{
 	margin: 0px;
 }
-.exOrganization{
-	/*color: gray;
-	font-size: 12px;*/
-}
 #informationEdit {
-	display: inline-block;
-	padding: 0px 10px;
-	font-size: 12px;
-	cursor: pointer;
-	text-align: center;
-	text-decoration: none;
-	outline: none;
-	color: #000;
-	background-color: #F2F2F2;
+	background: url(/mainImage/editicon.png) no-repeat;
 	border: none;
-	border-radius: 15px;
+	width: 20px;
+	height: 20px;
+	cursor: pointer;
+	background-size: 100%;
+	transition:  all 0.8s;
+	float: right;
+	margin: 5px;
 }
 
-#informationEdit:hover {background-color: #D4145A }
+#informationEdit:hover{
+	background: url(/mainImage/editiconred.png) no-repeat;
+	border: none;
+	width: 20px;
+	height: 20px;
+	cursor: pointer;
+	background-size: 100%;
+	transition:  all 0.8s;
+}
 
-#informationEdit:active {
-	background-color: #D4145A ;
-	box-shadow: 0 5px #666;
-	transform: translateY(4px);
+.profileFrame{ 
+	text-align: center;
+	width: 340px; 
+	border: 1px solid #ccc; 
+}
+
+#contacticon,#educationicon, #skillicon, #workicon{
+	width: 18px;
+	margin-top: -3px;
+	float: left;
+	padding-right: 10px;
+
 }

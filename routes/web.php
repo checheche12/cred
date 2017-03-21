@@ -148,6 +148,14 @@ Route::post('/newMember',function(){
 	return view('newMember');
 });
 
+Route::get('/Yourart',function(){
+	return view('yourart');
+});
+
+Route::get('/moveart',function(){
+	return view('upload.moveart');
+});
+
 
 Auth::routes();
 

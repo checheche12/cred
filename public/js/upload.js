@@ -57,22 +57,22 @@ Email.addEventListener("keyup",function(){
   if(Email.value.length>1){
     /*
       이 함수는 email 에 글이 들어오게 되면 추천 리스트를 띄워주는 역할을 한다....
-    */
+      */
+          $('#emailsuggest').html('');
 
-        var Data = {"_token" : token};
+      var Data = {"_token" : token};
 
-        Data['email'] = Email.value;
+      Data['email'] = Email.value;
 
-        $.ajax({
-          type:'GET',
-          url:'/getNameSuggest',
-          data : Data,
-          success:function(data){
-            var obj = JSON.parse(data);
+      $.ajax({
+        type:'GET',
+        url:'/getNameSuggest',
+        data : Data,
+        success:function(data){
+          var obj = JSON.parse(data);
 
-            $('#emailsuggest').html('');
 
-            for(var i = 0;i<obj.length;i++){
+          for(var i = 0;i<obj.length;i++){
             //obj[i][0] 은 이름 obj[i][1] 은 이메일
             Sentence = '<li class = "suggest" id = "suggestList'+i+'"'+'> name : '+obj[i][0]+' email : '+obj[i][1]+'</li>';
             $('#emailsuggest').append(Sentence);
@@ -88,10 +88,12 @@ Email.addEventListener("keyup",function(){
           alert('server connect error');
         }
       })
+//facebook friends
 
-      }
 
-    });
+}
+
+});
 
 var userPKArr =[];  //중복 크레딧 체크용 배열
 
@@ -128,17 +130,17 @@ addCredit.addEventListener("click",function(){
           NotUserCreditArray.push(t);
           NotUserCreditNumber += 1;
           $(".xImage").click(function(){
-              var xButton = $(this).closest('div');
-              var xButtonID = $(this).attr('id');
-              xButtonID = xButtonID * 1;
+            var xButton = $(this).closest('div');
+            var xButtonID = $(this).attr('id');
+            xButtonID = xButtonID * 1;
 
-              for(var k = 0; k<NotUserCreditArray.length;k++){
-                if(NotUserCreditArray[k].indexOf(xButtonID)!=-1){
-                  NotUserCreditArray.splice(k,1);
-                  break;
-                }
+            for(var k = 0; k<NotUserCreditArray.length;k++){
+              if(NotUserCreditArray[k].indexOf(xButtonID)!=-1){
+                NotUserCreditArray.splice(k,1);
+                break;
               }
-              $(xButton).remove();
+            }
+            $(xButton).remove();
 
           });
 
@@ -160,21 +162,21 @@ addCredit.addEventListener("click",function(){
         $('#creditBox').append(j);
 
         $(".xImage").click(function(){
-            var xButton = $(this).closest('div');
-            var xButtonID = $(this).attr('id');
-            xButtonID = xButtonID * 1;
+          var xButton = $(this).closest('div');
+          var xButtonID = $(this).attr('id');
+          xButtonID = xButtonID * 1;
 
-            userPKArr = jQuery.grep(userPKArr, function(value) {
-               return value != xButtonID;
-             });
+          userPKArr = jQuery.grep(userPKArr, function(value) {
+           return value != xButtonID;
+         });
 
-            for(var k = 0; k<creditArray.length;k++){
-              if(creditArray[k].indexOf(xButtonID)!=-1){
-                creditArray.splice(k,1);
-                break;
-              }
+          for(var k = 0; k<creditArray.length;k++){
+            if(creditArray[k].indexOf(xButtonID)!=-1){
+              creditArray.splice(k,1);
+              break;
             }
-            $(xButton).remove();
+          }
+          $(xButton).remove();
         });
 
         var t = [k[1],position.value];

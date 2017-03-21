@@ -31,12 +31,14 @@ if(isset($_SESSION['is_login'])){
           console.log('sending hiddenForm to newMember : '+tEmail+' || '+tName);
           document.getElementById('hiddenLoginForm').submit();
         }
+        testAPI();
 
       })
     }else {
       // The person is not logged into your app or we are unable to tell.
-      document.getElementById('status').innerHTML = 'Please log ' +
-      'into this app.';
+      // document.getElementById('status').innerHTML = 'Please log ' +
+      // 'into this app.';
+      console.log('please log into this app');
     }
   }
 
@@ -87,11 +89,24 @@ if(isset($_SESSION['is_login'])){
 
   function testAPI() {
     console.log('Welcome!  Fetching your information.... ');
-    FB.api('/me', {fields: 'name,email'}, function(response) {
-      console.log('Successful login for: ' + response.name + '|' + response.email);
-      document.getElementById('status').innerHTML =
-      'Thanks for logging in, ' + response.name + '!';
-    });
+    // FB.api('/me', {fields: 'name,email'}, function(response) {
+    //   console.log('Successful login for: ' + response.name + '|' + response.email);
+    //   document.getElementById('status').innerHTML =
+    //   'Thanks for logging in, ' + response.name + '!';
+    // });
+    FB.api(
+      "/me/taggable_friends?limit=2000",
+      function (response) {
+        if (response && !response.error) {
+          /* handle the result */
+          console.log(response)
+          for(var i=0; i<response.data.length; i++){
+            var data = response.data;
+            console.log(data[i].name + "number of friend: "+i);
+          }
+        }
+      }
+      );
   }
 </script>
 
@@ -109,7 +124,7 @@ if(isset($_SESSION['is_login'])){
   <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
   <div class="buttons">
-    <div class="fb-login-button" data-max-rows="1" data-size="icon" data-show-faces="false" data-auto-logout-link="false" onlogin="checkLoginState()" scope="public_profile,email"></div>
+    <div class="fb-login-button" data-max-rows="1" data-size="icon" data-show-faces="false" data-auto-logout-link="false" onlogin="checkLoginState()" scope="public_profile,email,user_friends, publish_actions"></div>
 
     <!-- Testing Button-->
     <!-- <div class="fb-login-button" data-max-rows="1" data-size="icon" data-show-faces="false" data-auto-logout-link="false" onlogin="loginProcess()" scope="public_profile,email"></div> -->
@@ -134,10 +149,5 @@ if(isset($_SESSION['is_login'])){
   <input type="hidden" name="_token" value = "{{csrf_token()}}">
 
 </form>
-
-
-<?php
-
-?>
 
 <script type = "text/javascript" src = "js/jquery-3.1.1.min.js"></script>

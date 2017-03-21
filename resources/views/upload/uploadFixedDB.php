@@ -35,10 +35,13 @@
               values (?,?)',array($_POST['artPK'],$v1[0]));
           }
 
-          $Array = $_POST['Notuser'];
-          foreach($Array as $v1){
-              DB::insert('insert into TagNotUser (tagUser, position, artPK)
-              values (?, ?, ?)',array($v1[0],$v1[1],$_POST['artPK']));
+          if(isset($_POST['Notuser'])){
+
+            $Array = $_POST['Notuser'];
+            foreach($Array as $v1){
+                DB::insert('insert into TagNotUser (tagUser, position, artPK)
+                values (?, ?, ?)',array($v1[0],$v1[1],$_POST['artPK']));
+            }
           }
 
       }

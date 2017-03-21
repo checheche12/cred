@@ -3,6 +3,7 @@ var Logout = document.getElementById('logout');
 var Home = document.getElementById('credImage');
 var profileImage = document.getElementById('profileImage');
 var profileName = document.getElementById('profileName');
+var yourart = document.getElementById('yourart');
 
 Upload.addEventListener("click", function() {
 
@@ -30,5 +31,10 @@ profileImage.addEventListener("click", function() {
 profileName.addEventListener("click", function() {
 
 	$(location).attr('href', './main');
+
+});
+yourart.addEventListener("click", function() {
+
+	$(location).attr('href', './Yourart');
 
 });

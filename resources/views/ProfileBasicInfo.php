@@ -70,27 +70,27 @@ class checkAddCredit extends Controller
       echo '<div class="profileFrame">';
       echo '<div class="upperInfo">';
       echo '<img id = "profileImage2" src = '.$GLOBALS['photoURL'].'>';
+      echo '<button id = "informationEdit"></button>';
       echo '<p class="name">'.$GLOBALS['name'].'</p>';
       echo '<p class="curOrganization">'.$GLOBALS['current_organization'].'</p>';
       echo '<p class="curPosition">'.$GLOBALS['career'].'</p>';
       echo '<p class="location">'.$GLOBALS['location'].'</p>';
       echo '</div>';
       echo '<div class="lowerInfo">';
-      echo '<div class="infoD"><p class="infoLabel">Contact</p><p class="infoDetail">'.$GLOBALS['email'].'</p></div>';
+      echo '<div class="infoD"><p class="infoLabel"><img id="contacticon" src="/mainImage/airplaneicon.png">연락처</p><p class="infoDetail">'.$GLOBALS['email'].'</p></div>';
       echo '<hr>';
-      echo '<div class="infoD"><p class="infoLabel">학교</p><p class="infoDetail">'.$GLOBALS['education'].'</p></div>';
+      echo '<div class="infoD"><p class="infoLabel"><img id="educationicon" src="/mainImage/educationicon.png">학교</p><p class="infoDetail">'.$GLOBALS['education'].'</p></div>';
       echo '<hr>';
-      echo '<div class="infoD"><p class="infoLabel">전문기술</p><p class="infoDetail">'.$GLOBALS['keyword'].'</p></div>';
+      echo '<div class="infoD"><p class="infoLabel"><img id="skillicon" src="/mainImage/skillicon.png">전문기술</p><p class="infoDetail">'.$GLOBALS['keyword'].'</p></div>';
       echo '<hr>';
       echo '<div class="infoD" id="exInfo">
-      <p class="infoLabel">경력</p>
+      <p class="infoLabel"><img id="workicon" src="/mainImage/workicon.png">경력</p>
       <div class="exInfoDetail">
         <div class="ex_pos_org">
           <p class="exP">'.$GLOBALS['exPosition'].'&nbsp;</p>
           <p class="exP" class="exOrganization">'.$GLOBALS['exOrganization'].'</p>
         </div><p class="exWorkLocation">'.$GLOBALS['exWorkLocation'].'</p></div></div>';
         echo '</div>';
-        echo '<button id = "informationEdit">프로필 수정하기</button>';
         echo '</div>';
         ?>
 
