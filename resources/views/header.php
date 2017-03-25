@@ -50,8 +50,14 @@ class UserController extends Controller
         아래에 있는 코드는 DB에서 값을 가져 온 뒤에 동적으로 수정해야 한다. (수정 1)
       -->
       <form id="searchbar">
-        <input class="searchSlot" type="text" name="search" placeholder="Search..">
-        <input type="submit" name="submitbutton" value="검색" id="submitbutton">
+      <div id="searchDropdown">
+          <input id="searchSlot" class="searchSlot" type="text" name="search" placeholder="Search..">
+          <br>
+          <div id="searchDropdown_content">
+          </div>
+
+        </div>
+        <input type="submit" name="submitbutton" value="검색" id="searchButton">
       </form>
       <div class="headIcons">
         <?php

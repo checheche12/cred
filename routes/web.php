@@ -62,7 +62,6 @@ Route::get('/post',function(){
 
 Route::get('/postUp',function(){
 	return view('postUpdate');
-/////////////////////////////////////////////////////////////맞나??
 });
 Route::get('/getContentURL',function(){
 	return view('DBSelect.GetContentByDB');
@@ -155,7 +154,9 @@ Route::get('/Yourart',function(){
 Route::get('/moveart',function(){
 	return view('upload.moveart');
 });
-
+Route::get('/searchProcess',function(){
+	return view('searchProcess');
+});
 
 Auth::routes();
 

@@ -1,46 +1,63 @@
 function urlCheck_Ssumnail(urlType,url,k,i){
 
-  				if (urlType == "youtube") {
-  					var yvID = matchYoutubeUrl(url);
-  					imgSrc = 'https://img.youtube.com/vi/' + yvID
-  					+ '/mqdefault.jpg';
-  					j = '<div class = "ProjectFrame"><img class = "VideoArt" id = Image' + k[i][0] + ' src = ' + imgSrc
-  					+ '><div class="detail"><p class="name">'+k[i][2]+'</p><p class="position">'+k[i][3]+'</p></div></div>';
+  var IDValue = '#Image' + k[i][0];
+  if (urlType == "youtube") {
+   var yvID = matchYoutubeUrl(url);
+   imgSrc = 'https://img.youtube.com/vi/' + yvID
+   + '/mqdefault.jpg';
+   j = '<div class = "ProjectFrame"><img class = "VideoArt" id = Image' + k[i][0] + ' src = ' + imgSrc
+   + '><div class="detail"><p class="name">'+k[i][2]+'</p><p class="position">'+k[i][3]+'</p></div></div>';
 
-  					$('#profileBody').append(j);
+   $('#profileBody').append(j);
+   $(IDValue).bind('click', function() {
 
-  				} else if (urlType == "vimeo") {
-  					var vvID = matchVimeoUrl(url);
-  					$.getJSON('http://www.vimeo.com/api/v2/video/' + vvID
-  						+ '.json?callback=?', {
-  							format : "json"
-  						}, function(data) {
-  							j = '<div class = "ProjectFrame"><img class ="VideoArt" id = Image' + k[i][0] + ' src = ' + data[0].thumbnail_large
-  					+ '><div class="detail"><p class="name">'+k[i][2]+'</p><p class="position">'+k[i][3]+'</p></div></div>';
+    var t = $(this).attr('id').substr(5, 300);
 
-  							$('#profileBody').append(j);
-  					});
-  				} else {
-  					j = '<div class = "ProjectFrame"><img class = "VideoArt" id = Image' + k[i][0] + ' src = ' + url
-  					+ '><div class="detail"><p class="name">'+k[i][2]+'</p><p class="position">'+k[i][3]+'</p></div></div>';
+    t *= 1;
+
+    post_to_url("./post", t,"get");
+
+  });
+ } else if (urlType == "vimeo") {
+   var vvID = matchVimeoUrl(url);
+   $.getJSON('http://www.vimeo.com/api/v2/video/' + vvID
+    + '.json?callback=?', {
+     format : "json"
+   }, function(data) {
+     j = '<div class = "ProjectFrame"><img class ="VideoArt" id = Image' + k[i][0] + ' src = ' + data[0].thumbnail_large
+     + '><div class="detail"><p class="name">'+k[i][2]+'</p><p class="position">'+k[i][3]+'</p></div></div>';
+
+     $('#profileBody').append(j);
+     $(IDValue).bind('click', function() {
+
+      var t = $(this).attr('id').substr(5, 300);
+
+      t *= 1;
+
+      post_to_url("./post", t,"get");
+
+    });
+   });
+ } else {
+   j = '<div class = "ProjectFrame"><img class = "VideoArt" id = Image' + k[i][0] + ' src = ' + url
+   + '><div class="detail"><p class="name">'+k[i][2]+'</p><p class="position">'+k[i][3]+'</p></div></div>';
 
   					$('#profileBody').append(j);// skip
-  				}
-  				var IDValue = '#Image' + k[i][0];
-  				$(IDValue).bind('click', function() {
+            $(IDValue).bind('click', function() {
 
-  					var t = $(this).attr('id').substr(5, 300);
+              var t = $(this).attr('id').substr(5, 300);
 
-  					t *= 1;
+              t *= 1;
 
-  					post_to_url("./post", t,"get");
+              post_to_url("./post", t,"get");
 
-  				});
+            });
+          }
+          
+        }
 
-}
 
-
-function post_to_url(path, int, method) {
+        function post_to_url(path, int, method) {
 
 	method = method || "post"; // 전송 방식 기본값을 POST로
 
@@ -53,60 +70,60 @@ function post_to_url(path, int, method) {
 	// 히든으로 값을 주입시킨다.
 
 	if(method == "post"){
-			var hiddenField = document.createElement("input");
+   var hiddenField = document.createElement("input");
 
-			hiddenField.setAttribute("id", "IDID");
+   hiddenField.setAttribute("id", "IDID");
 
-			hiddenField.setAttribute("type", "hidden");
+   hiddenField.setAttribute("type", "hidden");
 
-			hiddenField.setAttribute('name', '_token');
+   hiddenField.setAttribute('name', '_token');
 
-			hiddenField.setAttribute('value', token);
+   hiddenField.setAttribute('value', token);
 
-			form.appendChild(hiddenField);
-	}
+   form.appendChild(hiddenField);
+ }
 
-	var hiddenField2 = document.createElement("input");
+ var hiddenField2 = document.createElement("input");
 
-	hiddenField2.setAttribute("id", "intint");
+ hiddenField2.setAttribute("id", "intint");
 
-	hiddenField2.setAttribute("type", "hidden");
+ hiddenField2.setAttribute("type", "hidden");
 
-	hiddenField2.setAttribute('name', "int");
+ hiddenField2.setAttribute('name', "int");
 
-	hiddenField2.setAttribute('value', int);
+ hiddenField2.setAttribute('value', int);
 
-	form.appendChild(hiddenField2);
+ form.appendChild(hiddenField2);
 
-	document.body.appendChild(form);
+ document.body.appendChild(form);
 
-	form.submit();
+ form.submit();
 
 }
 
 
 function bridge(Data){
-  	    $.ajax({
-  	        type:'POST',
-  	        url:'/bridgeLoader',
-  	        data : Data,
-  	        success:function(data){
+ $.ajax({
+   type:'POST',
+   url:'/bridgeLoader',
+   data : Data,
+   success:function(data){
 
-  						$('#profileBody').text('');
+    $('#profileBody').text('');
 
   						var obj = JSON.parse(data); // 0 email, 1 name 2 포토 url 3 career 4 education 5 userPK
 
-  							for(var i =0;i<obj.length;i++){
+             for(var i =0;i<obj.length;i++){
 
-  									var q = '<table class="bridgeCard" id = '+obj[i][5]+'>'
-  									+'<tr> '
-  									+'<td class="personalImageFrame">'
-  									+'<img class="personalImage"src="'+obj[i][2]+'"> '
-  									+'</td> '+'<td class="personalInfo"> '
-  									+'<p class="name">'+obj[i][1]+'</p>'
-  									+' <p class="organization">'+obj[i][3]+'</p>'
-  									+'<p class="position">'+obj[i][4]+'</p> '
-  									+'</td> '
+               var q = '<table class="bridgeCard" id = '+obj[i][5]+'>'
+               +'<tr> '
+               +'<td class="personalImageFrame">'
+               +'<img class="personalImage"src="'+obj[i][2]+'"> '
+               +'</td> '+'<td class="personalInfo"> '
+               +'<p class="name">'+obj[i][1]+'</p>'
+               +' <p class="organization">'+obj[i][3]+'</p>'
+               +'<p class="position">'+obj[i][4]+'</p> '
+               +'</td> '
   									// +'<td class="workImageFrame">'
   									// +'<img class="workImage"src="mainImage/mainBackground.png"> '
   									// +'</td>'
@@ -125,15 +142,15 @@ function bridge(Data){
   										post_to_url("/anotherProfile", t,"get");
 
   									});
-  							}
-  	        },
-  	        error: function(){
-  	          alert('error');
-  	        }
-  	    })
+                 }
+               },
+               error: function(){
+                 alert('error');
+               }
+             })
 
   	// $(location).attr('href','/bridge');
-}
+  }
 
 
 

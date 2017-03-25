@@ -25,6 +25,7 @@ var creditArray = [];
 var NotUserCreditArray = [];
 var NotUserCreditNumber = 0;
 
+
 $(document).ready(function(){
   $("#URLBox").blur(function(){
     var urlinput = document.getElementById("URLBox").value;
@@ -52,13 +53,85 @@ $('body').click(function(){
   $('#emailsuggest').html('');
 });
 
+/*Facebook API*/
+function statusChangeCallback(response) {
+    console.log(response);
+    // The response object is returned with a status field that lets the
+    // app know the current login status of the person.
+    // Full docs on the response object can be found in the documentation
+    // for FB.getLoginStatus().
+    if (response.status === 'connected') {
+      // Logged into your app and Facebook.
+      var fbFriend =[];
+      FB.api( //친구리스트 불러오기
+        "/me/taggable_friends?limit=2000",
+        function (response) {
+          if (response && !response.error) {
+            /* handle the result */
+            console.log(response)
+            var data = response.data;
+            var edge = response.edge;
+            for(var i=0; i<response.data.length; i++){
+              let fbFriendName= data[i].name;
+              let fbFriendPicture= data[i].picture.data.url;
+
+              console.log("checking friend's list");
+
+              if ((fbFriendName).toLowerCase().includes(($('#email').val()).toLowerCase())){
+                Sentence = '<li class = "suggest" id = "suggestListFb'+i+'"'+' style="cursor:pointer;"> <img src="'+fbFriendPicture+'" height="20px" width="20px"> name : '+fbFriendName+'</li>';
+                var sen = '#suggestListFb'+i;
+                $('#emailsuggest').append(Sentence);
+                console.log("clicked suggest 1 "+sen);
+
+                $(sen).bind("click",function(){
+                  console.log("Clikcing Friend's Name");
+                  console.log("i: "+i+" Name: "+fbFriendName + "idValue: "+sen);
+                  $('#email').val(fbFriendName);
+                });
+              }
+            }
+          }
+        });
+    }else {
+      // The person is not logged into your app or we are unable to tell.
+      // document.getElementById('status').innerHTML = 'Please log ' +
+      // 'into this app.';
+      console.log('please log into this app');
+    }
+  }
+  function checkLoginState() {
+    FB.getLoginStatus(function(response) {
+      statusChangeCallback(response);
+    });
+  }
+
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '278220249266484',
+      cookie     : true,
+      xfbml      : true,
+      version    : 'v2.8'
+    });
+    FB.AppEvents.logPageView();
+    // checkLoginState();
+  };
+
+  (function(d, s, id){
+   var js, fjs = d.getElementsByTagName(s)[0];
+   if (d.getElementById(id)) {return;}
+   js = d.createElement(s); js.id = id;
+   js.src = "//connect.facebook.net/en_US/sdk.js";
+   fjs.parentNode.insertBefore(js, fjs);
+ }(document, 'script', 'facebook-jssdk'));
+ /*End of Facebook API*/ 
+
 Email.addEventListener("keyup",function(){
 
   if(Email.value.length>1){
     /*
       이 함수는 email 에 글이 들어오게 되면 추천 리스트를 띄워주는 역할을 한다....
       */
-          $('#emailsuggest').html('');
+      $('#emailsuggest').html('');
 
       var Data = {"_token" : token};
 
@@ -79,6 +152,7 @@ Email.addEventListener("keyup",function(){
             var sen = '#suggestList'+i;
             $(sen).bind("click",function(){
               var t = $(this).attr('id').substr(11, 300);
+              console.log("clicked suggest "+sen);
               $('#email').val(obj[t][1]);
             });
 
@@ -89,7 +163,7 @@ Email.addEventListener("keyup",function(){
         }
       })
 //facebook friends
-
+checkLoginState();
 
 }
 

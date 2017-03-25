@@ -78,11 +78,11 @@ class checkAddCredit extends Controller
       echo '</div>';
       echo '<div class="lowerInfo">';
       echo '<div class="infoD"><p class="infoLabel"><img id="contacticon" src="/mainImage/airplaneicon.png">연락처</p><p class="infoDetail">'.$GLOBALS['email'].'</p></div>';
-      echo '<hr>';
+      echo '<hr id="infoSplit">';
       echo '<div class="infoD"><p class="infoLabel"><img id="educationicon" src="/mainImage/educationicon.png">학교</p><p class="infoDetail">'.$GLOBALS['education'].'</p></div>';
-      echo '<hr>';
+      echo '<hr id="infoSplit">';
       echo '<div class="infoD"><p class="infoLabel"><img id="skillicon" src="/mainImage/skillicon.png">전문기술</p><p class="infoDetail">'.$GLOBALS['keyword'].'</p></div>';
-      echo '<hr>';
+      echo '<hr id="infoSplit">';
       echo '<div class="infoD" id="exInfo">
       <p class="infoLabel"><img id="workicon" src="/mainImage/workicon.png">경력</p>
       <div class="exInfoDetail">

@@ -5,7 +5,7 @@
 	font-family: 'Montserrat', sans-serif,'Nanum Gothic';
 }
 #header{
-	text-align: center;
+	white-space: nowrap;
 	box-shadow: 0 1px 5px 0 rgba(41,85,115,.21);
 	border-bottom : 1px solid #e6e6e6;
 	height : 60px;
@@ -33,12 +33,12 @@
 }
 /**검색창**/
 #searchbar{
-	margin-top: 10px;
-	margin-left: 270px;
+	margin-top: 12.5px;
+	margin-left: 70px;
 	display: inline-flex;
 }
 /**검색버튼**/
-#submitbutton{
+#searchButton{
 	width: 90px;
 	height: 35px;
 
@@ -189,4 +189,48 @@ button{
 }
 #logBtSp{
 	margin-left: 22px;
+}
+.searchInfo{
+	font-size: 12px;
+}
+
+#resultImage { 
+	margin: 5px;
+	height: 54px;
+	width: 54px;
+	border-radius: 3px;
+	object-fit: cover;
+}
+
+#searchInfoContainer #name{
+	color: #008cba ; 
+	font-weight: bold;
+	font-size: 15px; 
+}
+#searchDropdown{
+	position: relative;
+	display: 
+	inline-block;
+}
+#searchDropdown_content{
+	background-color: white;
+	border:1px solid #008cba; 
+	border-radius: 3px;
+	position: absolute; 
+	z-index: 1; 
+	text-align: left;
+	display: none; 
+	width: 500px;
+}
+#searchInfoContainer{
+	display: inline-block;
+}
+#curOrganization{
+	display: inline-block;
+}
+#curPosition{
+	display: inline-block;
+}
+.resultList{
+	border-bottom: 1px solid gainsboro;
 }

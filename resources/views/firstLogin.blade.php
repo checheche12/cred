@@ -94,7 +94,7 @@ if(isset($_SESSION['is_login'])){
     //   document.getElementById('status').innerHTML =
     //   'Thanks for logging in, ' + response.name + '!';
     // });
-    FB.api(
+    FB.api( //친구리스트 불러오기
       "/me/taggable_friends?limit=2000",
       function (response) {
         if (response && !response.error) {
@@ -124,7 +124,6 @@ if(isset($_SESSION['is_login'])){
   <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
   <div class="buttons">
-    <div class="fb-login-button" data-max-rows="1" data-size="icon" data-show-faces="false" data-auto-logout-link="false" onlogin="checkLoginState()" scope="public_profile,email,user_friends, publish_actions"></div>
 
     <!-- Testing Button-->
     <!-- <div class="fb-login-button" data-max-rows="1" data-size="icon" data-show-faces="false" data-auto-logout-link="false" onlogin="loginProcess()" scope="public_profile,email"></div> -->
@@ -139,6 +138,9 @@ if(isset($_SESSION['is_login'])){
   </a>
 
 </div>
+<div class="fb-login-button" data-max-rows="1" data-size="xlarge" data-show-faces="false" data-auto-logout-link="false" onlogin="checkLoginState()" scope="public_profile,email,user_friends, publish_actions"></div>
+
+<!-- <div class="fb-login-button" data-max-rows="1" data-size="icon" data-show-faces="false" data-auto-logout-link="false" onlogin="checkLoginState()" scope="public_profile,email,user_friends, publish_actions"></div> -->
 
 <!-- facebook login button -->
 <!-- <div class="fb-login-button" data-max-rows="1" data-size="large" data-show-faces="true" data-auto-logout-link="true" onlogin="checkLoginState()" scope="public_profile,email"></div> -->

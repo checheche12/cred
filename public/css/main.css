@@ -43,16 +43,6 @@ body{
 	float:right;
 	margin:0px;
 }
-.ProfileBasicInfo{
-	border: 1px solid #e6e6e6;
-	margin-top: 20px ;
-	width: 340px;
-	float:left;
-	margin-left: 50px;
-	padding-bottom: 20px;
-	text-align:center;
-	line-height:30%
-}
 
 #profileContent{
 	height : 800px;
@@ -65,29 +55,56 @@ body{
 	height : 100px;
 }
 #profileBody{
-	width:100%;
-	/*column-width: 232px;*/
+	width: 100%;
+	padding: 30px;
+	border: 1px solid #e6e6e6 ;
+	background: white;
 	column-gap: 20px;
 }
 ul{
 	list-style:none;
 	white-space: nowrap;
+	background: white;
+	border: 1px solid #e6e6e6;
 }
-li{
-	display:inline-block;
-	margin-top : 20px;
-	margin-right : 100px;
-	cursor:pointer;
-	color:#008cba;
+#Project, #Bridge{
+	background: white;
+	border: 1px solid #008cba ;
+	border-radius: 3px;
+	display: inline-block;
+	transition: all 0.7s;
+	padding: 20 40 20 40;
+	cursor: pointer;
+	color: #008cba ;
 }
-li:hover:not(.active) {
-	font-weight: lighter;
-	text-decoration: underline;
+#Bridge:hover{
+	border: 1px solid #008cba ;
+	border-radius: 3px;
+	background: #e6e6e6
+}
+#Project:hover{
+	border: 1px solid #008cba ;
+	border-radius: 3px;
+	background: #e6e6e6
 }
 
-li.active {
-	font-weight: bold;
-	color:#000000;
+#Bridge.active{
+	display: inline-block;
+	border: 1px solid #008cba ;
+	border-radius: 3px;
+	padding: 20 40 20 40;
+	cursor: pointer;
+	color: #008cba ;
+	background: #e6e6e6 ;
+}
+#Project.active{
+	display: inline-block;
+	border: 1px solid #008cba ;
+	border-radius: 3px;
+	padding: 20 40 20 40;
+	cursor: pointer;
+	color: #008cba ;
+	background: #e6e6e6 ;
 }
 .bridgeCard{
 	cursor: pointer;

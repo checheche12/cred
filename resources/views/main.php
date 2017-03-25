@@ -7,7 +7,7 @@ if(!isset($_SESSION['is_login'])){
 ?>
 <!-- FOUC(Flash Of Unstyled Content) 방지 용 head-->
 <head>
-<link href=“https://fonts.googleapis.com/css?family=Montserrat|Roboto” rel=“stylesheet” type="text/css">
+  <link href=“https://fonts.googleapis.com/css?family=Montserrat|Roboto” rel=“stylesheet” type="text/css">
   <style type="text/css">
     .noJs {display: none;}
     /*#pfpf{display: none;}*/
@@ -61,14 +61,11 @@ if(!isset($_SESSION['is_login'])){
       <div id = "profileContent">
         <div id = "profileSelection">
           <ul>
-            <li id = "Project">Project</li>
-            <li id = "Bridge">Bridge</li>
+            <button id = "Project">Project</button>
+            <button id = "Bridge">Bridge</button>
           </ul>
         </div>
         <div id = "profileBody">
-          <?php
-
-          ?>
         </div>
       </div>
 

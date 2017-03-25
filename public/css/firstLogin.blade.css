@@ -16,7 +16,7 @@
    */
 
    html{
-    background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
+    background: #008cba;
     opacity: 0.95;
   }
   .logo{
@@ -33,7 +33,7 @@
     /*margin-top:5%;*/
     margin-top: 75px;
     /*margin-bottom:10%;*/
-    margin-bottom: 150px;
+    margin-bottom: 100px;
   }
   #form{
     text-align: center;

@@ -7,11 +7,14 @@
 
 .ProfileBasicInfo{
 	text-align: center;
-	position: fixed;
 	background: rgba(255, 255, 255, 0.97);
-	margin-top: 20px ;
+	margin-top: 20px;
 	width: 340px;
-	box-shadow: 0 1px 5px 0 rgba(41, 85, 115, .21);
+	border: 1px solid #e6e6e6;
+	float: left;
+	margin-left: 50px;
+	padding-bottom: 20px;
+	line-height: 30%;
 }
 #profileImage2{
 	width: 100px;
@@ -114,7 +117,6 @@
 .profileFrame{ 
 	text-align: center;
 	width: 340px; 
-	border: 1px solid #ccc; 
 }
 
 #contacticon,#educationicon, #skillicon, #workicon{
@@ -123,4 +125,8 @@
 	float: left;
 	padding-right: 10px;
 
+}
+#infoSplit{
+	width: 90%;
+	border: 1px solid #eaeaea;
 }
