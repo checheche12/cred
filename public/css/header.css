@@ -234,3 +234,15 @@ button{
 .resultList{
 	border-bottom: 1px solid gainsboro;
 }
+ul{
+	list-style-type:none; 
+	-webkit-padding-start: 0px;
+}
+.ui-helper-hidden-accessible{
+	display: none;
+}
+#ui-id-1{ /* search results */
+	width: 600;
+	max-height: 400;
+	overflow: auto;
+}

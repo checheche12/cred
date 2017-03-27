@@ -15,7 +15,7 @@ for(var i = 0 ; i < NotTagArt.length ; i++){
 
   if (urlType == "youtube") {
     var yvID = matchYoutubeUrl(url);
-    imgSrc = 'https://img.youtube.com/vi/' + yvID
+    imgSrc = 'https://img.youtube.com/vi/' + yvID + '/mqdefault.jpg';
 
   }else{
     imgSrc = url;
@@ -29,6 +29,7 @@ for(var i = 0 ; i < NotTagArt.length ; i++){
 
   var IDValue = '#button' + i;
   $(IDValue).bind('click', function() {
+		var a = $(this);
     var t = $(this).attr('id').substr(6, 300);
     t *= 1;
     var Data = [];
@@ -38,7 +39,8 @@ for(var i = 0 ; i < NotTagArt.length ; i++){
   		url : '/moveart',
       data : Data,
   		success : function(data) {
-          alert(data);
+          alert("성공적으로 추가되었습니다.");
+					$(a).closest('div').remove();
   		}
   	})
   });

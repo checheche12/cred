@@ -119,4 +119,5 @@ if(!isset($_SESSION['is_login'])){
 </div>
 
 <script type = "text/javascript" src = "js/jquery-3.1.1.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script type = "text/javascript" src = "js/upload.js"></script>

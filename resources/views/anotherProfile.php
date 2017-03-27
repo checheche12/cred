@@ -78,6 +78,7 @@ class UserController extends Controller
       var userPK = <?=$_GET['int']?>;
     </script>
     <script type = "text/javascript" src = "js/jquery-3.1.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script type = "text/javascript" src = "js/anotherProfile.js"></script>
     <script type="text/javascript">//FOUC(Flash Of Unstyled Content) 방지 용
       $(function(){

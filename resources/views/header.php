@@ -40,6 +40,7 @@ class UserController extends Controller
           display: none;
         }
       </style>
+      <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     </head>
     <link rel="stylesheet" type ="text/css" href="css/header.css?v=1">
     <div class="headerFrame">
@@ -50,7 +51,7 @@ class UserController extends Controller
         아래에 있는 코드는 DB에서 값을 가져 온 뒤에 동적으로 수정해야 한다. (수정 1)
       -->
       <form id="searchbar">
-      <div id="searchDropdown">
+        <div id="searchDropdown">
           <input id="searchSlot" class="searchSlot" type="text" name="search" placeholder="Search..">
           <br>
           <div id="searchDropdown_content">
@@ -77,6 +78,7 @@ class UserController extends Controller
       </div>
     </div>
   </div>
+
 
   <script type = "text/javascript" src = "js/header.js"></script>
   <script type="text/javascript"> //FOUC(Flash Of Unstyled Content) 방지 용
