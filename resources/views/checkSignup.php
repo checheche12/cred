@@ -48,11 +48,27 @@ class UserController extends Controller
           document.location.href='./';
         },3000);</script>";
       }
-    }
+
+      public function newGroup()
+      {
+
+      }
+
+}
     $Exp = '/^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i';
     if(preg_match($Exp,$_POST['emailemail'])==1){
-      $A = new UserController();
-      $A->makeNewUser();
+
+      if($_POST['chk_info']=="personal"){
+
+          $A = new UserController();
+          $A->makeNewUser();
+
+      }else if($_POST['chk_info']=="group"){
+
+        echo "그룹 계정 가입을 만들 예정입니다";
+
+      }
+
     }else{
       echo "이메일 형식이 틀렸습니다. 3초뒤 메인화면으로 돌아갑니다./n";
       echo "<script type='text/javascript'>setTimeout(function(){

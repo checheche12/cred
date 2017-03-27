@@ -38,21 +38,21 @@ class UserController extends Controller
         $GLOBALS['keyword'] = substr($GLOBALS['keyword'],0,-1);
 
         $Sentence2 = "select * from userExperience where userPK = ".$_SESSION['userPK'];
-          $users2 = DB::select(DB::raw($Sentence2));
-          $GLOBALS['exOrganization'] = "";
-          $GLOBALS['exPosition'] = "";
-          $GLOBALS['StartDate'] = "";
-          $GLOBALS['EndDate'] = "";
-          $GLOBALS['exWorkLocation'] = "";
-          $GLOBALS['Explainn'] = "";
-          foreach($users2 as $user){
-            $GLOBALS['exOrganization'] = $user->Organization;
-            $GLOBALS['exPosition'] = $user->Position;
-            $GLOBALS['StartDate'] = $user->StartDate;
-            $GLOBALS['EndDate'] = $user->EndDate;
-            $GLOBALS['exWorkLocation'] = $user->WorkLocation;
-            $GLOBALS['Explainn'] = $user->Explainn;
-          }
+        $users2 = DB::select(DB::raw($Sentence2));
+        $GLOBALS['exOrganization'] = "";
+        $GLOBALS['exPosition'] = "";
+        $GLOBALS['StartDate'] = "";
+        $GLOBALS['EndDate'] = "";
+        $GLOBALS['exWorkLocation'] = "";
+        $GLOBALS['Explainn'] = "";
+        foreach($users2 as $user){
+          $GLOBALS['exOrganization'] = $user->Organization;
+          $GLOBALS['exPosition'] = $user->Position;
+          $GLOBALS['StartDate'] = $user->StartDate;
+          $GLOBALS['EndDate'] = $user->EndDate;
+          $GLOBALS['exWorkLocation'] = $user->WorkLocation;
+          $GLOBALS['Explainn'] = $user->Explainn;
+        }
       }
     }
 
@@ -68,7 +68,7 @@ class UserController extends Controller
     }
     ?>
     <link rel="stylesheet" type ="text/css" href="css/informationEdit.css">
-
+    <link rel="icon" type="image/png" href="/mainImage/webicon_16x16.png" sizes="16x16" />
     <div id = "header">
 
     </div>
@@ -113,7 +113,7 @@ class UserController extends Controller
         <div id="labelEx"><label class="labels">경력</label></div>
         <div id="companyEx">
           <div id="positionD">
-          <div class="labelsD"><label class="labels" for="position">직함</label></div><input class="inputs" type = "text" id = "position" value = "<?= $GLOBALS['exPosition']?>"></input>
+            <div class="labelsD"><label class="labels" for="position">직함</label></div><input class="inputs" type = "text" id = "position" value = "<?= $GLOBALS['exPosition']?>"></input>
           </div>
           <div id="organizationD">
             <div class="labelsD2"><label class="labels" for="organization">소속</label></div><input class="inputs" type = "text" id = "organization" value = "<?= $GLOBALS['exOrganization']?>"></input><br>

@@ -50,7 +50,7 @@ class UserController extends Controller
     </head>
     <!-- <link rel="stylesheet" type ="text/css" href="css/anotherProfile.css"> -->
     <link rel="stylesheet" type ="text/css" href="css/main.css">
-
+    <link rel="icon" type="image/png" href="/mainImage/webicon_16x16.png" sizes="16x16" />
     <div id = "header">
 
     </div>

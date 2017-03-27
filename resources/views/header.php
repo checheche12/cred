@@ -35,12 +35,13 @@ class UserController extends Controller
     ?>
     
     <head>
+    <link rel="icon" type="image/png" href="/mainImage/webicon_16x16.png" sizes="16x16" />
       <style type="text/css">
         .headerFrame{
           display: none;
         }
       </style>
-      <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+      
     </head>
     <link rel="stylesheet" type ="text/css" href="css/header.css?v=1">
     <div class="headerFrame">

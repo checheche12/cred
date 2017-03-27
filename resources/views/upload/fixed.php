@@ -73,7 +73,7 @@
   $A->makeNewArt();
   $A->textInfo();
 ?>
-
+<link rel="icon" type="image/png" href="/mainImage/webicon_16x16.png" sizes="16x16" />
 <link rel="stylesheet" type ="text/css" href="css/upload.css">
 
   <div id = "header">
@@ -144,4 +144,5 @@
   artPK = <?= $_GET['int']?>;
 </script>
 <script type = "text/javascript" src = "js/jquery-3.1.1.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script type = "text/javascript" src = "js/fixed.js"></script>

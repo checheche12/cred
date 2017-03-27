@@ -25,7 +25,6 @@ var creditArray = [];
 var NotUserCreditArray = [];
 var NotUserCreditNumber = 0;
 
-
 $(document).ready(function(){
   $("#URLBox").blur(function(){
     var urlinput = document.getElementById("URLBox").value;
@@ -267,7 +266,7 @@ addCredit.addEventListener("click",function(){
     alert('error');
   }
 })
-
+$("#creditBox").css("border","1px dotted #dbdbdb");
 });
 
 cancelButton.addEventListener("click",function(){

@@ -15,12 +15,12 @@ var Bridge = document.getElementById('Bridge');
 var token;
 
 
-$('#profileBody').scroll(function() {
-    var pos = $('#profileBody').scrollTop();
-    if (pos == 0) {
-        alert('top of the div');
-    }
-});
+// $('#profileBody').scroll(function() {
+//     var pos = $('#profileBody').scrollTop();
+//     if (pos == 0) {
+//         alert('top of the div');
+//     }
+// });
 
 // GetContentByDB 함수에서 URL 을 json 형태로 변환하여 전달해준다. 그러므로
 
@@ -50,7 +50,7 @@ function bridgeLogDisplay(){
 		url : './getContentURL',
 
 		success : function(data) {
-			var k = JSON.parse(data);
+			var k = JSON.parse(data);	//0 artPK 1 ArtURL 2 title
 
 			for (var i = 0; i < k.length; i++) {
 				// url check 후 비디오일 시 썸내일로 전환 후 post
@@ -66,17 +66,36 @@ function bridgeLogDisplay(){
 
 }//bridgeLogDisplay()
 
-// Project.addEventListener("click", function() {	//	<-- 중복 클릭이 되서 .one 이라는 jquery 로 바꿨음. 확인 시 지울것. -soo
-	$("#Project").one("click",function(){
+Project.addEventListener("click", function() {	//	<-- 중복 클릭이 되서 .one 이라는 jquery 로 바꿨음. 확인 시 지울것. -soo
+	// $("#Project").one("click",function(){
 
 	// 토큰값을 가지고 와야한다. 토큰용 php 파일을 하나 만든다.
 	bridgeLogDisplay();
 
-});
+		$('#Bridge').removeClass('selected');
+	if ($(this).hasClass('selected')) {
+	} 
+	else
+	{
+		$('#Project').addClass('selected');
+            	// $(this).addClass('selected');
+                //Insert event handling logic
+            }
+
+        });
 
 Bridge.addEventListener("click", function() {
 
 	var Data = {"_token" : token};
 	Data['userPK'] = userPK;
 	bridge(Data);
-});
+	$('#Project').removeClass('selected');
+	if ($(this).hasClass('selected')) {
+	} 
+	else
+	{
+		$('#Bridge').addClass('selected');
+            	// $(this).addClass('selected');
+                //Insert event handling logic
+            }
+        });

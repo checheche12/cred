@@ -114,8 +114,14 @@ if(isset($_SESSION['is_login'])){
   <img src = "/mainImage/signupImage/credlogowhite.png" width="187px"><br>
 </div>
 <div class="quote">CRED. New experience!</div>
+
 <form id = "form" method="post" action = "auth">
   <div class="infoFrame">
+
+  <input type="radio" name="chk_info" value="personal" checked="checked">Personal
+  &nbsp; &nbsp; &nbsp; &nbsp;
+  <input type="radio" name="chk_info" value="group">Group
+
     <p class="labels">이메일</p>
     <input class = "BOX" id = "IDID" name = "ID" type="text"><br>
     <p class="labels">패스워드</p>
@@ -131,7 +137,7 @@ if(isset($_SESSION['is_login'])){
     <input id = "subsub" type="submit" value="로그인" />
 
   </form>
-  
+
 
   <a href = "/signup">
     <input id="signupBt" type="button" name="signupBt" value="회원가입">

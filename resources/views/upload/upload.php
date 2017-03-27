@@ -77,7 +77,7 @@ if(!isset($_SESSION['is_login'])){
 
 
 </script> -->
-
+<link rel="icon" type="image/png" href="/mainImage/webicon_16x16.png" sizes="16x16" />
 <link rel="stylesheet" type ="text/css" href="css/upload.css">
 <div id = "header">
 

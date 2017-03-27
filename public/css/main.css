@@ -55,21 +55,25 @@ body{
 	height : 100px;
 }
 #profileBody{
+	margin: -25 0 0 -40;
 	width: 100%;
 	padding: 30px;
 	border: 1px solid #e6e6e6 ;
 	background: white;
 	column-gap: 20px;
+	box-sizing: border-box;
 }
 ul{
 	list-style:none;
-	white-space: nowrap;
-	background: white;
-	border: 1px solid #e6e6e6;
+    width: 100%;
+    white-space: nowrap;
+    background: white;
+    border: 1px solid #e6e6e6;
+	margin: 0 40 0 -40;
+	box-sizing: border-box;
 }
 #Project, #Bridge{
-	background: white;
-	border: 1px solid #008cba ;
+	border: none ;
 	border-radius: 3px;
 	display: inline-block;
 	transition: all 0.7s;
@@ -78,28 +82,37 @@ ul{
 	color: #008cba ;
 }
 #Bridge:hover{
-	border: 1px solid #008cba ;
+	border: none ;
 	border-radius: 3px;
 	background: #e6e6e6
 }
 #Project:hover{
-	border: 1px solid #008cba ;
+	border: none ;
 	border-radius: 3px;
 	background: #e6e6e6
 }
 
-#Bridge.active{
+#Bridge:active{
 	display: inline-block;
-	border: 1px solid #008cba ;
+	border: none ;
 	border-radius: 3px;
 	padding: 20 40 20 40;
 	cursor: pointer;
 	color: #008cba ;
 	background: #e6e6e6 ;
 }
-#Project.active{
+#Project:active{
 	display: inline-block;
-	border: 1px solid #008cba ;
+	border: none ;
+	border-radius: 3px;
+	padding: 20 40 20 40;
+	cursor: pointer;
+	color: #008cba ;
+	background: #e6e6e6 ;
+}
+.selected{
+	display: inline-block;
+	border: none ;
 	border-radius: 3px;
 	padding: 20 40 20 40;
 	cursor: pointer;

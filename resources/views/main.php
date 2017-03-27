@@ -16,6 +16,7 @@ if(!isset($_SESSION['is_login'])){
   <script type="text/javascript">
     document.documentElement.className = 'noJs';
   </script>
+  <link rel="icon" type="image/png" href="/mainImage/webicon_16x16.png" sizes="16x16" />
 </head>
 
 <!-- Facebook API -->
@@ -61,8 +62,8 @@ if(!isset($_SESSION['is_login'])){
       <div id = "profileContent">
         <div id = "profileSelection">
           <ul>
-            <button id = "Project">Project</button>
-            <button id = "Bridge">Bridge</button>
+            <li id = "Project">Project</li>
+            <li id = "Bridge">Bridge</li>
           </ul>
         </div>
         <div id = "profileBody">
