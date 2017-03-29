@@ -1,0 +1,233 @@
+@import url('http://fonts.googleapis.com/earlyaccess/nanumgothic.css');
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+* {
+	font-family: 'Montserrat', sans-serif,'Nanum Gothic';
+}
+
+#cardFrame{
+    white-space: nowrap;
+	/*border: 1px solid #e6e6e6;
+    padding: 30px;*/ /* card 형식으로 바꿀때 사용 */
+}
+#creatorInfo, #msgInfo_recieved{
+	display: inline-block;
+}
+#creatorInfo{
+	text-align: center;
+	width: 200px;
+}
+#creatorPicUrl{
+	width: 80px;
+	object-fit: cover;
+}
+#msgBorder_recieved{
+	width: 500px;
+	background-image: url(https://cdn4.iconfinder.com/data/icons/gray-toolbar-7/512/message-512.png);
+	background-size: 500px 250px;
+	background-repeat: no-repeat;
+}
+#msgContents_recieved {
+	padding: 50px;
+}
+#infoSplit{
+	margin: 0px;
+}
+#writeMsg{
+	position: fixed;
+	bottom: 0;
+	margin-left: 450px;
+	width: 700px;
+	border:solid 1px black;
+	background: #f8f5ff;
+}
+#msgBt_send{
+	text-align: center;
+}
+#msgTitle_send, #msgDetail_send, #msgExp_send{
+	width: 100%;
+	border: none;
+	background: #f8f5ff;
+}
+
+#msgDetail_send{
+	resize: none;
+}
+
+
+
+
+
+
+/*============================== main.css==============================*/
+body{
+	background-color : #fafafa ;
+}
+.ProjectFrame{
+	width : 232px;
+	margin-bottom : 20px;
+	display: inline-block;
+
+	border: 1px solid #e6e6e6 ; 
+	padding-bottom: 10px;
+	background-color: white;
+}
+.ProjectFrame .detail{
+	display: inline-block;
+}
+.videoArt{
+	cursor:pointer;
+	width : 232px;
+	/*margin-right : 50px;
+	margin-bottom : 50px;*/
+}
+.ProjectFrame .name{
+	margin: 0px;
+	margin-left: 10px;
+	margin-top: 10px;
+}
+.ProjectFrame .position{
+	float:left;
+	margin: 0px;
+	font-weight: lighter;
+	font-size: 13px;
+	margin-left: 10px;
+	color:#008cba;
+}
+.ProjectFrame .credit{
+	float:right;
+	margin:0px;
+}
+
+#profileContent{
+	height : 800px;
+	margin-left : 450px;
+	margin-top : 80px;
+}
+
+#profileSelection{
+	text-align : center;
+	height : 100px;
+}
+#profileBody{
+	margin: -25 0 0 -40;
+	width: 100%;
+	padding: 30px;
+	border: 1px solid #e6e6e6 ;
+	background: white;
+	column-gap: 20px;
+	box-sizing: border-box;
+}
+ul{
+	list-style:none;
+	width: 100%;
+	white-space: nowrap;
+	background: white;
+	border: 1px solid #e6e6e6;
+	margin: 0 40 0 -40;
+	box-sizing: border-box;
+}
+#Project, #Bridge{
+	border: none ;
+	border-radius: 3px;
+	display: inline-block;
+	transition: all 0.7s;
+	padding: 20 40 20 40;
+	cursor: pointer;
+	color: #008cba ;
+}
+#Bridge:hover{
+	border: none ;
+	border-radius: 3px;
+	background: #e6e6e6
+}
+#Project:hover{
+	border: none ;
+	border-radius: 3px;
+	background: #e6e6e6
+}
+
+#Bridge:active{
+	display: inline-block;
+	border: none ;
+	border-radius: 3px;
+	padding: 20 40 20 40;
+	cursor: pointer;
+	color: #008cba ;
+	background: #e6e6e6 ;
+}
+#Project:active{
+	display: inline-block;
+	border: none ;
+	border-radius: 3px;
+	padding: 20 40 20 40;
+	cursor: pointer;
+	color: #008cba ;
+	background: #e6e6e6 ;
+}
+.selected{
+	display: inline-block;
+	border: none ;
+	border-radius: 3px;
+	padding: 20 40 20 40;
+	cursor: pointer;
+	color: #008cba ;
+	background: #e6e6e6 ;
+}
+.bridgeCard{
+	cursor: pointer;
+	height:100px;
+	width:344px;
+	border-bottom:2px solid black;
+	border-right:2px solid black;
+	border-bottom-color: #e2e2e2;
+	border-right-color: #e2e2e2;
+	margin:10px;
+	display: inline-block;
+}
+.bridgeCard .personalImageFrame{
+	height:100px;
+	width:80px;
+}
+.bridgeCard .personalImage{
+	border-radius:100%;
+	height:60px;
+	width:60px;
+	margin:10px;
+}
+.bridgeCard .personalInfo{
+	padding-bottom: :5px;
+	padding-top: :5px;
+	width:95px;
+	float:left;
+	line-height:100%
+
+}
+.bridgeCard .name, .bridgeCard .organization, .bridgeCard .position{
+	margin-bottom: 5px;
+	margin-top: 5px;
+}
+.bridgeCard .name{
+	font-size:18px;
+	font-weight:bold;
+}
+.bridgeCard .organization{
+	font-size:12px;
+}
+.bridgeCard .position{
+	font-size:12px;
+	font-weight:bold;
+}
+.bridgeCard .location{
+	font-size:12px;
+	font-weight:lighter;
+}
+.bridgeCard .workImageFrame{
+	width:149px;
+	height:100px;
+}
+.bridgeCard .workImage{
+	width:129px;
+	height:76px;
+	margin:10px;
+}

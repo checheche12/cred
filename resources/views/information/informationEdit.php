@@ -156,4 +156,5 @@ class UserController extends Controller
     </div>
 
     <script type = "text/javascript" src = "js/jquery-3.1.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script type = "text/javascript" src = "js/informationEdit.js"></script>

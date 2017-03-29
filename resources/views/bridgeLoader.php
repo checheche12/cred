@@ -20,7 +20,7 @@ class UserController extends Controller
       public function index()
       {
         $GLOBALS['userPKArray']=array();
-        $Sentence = "select artPK from artDB where userPK = ".$_POST['userPK'];
+        $Sentence = "select artPK from workDB where userPK = ".$_POST['userPK'];
         $users = DB::select(DB::raw($Sentence));
         foreach($users as $user){
             $Sentence = "select userPK from workDB where artPK = ".$user->artPK;

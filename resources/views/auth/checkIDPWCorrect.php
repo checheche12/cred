@@ -20,7 +20,6 @@ class LoginController extends Controller
       // 전역변수로 저장한 ID와 PW 와 userPK 를 분석하여
       //같으면 로그인 인증을 발급하고 틀리면 꺼지게 한다.
 
-        if($_POST['chk_info']=="personal"){
             self::personal();
 
               try{
@@ -41,7 +40,15 @@ class LoginController extends Controller
                 if(($_POST['ID']==$idid)&&($PasswordLock==$pwpw)) {
                     // Authentication passed...
                     $_SESSION['is_login'] = true;
+                    $_SESSION['persongroup'] = "person";
                     $_SESSION['userPK'] = $pkpk;
+
+                    if($GLOBALS['isGroup']=="0"){
+                      $_SESSION['isGroup'] = "Person";
+                    }else{
+                      $_SESSION['isGroup'] = "Group";
+                    }
+
                     header('Location: ./main');
                     exit;
                 }else{
@@ -57,12 +64,6 @@ class LoginController extends Controller
                 exit;
               }
 
-        }
-
-        if($_POST['chk_info']=="group"){
-            self::group();
-        }
-
     }
 
     //유저 이메일로 비밀번호와 PK 값을 가지고 와서 전역 변수에 저장해놓는다.
@@ -70,12 +71,13 @@ class LoginController extends Controller
       public function personal()
       {
           try{
-            $users = DB::select(DB::raw("select * from userinfo where Email = "."'".$_POST['ID']."'"));
+            $users = DB::select(DB::raw("select Email, Password, userPK, isgroup from userinfo where Email = "."'".$_POST['ID']."'"));
 
             foreach ($users as $user) {
                 $GLOBALS['IDCheck'] = $user->Email;
                 $GLOBALS['PasswordCheck'] = $user->Password;
                 $GLOBALS['UserPK'] = $user->userPK;
+                $GLOBALS['isGroup'] = $user->isgroup;
             }
 
           }catch(Exception $e){
@@ -84,12 +86,6 @@ class LoginController extends Controller
             exit;
           }
       }
-
-      public function group()
-      {
-          echo "Group";
-      }
-
 
 }
 

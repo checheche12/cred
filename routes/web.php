@@ -15,9 +15,9 @@ Route::get('mail',function(){
 	$to = 'checheche12@naver.com';
 	$subject = 'studying laravel';
 	$data = [
-		'title' => 'Hi Title',
-		'body' => 'Hi body',
-		'user' => 'Hello user!'
+	'title' => 'Hi Title',
+	'body' => 'Hi body',
+	'user' => 'Hello user!'
 	];
 	return Mail::send('email.certification',$data,function($message) use($to, $subject){
 		$message->to($to)->subject($subject);
@@ -157,11 +157,18 @@ Route::get('/moveart',function(){
 Route::get('/searchProcess',function(){
 	return view('searchProcess');
 });
+Route::get('/forward',function(){
+	return view('msg.forward');
+});
+
+Route::post('/msgSendDB',function(){
+	return view('msg.msgSendDB');
+});
+
+Route::get('/memberLoader',function(){
+	return view('DBSelect.memberLoader');
+});
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
-
 Auth::routes();
-
-Route::get('/home', 'HomeController@index');

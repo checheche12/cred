@@ -53,11 +53,11 @@ function urlCheck_Ssumnail(urlType,url,k,i){
 
             });
           }
-          
-        }
+
+  }
 
 
-        function post_to_url(path, int, method) {
+function post_to_url(path, int, method) {
 
 	method = method || "post"; // 전송 방식 기본값을 POST로
 
@@ -153,6 +153,59 @@ function bridge(Data){
   }
 
 
+function memberFunction(Data){
+  $.ajax({
+    type:'get',
+    url:'/memberLoader',
+    data : Data,
+    success:function(data){
+
+     $('#profileBody').text('');
+
+            console.log(data);
+              if(data){
+                var obj = JSON.parse(data); // 0 email, 1 name 2 포토 url 3 career 4 education 5 userPK
+                  console.log("hello1");
+                for(var i =0;i<obj.length;i++){
+                  console.log("hello"+i);
+                  var q = '<table class="bridgeCard" id = '+obj[i][5]+'>'
+                  +'<tr> '
+                  +'<td class="personalImageFrame">'
+                  +'<img class="personalImage"src="'+obj[i][2]+'"> '
+                  +'</td> '+'<td class="personalInfo"> '
+                  +'<p class="name">'+obj[i][1]+'</p>'
+                  +' <p class="organization">'+obj[i][3]+'</p>'
+                  +'<p class="position">'+obj[i][4]+'</p> '
+                  +'</td> '
+     									// +'<td class="workImageFrame">'
+     									// +'<img class="workImage"src="mainImage/mainBackground.png"> '
+     									// +'</td>'
+     									+'</tr>'
+     									+'</table>';
+
+     									$('#profileBody').append(q);
+     									document.getElementById("profileBody").style.columnWidth="344px";
+
+     									var IDValue2 = '#' + obj[i][5];
+     									$(IDValue2).bind('click', function() {
+
+     										var t = $(this).attr('id').substr(0, 300);
+     										t *= 1;
+
+     										post_to_url("/anotherProfile", t,"get");
+
+     									});
+                    }
+              }
+                },
+                error: function(){
+                  alert('error');
+                }
+              })
+   	// $(location).attr('href','/bridge');
+}
+
+
 
 // urlCheck functions
 function imageExists(url, callback) {
@@ -201,13 +254,13 @@ function urlCheck(urlInput) {
 	var url = String(urlInput); // url 가져오기
 	var id = matchYoutubeUrl(url); // youtube url 인지 체크 하고 youtube id 반환
 	if (id != false) {
-//		alert("Youtube Video id: " + id);
-return "youtube";
-} else if (matchVimeoUrl(url) != false) {
-		id = matchVimeoUrl(url); // vimeo id 반환
-//		alert("Vimeo Video id: " + id);
-return "vimeo";
-} else {
-	validateImageURL(url);
-}
+  //		alert("Youtube Video id: " + id);
+  return "youtube";
+  } else if (matchVimeoUrl(url) != false) {
+  		id = matchVimeoUrl(url); // vimeo id 반환
+  //		alert("Vimeo Video id: " + id);
+    return "vimeo";
+  } else {
+  	validateImageURL(url);
+  }
 }

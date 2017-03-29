@@ -28,7 +28,7 @@ if(!isset($_SESSION['is_login'])){
       statusChangeCallback(response);
     });
   }
-  
+
   window.fbAsyncInit = function() {
     FB.init({
       appId      : '278220249266484',
@@ -36,7 +36,7 @@ if(!isset($_SESSION['is_login'])){
       xfbml      : true,
       version    : 'v2.8'
     });
-    FB.AppEvents.logPageView();   
+    FB.AppEvents.logPageView();
   };
 
   (function(d, s, id){
@@ -64,6 +64,11 @@ if(!isset($_SESSION['is_login'])){
           <ul>
             <li id = "Project">Project</li>
             <li id = "Bridge">Bridge</li>
+            <?php
+              if($_SESSION['isGroup']=="Group"){
+                echo "<li id = 'Members'>Members</li>";
+              }
+            ?>
           </ul>
         </div>
         <div id = "profileBody">
@@ -86,6 +91,6 @@ if(!isset($_SESSION['is_login'])){
 <script type = "text/javascript" src = "js/main.js"></script>
 <script type="text/javascript">//FOUC(Flash Of Unstyled Content) 방지 용
   $(function(){
-    $('.noJs').css('display','block'); 
+    $('.noJs').css('display','block');
   });
 </script>

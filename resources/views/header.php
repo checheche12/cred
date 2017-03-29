@@ -35,7 +35,6 @@ class UserController extends Controller
     ?>
     
     <head>
-    <link rel="icon" type="image/png" href="/mainImage/webicon_16x16.png" sizes="16x16" />
       <style type="text/css">
         .headerFrame{
           display: none;
@@ -74,6 +73,7 @@ class UserController extends Controller
             <button id = "yourart" class="dropdowns"><div id="yourartBtSp">yourArt</div></button><br>
             <button id = "upload" class="dropdowns"><div id="upBtSp">업로드</div></button><br>
             <button id = "logout" class="dropdowns"><div id="logBtSp">로그아웃</div></button>
+            <button id = "msg" class="dropdowns"><div id="msgBtsp">MSG</div></button>
           </div>    
         </div>
       </div>

@@ -4,6 +4,7 @@ var Home = document.getElementById('credImage');
 var profileImage = document.getElementById('profileImage');
 var profileName = document.getElementById('profileName');
 var yourart = document.getElementById('yourart');
+var Msg = document.getElementById('msg');
 var searchButton = document.getElementById('searchButton');
 var searchSlot = document.getElementById('searchSlot');
 
@@ -47,6 +48,12 @@ yourart.addEventListener("click", function() {
 	$(location).attr('href', './Yourart');
 
 });
+Msg.addEventListener("click", function() {
+
+	$(location).attr('href', './forward');
+
+});
+
 
 var temp_userPK;
 searchButton.addEventListener("click", function() {

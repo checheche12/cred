@@ -24,6 +24,7 @@ class UserController extends Controller
         $users = DB::select(DB::raw($Sentence));
         foreach($users as $user){
           $A = array();
+          $GLOBALS['isGroup']=$user->isgroup;
           array_push($GLOBALS['userinfoArray'],$user->Email);
           array_push($GLOBALS['userinfoArray'],$user->Name);
           array_push($GLOBALS['userinfoArray'],$user->ProfilePhotoURL);
@@ -64,6 +65,11 @@ class UserController extends Controller
         <ul>
           <li id = "Project">Project</li>
           <li id = "Bridge">Bridge</li>
+          <?php
+            if($GLOBALS['isGroup']=="1"){
+              echo "<li id = 'Members'>Members</li>";
+            }
+          ?>
         </ul>
       </div>
       <div id = "profileBody">
@@ -82,6 +88,6 @@ class UserController extends Controller
     <script type = "text/javascript" src = "js/anotherProfile.js"></script>
     <script type="text/javascript">//FOUC(Flash Of Unstyled Content) 방지 용
       $(function(){
-        $('.noJs').css('display','block'); 
+        $('.noJs').css('display','block');
       });
     </script>

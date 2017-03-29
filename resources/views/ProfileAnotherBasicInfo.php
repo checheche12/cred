@@ -29,6 +29,7 @@ class checkAddCredit extends Controller
             $GLOBALS['photoURL'] = $user->ProfilePhotoURL;
             $GLOBALS['location'] = $user->location;
             $GLOBALS['current_organization'] = $user->belong;
+            $GLOBALS['isGroup'] = $user->isgroup;
           }
 
           $Sentence = "select * from keywordDB where userPK = ".$_GET['userPK'];
@@ -51,6 +52,21 @@ class checkAddCredit extends Controller
             $GLOBALS['exPosition'] = $user->Position;
             $GLOBALS['exWorkLocation'] = '- '.$user->WorkLocation;
           }
+
+            if($GLOBALS['isGroup']=="1"){
+                $Sentence3 = "select description from descriptionDB where userPK = ".$_SESSION['userPK'];
+                $users3 = DB::select(DB::raw($Sentence3));
+                  $GLOBALS['description'] = "";
+                foreach($users3 as $user){
+                  $GLOBALS['description'] = $user->description;
+                  if(!isset($GLOBALS['description'])){
+                    $GLOBALS['description'] = ' ';
+                  }
+                  break;
+                }
+
+            }
+
         }
       }
       $A = new checkAddCredit();
@@ -91,6 +107,10 @@ class checkAddCredit extends Controller
           <p class="exP" class="exOrganization">'.$GLOBALS['exOrganization'].'</p>
         </div><p class="exWorkLocation">'.$GLOBALS['exWorkLocation'].'</p></div></div>';
         echo '</div>';
+        if($GLOBALS['isGroup']=="1"){
+              echo '<p class="infoLabel"><img id="workicon" src="/mainImage/workicon.png">설명</p>';
+              echo '<p class="description">'.$GLOBALS['description'].'&nbsp;</p>';
+        }
         echo '</div>';
         ?>
 
@@ -101,6 +121,6 @@ class checkAddCredit extends Controller
         <script type="text/javascript">//FOUC(Flash Of Unstyled Content) 방지 용
 
           $(function(){
-            $('.profileFrame').css('display','block'); 
+            $('.profileFrame').css('display','block');
           });
         </script>

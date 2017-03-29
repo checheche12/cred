@@ -19,40 +19,55 @@ class checkAddCredit extends Controller
          */
         public function checkEmailCredit()
         {
-          $Sentence = "select * from userinfo where userPK = ".$_SESSION['userPK'];
-          $users = DB::select(DB::raw($Sentence));
-          foreach($users as $user){
-            $GLOBALS['email'] = $user->Email;
-            $GLOBALS['name'] = $user->Name;
-            $GLOBALS['career'] = $user->Career;
-            $GLOBALS['education'] = $user->education;
-            $GLOBALS['photoURL'] = $user->ProfilePhotoURL;
-            $GLOBALS['location'] = $user->location;
-            $GLOBALS['current_organization'] = $user->belong;
-          }
 
-          $Sentence = "select * from keywordDB where userPK = ".$_SESSION['userPK'];
+              $Sentence = "select * from userinfo where userPK = ".$_SESSION['userPK'];
+              $users = DB::select(DB::raw($Sentence));
+              foreach($users as $user){
+                $GLOBALS['email'] = $user->Email;
+                $GLOBALS['name'] = $user->Name;
+                $GLOBALS['career'] = $user->Career;
+                $GLOBALS['education'] = $user->education;
+                $GLOBALS['photoURL'] = $user->ProfilePhotoURL;
+                $GLOBALS['location'] = $user->location;
+                $GLOBALS['current_organization'] = $user->belong;
+              }
 
-          $users2 = DB::select(DB::raw($Sentence));
-          $GLOBALS['keyword'] = "";
-          foreach($users2 as $usera){
-            $a=$usera->keyword;
-            $GLOBALS['keyword'].=$a.',';
-          }
-          $GLOBALS['keyword'] = substr($GLOBALS['keyword'],0,-1);
+              $Sentence = "select * from keywordDB where userPK = ".$_SESSION['userPK'];
 
-          $Sentence2 = "select * from userExperience where userPK = ".$_SESSION['userPK'];
-          $users2 = DB::select(DB::raw($Sentence2));
-          $GLOBALS['exOrganization'] = "";
-          $GLOBALS['exPosition'] = "";
-          $GLOBALS['exWorkLocation'] = "";
-          foreach($users2 as $user){
-            $GLOBALS['exOrganization'] = $user->Organization;
-            $GLOBALS['exPosition'] = $user->Position;
-            $GLOBALS['exWorkLocation'] = '- '.$user->WorkLocation;
-          }
+              $users2 = DB::select(DB::raw($Sentence));
+              $GLOBALS['keyword'] = "";
+              foreach($users2 as $usera){
+                $a=$usera->keyword;
+                $GLOBALS['keyword'].=$a.',';
+              }
+              $GLOBALS['keyword'] = substr($GLOBALS['keyword'],0,-1);
+
+              $Sentence2 = "select * from userExperience where userPK = ".$_SESSION['userPK'];
+              $users2 = DB::select(DB::raw($Sentence2));
+              $GLOBALS['exOrganization'] = "";
+              $GLOBALS['exPosition'] = "";
+              $GLOBALS['exWorkLocation'] = "";
+              foreach($users2 as $user){
+                $GLOBALS['exOrganization'] = $user->Organization;
+                $GLOBALS['exPosition'] = $user->Position;
+                $GLOBALS['exWorkLocation'] = '- '.$user->WorkLocation;
+              }
+
+              if($_SESSION['isGroup']=="Group"){
+                  $Sentence3 = "select description from descriptionDB where userPK = ".$_SESSION['userPK'];
+                  $users3 = DB::select(DB::raw($Sentence3));
+                    $GLOBALS['description'] = "";
+                  foreach($users3 as $user){
+                    $GLOBALS['description'] = $user->description;
+                    if(!isset($GLOBALS['description'])){
+                      $GLOBALS['description'] = ' ';
+                    }
+                    break;
+                  }
+
+              }
         }
-      }
+  }
 
       $A = new checkAddCredit();
       $A->checkEmailCredit();
@@ -83,16 +98,22 @@ class checkAddCredit extends Controller
       echo '<hr id="infoSplit">';
       echo '<div class="infoD"><p class="infoLabel"><img id="skillicon" src="/mainImage/skillicon.png">전문기술</p><p class="infoDetail">'.$GLOBALS['keyword'].'</p></div>';
       echo '<hr id="infoSplit">';
+
       echo '<div class="infoD" id="exInfo">
       <p class="infoLabel"><img id="workicon" src="/mainImage/workicon.png">경력</p>
       <div class="exInfoDetail">
-        <div class="ex_pos_org">
-          <p class="exP">'.$GLOBALS['exPosition'].'&nbsp;</p>
-          <p class="exP" class="exOrganization">'.$GLOBALS['exOrganization'].'</p>
-        </div><p class="exWorkLocation">'.$GLOBALS['exWorkLocation'].'</p></div></div>';
-        echo '</div>';
-        echo '</div>';
-        ?>
+      <div class="ex_pos_org">
+      <p class="exP">'.$GLOBALS['exPosition'].'&nbsp;</p>
+      <p class="exP" class="exOrganization">'.$GLOBALS['exOrganization'].'</p>
+      </div><p class="exWorkLocation">'.$GLOBALS['exWorkLocation'].'</p></div></div>';
+      echo '</div>';
+      if($_SESSION['isGroup']=="Group"){
+            echo '<p class="infoLabel"><img id="workicon" src="/mainImage/workicon.png">설명</p>';
+            echo '<p class="description">'.$GLOBALS['description'].'&nbsp;</p>';
+      }
+      echo '</div>';
+
+      ?>
 
         <script>
           var another = 'no';
@@ -101,7 +122,6 @@ class checkAddCredit extends Controller
         <script type="text/javascript">//FOUC(Flash Of Unstyled Content) 방지 용
 
           $(function(){
-            $('.profileFrame').css('display','block'); 
+            $('.profileFrame').css('display','block');
           });
         </script>
-

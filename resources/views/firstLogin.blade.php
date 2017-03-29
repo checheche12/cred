@@ -118,10 +118,6 @@ if(isset($_SESSION['is_login'])){
 <form id = "form" method="post" action = "auth">
   <div class="infoFrame">
 
-  <input type="radio" name="chk_info" value="personal" checked="checked">Personal
-  &nbsp; &nbsp; &nbsp; &nbsp;
-  <input type="radio" name="chk_info" value="group">Group
-
     <p class="labels">이메일</p>
     <input class = "BOX" id = "IDID" name = "ID" type="text"><br>
     <p class="labels">패스워드</p>

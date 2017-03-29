@@ -78,7 +78,7 @@ function bridgeLogDisplay(){
 
 }//bridgeLogDisplay()
 
-$("#Project").one("click",function(){
+$("#Project").click(function(){
 	// 토큰값을 가지고 와야한다. 토큰용 php 파일을 하나 만든다.
 	bridgeLogDisplay();
 });

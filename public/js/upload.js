@@ -194,7 +194,7 @@ addCredit.addEventListener("click",function(){
         if(confirm("등록되지 않은 이메일입니다. 만일 가입자가 아닌 사람이라면 확인을 눌러주십시오") == true){
 
           var j = "<div class = 'creditContext'>";
-          j += ("<img class = 'xImage' id = "+NotUserCreditNumber+" src ='/mainImage/uploadImage/x.jpg'></img>");
+          j += ("<img class = 'xImage' id = "+NotUserCreditNumber+" src ='/mainImage/uploadImage/x-button.png'></img>");
           j += ("<div class='name'>"+ email.value + "</div><br>");
           j += ("<div class='position'>"+position.value+"</div></div>");
           $('#creditBox').append(j);

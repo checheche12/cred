@@ -15,13 +15,17 @@
 
 			<input type="hidden" name="_token" value="<?php echo csrf_token() ?>">
 
+			<input type="radio" name="chk_info" value="personal" checked="checked">Personal
+		  &nbsp; &nbsp; &nbsp; &nbsp;
+		  <input type="radio" name="chk_info" value="group">Group
+			
 			<div class="infoFrame">
 				<input class="BOX" type="text" id='email' name="emailemail"
 				placeholder=" 이메일주소"> <input class="BOX" type="text"
 				id='name' name="namename" placeholder=" 사용자 이름"> <input
 				class="BOX" type="password" id='pw' name="pwpw" placeholder=" 비밀번호">
 			</div>
-
+			<input type="hidden" name="hiddenPicURL" value="mainImage/default_profile_pic.png">
 			<button id="signUp">회원가입</button>
 		</form>
 	</div>

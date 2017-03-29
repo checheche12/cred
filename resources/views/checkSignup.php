@@ -31,7 +31,11 @@ class UserController extends Controller
               $GLOBALS['pLock'] = $PasswordLock;
             }
           }
-          DB::insert('insert into userinfo (Email, Password, Name, Certification) values (?, ?, ?, ?)',[$_POST['emailemail'],$GLOBALS['pLock'],$_POST['namename'],1]);
+          if($_POST['chk_info']=="personal"){
+            DB::insert('insert into userinfo (Email, Password, Name, Certification, isgroup, ProfilePhotoURL) values (?, ?, ?, ?, ?, ?)',[$_POST['emailemail'],$GLOBALS['pLock'],$_POST['namename'],1,0,$_POST['hiddenPicURL']]);
+          }else if($_POST['chk_info']=="group"){
+            DB::insert('insert into userinfo (Email, Password, Name, Certification, isgroup, ProfilePhotoURL) values (?, ?, ?, ?, ?, ?)',[$_POST['emailemail'],$GLOBALS['pLock'],$_POST['namename'],1,1,$_POST['hiddenPicURL']]);
+          }
 
           /**userExperience Table에 userPK 추가**/
           $Sentence = "select userPK from userinfo where Email = '".$_POST['emailemail']."'";
@@ -49,25 +53,14 @@ class UserController extends Controller
         },3000);</script>";
       }
 
-      public function newGroup()
-      {
 
-      }
 
-}
+    }
     $Exp = '/^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i';
     if(preg_match($Exp,$_POST['emailemail'])==1){
 
-      if($_POST['chk_info']=="personal"){
-
-          $A = new UserController();
-          $A->makeNewUser();
-
-      }else if($_POST['chk_info']=="group"){
-
-        echo "그룹 계정 가입을 만들 예정입니다";
-
-      }
+      $A = new UserController();
+      $A->makeNewUser();
 
     }else{
       echo "이메일 형식이 틀렸습니다. 3초뒤 메인화면으로 돌아갑니다./n";

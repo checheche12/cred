@@ -12,6 +12,8 @@ var Project = document.getElementById('Project');
 
 var Bridge = document.getElementById('Bridge');
 
+var Members = document.getElementById('Members');
+
 var token;
 
 
@@ -73,8 +75,9 @@ Project.addEventListener("click", function() {	//	<-- 중복 클릭이 되서 .o
 	bridgeLogDisplay();
 
 		$('#Bridge').removeClass('selected');
+		$('#Members').removeClass('selected');
 	if ($(this).hasClass('selected')) {
-	} 
+	}
 	else
 	{
 		$('#Project').addClass('selected');
@@ -90,8 +93,9 @@ Bridge.addEventListener("click", function() {
 	Data['userPK'] = userPK;
 	bridge(Data);
 	$('#Project').removeClass('selected');
+	$('#Members').removeClass('selected');
 	if ($(this).hasClass('selected')) {
-	} 
+	}
 	else
 	{
 		$('#Bridge').addClass('selected');
@@ -99,3 +103,22 @@ Bridge.addEventListener("click", function() {
                 //Insert event handling logic
             }
         });
+
+if(Members!=undefined){
+
+		var abcde = {"userPK" : userPK};
+		Members.addEventListener("click", function(){
+				memberFunction(abcde);
+				$('#Bridge').removeClass('selected');
+				$('#Project').removeClass('selected');
+				if ($(this).hasClass('selected')) {
+				}
+				else
+				{
+					$('#Members').addClass('selected');
+			            	// $(this).addClass('selected');
+			                //Insert event handling logic
+			  }
+		})
+
+}
