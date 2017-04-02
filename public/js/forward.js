@@ -6,7 +6,8 @@ $(document).ready( function() {
 
 var sendBt = document.getElementById('sendBt');
 var cancelBt = document.getElementById('cancelBt');
-
+var k = 0;
+var aaa = "";
 var token;
 $.ajax({
 	url : './token',
@@ -25,14 +26,101 @@ sendBt.addEventListener("click", function() {
 		url:'/msgSendDB',
 		data : Data,
 		success:function(data){
-			alert(data);
+			// alert(data);
+			alert('message sent!')
 			window.location.reload();
 		},error: function(){
 			alert('Upload failed!');
 		}})
 });
 
+msgDisplay();
+function msgDisplay(){
 
+
+
+	$.ajax({
+		type:'GET',
+		url:'/msgRetrieveDB',
+		success:function(data){
+			// alert(data);
+			var msgDuplicate = [];
+			msgArr = JSON.parse(data);
+			console.log(msgArr.length);
+			for (var i = 0; i < msgArr.length; i++) {
+				for(var q = 0; q<msgDuplicate.length;q++){
+					console.log("msgDuplicate: "+msgDuplicate[q] + "|msgArr"+msgArr[i][0]);
+					if (msgDuplicate[q]==msgArr[i][0]) {
+						continue;
+					}
+				}
+				msgDuplicate.push(msgArr[i][0]);
+
+				$("#profileBody").append('<div id="cardFrame">'
+					+'<div id="creatorInfo">'
+					+'<img id="creatorPicUrl'+i+'" class="creatorPicUrl" src="">'
+					+'<p class="msginformation" id="creatorName'+i+'">creatorName</p>'
+					+'<p class="msginformation" id="creatorPosition'+i+'">creatorPosition</p>'
+					+'<p class="msginformation" id="passedTime'+i+'">passedTime</p>'
+					+'</div>'
+					+'<div id="msgInfo_recieved">'
+					+'<div id="msgBorder_recieved">'
+					+'<div id="msgContents_recieved">'
+					+'<p id="forwardedBy">forwardedBy</p>'
+					+'<hr id="infoSplit">'
+					+'<p class="msginformation" id="msgTitle_recieved'+i+'">msgTitle</p>'
+					+'<hr id="infoSplit">'
+					+'<p class="msginformation" id="msgDetail_recieved'+i+'">msgDetail</p>'
+					+'<hr id="infoSplit">'
+					+'<div id="msgBt_recieved">'
+					+'<button id="forwardBt">forward</button>'
+					+'</div>'
+					+'</div>'
+					+'</div>'
+					+'</div>'
+					+'</div>');
+				//0 msgPK, 1 creatorPK, 2 PasserPK, 3 Title, 4 Detail, 5 create_date, 6 expiry_date
+				var tempId1 = "#msgTitle_recieved"+i;
+				var tempId2 = "#msgDetail_recieved"+i;
+				var tempId3 = "#passedTime"+i;
+				
+
+
+				$(tempId1).text(msgArr[i][3]);
+				$(tempId2).text(msgArr[i][4]);
+				$(tempId3).text(msgArr[i][5]);
+
+
+				// alert("success");
+				// window.location.reload();
+				var Data = {"_token" : token};
+				Data['userPK'] = msgArr[i][1]; //creatorPK
+				$.ajax({
+					type:'GET',
+					url:'/userinfoDB',
+					data : Data,
+					success:function(data){
+					//0 Email, 1 Name, 2 ProfilePhotoURL, 3 userPK, 4 Career, 5 education, 6 graduateDate, 7 belong, 8 location, 9 isgroup
+					uArr = JSON.parse(data);
+					aaa=data;
+					var tempId4 = "#creatorName"+k;
+					var tempId5 = "#creatorPosition"+k;
+					var tempId6 = "#creatorPicUrl"+k;
+					$(tempId4).text(uArr[1]);
+					$(tempId5).text(uArr[4]);
+					$(tempId6).attr("src",uArr[2]);
+					k++;
+					console.log(tempId4);
+				},error: function(){
+					alert('Upload failed!');
+				}})
+
+			}
+		},error: function(){
+			alert('Retrieve failed!');
+		}})
+
+}
 
 /*========================Main.js========================*/
 

@@ -49,19 +49,10 @@ function bridgeLogDisplay(){
 	document.getElementById("profileBody").style.columnWidth="232px";
 	$.ajax({
 
-		url : './getContentURL',
+		url : './getContentURL2',
 
 		success : function(data) {
-			var k = JSON.parse(data);	//0 artPK 1 ArtURL 2 title
-
-			for (var i = 0; i < k.length; i++) {
-				// url check 후 비디오일 시 썸내일로 전환 후 post
-				var url = String(k[i][1]);
-				var urlType = urlCheck(url);
-				urlCheck_Ssumnail(urlType,url,k,i);
-
-			}// forloop ends
-
+				$('#profileBody').append(data);
 		}
 
 	})
@@ -83,9 +74,9 @@ Project.addEventListener("click", function() {	//	<-- 중복 클릭이 되서 .o
 		$('#Project').addClass('selected');
             	// $(this).addClass('selected');
                 //Insert event handling logic
-            }
+  }
 
-        });
+});
 
 Bridge.addEventListener("click", function() {
 
@@ -101,8 +92,8 @@ Bridge.addEventListener("click", function() {
 		$('#Bridge').addClass('selected');
             	// $(this).addClass('selected');
                 //Insert event handling logic
-            }
-        });
+  }
+});
 
 if(Members!=undefined){
 

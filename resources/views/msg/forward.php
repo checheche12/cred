@@ -27,21 +27,22 @@
       </ul>
     </div>
     <div id = "profileBody">
-      <div id="cardFrame">
+      <!--  -->
+      <!-- <div id="cardFrame">
         <div id="creatorInfo">
           <img id="creatorPicUrl" src="https://pbs.twimg.com/profile_images/791067045991358464/yy_F__YU.jpg">
-          <div id="creatorName">creatorName</div>
-          <div id="creatorPosition">creatorPosition</div>
-          <div id="passedTime">passedTime</div>
+          <p id="creatorName">creatorName</p>
+          <p id="creatorPosition">creatorPosition</p>
+          <p id="passedTime">passedTime</p>
         </div>
         <div id="msgInfo_recieved">
           <div id="msgBorder_recieved">
             <div id="msgContents_recieved">
-              <div id="forwardedBy">forwardedBy</div>
+              <p id="forwardedBy">forwardedBy</p>
               <hr id="infoSplit">
-              <div id="msgTitle_recieved">msgTitle</div>
+              <p id="msgTitle_recieved">msgTitle</p>
               <hr id="infoSplit">
-              <div id="msgDetail_recieved">msgDetail</div>
+              <p id="msgDetail_recieved">msgDetail</p>
               <hr id="infoSplit">
               <div id="msgBt_recieved">
                 <button id="forwardBt">forward</button>
@@ -50,8 +51,8 @@
 
           </div>
         </div>
-      </div>
-
+      </div> -->
+<!--  -->
     </div>
   </div>
   <div id="writeMsg">

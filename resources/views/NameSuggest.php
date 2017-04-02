@@ -20,7 +20,7 @@
         public function checkEmailCredit()
         {
             $userSuggest = array();
-            $Sentence = 'select * from userinfo where Name like "%'.$_GET['email'].'%"';
+            $Sentence = 'select * from userinfo where Name like "%'.$_GET['email'].'%" OR Email like "%'.$_GET['email'].'%"';
             $users = DB::select(DB::raw($Sentence));
             foreach($users as $user){
                   $imshi = array();

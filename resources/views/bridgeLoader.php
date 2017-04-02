@@ -19,43 +19,60 @@ class UserController extends Controller
        */
       public function index()
       {
-        $GLOBALS['userPKArray']=array();
-        $Sentence = "select artPK from workDB where userPK = ".$_POST['userPK'];
+        $Sentence = "select DISTINCT A.userPK,C.Name,C.Email,C.ProfilePhotoURL,C.Career,C.education,C.isgroup from workDB as A join workDB as B join userinfo as C where A.artPK = B.artPK and C.isgroup = 1 and A.userPK = C.userPK and B.userPK =".$_POST['userPK'];
         $users = DB::select(DB::raw($Sentence));
-        foreach($users as $user){
-            $Sentence = "select userPK from workDB where artPK = ".$user->artPK;
-            $V = DB::select(DB::raw($Sentence));
-            foreach($V as $v1){
-                  array_push($GLOBALS['userPKArray'],$v1->userPK);
-            }
+
+        echo "<div id = 'group'>";
+        echo "<p>group</p>";
+
+        foreach($users as $A){
+          // 0 email, 1 name 2 포토 url 3 career 4 education 5 userPK 6 isgroup
+            echo '<a href = "/anotherProfile?int='.$A->userPK.'">';
+            echo '<table class="bridgeCard">';
+            echo '<tr>';
+            echo '<td class="personalImageFrame">';
+            echo '<img class="personalImage"src="'.$A->ProfilePhotoURL.'">';
+            echo '</td> '.'<td class="personalInfo">';
+            echo '<p class="name">'.$A->Name.'</p>';
+            echo '<p class="organization">'.$A->Career.'</p>';
+            echo '<p class="position">'.$A->education.'</p>';
+            echo '</td>';
+            echo '</tr>';
+            echo '</table>';
+            echo '</a>';
         }
+
+        echo "</div>";
+        echo "<div id = 'person'>";
+        echo "<p>person</p>";
+
+        $Sentence = "select DISTINCT A.userPK,C.Name,C.Email,C.ProfilePhotoURL,C.Career,C.education,C.isgroup from workDB as A join workDB as B join userinfo as C where A.artPK = B.artPK and C.isgroup = 0 and A.userPK = C.userPK and B.userPK =".$_POST['userPK'];
+        $users = DB::select(DB::raw($Sentence));
+
+        foreach($users as $A){
+          // 0 email, 1 name 2 포토 url 3 career 4 education 5 userPK 6 isgroup\
+            echo '<a href = "/anotherProfile?int='.$A->userPK.'">';
+            echo '<table class="bridgeCard">';
+            echo '<tr>';
+            echo '<td class="personalImageFrame">';
+            echo '<img class="personalImage"src="'.$A->ProfilePhotoURL.'">';
+            echo '</td> '.'<td class="personalInfo">';
+            echo '<p class="name">'.$A->Name.'</p>';
+            echo '<p class="organization">'.$A->Career.'</p>';
+            echo '<p class="position">'.$A->education.'</p>';
+            echo '</td>';
+            echo '</tr>';
+            echo '</table>';
+            echo '</a>';
+        }
+
+        echo "</div>";
       }
 
-      public function userinfoMake(){
-          $GLOBALS['userinfoArray']=array();
-          foreach($GLOBALS['userPKArray'] as $k){
-                $Sentence = "select * from userinfo where userPK = '".$k."'";
-                $users = DB::select(DB::raw($Sentence));
-                foreach($users as $user){
-                  $A = array();
-                  array_push($A,$user->Email);
-                  array_push($A,$user->Name);
-                  array_push($A,$user->ProfilePhotoURL);
-                  array_push($A,$user->Career);
-                  array_push($A,$user->education);
-                  array_push($A,$user->userPK);
-                  array_push($GLOBALS['userinfoArray'],$A);
-                }
-          }
-      }
 }
 
 $A = new UserController();
 $A->index();
 
-$GLOBALS['userPKArray']=array_unique($GLOBALS['userPKArray']);
 
-$A->userinfoMake();
-
-die(json_encode($GLOBALS['userinfoArray'],JSON_UNESCAPED_UNICODE));
 ?>

@@ -6,9 +6,9 @@
 }
 
 #cardFrame{
-    white-space: nowrap;
+	white-space: nowrap;
 	/*border: 1px solid #e6e6e6;
-    padding: 30px;*/ /* card 형식으로 바꿀때 사용 */
+	padding: 30px;*/ /* card 형식으로 바꿀때 사용 */
 }
 #creatorInfo, #msgInfo_recieved{
 	display: inline-block;
@@ -17,13 +17,15 @@
 	text-align: center;
 	width: 200px;
 }
-#creatorPicUrl{
+.creatorPicUrl{
 	width: 80px;
 	object-fit: cover;
 }
 #msgBorder_recieved{
 	width: 500px;
-	background-image: url(https://cdn4.iconfinder.com/data/icons/gray-toolbar-7/512/message-512.png);
+	/*background-image: url(https://cdn4.iconfinder.com/data/icons/gray-toolbar-7/512/message-512.png);*/
+	border: 1px solid #dbdbdb;
+	box-shadow: 0 0 0 1px rgba(0,0,0,.1), 0 2px 3px rgba(0,0,0,.2);
 	background-size: 500px 250px;
 	background-repeat: no-repeat;
 }

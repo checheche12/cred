@@ -63,8 +63,8 @@ Route::get('/post',function(){
 Route::get('/postUp',function(){
 	return view('postUpdate');
 });
-Route::get('/getContentURL',function(){
-	return view('DBSelect.GetContentByDB');
+Route::get('/getContentURL2',function(){
+	return view('DBSelect.GetContentByDB2');
 });
 
 Route::get('/token',function(){

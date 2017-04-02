@@ -72,8 +72,8 @@ class UserController extends Controller
           <div class="dropdown-content">
             <button id = "yourart" class="dropdowns"><div id="yourartBtSp">yourArt</div></button><br>
             <button id = "upload" class="dropdowns"><div id="upBtSp">업로드</div></button><br>
+            <button id = "msg" class="dropdowns"><div id="msgBtsp">MSG</div></button><br>
             <button id = "logout" class="dropdowns"><div id="logBtSp">로그아웃</div></button>
-            <button id = "msg" class="dropdowns"><div id="msgBtsp">MSG</div></button>
           </div>    
         </div>
       </div>

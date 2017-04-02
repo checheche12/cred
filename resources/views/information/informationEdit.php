@@ -25,6 +25,7 @@ class UserController extends Controller
           $GLOBALS['current_organization'] = $user->belong;
           $GLOBALS['location'] = $user->location;
           $GLOBALS['education2'] = $user->graduateDate;
+          $GLOBALS['description'] = $user->description;
 
         }
         $Sentence = "select * from keywordDB where userPK = ".$_SESSION['userPK'];
@@ -143,12 +144,19 @@ class UserController extends Controller
           <div class="end_month">
             <div class="labelsD2"><label for="end_month">월(MM)</label></div><input class="inputs" type="number" min="1" max="12" id = "end_month" value = "" placeholder="MM"></input><br>
           </div>
-          
+
         </div>
         <div id="descriptionD">
           <div class="labelsD"><label class="labels" for="">설명</label></div><input class="inputs" type = "text" id = "career" value = "<?= $GLOBALS['Explainn']?>" id = "career"></input><br>
         </div>
       </div>
+
+      <?php
+      if($_SESSION['persongroup'] == "group")
+        echo "<div id = 'desdescription'>";
+        echo '<div class="labelsD"><label class="labels" for="keyword">그룹 설명</label></div><textarea rows="3" id = "desdescription" cols="30" name="contents">'.$GLOBALS['description'].'</textarea>';
+        echo "</div>";
+      ?>
       <div id="editBox">
         <button id="addExperience">+추가</button><br>
       </div>

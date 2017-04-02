@@ -56,6 +56,7 @@ class newMember extends Controller
           $_SESSION['is_login'] = true;
           $_SESSION['userPK'] = $GLOBALS['userPK'];
           $_SESSION['isGroup'] = "person";
+          $_SESSION['persongroup'] = "person";
           echo "<h3> 계정이 있음... 로딩중... </h3>";
           header('Location: ./main');
           exit;

@@ -32,7 +32,7 @@ class msgSendDBClass extends Controller
 
     //getting bridge userPK
     $GLOBALS['userPKArray']=array();
-    $Sentence2 = "select artPK from artDB where userPK = ".$_SESSION['userPK'];
+    $Sentence2 = "select artPK from workDB where userPK = ".$_SESSION['userPK'];
     $items = DB::select(DB::raw($Sentence2));
     foreach($items as $item){
       $Sentence3 = "select userPK from workDB where artPK = ".$item->artPK;
@@ -43,6 +43,8 @@ class msgSendDBClass extends Controller
         }
       }
     }
+    
+    $GLOBALS['userPKArray']=array_unique($GLOBALS['userPKArray']);
 
         ///insert info to msg [msgPK,PasserPK,ReceiverPK] <- PasserPK는 최초의 전달이 아닐경우에는 다른 userPK 가 들어가야 한다. ReceiverPK 는 user를 List 에서 고르기 시작한다면 바뀔듯.
     if(sizeof($GLOBALS['userPKArray'])>0){  //메시지 받는사람이 없거나, 자기 자신한테 보내면 안보내지게 할 수 있다.

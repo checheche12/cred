@@ -54,7 +54,7 @@ class checkAddCredit extends Controller
           }
 
             if($GLOBALS['isGroup']=="1"){
-                $Sentence3 = "select description from descriptionDB where userPK = ".$_SESSION['userPK'];
+                $Sentence3 = "select description from userinfo where userPK = ".$_SESSION['userPK'];
                 $users3 = DB::select(DB::raw($Sentence3));
                   $GLOBALS['description'] = "";
                 foreach($users3 as $user){

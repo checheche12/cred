@@ -110,47 +110,16 @@ function bridge(Data){
    success:function(data){
 
     $('#profileBody').text('');
-
-  						var obj = JSON.parse(data); // 0 email, 1 name 2 포토 url 3 career 4 education 5 userPK
-
-             for(var i =0;i<obj.length;i++){
-
-               var q = '<table class="bridgeCard" id = '+obj[i][5]+'>'
-               +'<tr> '
-               +'<td class="personalImageFrame">'
-               +'<img class="personalImage"src="'+obj[i][2]+'"> '
-               +'</td> '+'<td class="personalInfo"> '
-               +'<p class="name">'+obj[i][1]+'</p>'
-               +' <p class="organization">'+obj[i][3]+'</p>'
-               +'<p class="position">'+obj[i][4]+'</p> '
-               +'</td> '
-  									// +'<td class="workImageFrame">'
-  									// +'<img class="workImage"src="mainImage/mainBackground.png"> '
-  									// +'</td>'
-  									+'</tr>'
-  									+'</table>';
-
-  									$('#profileBody').append(q);
-  									document.getElementById("profileBody").style.columnWidth="344px";
-
-  									var IDValue2 = '#' + obj[i][5];
-  									$(IDValue2).bind('click', function() {
-
-  										var t = $(this).attr('id').substr(0, 300);
-  										t *= 1;
-
-  										post_to_url("/anotherProfile", t,"get");
-
-  									});
-                 }
-               },
-               error: function(){
-                 alert('error');
-               }
-             })
+   // 0 email, 1 name 2 포토 url 3 career 4 education 5 userPK 6 isgroup
+            $('#profileBody').append(data);
+           },
+          error: function(){
+               alert('error');
+          }
+    })
 
   	// $(location).attr('href','/bridge');
-  }
+}
 
 
 function memberFunction(Data){
@@ -162,12 +131,10 @@ function memberFunction(Data){
 
      $('#profileBody').text('');
 
-            console.log(data);
               if(data){
                 var obj = JSON.parse(data); // 0 email, 1 name 2 포토 url 3 career 4 education 5 userPK
-                  console.log("hello1");
+
                 for(var i =0;i<obj.length;i++){
-                  console.log("hello"+i);
                   var q = '<table class="bridgeCard" id = '+obj[i][5]+'>'
                   +'<tr> '
                   +'<td class="personalImageFrame">'
