@@ -21,16 +21,38 @@ class UserController extends Controller
         and userPK = '.$_SESSION['userPK'];
         $users = DB::select(DB::raw($Sentence));
 
-        // 루프를 돌면서 userArt 배열에 artPK 값과 artURL 의 값을 배열로 저장 중.
+        // 루프를 돌면서 카드 생성
         foreach($users as $user){
-            $imshi = array();
-            $imshi = array($user->artPK,$user->ArtURL,$user->title,$user->position);
-            array_push($userArt,$imshi);
+            $urlType = self::urlCheck($user->ArtURL);
+            if($urlType == "youtube"){
+
+                $yvID = self::matchYoutubeUrl($user->ArtURL);
+                $imgSrc = "https://img.youtube.com/vi/".$yvID.'/mqdefault.jpg';
+                echo '<a href = "/post?int='.$user->artPK.'"><div class = "ProjectFrame"><img class = "VideoArt" src = '.$imgSrc.'><div class="detail"><p class="name">'.$user->title.'</p><p class="position">'.$user->position.'</p></div></div></a>';
+
+            }else{
+                echo '<a href = "/post?int='.$user->artPK.'"><div class = "ProjectFrame"><img class = "VideoArt" src = '.$user->ArtURL.'><div class="detail"><p class="name">'.$user->title.'</p><p class="position">'.$user->position.'</p></div></div></a>';
+            }
+
         }
-
-        die(json_encode($userArt));
-
     }
+
+    public function urlCheck($url){
+      if(self::matchYoutubeUrl($url) != false){
+        return "youtube";
+      }else{
+        return "image";
+      }
+    }
+
+    public function matchYoutubeUrl($url) {
+    	$p = '/^(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/i';
+    	if(preg_match($p,$url,$matches)==1){
+          return $matches[1]; // returns Youtube ID
+      }
+    	return false;
+    }
+
 }
 
 $A = new UserController();

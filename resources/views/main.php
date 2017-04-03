@@ -72,6 +72,8 @@ if(!isset($_SESSION['is_login'])){
           </ul>
         </div>
         <div id = "profileBody">
+        <div id = "projectLayout"></div>
+        <div id = "bridgeLayout"></div>
         </div>
       </div>
 

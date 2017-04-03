@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Mail;
 
 class UserController extends Controller
 {
@@ -21,8 +22,6 @@ class UserController extends Controller
         $sameEmail = empty($users);
 
             // 비어있다면 실행 안비어 있으면 에러 발생
-            //Certification 항목은 본디 0으로 하고 인증 후에 1로 바꿔야하지만 임시로 일단 무조건 1로 생성되게 한다
-            //이메일 인증을 구현할때 바꿀 것이다.
 
         if($sameEmail){
           $PasswordLockss = DB::select(DB::raw('select PASSWORD("'.$_POST['pwpw'].'")'));
@@ -32,9 +31,12 @@ class UserController extends Controller
             }
           }
           if($_POST['chk_info']=="personal"){
-            DB::insert('insert into userinfo (Email, Password, Name, Certification, isgroup, ProfilePhotoURL) values (?, ?, ?, ?, ?, ?)',[$_POST['emailemail'],$GLOBALS['pLock'],$_POST['namename'],1,0,$_POST['hiddenPicURL']]);
+            DB::insert('insert into userinfo (Email, Password, Name, Certification, isgroup, ProfilePhotoURL) values (?, ?, ?, ?, ?, ?)',[$_POST['emailemail'],$GLOBALS['pLock'],$_POST['namename'],0,0,$_POST['hiddenPicURL']]);
+            self::sendEmail($_POST['emailemail']);
+
           }else if($_POST['chk_info']=="group"){
-            DB::insert('insert into userinfo (Email, Password, Name, Certification, isgroup, ProfilePhotoURL) values (?, ?, ?, ?, ?, ?)',[$_POST['emailemail'],$GLOBALS['pLock'],$_POST['namename'],1,1,$_POST['hiddenPicURL']]);
+            DB::insert('insert into userinfo (Email, Password, Name, Certification, isgroup, ProfilePhotoURL) values (?, ?, ?, ?, ?, ?)',[$_POST['emailemail'],$GLOBALS['pLock'],$_POST['namename'],0,1,$_POST['hiddenPicURL']]);
+            self::sendEmail($_POST['emailemail']);
           }
 
           /**userExperience Table에 userPK 추가**/
@@ -42,6 +44,7 @@ class UserController extends Controller
           $users = DB::select(DB::raw($Sentence));
           foreach($users as $user){$GLOBALS['userPK'] = $user->userPK;}
           DB::insert('insert into userExperience (userPK) values ('.$GLOBALS['userPK'].')');
+          echo "입력하신 이메일로 인증 메일을 발송하였습니다. 인증 확인후 사용해주시기 바랍니다.";
 
         }
         else{
@@ -53,9 +56,22 @@ class UserController extends Controller
         },3000);</script>";
       }
 
+      public function sendEmail($str){
 
+            $to = base64_encode($str);
+          	$subject = 'CRED Certification Email';
+          	$data = [
+          	'title' => 'Certification URL',
+          	'body' => '아래의 URL 을 클릭하시면 인증이 완료됩니다.',
+            'url' => "http://www.credmob.com/certificate?aabbcc=".$to
+          	];
+          	return Mail::send('email.certification',$data,function($message) use($str, $subject){
+          		$message->to($str)->subject($subject);
+          	});
 
-    }
+      }
+
+  }
     $Exp = '/^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i';
     if(preg_match($Exp,$_POST['emailemail'])==1){
 
@@ -68,4 +84,8 @@ class UserController extends Controller
         document.location.href='./';
       },3000);</script>";
     }
-    ?>
+
+
+
+
+?>

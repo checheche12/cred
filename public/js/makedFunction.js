@@ -54,10 +54,10 @@ function urlCheck_Ssumnail(urlType,url,k,i){
             });
           }
 
-  }
+        }
 
 
-function post_to_url(path, int, method) {
+        function post_to_url(path, int, method) {
 
 	method = method || "post"; // 전송 방식 기본값을 POST로
 
@@ -109,29 +109,31 @@ function bridge(Data){
    data : Data,
    success:function(data){
 
-    $('#profileBody').text('');
+    $('#projectLayout').text('');
+    $('#bridgeLayout').text('');
    // 0 email, 1 name 2 포토 url 3 career 4 education 5 userPK 6 isgroup
-            $('#profileBody').append(data);
-           },
-          error: function(){
-               alert('error');
-          }
-    })
+   $('#bridgeLayout').append(data);
+ },
+ error: function(){
+   alert('error');
+ }
+})
 
   	// $(location).attr('href','/bridge');
-}
+  }
 
 
-function memberFunction(Data){
-  $.ajax({
-    type:'get',
-    url:'/memberLoader',
-    data : Data,
-    success:function(data){
+  function memberFunction(Data){
+    $.ajax({
+      type:'get',
+      url:'/memberLoader',
+      data : Data,
+      success:function(data){
 
-     $('#profileBody').text('');
+        $('#projectLayout').text('');
+        $('#bridgeLayout').text('');
 
-              if(data){
+        if(data){
                 var obj = JSON.parse(data); // 0 email, 1 name 2 포토 url 3 career 4 education 5 userPK
 
                 for(var i =0;i<obj.length;i++){
@@ -150,8 +152,8 @@ function memberFunction(Data){
      									+'</tr>'
      									+'</table>';
 
-     									$('#profileBody').append(q);
-     									document.getElementById("profileBody").style.columnWidth="344px";
+     									$('#bridgeLayout').append(q);
+     									// document.getElementById("bridgeLayout").style.columnWidth="344px";
 
      									var IDValue2 = '#' + obj[i][5];
      									$(IDValue2).bind('click', function() {
@@ -163,14 +165,14 @@ function memberFunction(Data){
 
      									});
                     }
-              }
+                  }
                 },
                 error: function(){
                   alert('error');
                 }
               })
    	// $(location).attr('href','/bridge');
-}
+   }
 
 
 
@@ -223,11 +225,11 @@ function urlCheck(urlInput) {
 	if (id != false) {
   //		alert("Youtube Video id: " + id);
   return "youtube";
-  } else if (matchVimeoUrl(url) != false) {
+} else if (matchVimeoUrl(url) != false) {
   		id = matchVimeoUrl(url); // vimeo id 반환
   //		alert("Vimeo Video id: " + id);
-    return "vimeo";
-  } else {
-  	validateImageURL(url);
-  }
+  return "vimeo";
+} else {
+ validateImageURL(url);
+}
 }

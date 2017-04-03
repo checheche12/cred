@@ -8,6 +8,11 @@
 body{
 	background-color : #fafafa ;
 }
+
+a{
+	all:unset;
+}
+
 .ProjectFrame{
 	width : 232px;
 	margin-bottom : 20px;
@@ -167,3 +172,12 @@ ul{
 	height:76px;
 	margin:10px;
 }
+#projectLayout{
+	column-width: 232px;
+}
+/*#bridgeLayout{
+	column-width: 344px;
+}*/
+/*#group, #person{
+	column-width: 250px;
+}*/

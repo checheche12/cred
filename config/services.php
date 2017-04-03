@@ -15,7 +15,7 @@ return [
     */
 
     'mailgun' => [
-        'domain' => 'sandboxf32d19a35b5246f0ab6d055c6eea1a48.mailgun.org',
+        'domain' => 'credmob.com',
         'secret' => 'key-1728c4c840c169bd9deb641c7f7428ae',
     ],
 

@@ -110,6 +110,7 @@ $(document).ready(function(){
   $("#ProfilePhotoURL").blur(function(){
     var urlinput = document.getElementById("ProfilePhotoURL").value;
     console.log(urlCheck(urlinput));
+    console.log("getImage: "+getImage(urlinput));
     $('#pImage').html(getImage(urlinput));
       // $('#URLBox').val("");
     });
@@ -131,6 +132,6 @@ function getImage(urlInput) {
       + id
       + "?title=0&byline=0&portrait=0&badge=0' width='"+width+"' height='"+height+"' frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>";
   } else {
-  	return "<img class='profileImagePreview' src = " + url + ">";
+  	return "<img class='profileImagePreview' src = '" + url + "'>";
   }
 }

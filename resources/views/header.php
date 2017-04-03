@@ -35,6 +35,7 @@ class UserController extends Controller
     ?>
     
     <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
       <style type="text/css">
         .headerFrame{
           display: none;
@@ -64,7 +65,7 @@ class UserController extends Controller
         <?php
         echo '<div id = "profile">';
         echo '<img id = "profileImage" src = '.$GLOBALS['photoURL'].'>';
-        echo '<div id = "profileName">'.$GLOBALS['name'].'</div>';
+        echo '<p id = "profileName">'.$GLOBALS['name'].'</p>';
         echo '</div>';
         ?>
         <div class="dropdown">

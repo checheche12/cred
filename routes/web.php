@@ -11,18 +11,34 @@
 |
 */
 
-Route::get('mail',function(){
-	$to = 'checheche12@naver.com';
-	$subject = 'studying laravel';
-	$data = [
-	'title' => 'Hi Title',
-	'body' => 'Hi body',
-	'user' => 'Hello user!'
-	];
-	return Mail::send('email.certification',$data,function($message) use($to, $subject){
-		$message->to($to)->subject($subject);
-	});
+// only Administrator
+
+Route::get('/certificate',function(){
+	return view('email.certificate');
 });
+
+Route::get('/administrator',function(){
+	return view('administrator.administrator');
+});
+
+Route::get('/administratorgetuser',function(){
+	return view('administrator.getuser');
+});
+
+Route::get('/administratorgetpost',function(){
+	return view('administrator.getpost');
+});
+
+Route::get('/administratordeleteuser',function(){
+	return view('administrator.deleteuser');
+});
+
+Route::get('/administratordeletepost',function(){
+	return view('administrator.deletepost');
+});
+
+
+// 일반 유저들 사용하는 router
 
 Route::get('/',function(){
 	return view('firstLogin');
@@ -63,8 +79,8 @@ Route::get('/post',function(){
 Route::get('/postUp',function(){
 	return view('postUpdate');
 });
-Route::get('/getContentURL2',function(){
-	return view('DBSelect.GetContentByDB2');
+Route::get('/getContentURL',function(){
+	return view('DBSelect.GetContentByDB');
 });
 
 Route::get('/token',function(){

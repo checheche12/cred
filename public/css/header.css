@@ -31,6 +31,8 @@
 	padding: 6px 20px 6px 40px;
 
 }
+
+
 /**검색창**/
 #searchbar{
 	margin-top: 12.5px;
@@ -38,6 +40,15 @@
 	display: inline-flex;
 }
 /**검색버튼**/
+
+@media screen and (min-width: 0px) and (max-width: 1100px){
+	/**검색창**/
+	#searchbar{
+		display: none;
+	}
+	/**검색버튼**/
+
+}
 #searchButton{
 	width: 90px;
 	height: 35px;
@@ -68,12 +79,14 @@ button{
 	margin-top: 15px;
 }
 
-.headIcons{
-	float:right;
-	height : 40px;
+.headIcons {
+	position: absolute;
+	display: inline-block;
+	right: 0px;
+	height: 40px;
 	margin-top: 10px;
 	margin-right: 30px;
-	white-space:nowrap;
+	white-space: nowrap;
 }
 #profile{
 	float: left;

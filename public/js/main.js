@@ -45,14 +45,15 @@ function bridgeLogDisplay(){
 
 	})
 
-	$('#profileBody').text('');
-	document.getElementById("profileBody").style.columnWidth="232px";
+	$('#projectLayout').text('');
+	$('#bridgeLayout').text('');
+	// document.getElementById("projectLayout").style.columnWidth="232px";
 	$.ajax({
 
-		url : './getContentURL2',
+		url : './getContentURL',
 
 		success : function(data) {
-				$('#profileBody').append(data);
+				$('#projectLayout').append(data);
 		}
 
 	})

@@ -4,6 +4,9 @@
 * {
 	font-family: 'Montserrat', sans-serif,'Nanum Gothic';
 }
+#pImage{
+	text-align: center;
+}
 #pImageFrame{
 	margin-top: 60px;
 	display: flex;
@@ -37,5 +40,27 @@
 }
 #editBox{
 	width: 600;
+	text-align: center;
+}
+#uploadContent{
+	margin-top: 70px;
+}
+#infoSheet{
+	margin: auto;
+	width: 500px;
+}
+.labels{
+	display: inline-block;
+	text-align: right;
+	width: 150px;
+	margin-right: 50px;
+}
+img{
+	width: 100px;
+}
+#addExperienceD{
+	text-align: right;
+}
+#editD{
 	text-align: center;
 }
