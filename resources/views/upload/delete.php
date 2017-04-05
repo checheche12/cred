@@ -3,8 +3,6 @@
   use Illuminate\Support\Facades\DB;
   use App\Http\Controllers\Controller;
 
-  session_start();
-
   $Sentence = "select userPK from workDB where artPK = ".$_GET['ArtPK'];
   $users = DB::select(DB::raw($Sentence));
   $checkInfo = false;

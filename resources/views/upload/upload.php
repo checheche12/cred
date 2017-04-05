@@ -1,7 +1,3 @@
-<?php
-session_start();
-
-?>
 <!-- <script type="text/javascript">
   function statusChangeCallback(response) {
     console.log(response);

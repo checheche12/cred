@@ -22,7 +22,7 @@ class newMember extends Controller
           /** cred 계정 생성, 비밀번호는 임시 생성 (oAuth/ Acess Token 어떻게 다루는지 알아봐야함)**/
 
           echo "<h3> 계정이 없음... 생성중... </h3>";
-          DB::insert('insert into userinfo (Email, Password, Name, Certification) values (?, ?, ?, ?)',[$_POST['email'],'facebooklogin',$_POST['name'],1]);
+          DB::insert('insert into userinfo (Email, Password, Name, Certification, isGroup) values (?, ?, ?, ?, ?)',[$_POST['email'],'facebooklogin',$_POST['name'],1,0]);
 
 
           /**userExperience Table에 userPK 추가**/

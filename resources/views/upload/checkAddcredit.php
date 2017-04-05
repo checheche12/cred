@@ -4,8 +4,6 @@
   use Illuminate\Support\Facades\DB;
   use App\Http\Controllers\Controller;
 
-  session_start();
-
   class checkAddCredit extends Controller
   {
       /**
