@@ -1,107 +1,20 @@
+<?php
+
+ ?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
 	<title></title>
-	<style type="text/css">
-		a{
-			all:unset;
-		}
-		body{
-			margin: 0px;
-		}
-		a img{
-			width: 100%;
-		}
-		#MainContent_Frame{
-			
-		}
-		#RecentWorks_Frame{
-			margin-left: 12.5%;
-			margin-right: 12.5%;
-			font-size: 0px;
-			text-align: center;
-		}
-		.RecentWork{
-			width: 25%;
-			display: inline-block;
-			vertical-align: top;
-			/*border-right: 1px solid #e4e4e4;*/
-		}
-		p{
-			font-size: 1.3vw;
-			margin: 0px;
-			line-height: 1.6;
-		}
-		.position_Frame, .name_Frame, .splitter, #Main_position_Frame, #Main_name_Frame, #Main_splitter{
-			display: inline-block;
-			vertical-align: top;
-		}
-		.name{
-			color: red;
-		}
-		.workReference{
-			text-align: left;
-			font-size: 0.8vw;
-			color: gray;
-			margin-top: 5px;
-			margin-bottom: 5px;
-		}
-		.RecentWorkPic{
-			margin-bottom: 3vw;
-		}
-		.position_Frame{
-			text-align: right;
-			width: 45%;
-		}
-		.name_Frame{
-			text-align: left;
-			width: 45%;
-		}
-		.splitter{
-			width: 10%;
-		}
-		#Main_splitter{
-			width: 5vw;
-		}
-		#MainContent{
-			position: relative;
-			margin-bottom: 5vw;
-		}
-		#quoteBox{
-			position: relative;
-			text-align: center;
-			top: -40vw;
-			color: white;
-			height: 0px;
 
-		}
-		#quoteTitle{
-			font-size: 10vw;
-		}
-		#Main_position_Frame{
-			text-align: right;
-		}
-		#Main_name_Frame{
-			text-align: left;
-		}
-		.Main_position, .Main_name{
-			font-size: 3vw;
-		}
-		.title{
-			text-align: center;
-			font-size: 4vw;
-			font-weight: bolder;
-			margin: 3vw;
-		}
-
-	</style>
+<link rel="stylesheet" type ="text/css" href="css/intro.css?v=1">
 </head>
 <body>
 	<div id ='header'>
 	</div>
 	<div id="ContentWidth">
 		<div id="MainContent_Frame">
-			<a href="http://www.credmob.com">
 				<div id="MainContent">
 					<img id="MainImage" src="https://i.mdel.net/i/mdx/50732-2000x1184.jpg">
 					<div id="quoteBox">
@@ -120,7 +33,7 @@
 					</div>
 				</div>
 			</a>
-		</div>	
+		</div>
 		<p class="title">Spotlight</p>
 		<div id="RecentWorks_Frame">
 			<div class="RecentWork">

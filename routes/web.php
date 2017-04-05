@@ -41,7 +41,7 @@ Route::get('/administratordeletepost',function(){
 // 일반 유저들 사용하는 router
 
 Route::get('/',function(){
-	return view('firstLogin');
+	return view('intro.intro');
 });
 
 Route::get('/header',function(){

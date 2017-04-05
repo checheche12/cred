@@ -1,10 +1,3 @@
- <?php
- session_start();
- if(!isset($_SESSION['is_login'])){
-   header('Location: ./');
-   exit;
- }
- ?> 
  <!-- FOUC(Flash Of Unstyled Content) 방지 용 head-->
  <head>
   <link href=“https://fonts.googleapis.com/css?family=Montserrat|Roboto” rel=“stylesheet” type="text/css">
@@ -87,9 +80,9 @@
 </script>
 <script type = "text/javascript" src = "js/jquery-3.1.1.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script type = "text/javascript" src = "js/forward.js"></script> 
+<script type = "text/javascript" src = "js/forward.js"></script>
 <script type="text/javascript">//FOUC(Flash Of Unstyled Content) 방지 용
   $(function(){
-    $('.noJs').css('display','block'); 
+    $('.noJs').css('display','block');
   });
 </script>

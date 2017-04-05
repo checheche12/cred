@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
-session_start();
-
 if(!isset($_SESSION['is_login'])){
   header('Location: ./');
   exit;
@@ -33,7 +31,7 @@ class UserController extends Controller
     $A->index();
 
     ?>
-    
+
     <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
       <style type="text/css">
@@ -41,7 +39,7 @@ class UserController extends Controller
           display: none;
         }
       </style>
-      
+
     </head>
     <link rel="stylesheet" type ="text/css" href="css/header.css?v=1">
     <div class="headerFrame">
@@ -75,7 +73,7 @@ class UserController extends Controller
             <button id = "upload" class="dropdowns"><div id="upBtSp">업로드</div></button><br>
             <button id = "msg" class="dropdowns"><div id="msgBtsp">MSG</div></button><br>
             <button id = "logout" class="dropdowns"><div id="logBtSp">로그아웃</div></button>
-          </div>    
+          </div>
         </div>
       </div>
     </div>
@@ -85,6 +83,6 @@ class UserController extends Controller
   <script type = "text/javascript" src = "js/header.js"></script>
   <script type="text/javascript"> //FOUC(Flash Of Unstyled Content) 방지 용
     $(function(){
-      $('.headerFrame').css('display','block'); 
+      $('.headerFrame').css('display','block');
     });
   </script>

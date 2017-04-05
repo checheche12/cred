@@ -111,8 +111,6 @@ class LoginController extends Controller
 
 }
 
-
-session_start();
 $A = new LoginController();
 $A->authenticate();
 

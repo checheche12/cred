@@ -3,13 +3,6 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
-session_start();
-
-if(!isset($_SESSION['is_login'])){
-  header('Location: ./');
-  exit;
-}
-
 class searchProcess extends Controller
 {
         /**
@@ -20,7 +13,7 @@ class searchProcess extends Controller
         public function searchFunction()
         {
           $userSuggest = array();
-          $Sentence = 'select * from userinfo where Name like "%'.$_GET['inputValue'].'%" OR Career like "%'.$_GET['inputValue'].'%" OR education like "%'.$_GET['inputValue'].'%" OR belong like "%'.$_GET['inputValue'].'%" OR location like "%'.$_GET['inputValue'].'%"';
+          $Sentence = 'select * from userinfo LEFT OUTER JOIN keywordDB ON userinfo.userPK=keywordDB.userPK where Name like "%'.$_GET['inputValue'].'%" OR Career like "%'.$_GET['inputValue'].'%" OR education like "%'.$_GET['inputValue'].'%" OR belong like "%'.$_GET['inputValue'].'%" OR location like "%'.$_GET['inputValue'].'%" OR keyword like "%'.$_GET['inputValue'].'%"';
           $users = DB::select(DB::raw($Sentence));
           foreach($users as $user){
             $imshi = array();

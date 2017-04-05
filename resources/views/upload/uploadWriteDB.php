@@ -6,11 +6,6 @@
 
   session_start();
 
-  if(!isset($_SESSION['is_login'])){
-    header('Location: ./');
-    exit;
-  }
-
   class makeNewArtClass extends Controller
   {
       /**
@@ -44,7 +39,7 @@
                   foreach($Array as $v1){
                       DB::insert('insert into TagNotUser (tagUser, position, artPK)
                       values (?, ?, ?)',array($v1[0],$v1[1],$artNumber));
-                      
+
                   }
             }
 

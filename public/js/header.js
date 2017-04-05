@@ -1,5 +1,6 @@
 var Upload = document.getElementById('upload');
 var Logout = document.getElementById('logout');
+var Login = document.getElementById('login');
 var Home = document.getElementById('credImage');
 var profileImage = document.getElementById('profileImage');
 var profileName = document.getElementById('profileName');
@@ -15,44 +16,71 @@ $.ajax({
 		token = data;
 	}
 })
-Upload.addEventListener("click", function() {
+if(Upload!=undefined){
+		Upload.addEventListener("click", function() {
 
-	$(location).attr('href', './upload');
+			$(location).attr('href', './upload');
 
-});
+		});
+}
 
-Logout.addEventListener("click", function() {
+if(Login!=undefined){
+		Login.addEventListener("click", function() {
 
-	$(location).attr('href', './Logout');
+			$(location).attr('href', './login');
 
-});
+		});
+}
 
-Home.addEventListener("click", function() {
 
-	$(location).attr('href', './main');
+if(Logout!=undefined){
+		Logout.addEventListener("click", function() {
 
-});
+			$(location).attr('href', './Logout');
 
-profileImage.addEventListener("click", function() {
+		});
+}
 
-	$(location).attr('href', './main');
 
-});
-profileName.addEventListener("click", function() {
+if(Home!=undefined){
+		Home.addEventListener("click", function() {
 
-	$(location).attr('href', './main');
+			$(location).attr('href', './');
 
-});
-yourart.addEventListener("click", function() {
+		});
+}
 
-	$(location).attr('href', './Yourart');
+if(profileImage!=undefined){
+		profileImage.addEventListener("click", function() {
 
-});
-Msg.addEventListener("click", function() {
+			$(location).attr('href', './');
 
-	$(location).attr('href', './forward');
+		});
+}
 
-});
+if(profileName != undefined){
+		profileName.addEventListener("click", function() {
+
+			$(location).attr('href', './');
+
+		});
+}
+
+if(yourart != undefined){
+		yourart.addEventListener("click", function() {
+
+			$(location).attr('href', './Yourart');
+
+		});
+}
+
+if(Msg != undefined){
+		Msg.addEventListener("click", function() {
+
+			$(location).attr('href', './forward');
+
+		});
+}
 
 nameLengthCheck();
 function nameLengthCheck(){

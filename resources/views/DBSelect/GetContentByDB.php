@@ -14,7 +14,6 @@ class UserController extends Controller
      */
     public function index()
     {
-        session_start();
         $userArt = array();
         $user = $_SESSION['userPK'].'artDB';
         $Sentence = 'select A.artPK, ArtURL, title,position from totalart A Inner Join workDB B on A.artPK = B.artPK

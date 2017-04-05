@@ -14,7 +14,6 @@ class UserController extends Controller
      */
     public function index()
     {
-        session_start();
         $userArt = array();
         $Sentence = 'select email from userinfo where userPK = '.$_SESSION['userPK'];
         $users = DB::select(DB::raw($Sentence));

@@ -1,9 +1,6 @@
 <?php
 session_start();
-if(!isset($_SESSION['is_login'])){
-  header('Location: ./');
-  exit;
-}
+
 ?>
 <!-- <script type="text/javascript">
   function statusChangeCallback(response) {

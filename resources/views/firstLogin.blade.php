@@ -2,11 +2,7 @@
 
 
 <?php
-session_start();
-if(isset($_SESSION['is_login'])){
-  header('Location: ./main');
-  exit;
-}
+
 ?>
 
 <!-- Facebook API -->
@@ -140,9 +136,11 @@ if(isset($_SESSION['is_login'])){
   </a>
 
   <br><br>
-  <a href = "/passwordinit" id = "pass">
+
+  <a href = "/passwordinit" class = "pass">
     비밀번호를 잊어버리셨나요?
   </a>
+
 
 </div>
 <div class="fb-login-button" data-max-rows="1" data-size="xlarge" data-show-faces="false" data-auto-logout-link="false" onlogin="checkLoginState()" scope="public_profile,email,user_friends, publish_actions"></div>

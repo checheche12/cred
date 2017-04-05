@@ -4,12 +4,6 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
-session_start();
-
-if(!isset($_SESSION['is_login'])){
-  header('Location: ./');
-  exit;
-}
 
 class UserController extends Controller
 {
@@ -22,6 +16,9 @@ class UserController extends Controller
       {
         $Sentence = "select * from userinfo where userPK = ".$_SESSION['userPK'];
         $users = DB::select(DB::raw($Sentence));
+        $GLOBALS['name'] = "GUEST";
+        $GLOBALS['photoURL'] = "mainImage/default_profile_pic.png";
+
         foreach($users as $user){
           $GLOBALS['name'] = $user->Name;
           $GLOBALS['photoURL'] = $user->ProfilePhotoURL;
@@ -33,7 +30,7 @@ class UserController extends Controller
     $A->index();
 
     ?>
-    
+
     <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
       <style type="text/css">
@@ -41,7 +38,7 @@ class UserController extends Controller
           display: none;
         }
       </style>
-      
+
     </head>
     <link rel="stylesheet" type ="text/css" href="css/header.css?v=1">
     <div class="headerFrame">
@@ -67,16 +64,25 @@ class UserController extends Controller
         echo '<img id = "profileImage" src = '.$GLOBALS['photoURL'].'>';
         echo '<p id = "profileName">'.$GLOBALS['name'].'</p>';
         echo '</div>';
+
+        if($_SESSION['is_login'] == false){
+          echo '<button id = "login" class="dropdowns"><div id="yourartBtSp">로그인</div></button><br>';
+
+        }else{
+
+          echo '<div class="dropdown">
+              <button class="dropbtn">메뉴</button>
+              <div class="dropdown-content">
+                <button id = "yourart" class="dropdowns"><div id="yourartBtSp">yourArt</div></button><br>
+                <button id = "upload" class="dropdowns"><div id="upBtSp">업로드</div></button><br>
+                <button id = "msg" class="dropdowns"><div id="msgBtsp">MSG</div></button><br>
+                <button id = "logout" class="dropdowns"><div id="logBtSp">로그아웃</div></button>
+              </div>
+          </div>';
+
+        }
         ?>
-        <div class="dropdown">
-          <button class="dropbtn">메뉴</button>
-          <div class="dropdown-content">
-            <button id = "yourart" class="dropdowns"><div id="yourartBtSp">yourArt</div></button><br>
-            <button id = "upload" class="dropdowns"><div id="upBtSp">업로드</div></button><br>
-            <button id = "msg" class="dropdowns"><div id="msgBtsp">MSG</div></button><br>
-            <button id = "logout" class="dropdowns"><div id="logBtSp">로그아웃</div></button>
-          </div>    
-        </div>
+
       </div>
     </div>
   </div>
@@ -85,6 +91,6 @@ class UserController extends Controller
   <script type = "text/javascript" src = "js/header.js"></script>
   <script type="text/javascript"> //FOUC(Flash Of Unstyled Content) 방지 용
     $(function(){
-      $('.headerFrame').css('display','block'); 
+      $('.headerFrame').css('display','block');
     });
   </script>

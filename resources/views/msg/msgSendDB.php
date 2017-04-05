@@ -3,12 +3,6 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-session_start();
-
-if(!isset($_SESSION['is_login'])){
-  header('Location: ./');
-  exit;
-}
 
 class msgSendDBClass extends Controller
 {
@@ -43,7 +37,7 @@ class msgSendDBClass extends Controller
         }
       }
     }
-    
+
     $GLOBALS['userPKArray']=array_unique($GLOBALS['userPKArray']);
 
         ///insert info to msg [msgPK,PasserPK,ReceiverPK] <- PasserPK는 최초의 전달이 아닐경우에는 다른 userPK 가 들어가야 한다. ReceiverPK 는 user를 List 에서 고르기 시작한다면 바뀔듯.

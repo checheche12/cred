@@ -4,10 +4,6 @@
   use App\Http\Controllers\Controller;
 
   session_start();
-  if(!isset($_SESSION['is_login'])){
-    header('Location: ./');
-    exit;
-  }
 
   $Sentence = "select userPK from workDB where artPK = ".$_GET['ArtPK'];
   $users = DB::select(DB::raw($Sentence));

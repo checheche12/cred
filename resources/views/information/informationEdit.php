@@ -1,9 +1,8 @@
+
 <?php
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-
-session_start();
 
 class UserController extends Controller
 {
@@ -62,12 +61,6 @@ class UserController extends Controller
 
     ?>
 
-    <?php
-    if(!isset($_SESSION['is_login'])){
-      header('Location: ./');
-      exit;
-    }
-    ?>
     <link rel="stylesheet" type ="text/css" href="css/informationEdit.css">
     <link rel="icon" type="image/png" href="/mainImage/webicon_16x16.png" sizes="16x16" />
     <div id = "header">
@@ -116,7 +109,7 @@ class UserController extends Controller
       </div>
     </div><br>
     <label class="labels" id="career">경력</label>
-    
+
     <div id="careerGroupD">
 
       <div id="careerD">

@@ -3,12 +3,6 @@
   use Illuminate\Support\Facades\DB;
   use App\Http\Controllers\Controller;
 
-  session_start();
-  if(!isset($_SESSION['is_login'])){
-    header('Location: ./');
-    exit;
-  }
-
   class makeNewArtClass extends Controller
   {
       /**

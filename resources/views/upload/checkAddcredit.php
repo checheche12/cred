@@ -6,11 +6,6 @@
 
   session_start();
 
-  if(!isset($_SESSION['is_login'])){
-    header('Location: ./');
-    exit;
-  }
-
   class checkAddCredit extends Controller
   {
       /**
