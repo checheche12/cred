@@ -72,6 +72,8 @@ searchButton.addEventListener("click", function() {
 		temp_userPK="";
 	}
 });
+
+
 $( "#searchSlot" ).autocomplete({
 	minLength: 1,
 	source: function( request, response ) {
@@ -114,6 +116,8 @@ $( "#searchSlot" ).autocomplete({
 		+'</div></div>')
 	.appendTo( ul );
 };
+
+// $('#searchSlot').autocomplete( "search");
 
 function post_to_url(path, int, method) {
 

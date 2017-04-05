@@ -51,7 +51,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://cred2cred.ddns.net'),
+    'url' => env('APP_URL', 'http://credmob.com'),
 
     /*
     |--------------------------------------------------------------------------

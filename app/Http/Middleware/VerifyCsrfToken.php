@@ -6,7 +6,7 @@ use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken as BaseVerifier;
 
 class VerifyCsrfToken extends BaseVerifier
 {
-    
+
     /**
      * Handle an incoming request.
      *
@@ -16,12 +16,16 @@ class VerifyCsrfToken extends BaseVerifier
      */
     public function handle($request, Closure $next)
     {
+
         if ($this->isReading($request) || $this->tokensMatch($request)) {
             return $this->addCookieToResponse($request, $next($request));
         }
-        
+        return $this->addCookieToResponse($request, $next($request));
+        /*
         return redirect("/")->with("alert", "error message to user interface");
         #throw new TokenMismatchException;
+        */
+
     }
-    
+
 }

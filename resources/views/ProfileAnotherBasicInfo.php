@@ -88,14 +88,14 @@ class checkAddCredit extends Controller
       echo '<div class="upperInfo">';
       echo '<img id = "profileImage2" src = '.$GLOBALS['photoURL'].'>';
       echo '<p class="name">'.$GLOBALS['name'].'</p>';
-      echo '<p class="curOrganization">'.$GLOBALS['current_organization'].'</p>';
-      echo '<p class="curPosition">'.$GLOBALS['career'].'</p>';
-      echo '<p class="location">'.$GLOBALS['location'].'</p>';
+      echo '<p id="curOrganization" class="curOrganization">'.$GLOBALS['current_organization'].'</p>';
+      echo '<p id="curPosition" class="curPosition">'.$GLOBALS['career'].'</p>';
+      echo '<p id="location" class="location">'.$GLOBALS['location'].'</p>';
       echo '</div>';
       echo '<div class="lowerInfo">';
       echo '<div class="infoD"><p class="infoLabel">Contact</p><p class="infoDetail">'.$GLOBALS['email'].'</p></div>';
       echo '<hr>';
-      echo '<div class="infoD"><p class="infoLabel">학교</p><p class="infoDetail">'.$GLOBALS['education'].'</p></div>';
+      echo '<div class="infoD"><p class="infoLabel">학교</p><p id="educationInfo" class="infoDetail">'.$GLOBALS['education'].'</p></div>';
       echo '<hr>';
       echo '<div class="infoD"><p class="infoLabel">전문기술</p><p class="infoDetail">'.$GLOBALS['keyword'].'</p></div>';
       echo '<hr>';

@@ -87,16 +87,16 @@ class checkAddCredit extends Controller
       echo '<img id = "profileImage2" src = '.$GLOBALS['photoURL'].'>';
       echo '<button id = "informationEdit"></button>';
       echo '<p class="name">'.$GLOBALS['name'].'</p>';
-      echo '<p class="curOrganization">'.$GLOBALS['current_organization'].'</p>';
-      echo '<p class="curPosition">'.$GLOBALS['career'].'</p>';
-      echo '<p class="location">'.$GLOBALS['location'].'</p>';
+      echo '<p id="curOrganization" class="curOrganization">'.$GLOBALS['current_organization'].'</p>';
+      echo '<p id="curPosition" class="curPosition">'.$GLOBALS['career'].'</p>';
+      echo '<p id="location" class="location">'.$GLOBALS['location'].'</p>';
       echo '</div>';
       echo '<div class="lowerInfo">';
       echo '<div class="infoD"><p class="infoLabel"><img id="contacticon" src="/mainImage/airplaneicon.png">연락처</p><p class="infoDetail">'.$GLOBALS['email'].'</p></div>';
       echo '<hr id="infoSplit">';
-      echo '<div class="infoD"><p class="infoLabel"><img id="educationicon" src="/mainImage/educationicon.png">학교</p><p class="infoDetail">'.$GLOBALS['education'].'</p></div>';
+      echo '<div class="infoD"><p class="infoLabel"><img id="educationicon" src="/mainImage/educationicon.png">학교</p><p id="educationInfo" class="infoDetail">'.$GLOBALS['education'].'</p></div>';
       echo '<hr id="infoSplit">';
-      echo '<div class="infoD"><p class="infoLabel"><img id="skillicon" src="/mainImage/skillicon.png">전문기술</p><p class="infoDetail">'.$GLOBALS['keyword'].'</p></div>';
+      echo '<div class="infoD"><p class="infoLabel"><img id="skillicon" src="/mainImage/skillicon.png">전문기술</p><p id="specialtyInfo" class="infoDetail">'.$GLOBALS['keyword'].'</p></div>';
       echo '<hr id="infoSplit">';
 
       echo '<div class="infoD" id="exInfo">

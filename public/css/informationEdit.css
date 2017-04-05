@@ -43,24 +43,75 @@
 	text-align: center;
 }
 #uploadContent{
+	background: #fafafa;
 	margin-top: 70px;
 }
 #infoSheet{
 	margin: auto;
+	background: white;
+	border: 1px solid #e6e6e6;
+	padding: 50px;
+	height: auto;
 	width: 500px;
 }
+.inputs{
+	height: 25px;
+	width: 220px;
+	box-shadow: 0 0 0 1px rgba(0,0,0,.1), 0 2px 3px rgba(0,0,0,.2);
+	border-radius: 3px;
+	border: 1px solid #dbdbdb;
+	margin-top: 10px;
+	padding: 0 10px;
+}
+#keyword{
+	height: 25px;
+	width: 220px;
+	box-shadow: 0 0 0 1px rgba(0,0,0,.1), 0 2px 3px rgba(0,0,0,.2);
+	border-radius: 3px;
+	border: 1px solid #dbdbdb;
+	margin-top: 10px;
+	padding: 0 10px;
+}
+
 .labels{
 	display: inline-block;
 	text-align: right;
 	width: 150px;
 	margin-right: 50px;
 }
+#careerD{
+	display: inline-block;
+	padding-bottom: 10px;
+	/*width: 500px;*/
+	margin-top: 10px;
+}
+
 img{
 	width: 100px;
 }
+button{
+	background-color: white;
+	color: black;
+	font-size: 16px;
+	width: 100px;
+	height: 30px;
+	border: 2px solid #555555;
+	border-radius: 3px;
+}
 #addExperienceD{
 	text-align: right;
+	display: inline-block;
+	width: 70px;
+}
+#addExperience{
+	border: none;
+	color: #008cba;
+}
+#positionlabel, #organizationlabel, #locationlabel, #descriptionlabel{
+	font-weight: lighter;
+	color: #999;
 }
 #editD{
 	text-align: center;
+	margin-top: 20px;
 }

@@ -72,105 +72,85 @@ class UserController extends Controller
     <link rel="icon" type="image/png" href="/mainImage/webicon_16x16.png" sizes="16x16" />
     <div id = "header">
 
+</div>
+
+<div id = "uploadContent">
+  <div id="infoSheet">
+
+    <div id = "pImage">
+      <img id='profileImagePreview' src='<?= $GLOBALS['ProfilePhotoURL']?>'>
     </div>
+    <br>
+    <div id="ProfilePhotoURLD">
+      <label class="labels" for="ProfilePhotoURL">프로파일 사진 URL</label>
+      <input class="inputs" type = "text" id = "ProfilePhotoURL" value = "<?= $GLOBALS['ProfilePhotoURL']?>"></input>
+    </div>
+    <div id="nameD">
+      <div><label class="labels" for="name">이름</label>
+        <input class="inputs" type = "text" id = "name" value = "<?= $GLOBALS['name']?>"></input>
+      </div>
+    </div><br>
+    <!-- <div id="educationD"> -->
+    <div><label class="labels" for="education">학력</label>
+      <input class="inputs" type = "text" id = "education" value = "<?= $GLOBALS['education']?>"></input><br>
+    </div>
+    <!-- <label class="labels" for="education">졸업(예정)</label><br> -->
+    <!-- <input class="inputs" type = "number" min="1900" max="2030" id = "education2" placeholder="YYYY" value = "<?= $GLOBALS['education2']?>"></input> -->
+    <!-- </div><br> -->
+    <div><label class="labels" for="">현 소속</label>
+      <input class="inputs" type = "text" id = "current_organization" value = "<?= $GLOBALS['current_organization']?>"></input>
+    </div>
+    <br>
+    <div><label class="labels" for="">현 직책</label>
+      <input class="inputs" type = "text" id = "current_position" value = "<?= $GLOBALS['career']?>"></input>
+    </div>
+    <br>
+    <div id="locationD">
+      <div><label class="labels" for="location">위치</label>
+        <input class="inputs" type = "text" id = "location" value = "<?= $GLOBALS['location']?>"></input>
+      </div>
+    </div><br>
+    <div id="keywordD">
+      <div><label class="labels" for="keyword">전문기술</label>
+        <textarea rows="3" id = "keyword" cols="30" name="contents"><?= $GLOBALS['keyword']?></textarea>
+      </div>
+    </div><br>
+    <label class="labels" id="career">경력</label>
+    
+    <div id="careerGroupD">
 
-    <div id = "uploadContent">
-      <div id="infoSheet">
-
-        <div id = "pImage">
-          <img id='profileImagePreview' src='<?= $GLOBALS['ProfilePhotoURL']?>'>
-        </div>
-        <br>
-        <div id="ProfilePhotoURLD">
-          <label class="labels" for="ProfilePhotoURL">프로파일 사진 URL</label>
-          <input class="inputs" type = "text" id = "ProfilePhotoURL" value = "<?= $GLOBALS['ProfilePhotoURL']?>"></input>
-        </div>
-        <div id="nameD">
-          <div><label class="labels" for="name">이름</label>
-            <input class="inputs" type = "text" id = "name" value = "<?= $GLOBALS['name']?>"></input>
-          </div>
-        </div><br>
-        <!-- <div id="educationD"> -->
-        <div><label class="labels" for="education">학력</label>
-          <input class="inputs" type = "text" id = "education" value = "<?= $GLOBALS['education']?>"></input><br>
-        </div>
-        <!-- <label class="labels" for="education">졸업(예정)</label><br> -->
-        <!-- <input class="inputs" type = "number" min="1900" max="2030" id = "education2" placeholder="YYYY" value = "<?= $GLOBALS['education2']?>"></input> -->
-        <!-- </div><br> -->
-        <div><label class="labels" for="">현 소속</label>
-          <input class="inputs" type = "text" id = "current_organization" value = "<?= $GLOBALS['current_organization']?>"></input>
-        </div>
-        <br>
-        <div><label class="labels" for="">현 직책</label>
-          <input class="inputs" type = "text" id = "current_position" value = "<?= $GLOBALS['career']?>"></input>
-        </div>
-        <br>
-        <div id="locationD">
-          <div><label class="labels" for="location">위치</label>
-            <input class="inputs" type = "text" id = "location" value = "<?= $GLOBALS['location']?>"></input>
-          </div>
-        </div><br>
-        <div id="keywordD">
-          <div><label class="labels" for="keyword">전문기술</label>
-            <textarea rows="3" id = "keyword" cols="30" name="contents"><?= $GLOBALS['keyword']?></textarea>
-          </div>
-        </div><br>
-        <label class="labels">경력</label>
-        <div id="careerD">
-
-          <div id="positionD">
-            <div><label class="labels" for="position">직함</label>
-              <input class="inputs" type = "text" id = "position" value = "<?= $GLOBALS['exPosition']?>"></input>
-            </div>
-          </div>
-          <div id="organizationD">
-            <div><label class="labels" for="organization">소속</label>
-              <input class="inputs" type = "text" id = "organization" value = "<?= $GLOBALS['exOrganization']?>"></input><br>
-            </div>
-          </div>
-          <div id="organizationD">
-            <div><label class="labels" for="exWorkLocation">위치</label>
-              <input class="inputs" type = "text" id = "exWorkLocation" value = "<?= $GLOBALS['exWorkLocation']?>"></input>
-            </div>
+      <div id="careerD">
+        <div id="positionD">
+          <div><label class="labels" for="position" id="positionlabel">직함</label>
+            <input class="inputs" type = "text" id = "position" value = "<?= $GLOBALS['exPosition']?>"></input>
           </div>
         </div>
-        <br>
-        <!-- <div id="workPeriodD">
-          <div id="labelEx"><label class="labels">근무기간</label></div>
+        <div id="organizationD">
+          <div><label class="labels" for="organization" id="organizationlabel">소속</label>
+            <input class="inputs" type = "text" id = "organization" value = "<?= $GLOBALS['exOrganization']?>"></input><br>
+          </div>
         </div>
-        <div id="start">
-          <div><label class="labels">시작</label></div><br>
-          <div class="start_year">
-            <div><label for="start_year">연도(YYYY)</label></div><input class="inputs" type="number" min="1900" max="2130" value = "" id = "start_year" placeholder="YYYY"></input>
+        <div id="organizationD">
+          <div><label class="labels" for="exWorkLocation" id="locationlabel">위치</label>
+            <input class="inputs" type = "text" id = "exWorkLocation" value = "<?= $GLOBALS['exWorkLocation']?>"></input>
           </div>
-          <div class="start_month">
-            <div><label for="start_month">월(MM)</label></div><input class="inputs" type="number" min="1" max="12" id = "start_month" value = "" placeholder="MM"></input>
-          </div>
-        </div><br>
-        <div id="end">
-          <div><label class="labels">종료</label></div><br>
-          <div class="end_year">
-            <div><label for="end_year">연도(YYYY)</label></div><input class="inputs" type="number" min="1900" max="2130" value = "" id = "end_year" placeholder="YYYY"></input>
-          </div>
-          <div class="end_month">
-            <div><label for="end_month">월(MM)</label></div><input class="inputs" type="number" min="1" max="12" id = "end_month" value = "" placeholder="MM"></input><br>
-          </div>
-
-        </div> -->
+        </div>
         <div id="descriptionD">
-          <div><label class="labels" for="">설명</label>
+          <div><label class="labels" for="career" id="descriptionlabel">설명</label>
             <input class="inputs" type = "text" id = "career" value = "<?= $GLOBALS['Explainn']?>" id = "career"></input><br>
           </div>
         </div>
+      </div>
 
-        <div id="addExperienceD">
-          <button id="addExperience">+추가</button><br>
-        </div>
-        <div id="editD">
-          <button id="edit">수정</button>
-        </div>
+      <div id="addExperienceD">
+        <button id="addExperience">+추가</button><br>
       </div>
     </div>
+    <div id="editD">
+      <button id="edit">수정</button>
+    </div>
+  </div>
+</div>
     <?php
     if($_SESSION['persongroup'] == "group")
       echo "<div id = 'desdescription'>";

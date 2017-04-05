@@ -180,11 +180,27 @@ Route::get('/forward',function(){
 Route::post('/msgSendDB',function(){
 	return view('msg.msgSendDB');
 });
-
+Route::get('/msgRetrieveDB',function(){
+	return view('msg.msgRetrieveDB');
+});
 Route::get('/memberLoader',function(){
 	return view('DBSelect.memberLoader');
 });
 
-Auth::routes();
+Route::get('/passwordinit',function(){
+	return view('email.passwordinit');
+});
+
+Route::get('/passwordinitemail',function(){
+	return view('email.passwordinitemail');
+});
+
+Route::get('/passwordgetinit',function(){
+	return view('email.passwordgetinit');
+});
+
+Route::post('/passwordchangedone',function(){
+	return view('email.passwordchangedone');
+});
 
 Auth::routes();

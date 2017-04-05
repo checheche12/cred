@@ -139,6 +139,11 @@ if(isset($_SESSION['is_login'])){
     <input id="signupBt" type="button" name="signupBt" value="회원가입">
   </a>
 
+  <br><br>
+  <a href = "/passwordinit" id = "pass">
+    비밀번호를 잊어버리셨나요?
+  </a>
+
 </div>
 <div class="fb-login-button" data-max-rows="1" data-size="xlarge" data-show-faces="false" data-auto-logout-link="false" onlogin="checkLoginState()" scope="public_profile,email,user_friends, publish_actions"></div>
 

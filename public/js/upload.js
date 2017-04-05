@@ -54,7 +54,7 @@ $('body').click(function(){
 
 /*Facebook API*/
 function statusChangeCallback(response) {
-    console.log(response);
+  console.log(response);
     // The response object is returned with a status field that lets the
     // app know the current login status of the person.
     // Full docs on the response object can be found in the documentation
@@ -75,18 +75,18 @@ function statusChangeCallback(response) {
               let fbFriendId= data[i].id;
               let fbFriendPicture= data[i].picture.data.url;
 
-              console.log("Name: "+fbFriendName+"| ID: "+fbFriendId+"| Picture: "+fbFriendPicture);
+              // console.log("Name: "+fbFriendName+"| ID: "+fbFriendId+"| Picture: "+fbFriendPicture);
 
               if ((fbFriendName).toLowerCase().includes(($('#email').val()).toLowerCase())){
                 Sentence = '<li class = "suggestList" id = "suggestListFb'+i+'"'+' style="cursor:pointer;"> <img src="'+fbFriendPicture+'" height="20px" width="20px"> name : '+fbFriendName+'</li>';
                 var sen = '#suggestListFb'+i;
                 $('ul').append(Sentence);
-                // console.log("clicked suggest 1 "+sen);
-
                 $(sen).bind("click",function(){
-                  // console.log("Clikcing Friend's Name");
-                  // console.log("i: "+i+" Name: "+fbFriendName + "idValue: "+sen);
+                  user_friend_list.push(fbFriendId);
+                  console.log(user_friend_list);
+                  tagFriend();
                   $('#email').val(fbFriendName);
+                  $('ul').text("");
                 });
               }
             }
@@ -99,20 +99,30 @@ function statusChangeCallback(response) {
       console.log('please log into this app');
     }
   }
+  var user_friend_list=[];
+  var tempFriendsList;
+  function tagFriend(){
+    FB.api(
+      "/me/news.publishes",
+      "POST",
+      {
+        "article": "http:\/\/credmob.com\/post?int=131"
+        // "tags":
+      },
+      function (response) {
+        if (response && !response.error) {
+          /* handle the result */
+          console.log("TAGGED SUCCESS!!!");
+        }
+      }
+      );
+  }
+
   function checkLoginState() {
     FB.getLoginStatus(function(response) {
       statusChangeCallback(response);
     });
   }
-
-function feedDialog(){
-  FB.ui({
-  method: 'feed',
-  link: 'http://www.credmob.com',
-  caption: 'An example caption',
-  to:'AaKSSlKNUIIxIHiVuwcfs3tlqb8vv6U2qlJvqV8fwpMoly9g_P8xxg5GrSkKhaVoh1lhNcOZ5gAZgKsE-ZpWKX5vGqy47yNv5Vy0JWNmpDkhrg',
-}, function(response){});
-}
 
   window.fbAsyncInit = function() {
     FB.init({
@@ -132,7 +142,7 @@ function feedDialog(){
    js.src = "//connect.facebook.net/en_US/sdk.js";
    fjs.parentNode.insertBefore(js, fjs);
  }(document, 'script', 'facebook-jssdk'));
- /*End of Facebook API*/ 
+  /*End of Facebook API*/ 
 
 //upload autocomplete
 $( "#email" ).autocomplete({
@@ -159,10 +169,10 @@ $( "#email" ).autocomplete({
         $( "#email" ).val( ui.item[1] );
         return false;
       }
-  })
-// .on( "autocompleteselect", function( event, ui ) {
-//   return false;
-// } )
+    })
+.on( "autocompleteselect", function( event, ui ) {
+  return false;
+} )
 .autocomplete( "instance" )._renderItem = function( ul, item ) {
   return $( '<li id="suggestList">' )
   .append( '<li class = "suggestList"> name : '+item[0]+' email : '+item[1]+'</li>')
@@ -217,103 +227,102 @@ $( "#email" ).autocomplete({
 var userPKArr =[];  //중복 크레딧 체크용 배열
 
 addCredit.addEventListener("click",function(){
-  feedDialog();
 
-//   var Data = {"_token" : token};
+  var Data = {"_token" : token};
 
-//   Data['email'] = Email.value;
+  Data['email'] = Email.value;
 
-//   var dC = function duplicateCheck(k){ // 중복 크레딧 체크해 주는 함수
-//     console.log(userPKArr);
-//     for(i=0;i<userPKArr.length;i++){
-//       if(userPKArr[i]==k){return true;}
-//     }
-//     return false;
-//   }
+  var dC = function duplicateCheck(k){ // 중복 크레딧 체크해 주는 함수
+    console.log(userPKArr);
+    for(i=0;i<userPKArr.length;i++){
+      if(userPKArr[i]==k){return true;}
+    }
+    return false;
+  }
 
-//   $.ajax({
-//     type:'POST',
-//     url:'/checkAddcredit',
-//     data : Data,
-//     success:function(data){
-//       var k = JSON.parse(data);
-//       if(k == 'There is no Email'){
-//         if(confirm("등록되지 않은 이메일입니다. 만일 가입자가 아닌 사람이라면 확인을 눌러주십시오") == true){
+  $.ajax({
+    type:'POST',
+    url:'/checkAddcredit',
+    data : Data,
+    success:function(data){
+      var k = JSON.parse(data);
+      if(k == 'There is no Email'){
+        if(confirm("등록되지 않은 이메일입니다. 만일 가입자가 아닌 사람이라면 확인을 눌러주십시오") == true){
 
-//           var j = "<div class = 'creditContext'>";
-//           j += ("<img class = 'xImage' id = "+NotUserCreditNumber+" src ='/mainImage/uploadImage/x-button.png'></img>");
-//           j += ("<div class='name'>"+ email.value + "</div><br>");
-//           j += ("<div class='position'>"+position.value+"</div></div>");
-//           $('#creditBox').append(j);
+          var j = "<div class = 'creditContext'>";
+          j += ("<img class = 'xImage' id = "+NotUserCreditNumber+" src ='/mainImage/uploadImage/x-button.png'></img>");
+          j += ("<div class='name'>"+ email.value + "</div><br>");
+          j += ("<div class='position'>"+position.value+"</div></div>");
+          $('#creditBox').append(j);
 
-//           var t = [email.value,position.value,NotUserCreditNumber];
-//           NotUserCreditArray.push(t);
-//           NotUserCreditNumber += 1;
-//           $(".xImage").click(function(){
-//             var xButton = $(this).closest('div');
-//             var xButtonID = $(this).attr('id');
-//             xButtonID = xButtonID * 1;
+          var t = [email.value,position.value,NotUserCreditNumber];
+          NotUserCreditArray.push(t);
+          NotUserCreditNumber += 1;
+          $(".xImage").click(function(){
+            var xButton = $(this).closest('div');
+            var xButtonID = $(this).attr('id');
+            xButtonID = xButtonID * 1;
 
-//             for(var k = 0; k<NotUserCreditArray.length;k++){
-//               if(NotUserCreditArray[k].indexOf(xButtonID)!=-1){
-//                 NotUserCreditArray.splice(k,1);
-//                 break;
-//               }
-//             }
-//             $(xButton).remove();
+            for(var k = 0; k<NotUserCreditArray.length;k++){
+              if(NotUserCreditArray[k].indexOf(xButtonID)!=-1){
+                NotUserCreditArray.splice(k,1);
+                break;
+              }
+            }
+            $(xButton).remove();
 
-//           });
+          });
 
-//           $('#email').val("");
-//           $('#position').val("");
-//         }
-//       }else if(dC(k[1])){
-//         alert("동일한 아이디가 미리 크레딧 되어있습니다. (this user is already credited)")
-//         //중복 이메일/USER PK 발견시 Alarm 또는 표시
-//       }else if(!position.value){
-//         alert("position 이 비어있습니다. (please type in position.)");
+          $('#email').val("");
+          $('#position').val("");
+        }
+      }else if(dC(k[1])){
+        alert("동일한 아이디가 미리 크레딧 되어있습니다. (this user is already credited)")
+        //중복 이메일/USER PK 발견시 Alarm 또는 표시
+      }else if(!position.value){
+        alert("position 이 비어있습니다. (please type in position.)");
 
-//       }else{
+      }else{
 
-//         var j = "<div class = 'creditContext'>";
-//         j += ("<img class = 'xImage' id = "+k[1]+" src ='/mainImage/uploadImage/x.jpg'></img>");
-//         j += ("<div class='name'>"+k[0] + "</div><br>");
-//         j += ("<div class='position'>"+position.value+"</div></div>");
-//         $('#creditBox').append(j);
+        var j = "<div class = 'creditContext'>";
+        j += ("<img class = 'xImage' id = "+k[1]+" src ='/mainImage/uploadImage/x.jpg'></img>");
+        j += ("<div class='name'>"+k[0] + "</div><br>");
+        j += ("<div class='position'>"+position.value+"</div></div>");
+        $('#creditBox').append(j);
 
-//         $(".xImage").click(function(){
-//           var xButton = $(this).closest('div');
-//           var xButtonID = $(this).attr('id');
-//           xButtonID = xButtonID * 1;
+        $(".xImage").click(function(){
+          var xButton = $(this).closest('div');
+          var xButtonID = $(this).attr('id');
+          xButtonID = xButtonID * 1;
 
-//           userPKArr = jQuery.grep(userPKArr, function(value) {
-//            return value != xButtonID;
-//          });
+          userPKArr = jQuery.grep(userPKArr, function(value) {
+           return value != xButtonID;
+         });
 
-//           for(var k = 0; k<creditArray.length;k++){
-//             if(creditArray[k].indexOf(xButtonID)!=-1){
-//               creditArray.splice(k,1);
-//               break;
-//             }
-//           }
-//           $(xButton).remove();
-//         });
+          for(var k = 0; k<creditArray.length;k++){
+            if(creditArray[k].indexOf(xButtonID)!=-1){
+              creditArray.splice(k,1);
+              break;
+            }
+          }
+          $(xButton).remove();
+        });
 
-//         var t = [k[1],position.value];
-//         creditArray.push(t);
+        var t = [k[1],position.value];
+        creditArray.push(t);
 
-//       userPKArr.push(k[1]); //중복 확인 용 array
-//       $('#email').val("");
-//       $('#position').val("");
-//       console.log("CHEKING POINT");
+      userPKArr.push(k[1]); //중복 확인 용 array
+      $('#email').val("");
+      $('#position').val("");
+      console.log("CHEKING POINT");
 
-//     }
-//   },
-//   error: function(){
-//     alert('error');
-//   }
-// })
-// $("#creditBox").css("border","1px dotted #dbdbdb");
+    }
+  },
+  error: function(){
+    alert('error');
+  }
+})
+  $("#creditBox").css("border","1px dotted #dbdbdb");
 });
 
 cancelButton.addEventListener("click",function(){

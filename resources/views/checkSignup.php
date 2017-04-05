@@ -31,11 +31,11 @@ class UserController extends Controller
             }
           }
           if($_POST['chk_info']=="personal"){
-            DB::insert('insert into userinfo (Email, Password, Name, Certification, isgroup, ProfilePhotoURL) values (?, ?, ?, ?, ?, ?)',[$_POST['emailemail'],$GLOBALS['pLock'],$_POST['namename'],0,0,$_POST['hiddenPicURL']]);
-            self::sendEmail($_POST['emailemail']);
+            DB::insert('insert into userinfo (Email, Password, Name, Certification, isgroup, ProfilePhotoURL) values (?, ?, ?, ?, ?, ?)',[$_POST['emailemail'],$GLOBALS['pLock'],$_POST['namename'],1,0,$_POST['hiddenPicURL']]);
+            //self::sendEmail($_POST['emailemail']);
 
           }else if($_POST['chk_info']=="group"){
-            DB::insert('insert into userinfo (Email, Password, Name, Certification, isgroup, ProfilePhotoURL) values (?, ?, ?, ?, ?, ?)',[$_POST['emailemail'],$GLOBALS['pLock'],$_POST['namename'],0,1,$_POST['hiddenPicURL']]);
+            DB::insert('insert into userinfo (Email, Password, Name, Certification, isgroup, ProfilePhotoURL) values (?, ?, ?, ?, ?, ?)',[$_POST['emailemail'],$GLOBALS['pLock'],$_POST['namename'],1,1,$_POST['hiddenPicURL']]);
             self::sendEmail($_POST['emailemail']);
           }
 
@@ -44,7 +44,6 @@ class UserController extends Controller
           $users = DB::select(DB::raw($Sentence));
           foreach($users as $user){$GLOBALS['userPK'] = $user->userPK;}
           DB::insert('insert into userExperience (userPK) values ('.$GLOBALS['userPK'].')');
-          echo "입력하신 이메일로 인증 메일을 발송하였습니다. 인증 확인후 사용해주시기 바랍니다.";
 
         }
         else{
@@ -58,12 +57,13 @@ class UserController extends Controller
 
       public function sendEmail($str){
 
+            echo "입력하신 이메일로 인증 메일을 발송하였습니다. 인증 확인후 사용해주시기 바랍니다.";
             $to = base64_encode($str);
           	$subject = 'CRED Certification Email';
           	$data = [
           	'title' => 'Certification URL',
           	'body' => '아래의 URL 을 클릭하시면 인증이 완료됩니다.',
-            'url' => "http://www.credmob.com/certificate?aabbcc=".$to
+            'url' => "http://www.credberry.com/certificate?aabbcc=".$to
           	];
           	return Mail::send('email.certification',$data,function($message) use($str, $subject){
           		$message->to($str)->subject($subject);

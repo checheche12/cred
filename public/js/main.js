@@ -114,3 +114,12 @@ if(Members!=undefined){
 		})
 
 }
+
+// var infoDetail = document.getElementsByClassName("infoDetail");
+
+// var education = infoDetail[1];
+// var specialty = infoDetail[2];
+
+// education.addEventListener("click", function(){
+// 	$("#searchSlot") = education.value;
+// })

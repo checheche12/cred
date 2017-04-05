@@ -85,7 +85,7 @@ Edit.addEventListener("click",function(){
 	Data['exOrganization'] = $("#organization").val();
 	Data['exWorkLocation'] = $("#exWorkLocation").val();
 	Data['explainn'] = $("#career").val();
-
+	console.log($("#location").val()+" | "+$("#position").val()+" | "+ $("#organization").val()+" | "+$("#exWorkLocation").val()+" | "+$("#career").val());
 	$.ajax({
 		type:'POST',
 		url:'/informationEdit/informationUp',
@@ -107,13 +107,13 @@ $(addExperience).click(function(){
 
 
 $(document).ready(function(){
-  $("#ProfilePhotoURL").blur(function(){
-    var urlinput = document.getElementById("ProfilePhotoURL").value;
-    console.log(urlCheck(urlinput));
-    console.log("getImage: "+getImage(urlinput));
-    $('#pImage').html(getImage(urlinput));
+	$("#ProfilePhotoURL").blur(function(){
+		var urlinput = document.getElementById("ProfilePhotoURL").value;
+		console.log(urlCheck(urlinput));
+		console.log("getImage: "+getImage(urlinput));
+		$('#pImage').html(getImage(urlinput));
       // $('#URLBox').val("");
-    });
+  });
 });
 
 

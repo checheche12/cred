@@ -238,12 +238,6 @@ button{
 #searchInfoContainer{
 	display: inline-block;
 }
-#curOrganization{
-	display: inline-block;
-}
-#curPosition{
-	display: inline-block;
-}
 .resultList{
 	border-bottom: 1px solid gainsboro;
 }
