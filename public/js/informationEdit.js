@@ -18,51 +18,72 @@ var addExperience = document.getElementById('addExperience');
 
 
 addExperience.addEventListener("click",function(){
+	$("#careerGroupD").append('<div id="careerD">'
+		+'<div id="positionD">'
+		+'<div><label class="labels" for="position" id="positionlabel">직함</label>'
+		+'<input class="inputs" type = "text" id = "position" value = ""></input>'
+		+'</div>'
+		+'</div>'
+		+'<div id="organizationD">'
+		+'<div><label class="labels" for="organization" id="organizationlabel">소속</label>'
+		+'<input class="inputs" type = "text" id = "organization" value = ""></input><br>'
+		+'</div>'
+		+'</div>'
+		+'<div id="organizationD">'
+		+'<div><label class="labels" for="exWorkLocation" id="locationlabel">위치</label>'
+		+'<input class="inputs" type = "text" id = "exWorkLocation" value = ""></input>'
+		+'</div>'
+		+'</div>'
+		+'<div id="descriptionD">'
+		+'<div><label class="labels" for="career" id="descriptionlabel">설명</label>'
+		+'<input class="inputs" type = "text" id = "career" value = "" id = "career"></input><br>'
+		+'</div>'
+		+'</div>'
+		+'</div>')
+	// var Data = {"_token" : token};
 
-	var Data = {"_token" : token};
+	// Data['exPosition'] = $("#postion").val();
+	// Data['exOrganization'] = $("#organization").val();
+	// Data['explain'] = $("#career").val();
 
-	Data['exPosition'] = $("#postion").val();
-	Data['exOrganization'] = $("#organization").val();
-	Data['explain'] = $("#career").val();
+	// var s_year = $("#start_year").val();
+	// var s_month =$("#start_month").val();
 
-	var s_year = $("#start_year").val();
-	var s_month =$("#start_month").val();
+	// var e_year = $("#end_year").val();
+	// var e_month =$("#end_month").val();
 
-	var e_year = $("#end_year").val();
-	var e_month =$("#end_month").val();
+	// s_month *= 1;
+	// e_month *= 1;
 
-	s_month *= 1;
-	e_month *= 1;
+	// if(s_month <10){
+	// 	s_month = '0'+s_month;
+	// }else{
+	// 	s_month += '';
+	// }
 
-	if(s_month <10){
-		s_month = '0'+s_month;
-	}else{
-		s_month += '';
-	}
+	// if(e_month <10){
+	// 	e_month = '0'+e_month;
+	// }else{
+	// 	e_month += '';
+	// }
 
-	if(e_month <10){
-		e_month = '0'+e_month;
-	}else{
-		e_month += '';
-	}
+	// start_date = s_year+s_month+'01';
+	// end_date = e_year+e_month+'01';
 
-	start_date = s_year+s_month+'01';
-	end_date = e_year+e_month+'01';
+	// Data['start_date'] = start_date;
+	// Data['end_date'] = end_date;
 
-	Data['start_date'] = start_date;
-	Data['end_date'] = end_date;
-
-	$.ajax({
-		type:'POST',
-		url:'/informationEdit/informationCareer',
-		data : Data,
-		success:function(data){
-			alert(data);
-		},
-		error: function(){
-			alert('error 서버 연결 안됨!');
-		}
-	})
+	// $.ajax({
+	// 	type:'POST',
+	// 	url:'/informationEdit/informationCareer',
+	// 	data : Data,
+	// 	success:function(data){
+	// 		alert(data);
+	// 	},
+	// 	error: function(){
+	// 		alert('error 서버 연결 안됨!');
+	// 	}
+	// })
 
 });
 
@@ -81,11 +102,19 @@ Edit.addEventListener("click",function(){
 	Data['location'] = $("#location").val();
 	Data['education2'] = $("#education2").val();
 
-	Data['exPosition'] = $("#position").val();
-	Data['exOrganization'] = $("#organization").val();
-	Data['exWorkLocation'] = $("#exWorkLocation").val();
-	Data['explainn'] = $("#career").val();
-	console.log($("#location").val()+" | "+$("#position").val()+" | "+ $("#organization").val()+" | "+$("#exWorkLocation").val()+" | "+$("#career").val());
+var experienceArr = [];
+
+for(var i = 0; i < $("input#position.inputs").length;i++){
+	var tempArr = [];
+	tempArr.push($("input#position.inputs").eq(i).val());
+	tempArr.push($("input#organization.inputs").eq(i).val());
+	tempArr.push($("input#exWorkLocation.inputs").eq(i).val());
+	tempArr.push($("input#career.inputs").eq(i).val());
+	experienceArr.push(tempArr);
+}
+
+	Data['experienceArr'] = experienceArr;
+	console.log(experienceArr);
 	$.ajax({
 		type:'POST',
 		url:'/informationEdit/informationUp',

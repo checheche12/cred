@@ -99,7 +99,7 @@ if(fixedButton != null){
 	fixedButton.addEventListener("click",function(){
 			post_to_url('./fixed', ArtPK, 'get');
 	});
-	var Data3 = {"ArtPK" : ArtPK};
+	var Data3 = {"int" : ArtPK};
 	deleteButton.addEventListener("click",function(){
 		$.ajax({
 			url:'./delete',

@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
-session_start();
-
 class RunQuery extends Controller
 {
         /**
@@ -52,17 +50,16 @@ class RunQuery extends Controller
           $users = DB::insert(DB::raw($Sentence));
 
           /* userExperience Table 수정*/
-          $Sentence = "update userExperience set Position = '".$_POST['exPosition']."' where userPK = '".$_SESSION['userPK']."'";
-          $users = DB::update(DB::raw($Sentence));
+          if(isset($_POST['experienceArr'])){
+            $Array = $_POST['experienceArr'];
 
-          $Sentence = "update userExperience set Organization = '".$_POST['exOrganization']."' where userPK = '".$_SESSION['userPK']."'";
-          $users = DB::update(DB::raw($Sentence));
+            $Sentence = "delete from userExperience where userPK = ".$_SESSION['userPK'];
+            $users = DB::delete(DB::raw($Sentence));
 
-          $Sentence = "update userExperience set WorkLocation = '".$_POST['exWorkLocation']."' where userPK = '".$_SESSION['userPK']."'";
-          $users = DB::update(DB::raw($Sentence));
-
-          $Sentence = "update userExperience set Explainn = '".$_POST['explainn']."' where userPK = '".$_SESSION['userPK']."'";
-          $users = DB::update(DB::raw($Sentence));
+            foreach ($Array as $item) { //0 position, 1 organization, 2 exWorkLocation, 3 Detail
+              DB::insert('insert into userExperience (userPK, Position, Organization, WorkLocation, Explainn) values (?, ?, ?, ?, ?)',array($_SESSION['userPK'],$item[0],$item[1],$item[2],$item[3]));
+            }
+          }
         }
       }
 

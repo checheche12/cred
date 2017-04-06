@@ -53,7 +53,7 @@ if(Home!=undefined){
 if(profileImage!=undefined){
 		profileImage.addEventListener("click", function() {
 
-			$(location).attr('href', './');
+			$(location).attr('href', './main');
 
 		});
 }
@@ -61,7 +61,7 @@ if(profileImage!=undefined){
 if(profileName != undefined){
 		profileName.addEventListener("click", function() {
 
-			$(location).attr('href', './');
+			$(location).attr('href', './main');
 
 		});
 }

@@ -10,21 +10,6 @@
        *
        * @return Response
        */
-      public function makeNewArt()
-      {
-            $Sentence = "select userPK from workDB where artPK = ".$_GET['int'];
-            $users = DB::select(DB::raw($Sentence));
-            $checkInfo = false;
-            foreach($users as $user){
-                if($user->userPK == $_SESSION['userPK']){
-                  $checkInfo = true;
-                }
-            }
-            if($checkInfo==false){
-              header('Location: ./main');
-              exit;
-            }
-      }
 
       public function textInfo()
       {
@@ -64,7 +49,6 @@
   }
 
   $A = new makeNewArtClass();
-  $A->makeNewArt();
   $A->textInfo();
 ?>
 <link rel="icon" type="image/png" href="/mainImage/webicon_16x16.png" sizes="16x16" />

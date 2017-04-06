@@ -15,6 +15,7 @@
 	top: 0;
 	left: 0;
 	right: 0;
+	z-index: 99;
 }
 .searchSlot {
 	width: 300px;
@@ -220,21 +221,6 @@ button{
 	font-weight: bold;
 	font-size: 15px; 
 }
-#searchDropdown{
-	position: relative;
-	display: 
-	inline-block;
-}
-#searchDropdown_content{
-	background-color: white;
-	border:1px solid #008cba; 
-	border-radius: 3px;
-	position: absolute; 
-	z-index: 1; 
-	text-align: left;
-	display: none; 
-	width: 500px;
-}
 #searchInfoContainer{
 	display: inline-block;
 }
@@ -252,4 +238,9 @@ ul{
 	width: 600;
 	max-height: 400;
 	overflow: auto;
+	position: fixed;
+	background: white;
+	border:1px solid #008cba; 
+	border-radius: 3px;
+	z-index: 100;
 }

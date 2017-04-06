@@ -36,7 +36,7 @@ class LoginController extends Controller
               try{
                 if(!isset($GLOBALS['IDCheck'])){
                   echo "Login Error!";
-                  header('Location: ./');
+                  header('Location: ./login');
                   exit;
                 }
                 $idid = $GLOBALS['IDCheck'];
@@ -52,9 +52,9 @@ class LoginController extends Controller
                 if(($_POST['ID']==$idid)&&($PasswordLock==$pwpw)) {
                     if($GLOBALS['Certification']=="0"){
                         echo "인증되지 않은 이메일입니다. 인증 이후에 사용해주세요.";
-                        echo "id 혹은 비밀번호가 틀렸습니다. 3초뒤에 메인화면으로 돌아갑니다.";
+                        echo "id 혹은 비밀번호가 틀렸습니다. 3초뒤에 로그인화면으로 돌아갑니다.";
                         echo "<script type='text/javascript'>setTimeout(function(){
-                            document.location.href='./';
+                            document.location.href='./login';
                         },3000);</script>";
                     }else{
 
@@ -69,19 +69,19 @@ class LoginController extends Controller
                       $_SESSION['isGroup'] = "Group";
                     }
 
-                    header('Location: ./main');
+                    header('Location: ./');
                     exit;
                   }
                 }else{
                     header('Location: ./');
-                    echo "id 혹은 비밀번호가 틀렸습니다. 3초뒤에 메인화면으로 돌아갑니다.";
+                    echo "id 혹은 비밀번호가 틀렸습니다. 3초뒤에 로그인화면으로 돌아갑니다.";
                     echo "<script type='text/javascript'>setTimeout(function(){
-                        document.location.href='./';
+                        document.location.href='./login';
                     },3000);</script>";
                 }
               }catch(Exception $e){
                 echo "Login Error!";
-                header('Location: ./');
+                header('Location: ./login');
                 exit;
               }
 

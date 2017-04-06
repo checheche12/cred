@@ -39,6 +39,8 @@
 .creditFrame {
 	border: 1px solid black;
 	border-color: #c0c0c0;
+	background: black;
+	color: white;
 	overflow: hidden;
 	width: 500px;
 	padding-bottom: 30px;

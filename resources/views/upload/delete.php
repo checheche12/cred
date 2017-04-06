@@ -3,19 +3,6 @@
   use Illuminate\Support\Facades\DB;
   use App\Http\Controllers\Controller;
 
-  $Sentence = "select userPK from workDB where artPK = ".$_GET['ArtPK'];
-  $users = DB::select(DB::raw($Sentence));
-  $checkInfo = false;
-  foreach($users as $user){
-      if($user->userPK == $_SESSION['userPK']){
-        $checkInfo = true;
-      }
-  }
-  if($checkInfo==false){
-    header('Location: ./main');
-    exit;
-  }
-
   class DeleteArtClass extends Controller
   {
       /**
@@ -25,13 +12,13 @@
        */
       public function DeleteArt()
       {
-          $Sentence = "delete from totalart where ArtPK = ".$_GET['ArtPK'];
+          $Sentence = "delete from totalart where ArtPK = ".$_GET['int'];
           $users = DB::delete(DB::raw($Sentence));
 
-          $Sentence = "delete from workDB where ArtPK = ".$_GET['ArtPK'];
+          $Sentence = "delete from workDB where ArtPK = ".$_GET['int'];
           $users = DB::delete(DB::raw($Sentence));
 
-          $Sentence = "delete from artDB where ArtPK = ".$_GET['ArtPK'];
+          $Sentence = "delete from artDB where ArtPK = ".$_GET['int'];
           $users = DB::delete(DB::raw($Sentence));
       }
 

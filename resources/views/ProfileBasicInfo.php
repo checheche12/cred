@@ -31,22 +31,15 @@ class checkAddCredit extends Controller
               // $GLOBALS['keyword'] = "";
           $GLOBALS['keywordArr'] =array();
           foreach($users2 as $usera){
-                // $a=$usera->keyword;
-                // $GLOBALS['keyword'].=$a.',';
             array_push($GLOBALS['keywordArr'], $usera->keyword);
           }
 
-              // $GLOBALS['keyword'] = substr($GLOBALS['keyword'],0,-1);
-
           $Sentence2 = "select * from userExperience where userPK = ".$_SESSION['userPK'];
           $users2 = DB::select(DB::raw($Sentence2));
-          $GLOBALS['exOrganization'] = "";
-          $GLOBALS['exPosition'] = "";
-          $GLOBALS['exWorkLocation'] = "";
+
+          $GLOBALS['experienceArr']=array();
           foreach($users2 as $user){
-            $GLOBALS['exOrganization'] = $user->Organization;
-            $GLOBALS['exPosition'] = $user->Position;
-            $GLOBALS['exWorkLocation'] = '- '.$user->WorkLocation;
+            array_push($GLOBALS['experienceArr'],array($user->Position,$user->Organization,$user->WorkLocation));
           }
 
           if($_SESSION['isGroup']=="Group"){
@@ -76,10 +69,6 @@ class checkAddCredit extends Controller
         </style>
       </head>
       <link rel="stylesheet" type ="text/css" href="css/ProfileBasicInfo.css">
-      <script type="text/javascript">
-
-        ;
-      </script>
       <?php
       echo '<div class="profileFrame">';
       echo '<div class="upperInfo">';
@@ -106,30 +95,35 @@ class checkAddCredit extends Controller
       echo '<hr id="infoSplit">';
 
       echo '<div class="infoD" id="exInfo">
-      <p class="infoLabel"><img id="workicon" src="/mainImage/workicon.png">경력</p>
-      <div class="exInfoDetail">
+      <p class="infoLabel"><img id="workicon" src="/mainImage/workicon.png">경력</p>';
+      $i = 0;
+      foreach ($GLOBALS['experienceArr'] as $temp) {
+        echo'<div class="exInfoDetail">
         <div class="ex_pos_org">
-          <p class="exP">'.$GLOBALS['exPosition'].'&nbsp;</p>
-          <p class="exP" class="exOrganization">'.$GLOBALS['exOrganization'].'</p>
-        </div><p class="exWorkLocation">'.$GLOBALS['exWorkLocation'].'</p></div></div>';
-        echo '</div>';
-        if($_SESSION['isGroup']=="Group"){
-          echo '<p class="infoLabel"><img id="workicon" src="/mainImage/workicon.png">설명</p>';
-          echo '<p class="description">'.$GLOBALS['description'].'&nbsp;</p>';
-        }
-        echo '</div>';
+          <p id="exPosition'.$i.'" class="exP">'.$temp[0].'&nbsp;</p>
+          <p id="exOrganization'.$i.'" class="exP" class="exOrganization">'.$temp[1].'</p>
+        </div><p id="exWorkLocation'.$i.'" class="exWorkLocation">'.$temp[2].'</p></div>';
+        $i++;
+      }
 
-        ?>
+      echo '</div>';
+      if($_SESSION['isGroup']=="Group"){
+        echo '<p class="infoLabel"><img id="workicon" src="/mainImage/workicon.png">설명</p>';
+        echo '<p class="description">'.$GLOBALS['description'].'&nbsp;</p>';
+      }
+      echo '</div>';
 
-        <script>
-          var another = 'no';
-          var specialty = <?php echo json_encode($GLOBALS['keywordArr'])?>;
+      ?>
+
+      <script>
+        var another = 'no';
+        var specialty = <?php echo json_encode($GLOBALS['keywordArr'])?>;
           //array 로 뜸.. 왜그러지?
         </script>
         <script type = "text/javascript" src = "js/ProfileBasicInfo.js"></script>
-        <script type="text/javascript">//FOUC(Flash Of Unstyled Content) 방지 용
+      <script type="text/javascript">//FOUC(Flash Of Unstyled Content) 방지 용
 
-          $(function(){
-            $('.profileFrame').css('display','block');
-          });
-        </script>
+        $(function(){
+          $('.profileFrame').css('display','block');
+        });
+      </script>

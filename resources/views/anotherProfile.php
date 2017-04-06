@@ -66,9 +66,9 @@ class UserController extends Controller
         </ul>
       </div>
       <div id = "profileBody">
-        <?php
+      <div id = "projectLayout"></div>
+      <div id = "bridgeLayout"></div>
 
-        ?>
       </div>
     </div>
 
