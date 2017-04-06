@@ -37,6 +37,10 @@ Route::get('/administratordeletepost',function(){
 	return view('administrator.deletepost');
 });
 
+Route::post('/administratoruploadindex',function(){
+	return view('administrator.uploadindex');
+});
+
 
 // 일반 유저들 사용하는 router
 

@@ -1,4 +1,26 @@
 <?php
+namespace App\Http\Controllers;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+
+class Mainpost extends Controller
+{
+    public function post()
+    {
+
+        $sentence = "select * from indexMain";
+        $a = DB::select($sentence);
+        $GLOBALS['artURL'] = "";
+        $GLOBALS['artText'] = "";
+        foreach($a as $b){
+          $GLOBALS['artURL'] = $b->url;
+          $GLOBALS['artText'] = $b->artText;
+        }
+
+    }
+}
+$A = new Mainpost();
+$A->post();
 
  ?>
 
@@ -16,20 +38,11 @@
 	<div id="ContentWidth">
 		<div id="MainContent_Frame">
 				<div id="MainContent">
-					<img id="MainImage" src="https://i.mdel.net/i/mdx/50732-2000x1184.jpg">
+					<img id="MainImage" src=<?=$GLOBALS['artURL']?>>
 					<div id="quoteBox">
-						<p id="quoteTitle">A Woman</p>
-						<div id="Main_position_Frame">
-							<p class="Main_position"> Director</p>
-							<p class="Main_position">Photographer</p>
-							<p class="Main_position">Model</p>
-						</div>
-						<div id="Main_splitter"></div>
-						<div id="Main_name_Frame">
-							<p class="Main_name">The Boss</p>
-							<p class="Main_name">Shooter</p>
-							<p class="Main_name">Target</p>
-						</div>
+              <?php
+                echo $GLOBALS['artText'];
+              ?>
 					</div>
 				</div>
 			</a>

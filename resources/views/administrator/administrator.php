@@ -21,6 +21,9 @@ if($_SESSION['persongroup'] != "administrator"){
 
 <script type = "text/javascript" src = "js/jquery-3.1.1.min.js"></script>
 <script>
+
+//유저 관리
+
 $("#userinquiry").click(function(){
   $('#controller').text('');
 
@@ -51,6 +54,8 @@ $("#userinquiry").click(function(){
   })
        	// $(location).attr('href','/bridge');
 })
+
+//게시물 관리
 
 $("#postinquiry").click(function(){
   $('#controller').text('');
@@ -83,4 +88,44 @@ $("#postinquiry").click(function(){
   })
        	// $(location).attr('href','/bridge');
 })
+
+//공지 작성
+
+$("#writenoti").click(function(){
+  $('#controller').text('');
+
+  var string = '<br><br>URL <input id = "T1" type = "text" style = "width : 500px "><br><br><br>';
+  string += 'Text <textarea id = "T2" row = "100" cols = "100"';
+  string += "style = 'margin : 0px; width : 700px; height : 300px;'>";
+  string += '</textarea><br><br>';
+  string += '<button id = "sub">등록</button>&nbsp;&nbsp;';
+  string += '<button id = "pre">미리보기</button>';
+  string += '<div id = "preloader"></div>';
+
+    $('#controller').append(string);
+
+    $('#sub').click(function(){
+        var T1T2 = {"url" : $("#T1").val()};
+        T1T2['TEXT'] = $("#T2").val();
+
+        $.ajax({
+            type : 'post',
+            url: '/administratoruploadindex',
+            data: T1T2,
+            success:function(data){
+                alert('공지가 성공적으로 등록되었습니다.');
+                $('#controller').text('');
+            }
+        });
+
+    });
+
+
+    $('#pre').click(function(){
+
+    });
+
+});
+
+
 </script>
