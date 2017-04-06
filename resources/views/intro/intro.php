@@ -8,7 +8,7 @@ class Mainpost extends Controller
     public function post()
     {
 
-        $sentence = "select * from indexMain";
+        $sentence = "select * from indexMain order by indexPK desc limit 1";
         $a = DB::select($sentence);
         $GLOBALS['artURL'] = "";
         $GLOBALS['artText'] = "";
@@ -47,92 +47,16 @@ $A->post();
 				</div>
 			</a>
 		</div>
+
+
 		<p class="title">Spotlight</p>
 		<div id="RecentWorks_Frame">
-			<div class="RecentWork">
-				<a href="">
-					<img class="RecentWorkPic" src="https://i.mdel.net/i/mdx/50247-265x224.jpg">
-					<p class="workReference">- Huan Lim's participated work</p>
-					<div class="credit">
-						<div class="position_Frame">
-							<p class="position"> Director</p>
-							<p class="position">Photographer</p>
-							<p class="position">Model</p>
-						</div>
-						<div class="splitter">
-						</div>
-						<div class="name_Frame">
-							<p class="name">The Boss</p>
-							<p class="name">Shooter</p>
-							<p class="name">Target</p>
-						</div>
-					</div>
-				</a>
-			</div>
-			<div class="RecentWork">
-				<a href="">
-					<img class="RecentWorkPic" src="https://i.mdel.net/i/mdx/50600-265x224.jpg">
-					<p class="workReference">- Ive Lee's participated work</p>
-					<div class="credit">
-						<div class="position_Frame">
-							<p class="position"> Director</p>
-							<p class="position">Photographer</p>
-							<p class="position">Model</p>
-						</div>
-						<div class="splitter">
-						</div>
-						<div class="name_Frame">
-							<p class="name">The Boss</p>
-							<p class="name">Shooter</p>
-							<p class="name">Target</p>
-						</div>
-					</div>
-				</a>
-			</div>
-			<div class="RecentWork">
-				<a href="">
-					<img class="RecentWorkPic" src="https://i.mdel.net/i/mdx/50375-265x224.jpg">
-					<p class="workReference">- HwaLang Kim's participated work</p>
-					<div class="credit">
-						<div class="position_Frame">
-							<p class="position"> Director</p>
-							<p class="position">Photographer</p>
-							<p class="position">Model</p>
-						</div>
-						<div class="splitter">
-						</div>
-						<div class="name_Frame">
-							<p class="name">The Boss</p>
-							<p class="name">Shooter</p>
-							<p class="name">Target</p>
-							<p class="name">The Boss</p>
-							<p class="name">Shooter</p>
-							<p class="name">Target</p>
-						</div>
-					</div>
-				</a>
-			</div>
-			<div class="RecentWork">
-				<a href="">
-					<img class="RecentWorkPic" src="https://i.mdel.net/i/mdx/50388-265x224.jpg">
-					<p class="workReference">- David Choi's participated work</p>
-					<div class="credit">
-						<div class="position_Frame">
-							<p class="position"> Director</p>
-							<p class="position">Photographer</p>
-							<p class="position">Model</p>
-						</div>
-						<div class="splitter">
-						</div>
-						<div class="name_Frame">
-							<p class="name">The Boss</p>
-							<p class="name">Shooter</p>
-							<p class="name">Target</p>
-						</div>
-					</div>
-				</a>
-			</div>
+          <?php
+              include_once('../resources/views/administrator/getspotlight.php');
+           ?>
 		</div>
+
+
 <p class="title">Recent Works</p>
 		<div id="RecentWorks_Frame">
 			<div class="RecentWork">

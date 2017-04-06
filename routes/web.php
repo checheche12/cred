@@ -41,6 +41,17 @@ Route::post('/administratoruploadindex',function(){
 	return view('administrator.uploadindex');
 });
 
+Route::get('/getspotlight',function(){
+	return view('administrator.getspotlight');
+});
+
+Route::post('/uploadSpotlight',function(){
+	return view('administrator.uploadSpotlight');
+});
+
+
+
+
 
 // 일반 유저들 사용하는 router
 

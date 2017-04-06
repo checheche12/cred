@@ -9,10 +9,12 @@ if($_SESSION['persongroup'] != "administrator"){
 }
 
 ?>
-
+<link rel="stylesheet" type ="text/css" href="css/intro2.css?v=1">
 <button id = "userinquiry">유저 조회</button>
 <button id = "postinquiry">게시물 조회</button>
 <button id = "writenoti">공지 작성</button>
+<button id = "Spotlight">스포트라이트 변경</button>
+<button id = "RecentWork">최근작품 변경</button>
 <button id = "statistics">통계</button>
 
 <div id = "controller">
@@ -123,9 +125,60 @@ $("#writenoti").click(function(){
 
     $('#pre').click(function(){
 
+        var kk = '<div id="MainContent_Frame">';
+        kk += '<div id="MainContent">'
+        kk += '<img id="MainImage" src= '+$("#T1").val()+'>';
+        kk += '<div id="quoteBox">';
+        kk += $("#T2").val();
+        kk += '</div>';
+        kk += '</div>';
+        kk += '</div>';
+
+       $("#preloader").html(kk);
+
     });
 
 });
 
+
+$("#Spotlight").click(function(){
+
+  $('#controller').text('');
+
+  $.ajax({
+      type : 'get',
+      url : "/getspotlight",
+      success:function(data){
+        $("#controller").append(data);
+
+          var kk = '<br><br><br><input id = "firstS" type = "text">&nbsp;&nbsp;';
+          kk += '<input id = "secondS" type = "text">&nbsp;&nbsp;';
+          kk += '<input id = "thirdS" type = "text">&nbsp;&nbsp;';
+          kk += '<input id = "fourthS" type = "text">';
+          kk += '<button id = "subS">스포트라이트 등록하기</button>';
+          $("#controller").append(kk);
+
+          $("#subS").click(function(){
+                var Spotdata = {"first" : $('#firstS').val(), "second" : $('#secondS').val(), "third" : $('#thirdS').val(), "fourth" : $('#fourthS').val()};
+                $.ajax({
+                    type : 'post',
+                    data : Spotdata,
+                    url : '/uploadSpotlight',
+                    success:function(data){
+                        alert("스포트라이트 등록에 성공했습니다.");
+                        $('#controller').text('');
+                    }
+                })
+
+          });
+
+      }
+  });
+
+});
+
+$("#RecentWork").click(function(){
+
+});
 
 </script>

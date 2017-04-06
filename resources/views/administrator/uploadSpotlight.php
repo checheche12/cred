@@ -12,7 +12,7 @@ class getAlluser extends Controller
 {
     public function getUser()
     {
-        $insertResult = DB::insert('insert into indexMain (url,artText,updatedate) values (?,?,?)',[$_POST['url'],$_POST['TEXT'],date("Y-m-d H:i:s")]);
+        $insertResult = DB::insert('insert into Spotlight (artPK1,artPK2,artPK3,artPK4,updatedate) values (?,?,?,?,?)',[$_POST['first'],$_POST['second'],$_POST['third'],$_POST['fourth'],date("Y-m-d H:i:s")]);
     }
 }
 $A = new getAlluser();

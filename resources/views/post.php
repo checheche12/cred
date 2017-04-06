@@ -21,6 +21,9 @@ class UserController extends Controller
           $GLOBALS['uploadDate'] = $user->uploaddate;
           $GLOBALS['lastloadDate'] = $user->lastloaddate;
           $GLOBALS['Description'] = $user->description;
+          $GLOBALS['uploader'] = $user->uploader;
+          $GLOBALS['uploaderName'] = $user->uploaderName;
+          $GLOBALS['views'] = $user->views;
         }
       }
 
@@ -29,13 +32,13 @@ class UserController extends Controller
         $users2 = DB::select(DB::raw($Sentence2));
         $a = 1;
         foreach($users2 as $user){
-          echo "<p class = 'nameFrame' id = ".$user->userPK.">".$user->Name."</p>";
+          echo "<p class = 'name' id = ".$user->userPK.">".$user->Name."</p>";
           $a+=1;
         }
         $Sentence2 = "select tagUser from TagNotUser where artPK =".$_GET['int'];
         $users2 = DB::select(DB::raw($Sentence2));
         foreach($users2 as $user){
-          echo "<p class = 'nameFrame2'>".$user->tagUser."</p>";
+          echo "<p class = 'name'>".$user->tagUser."</p>";
         }
       }
 
@@ -43,12 +46,12 @@ class UserController extends Controller
         $Sentence2 = "select position from workDB as A join userinfo as B ON A.userPK = B.userPK and artPK = ".$_GET['int'];
         $users2 = DB::select(DB::raw($Sentence2));
         foreach($users2 as $user){
-          echo "<p class = 'positionFrame'>".$user->position."</p>";
+          echo "<p class = 'position'>".$user->position."</p>";
         }
         $Sentence2 = "select position from TagNotUser where artPK =".$_GET['int'];
         $users2 = DB::select(DB::raw($Sentence2));
         foreach($users2 as $user){
-          echo "<p class = 'positionFrame'>".$user->position."</p>";
+          echo "<p class = 'position'>".$user->position."</p>";
         }
       }
 
@@ -60,7 +63,14 @@ class UserController extends Controller
           array_push($GLOBALS['userPKArray'],$user->userPK);
         }
       }
+      public function countViews(){
+        $Sentence = "update totalart set views = views + 1 where artPK = '".$_GET['int']."'";
+        $users = DB::update(DB::raw($Sentence));
+      }
     }
+    $A = new UserController();
+    $A->countViews(); //조회수 때문에 index 앞에 위치함
+    $A->index();
 
     ?>
 
@@ -81,78 +91,132 @@ class UserController extends Controller
     <div id ='header'>
 
     </div>
-    <div><button id="close">X</button></div>
+    <!-- <div><button id="close">X</button></div>
 
-    <!--
+    
         아래에 있는 코드는 DB에서 값을 가져 온 뒤에 동적으로 수정해야 한다. (수정 2)
       -->
 
       <div id = "ContentMain">
-        <div id = "first">
-          <?php
-          $A = new UserController();
-          $A->index();
-          ?>
-          <script>
-            var SourceURL = "<?= $GLOBALS['ARTURL'] ?>";
-          </script>
-
-        </div>
-
-        <div id = "second">
-          <?php
-          echo $GLOBALS['Title'];
-          ?>
-        </div>
-
-        <div id = "third">
+        <div id = "LeftCont">
           <div class="outCreditFrame">
-
             <div class="creditFrame">
-              <p class="credit">Credit</p>
+              <p class="creditLabel">Credit</p>
               <div class="positionFrame" id="positionFrame">
-                <p class="titleText">position</p>
                 <?php
                 $A->getWorkPositionList();
                 ?>
               </div>
               <div class="nameFrame" id="nameFrame">
-                <p class="titleText">name</p>
                 <?php
                 $A->getWorkNameList();
                 ?>
               </div>
             </div>
-          </div>
-          <div id="description">"<?= $GLOBALS['Description']?>"</div>
-        </div>
+          </div> <!-- outCreditFrame end -->
+          <div id="officialInfo">
+            <div id = "officialDesc">
+              <p id="workTitle"><!-- AKMU - How People Move --><?php echo $GLOBALS['Title'];?></p>
+              <div id="postInfo">
+                <p id="postDateLabel" class="postInfo">게시일:&nbsp;</p>
+                <p id="postDate" class="postInfo">
+                  <?php $t = strtotime($GLOBALS['uploadDate']);
+                  echo date('Y/m/d',$t);?>
+                </p>
+                <p id="postWriterLabel" class="postInfo">작성자:&nbsp;</p>
+                <p id="postWriter" class="postInfo"><?= $GLOBALS['uploaderName'] ?></p>
+              </div>
+              <div id="viewD">
+                <p id="viewLabel" class="view">조회수&nbsp;</p>
+                <p id="viewNum" class="view"><?php echo number_format($GLOBALS['views'],0,"",",");?></p>
+              </div>
+              <div id="descriptionFrame">
+                <p id="description"><!-- AKMU | #AKMU #악뮤 #악동뮤지션 #사움직 #사춘기 #악뮤사춘기 #思春記 #上권 #COMEBACK #ONLINE0504 #0AM #OFFLINE0509 @akmu_suhyun @akmuchanhk --><?= $GLOBALS['Description']?></p></div>
+              </div>
+              <hr id="splitter">
+              <div id="officialAnswers">
+                <div id="noAnswer">
+                  <img id="noAnswerImg" src="http://dxlfb468n8ekd.cloudfront.net/gsc/P9T9E7/f2/0f/ab/f20fab8c10cd41579e7b9b999babf893/images/post_page3/u16.png?token=1ecd817523b2c668d3ecd2689a1d833b">
+                  <p id="noAnswerP">아직 답변된 질문이 없습니다.</p>
+                </div>
+              </div>
+            </div>
+            <div id="unofficialOfficialInfo">
+              <div id="UOIbtFrame">
+                <button id="helpUOI">설명</button>
+                <button id="editUOIBt">[편집]</button>
+              </div>
+              <div id="noUOI">
+                <img id="noUOIImg" src="http://dxlfb468n8ekd.cloudfront.net/gsc/P9T9E7/f2/0f/ab/f20fab8c10cd41579e7b9b999babf893/images/post_page3/u16.png?token=1ecd817523b2c668d3ecd2689a1d833b">
+                <p id="noUOIP">아직 작성된 답변이 없습니다.</p>
+              </div>
+            </div>
 
-        <!--
-          수정, 삭제 버튼이 여기서 달려있게 된다.
-        -->
-        <div>
-          <?php
-          $A->getUserCreditList();
-          foreach($GLOBALS['userPKArray'] as $user){
-            if($user == $_SESSION['userPK']){
-              echo '<button id="fixed">수정</button>';
-              echo '<button id="delete">삭제</button>';
-              break;
+          </div>  <!-- LeftCont end -->
+
+          <div id = "RightCont">
+            <div id="workFrame">
+              <!-- <iframe src="https://player.vimeo.com/video/176567696" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> -->
+            </div>
+            <div id="QFrame">
+              <div id="QCountFrame">
+                <p id="QCount">질문 -&nbsp;</p>
+                <p id="QNum">28개</p>
+              </div>
+              <div id="QInputFrame">
+                <img id="profilePic" src="http://dxlfb468n8ekd.cloudfront.net/gsc/P9T9E7/f2/0f/ab/f20fab8c10cd41579e7b9b999babf893/images/profile1/u63.png?token=2bea31345d6e96cc2c01e5a8ba077170">
+                <input id="QInput" type="text" name="Q" placeholder="제작자들에게 직접 질문해 보세요.">
+              </div>
+              <div id="submitFrame">
+                <button id="askBt">등록</button>
+              </div>
+              <div id="QListFrame">
+                <div id="Qcard" class="Qcard">
+                  <img id="Qpics" src="http://d2v8ggac1o0f6z.cloudfront.net/gsc/P9T9E7/f2/0f/ab/f20fab8c10cd41579e7b9b999babf893/images/post_page3/u45.jpg?token=b65d7835de90b39dedd8ae36aeb08b94">
+                  <p id="Qs" class="Qs">어떤 카메라를 사용했나요?</p>
+                  <button id="answerBt">▶</button>
+                </div>
+                <div id="Qcard" class="Qcard">
+                  <img id="Qpics" src="http://d26uhratvi024l.cloudfront.net/gsc/P9T9E7/f2/0f/ab/f20fab8c10cd41579e7b9b999babf893/images/profile_bjlim/u78.png?token=019fc7a88ca4951a32cffa58d59cd217">
+                  <p id="Qs" class="Qs">몇명 정도 작업했나요?</p>
+                  <button id="answerBt">▶</button>
+                </div>
+                <div id="Qcard" class="Qcard">
+                  <img id="Qpics" src="http://dxlfb468n8ekd.cloudfront.net/gsc/P9T9E7/f2/0f/ab/f20fab8c10cd41579e7b9b999babf893/images/bridge/u86.png?token=5ca87733148a4aebba76777a869b9795">
+                  <p id="Qs" class="Qs">오마쥬한 작품이 있나요?</p>
+                  <button id="answerBt">▶</button>
+                </div>
+              </div>
+            </div>
+
+          </div>  <!-- RightCont end -->
+
+
+          <!--수정, 삭제 버튼이 여기서 달려있게 된다.-->
+          <div>
+            <?php
+            $A->getUserCreditList();
+            foreach($GLOBALS['userPKArray'] as $user){
+              if($user == $_SESSION['userPK']){
+                echo '<button id="fixed">수정</button>';
+                echo '<button id="delete">삭제</button>';
+                break;
+              }
             }
-          }
-          ?>
+            ?>
+          </div>
+
         </div>
 
-      </div>
+        <script>
+          var ArtPK =<?=$_GET['int']?>;
+          var userPKArr = new Array("<?=implode("\",\"" , $GLOBALS['userPKArray']);?>");
+          var SourceURL = "<?= $GLOBALS['ARTURL'] ?>";
+        </script>
 
-      <script>
-        var ArtPK =<?=$_GET['int']?>;
-        var userPKArr = new Array("<?=implode("\",\"" , $GLOBALS['userPKArray']);?>");
-      </script>
-
-      <script type = "text/javascript" src = "js/jquery-3.1.1.min.js"></script>
-      <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-      <script type = "text/javascript" src = "js/post.js"></script>
+        <script type = "text/javascript" src = "js/jquery-3.1.1.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script type = "text/javascript" src = "js/post.js"></script>
    <script type="text/javascript">//FOUC(Flash Of Unstyled Content) 방지 용
     $(function(){
       $('.noJs').css('display','block');

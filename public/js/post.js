@@ -6,7 +6,7 @@ $(document).ready( function() {
 });
 
 var addCreditButton = document.getElementById('addCredit');
-var closeButton = document.getElementById('close');
+// var closeButton = document.getElementById('close');
 
 var position = document.getElementById('position');
 
@@ -39,11 +39,11 @@ for (var i = 1;i<creditNameArray.length;i++){
 }
 
 
-closeButton.addEventListener("click",function(){
-	goBack();
-});
+// closeButton.addEventListener("click",function(){
+// 	goBack();
+// });
 
-$('#first').html(getImage(SourceURL));
+$('#workFrame').html(getImage(SourceURL));
 
 
 

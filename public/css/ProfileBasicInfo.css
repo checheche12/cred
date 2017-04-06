@@ -130,9 +130,12 @@
 	border: 1px solid #eaeaea;
 }
 .specialty{
+	background: rgba(220, 220, 220, 0.34);
 	display: inline-block;
 	margin: 0px;
-	padding-right: 10px;
+	margin-right: 10px;
+	padding: 4px;;
+	margin-bottom: 4px;
 }
 p{
 	cursor: pointer;

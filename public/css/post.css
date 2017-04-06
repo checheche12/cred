@@ -8,104 +8,58 @@
 }
 
 #ContentMain {
-	/*border: 1px solid black;
-	*/
-	width: 1050px;
-	margin-top: 70px;
-	margin-left: 250px;
-}
-
-#first {
-
-}
-#first .PostWork{
-	max-width: 100%;
-}
-#second {
-	font-weight: bold;
-	font-size: 40px;
-	margin-bottom: 30px;
-	/* border-bottom: 1px solid black;
-	*/
-}
-
-#third {
-	display: flex;
-	width: 100%;
-	column-width: 500px;
-
+	width: 100vw;
+	margin-top: 5vh;
+	margin-left: 7.5vw;
+	margin-right: 7.5vw;
 }
 
 .creditFrame {
-	border: 1px solid black;
-	border-color: #c0c0c0;
+	margin-bottom: 2vh;
 	background: black;
 	color: white;
 	overflow: hidden;
-	width: 500px;
-	padding-bottom: 30px;
+	width: 100%;
+	min-height: 40vh;
+	max-height: 60vh;
+	padding-bottom: 2vh;
 	display: inline-block;
 }
 
-.credit {
-	margin-bottom: 5px;
-	font-size: 36px;
+.creditLabel {
+	margin-bottom: 3vh;
+	font-size: 3vw;
 	text-align: center;
-	text-decoration: underline
 }
 
 .positionFrame {
 	line-height: 100%;
 	float: left;
 	text-align: right;
-	width: 230px;
+	font-size: 1.5vw;
+	width: 45%;
 }
-
-.nameFrame , .nameFrame2{
+.nameFrame{
 	line-height: 100%;
 	float: right;
 	text-align: left;
-	width: 230px;
+	font-size: 1.5vw;
+	width: 45%;
 }
-p.positionFrame, p.nameFrame, p.nameFrame2{
-	margin:5px;
+p.name, p.position{
 	cursor: pointer;
-}
+	margin:5px;
 
+}
 #position {
 	border:none;
 	outline:none;
 	clear: left;
 }
-
-#Email {
-	border:none;
-	outline:none;
-
-}
-
 .outCreditFrame{
 	display: inline-block;
-	/*float: left;*/
-}
-
-#addCredit{
-	color: gray;
-	cursor: pointer;
-
-}
-#addCredit:hover{
-	background-color: #A8A8A8;
-	color: #fff;
-
-}
-#addCredit:active{
-	background-color: #EE3E80;
-}
-
-#close{
-	float:right;
-	font-size: 20px;
+	width: 100%;
+	min-height: 30vh;
 }
 .titleText{
 	font-weight: bold;
@@ -113,19 +67,127 @@ p.positionFrame, p.nameFrame, p.nameFrame2{
 }
 button{
 	cursor: pointer;
-	background-color: white;
-	color: black;
-	border: 2px solid #555555 ;
-	border-radius: 4px;
+	background: transparent;
+	width: ;
+	border: none;
 }
-button:hover {
-	background-color: #555555 ;
-	color: white;
+.postInfo, #postInfo, #viewD, #viewLabel, #viewNum, #description, #QCount, #QNum{
+	display: inline-block;
+}
+
+
+#officialInfo,#unofficialOfficialInfo,#QFrame{
+	border: 0.1vmin solid black;
+}
+#QFrame{
+	margin-top: 2vh;
+}
+#LeftCont{
+	display: inline-block;
+	width: 45vw;
+	margin-right: 2vw;
+}
+#RightCont{
+	display: inline-block;
+	width: 35vw;
+	vertical-align: top;
+}
+#viewD{
+	float: right;
+}
+.view{
+	font-size: 1.5vmin;
+}
+#QInput{
+	display: inline-block;
+	vertical-align: middle;
+	min-height: 10vh;
+	width: 25vw;
+	font-size: 2vmin;
+}
+#QCountFrame{
+	font-size: 2vmin;
+}
+#profilePic, #Qpics{
+	padding-bottom: 1vh;
+	padding-top: 1vh;
+	padding-left: 1vw;
+	padding-right: 1vw;
+	display: inline-block;
+	vertical-align: middle;
+	width: 4vw;
+}
+iframe{
+	width: 35vw;
+	height: 35vh;
+}
+#submitFrame{
+	text-align: right;
+}
+#askBt{
+	margin-right: 3vw;
+	font-size: 2vmin;
+}
+#Qs{
+	display: inline-block;
+	font-size: 3vmin;
+	vertical-align: middle;
+	width: 25vw;
+}
+#answerBt{
+	display: inline-block;
+	vertical-align: middle;
+	text-align: center;
+	padding: 0px;
+	font-size: 1vw;
+}
+#workTitle{
+	font-size: 3.3vmin;
+	font-weight: bolder;
+	margin: 1vmin;
+}
+#postInfo{
+	display: inline-block;
+}
+.postInfo{
+	font-size: 1.5vmin;
 }
 
 #description{
-display: inline-block;
+	font-size: 1.5vmin;
+	padding-top: 4vh;
+	padding-bottom: 2vh;
 }
-#insertCredit{
-	margin-top: 20px;
+#splitter{
+	width: 95%;
+}
+#noAnswer, #noUOI{
+	padding-top: 3vh;
+	text-align: center;
+	width: 100%;
+	font-size: 3vmin;
+}
+#noAnswerImg, #noUOIImg{
+	width: 5vw;
+}
+#officialAnswers, #unOfficialOfficialInfo{
+	min-height: 15vh;
+}
+#officialInfo{
+	padding-right: 2vmin;
+	padding-left: 2vmin;
+}
+#unOfficialOfficialInfo{
+	margin-top: 4vh;
+}
+#helpUOI{
+	border: none;
+	padding: 1vmin;
+	font-size: 2vmin;
+}
+#editUOIBt{
+	float: right;
+	border: none;
+	padding: 1vmin;
+	font-size: 2vmin;
 }
