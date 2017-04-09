@@ -49,6 +49,14 @@ Route::post('/uploadSpotlight',function(){
 	return view('administrator.uploadSpotlight');
 });
 
+Route::get('/getrecent',function(){
+	return view('administrator.getrecent');
+});
+
+Route::post('/uploadrecent',function(){
+	return view('administrator.uploadRecent');
+});
+
 
 
 
@@ -175,15 +183,21 @@ Route::group(['middleware' => ['isgetauth']] ,function(){
 		return view('upload.fixed');
 	});
 
-	Route::post('/uploadFixedDB',function(){
-		return view('upload.uploadFixedDB');
-	});
-
 	Route::get('/delete',function(){
 		return view('upload.delete');
 	});
 
 });
+
+Route::group(['middleware' => ['isgetauthpost']],function(){
+
+	Route::post('/uploadFixedDB',function(){
+		return view('upload.uploadFixedDB');
+	});
+	
+});
+
+
 
 
 Route::get('/post',function(){

@@ -179,6 +179,39 @@ $("#Spotlight").click(function(){
 
 $("#RecentWork").click(function(){
 
+    $('#controller').text('');
+
+    $.ajax({
+        type : 'get',
+        url : "/getrecent",
+        success:function(data){
+          $("#controller").append(data);
+
+            var kk = '<br><br><br><input id = "firstS" type = "text">&nbsp;&nbsp;';
+            kk += '<input id = "secondS" type = "text">&nbsp;&nbsp;';
+            kk += '<input id = "thirdS" type = "text">&nbsp;&nbsp;';
+            kk += '<input id = "fourthS" type = "text">';
+            kk += '<button id = "subS">최근작품 등록하기</button>';
+            $("#controller").append(kk);
+
+            $("#subS").click(function(){
+                  var Spotdata = {"first" : $('#firstS').val(), "second" : $('#secondS').val(), "third" : $('#thirdS').val(), "fourth" : $('#fourthS').val()};
+                  $.ajax({
+                      type : 'post',
+                      data : Spotdata,
+                      url : '/uploadrecent',
+                      success:function(data){
+                          alert("최근작품 등록에 성공했습니다.");
+                          $('#controller').text('');
+                      }
+                  })
+
+            });
+
+        }
+    });
+
+
 });
 
 </script>

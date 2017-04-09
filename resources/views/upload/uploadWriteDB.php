@@ -1,12 +1,12 @@
 <?php
 
-  namespace App\Http\Controllers;
-  use Illuminate\Support\Facades\DB;
-  use App\Http\Controllers\Controller;
+namespace App\Http\Controllers;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 
 
-  class makeNewArtClass extends Controller
-  {
+class makeNewArtClass extends Controller
+{
       /**
        * Show a list of all of the application's users.
        *
@@ -14,38 +14,43 @@
        */
       public function makeNewArt()
       {
-          $artNumber = NULL;
-          DB::insert('insert into totalart (title, ArtURL, Description,uploaddate,lastloaddate) values (?, ?, ?, ?, ?)',array($_POST['Title'],$_POST['ArtURL'],$_POST['Description'],date("Y-m-d H:i:s"),date("Y-m-d H:i:s")));
+        $Sentence = "select Name from userinfo where userPK = ".$_SESSION['userPK'];
+        $users = DB::select(DB::raw($Sentence));
+        foreach($users as $user){
+          $GLOBALS['name'] = $user->Name;
+        }
+        $artNumber = NULL;
+        DB::insert('insert into totalart (title, ArtURL, Description,uploaddate,lastloaddate,uploader,uploaderName) values (?, ?, ?, ?, ?, ?, ?)',array($_POST['Title'],$_POST['ArtURL'],$_POST['Description'],date("Y-m-d H:i:s"),date("Y-m-d H:i:s"),$_SESSION['userPK'],$GLOBALS['name']));
 
-          $Sentence3 = "select * from totalart order by artPK desc limit 1";
+        $Sentence3 = "select * from totalart order by artPK desc limit 1";
 
-          $users3 = DB::select(DB::raw($Sentence3));
-          foreach($users3 as $user){
-              $artNumber=$user->artPK;
+        $users3 = DB::select(DB::raw($Sentence3));
+        foreach($users3 as $user){
+          $artNumber=$user->artPK;
+        }
+
+        $Array = $_POST['main'];
+
+        foreach($Array as $v1){
+          DB::insert('insert into workDB (userPK, position, artPK)
+            values (?, ?, ?)',array($v1[0],$v1[1],$artNumber));
+          DB::insert('insert into artDB (artPK,userPK)
+            values (?,?)',array($artNumber,$v1[0]));
+        }
+        if(isset($_POST['Notuser'])){
+
+          $Array = $_POST['Notuser'];
+          foreach($Array as $v1){
+            DB::insert('insert into TagNotUser (tagUser, position, artPK)
+              values (?, ?, ?)',array($v1[0],$v1[1],$artNumber));
+
           }
-
-            $Array = $_POST['main'];
-
-            foreach($Array as $v1){
-                DB::insert('insert into workDB (userPK, position, artPK)
-                values (?, ?, ?)',array($v1[0],$v1[1],$artNumber));
-                DB::insert('insert into artDB (artPK,userPK)
-                values (?,?)',array($artNumber,$v1[0]));
-            }
-            if(isset($_POST['Notuser'])){
-
-                  $Array = $_POST['Notuser'];
-                  foreach($Array as $v1){
-                      DB::insert('insert into TagNotUser (tagUser, position, artPK)
-                      values (?, ?, ?)',array($v1[0],$v1[1],$artNumber));
-
-                  }
-            }
+        }
 
       }
-  }
+    }
 
-  $A = new makeNewArtClass();
-  $A->makeNewArt();
+    $A = new makeNewArtClass();
+    $A->makeNewArt();
 
-?>
+    ?>

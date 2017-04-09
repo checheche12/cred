@@ -4,12 +4,12 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
 
-class getSpotlightClass extends Controller
+class getRecentClass extends Controller
 {
-    public function getSpotlight()
+    public function getRecent()
     {
 
-        $sentence = "select * from Spotlight order by spotPK desc limit 1";
+        $sentence = "select * from Recent order by recentPK desc limit 1";
         $a = DB::select($sentence);
         $artPKArr = array();
         $artPKArr[0] = 0;
@@ -24,11 +24,9 @@ class getSpotlightClass extends Controller
         }
 
         for($i = 0 ; $i < 4; $i++){
-
-          if($artPKArr[$i]==0){
-            break;
-          }
-
+            if($artPKArr[$i]==0){
+              break;
+            }
             $Sentence2 = "select * from totalart where artPK = ".$artPKArr[$i];
             $getArts = DB::select($Sentence2);
 
@@ -101,7 +99,7 @@ class getSpotlightClass extends Controller
     }
 
 }
-$A = new getSpotlightClass();
-$A->getSpotlight();
+$B = new getRecentClass();
+$B->getRecent();
 
 ?>

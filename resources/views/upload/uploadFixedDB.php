@@ -8,8 +8,11 @@
   class makeNewArtClass extends Controller
   {
       public function fixed(){
+        /*
           $Sentence = "update totalart set description = '".$_POST['Description']."', title = '".$_POST['Title']."', ArtURL = '".$_POST['ArtURL']."' where artPK = '".$_POST['artPK']."'";
           $users = DB::update(DB::raw($Sentence));
+        */
+          DB::update("update totalart set description = ? , title = ? , ArtURL = ? where artPK = ?", [$_POST['Description'],$_POST['Title'],$_POST['ArtURL'],$_POST['artPK']]);
 
           $Sentence = "delete from workDB where artPK = ".$_POST['artPK'];
           $users = DB::delete(DB::raw($Sentence));

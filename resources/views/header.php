@@ -17,6 +17,9 @@ class UserController extends Controller
         $Sentence = "select * from userinfo where userPK = ".$_SESSION['userPK'];
         $users = DB::select(DB::raw($Sentence));
         $GLOBALS['name'] = "GUEST";
+        if(($_SESSION['persongroup'] == "administrator") && ($_SESSION['isGroup'] == "administrator")){
+          $GLOBALS['name'] = "Administrator";
+        }
         $GLOBALS['photoURL'] = "mainImage/default_profile_pic.png";
 
         foreach($users as $user){
