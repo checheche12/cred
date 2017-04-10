@@ -332,9 +332,9 @@ cancelButton.addEventListener("click",function(){
 submitButton.addEventListener("click",function(){
   var Data2 = {"_token" : token};
 
-  Data2['Title'] = escape(TitleBox.value);
-  Data2['ArtURL'] = escape(URLBox.value);
-  Data2['Description'] = escape(Description.value.replace(/\n/g, "<br>"));
+  Data2['Title'] = TitleBox.value;
+  Data2['ArtURL'] = URLBox.value;
+  Data2['Description'] = Description.value.replace(/\n/g, "<br>");
   Data2['Notuser'] = NotUserCreditArray;
   Data2['main'] = creditArray;
 

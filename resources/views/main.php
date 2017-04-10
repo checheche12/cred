@@ -61,15 +61,20 @@
             <li id = "Project">Project</li>
             <li id = "Bridge">Bridge</li>
             <?php
-              if($_SESSION['isGroup']=="Group"){
-                echo "<li id = 'Members'>Members</li>";
-              }
+            if($_SESSION['isGroup']=="Group"){
+              echo "<li id = 'Members'>Members</li>";
+            }
             ?>
           </ul>
         </div>
         <div id = "profileBody">
-        <div id = "projectLayout"></div>
-        <div id = "bridgeLayout"></div>
+          <div id = "memberAddFrame">
+            <input id="memberSearch" type="text" name="name" placeholder="Search Member">
+            <input id="hiddenSearchValue" type="hidden" name="hiddenSearchValue">
+            <button id="addMember">추가</button>
+          </div>
+          <div id = "projectLayout"></div>  <!-- css 가 다루기 힘들어서 ProfileBody를 레이아웃들로 나눔-->
+          <div id = "bridgeLayout"></div>
         </div>
       </div>
 

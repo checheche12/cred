@@ -175,9 +175,6 @@ ul{
 #projectLayout{
 	column-width: 232px;
 }
-/*#bridgeLayout{
-	column-width: 344px;
-}*/
-/*#group, #person{
-	column-width: 250px;
-}*/
+#memberAddFrame{
+	display: none;
+}

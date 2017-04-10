@@ -69,7 +69,7 @@
       <label for="URLBox">URL을 입력하여 프로젝트를 업로드하세요</label><br>
       <input id = "URLBox" type="text" value = <?php echo $GLOBALS['URL'] ?> ></input><br><br>
       <label for="titleBox">제목</label><br>
-      <input id = "titleBox" type="text" value = '<?php echo $GLOBALS['title'] ?>' ></input><br><br>
+      <textarea id = "titleBox"><?php echo $GLOBALS['title'] ?></textarea><br><br>
 
       <label for="email">크레딧</label><br><br>
       <input id = "email" type="text" placeholder=" e-mail"></input>

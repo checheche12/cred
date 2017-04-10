@@ -10,7 +10,7 @@ var addCreditButton = document.getElementById('addCredit');
 
 var position = document.getElementById('position');
 
-var creditNameArray = document.getElementsByClassName('nameFrame');
+var creditNameArray = document.getElementsByClassName('name');
 
 var token;
 
@@ -118,4 +118,30 @@ if(fixedButton != null){
 		})
 
 	});
+}
+var askBt = document.getElementById('askBt');
+if(askBt != null){
+
+	$('#askBt').click(function(){
+			if(confirm("이 답변을 등록하시겠습니까?")==true){
+					QInputBR = $("#QInput").val().replace(/\n/g, "<br>");
+					Data4 = {"artPK" : ArtPK, "Description" : QInputBR};
+					$.ajax({
+							url:'/uploadReply',
+							type:'POST',
+							data: Data4,
+							success:function(data){
+									alert('댓글이 정상적으로 등록되었습니다.\n'+data);
+									$(location).attr('href','/post?int='+ArtPK);
+							},
+							error: function(){
+
+								alert('등록 실패');
+							}
+
+					});
+
+			}
+	});
+
 }

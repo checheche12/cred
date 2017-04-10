@@ -38,7 +38,7 @@ class UserController extends Controller
         $Sentence2 = "select tagUser from TagNotUser where artPK =".$_GET['int'];
         $users2 = DB::select(DB::raw($Sentence2));
         foreach($users2 as $user){
-          echo "<p class = 'name'>".$user->tagUser."</p>";
+          echo "<p class = 'nameNoAccount'>".$user->tagUser."</p>";
         }
       }
 
@@ -51,7 +51,7 @@ class UserController extends Controller
         $Sentence2 = "select position from TagNotUser where artPK =".$_GET['int'];
         $users2 = DB::select(DB::raw($Sentence2));
         foreach($users2 as $user){
-          echo "<p class = 'position'>".$user->position."</p>";
+          echo "<p class = 'positionNoAccount'>".$user->position."</p>";
         }
       }
 
@@ -72,7 +72,7 @@ class UserController extends Controller
     $A->countViews(); //조회수 때문에 index 앞에 위치함
     $A->index();
 
-    ?>
+?>
 
     <head>
       <style type="text/css">
@@ -93,7 +93,7 @@ class UserController extends Controller
     </div>
     <!-- <div><button id="close">X</button></div>
 
-    
+
         아래에 있는 코드는 DB에서 값을 가져 온 뒤에 동적으로 수정해야 한다. (수정 2)
       -->
 
@@ -161,31 +161,30 @@ class UserController extends Controller
             <div id="QFrame">
               <div id="QCountFrame">
                 <p id="QCount">질문 -&nbsp;</p>
-                <p id="QNum">28개</p>
+                <?php
+                    include_once('../resources/views/posting/loadReply.php');
+                    $LoadReply = new loadReplyClass($_GET['int']);
+                ?>
+                <p id="QNum"><?=count($LoadReply->Replies);?></p>
               </div>
-              <div id="QInputFrame">
-                <img id="profilePic" src="http://dxlfb468n8ekd.cloudfront.net/gsc/P9T9E7/f2/0f/ab/f20fab8c10cd41579e7b9b999babf893/images/profile1/u63.png?token=2bea31345d6e96cc2c01e5a8ba077170">
-                <input id="QInput" type="text" name="Q" placeholder="제작자들에게 직접 질문해 보세요.">
-              </div>
+
               <div id="submitFrame">
-                <button id="askBt">등록</button>
+                <?php
+                    if($_SESSION['is_login'] == true){
+                      echo '
+                      <div id="QInputFrame">
+                      <input id="QInput" type="text" name="Q" placeholder="제작자들에게 직접 질문해 보세요.">
+                      </div>
+                      <button id="askBt">등록</button>
+                      ';
+                    }
+                ?>
+
               </div>
               <div id="QListFrame">
-                <div id="Qcard" class="Qcard">
-                  <img id="Qpics" src="http://d2v8ggac1o0f6z.cloudfront.net/gsc/P9T9E7/f2/0f/ab/f20fab8c10cd41579e7b9b999babf893/images/post_page3/u45.jpg?token=b65d7835de90b39dedd8ae36aeb08b94">
-                  <p id="Qs" class="Qs">어떤 카메라를 사용했나요?</p>
-                  <button id="answerBt">▶</button>
-                </div>
-                <div id="Qcard" class="Qcard">
-                  <img id="Qpics" src="http://d26uhratvi024l.cloudfront.net/gsc/P9T9E7/f2/0f/ab/f20fab8c10cd41579e7b9b999babf893/images/profile_bjlim/u78.png?token=019fc7a88ca4951a32cffa58d59cd217">
-                  <p id="Qs" class="Qs">몇명 정도 작업했나요?</p>
-                  <button id="answerBt">▶</button>
-                </div>
-                <div id="Qcard" class="Qcard">
-                  <img id="Qpics" src="http://dxlfb468n8ekd.cloudfront.net/gsc/P9T9E7/f2/0f/ab/f20fab8c10cd41579e7b9b999babf893/images/bridge/u86.png?token=5ca87733148a4aebba76777a869b9795">
-                  <p id="Qs" class="Qs">오마쥬한 작품이 있나요?</p>
-                  <button id="answerBt">▶</button>
-                </div>
+                  <?php
+                        $LoadReply->loadReply($_GET['int']);
+                   ?>
               </div>
             </div>
 
