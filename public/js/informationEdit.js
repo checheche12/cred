@@ -15,31 +15,32 @@ $.ajax({
 
 var Edit = document.getElementById('edit');
 var addExperience = document.getElementById('addExperience');
+var education = document.getElementById('education');
 
-
-addExperience.addEventListener("click",function(){
-	$("#careerGroupD").append('<div id="careerD">'
-		+'<div id="positionD">'
-		+'<div><label class="labels" for="position" id="positionlabel">직함</label>'
-		+'<input class="inputs" type = "text" id = "position" value = ""></input>'
-		+'</div>'
-		+'</div>'
-		+'<div id="organizationD">'
-		+'<div><label class="labels" for="organization" id="organizationlabel">소속</label>'
-		+'<input class="inputs" type = "text" id = "organization" value = ""></input><br>'
-		+'</div>'
-		+'</div>'
-		+'<div id="organizationD">'
-		+'<div><label class="labels" for="exWorkLocation" id="locationlabel">위치</label>'
-		+'<input class="inputs" type = "text" id = "exWorkLocation" value = ""></input>'
-		+'</div>'
-		+'</div>'
-		+'<div id="descriptionD">'
-		+'<div><label class="labels" for="career" id="descriptionlabel">설명</label>'
-		+'<input class="inputs" type = "text" id = "career" value = "" id = "career"></input><br>'
-		+'</div>'
-		+'</div>'
-		+'</div>')
+if(addExperience!=undefined){
+	addExperience.addEventListener("click",function(){
+		$("#careerGroupD").append('<div id="careerD">'
+			+'<div id="positionD">'
+			+'<div><label class="labels" for="position" id="positionlabel">직함</label>'
+			+'<input class="inputs" type = "text" id = "position" value = ""></input>'
+			+'</div>'
+			+'</div>'
+			+'<div id="organizationD">'
+			+'<div><label class="labels" for="organization" id="organizationlabel">소속</label>'
+			+'<input class="inputs" type = "text" id = "organization" value = ""></input><br>'
+			+'</div>'
+			+'</div>'
+			+'<div id="organizationD">'
+			+'<div><label class="labels" for="exWorkLocation" id="locationlabel">위치</label>'
+			+'<input class="inputs" type = "text" id = "exWorkLocation" value = ""></input>'
+			+'</div>'
+			+'</div>'
+			+'<div id="descriptionD">'
+			+'<div><label class="labels" for="career" id="descriptionlabel">설명</label>'
+			+'<input class="inputs" type = "text" id = "career" value = "" id = "career"></input><br>'
+			+'</div>'
+			+'</div>'
+			+'</div>')
 	// var Data = {"_token" : token};
 
 	// Data['exPosition'] = $("#postion").val();
@@ -86,35 +87,39 @@ addExperience.addEventListener("click",function(){
 	// })
 
 });
+}
 
 
 Edit.addEventListener("click",function(){
 
 	var Data = {"_token" : token};
-
 	Data['ProfilePhotoURL'] = $("#ProfilePhotoURL").val();
 	Data['name'] = $("#name").val();
-	Data['career'] = $("#current_position").val();
-	Data['education'] = $("#education").val();
-	Data['keyword'] = $("#keyword").val();
-
-	Data['current_organization'] = $("#current_organization").val();
 	Data['location'] = $("#location").val();
-	Data['education2'] = $("#education2").val();
+	Data['keyword'] = $("#keyword").val();
+	if(education!=undefined){	//개인 개정 수정 시 사용
+		Data['career'] = $("#current_position").val();
+		Data['education'] = $("#education").val();
 
-var experienceArr = [];
+		Data['current_organization'] = $("#current_organization").val();
+		Data['education2'] = $("#education2").val();
 
-for(var i = 0; i < $("input#position.inputs").length;i++){
-	var tempArr = [];
-	tempArr.push($("input#position.inputs").eq(i).val());
-	tempArr.push($("input#organization.inputs").eq(i).val());
-	tempArr.push($("input#exWorkLocation.inputs").eq(i).val());
-	tempArr.push($("input#career.inputs").eq(i).val());
-	experienceArr.push(tempArr);
-}
+		var experienceArr = [];
 
-	Data['experienceArr'] = experienceArr;
-	console.log(experienceArr);
+		for(var i = 0; i < $("input#position.inputs").length;i++){
+			var tempArr = [];
+			tempArr.push($("input#position.inputs").eq(i).val());
+			tempArr.push($("input#organization.inputs").eq(i).val());
+			tempArr.push($("input#exWorkLocation.inputs").eq(i).val());
+			tempArr.push($("input#career.inputs").eq(i).val());
+			experienceArr.push(tempArr);
+		}
+
+		Data['experienceArr'] = experienceArr;
+	}else if(description!=undefined){	//그룹 개정 수정 시 사용
+		Data['award'] = $("#award").val();
+		Data['description'] = $("#description").val();
+	}
 	$.ajax({
 		type:'POST',
 		url:'/informationEdit/informationUp',

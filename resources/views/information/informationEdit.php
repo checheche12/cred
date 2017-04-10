@@ -27,7 +27,6 @@ class UserController extends Controller
 
         }
         $Sentence = "select * from keywordDB where userPK = ".$_SESSION['userPK'];
-
         $users2 = DB::select(DB::raw($Sentence));
         $GLOBALS['keyword'] = "";
         foreach($users2 as $usera){
@@ -35,6 +34,17 @@ class UserController extends Controller
           $GLOBALS['keyword'].=$a.',';
         }
         $GLOBALS['keyword'] = substr($GLOBALS['keyword'],0,-1);
+
+
+        $Sentence = "select * from awardDB where userPK = ".$_SESSION['userPK'];
+        $users2 = DB::select(DB::raw($Sentence));
+        $GLOBALS['award'] = "";
+        foreach($users2 as $usera){
+          $a=$usera->award;
+          $GLOBALS['award'].=$a.',';
+        }
+        $GLOBALS['award'] = substr($GLOBALS['award'],0,-1);
+
 
         $Sentence2 = "select * from userExperience where userPK = ".$_SESSION['userPK'];
         $users2 = DB::select(DB::raw($Sentence2));
@@ -81,43 +91,39 @@ class UserController extends Controller
           <div><label class="labels" for="name">이름</label>
             <input class="inputs" type = "text" id = "name" value = "<?= $GLOBALS['name']?>"></input>
           </div>
-        </div><br>
+        </div>
         <!-- <div id="educationD"> -->
-        <div><label class="labels" for="education">학력</label>
-          <input class="inputs" type = "text" id = "education" value = "<?= $GLOBALS['education']?>"></input><br>
+        <?php 
+        if($_SESSION['isGroup']!="Group"){
+          echo '<div><label class="labels" for="education">학력</label>
+          <input class="inputs" type = "text" id = "education" value = "'.$GLOBALS['education'].'"></input><br>
         </div>
-        <!-- <label class="labels" for="education">졸업(예정)</label><br> -->
-        <!-- <input class="inputs" type = "number" min="1900" max="2030" id = "education2" placeholder="YYYY" value = "<?= $GLOBALS['education2']?>"></input> -->
-        <!-- </div><br> -->
         <div><label class="labels" for="">현 소속</label>
-          <input class="inputs" type = "text" id = "current_organization" value = "<?= $GLOBALS['current_organization']?>"></input>
+          <input class="inputs" type = "text" id = "current_organization" value = "'.$GLOBALS['current_organization'].'"></input>
         </div>
-        <br>
         <div><label class="labels" for="">현 직책</label>
-          <input class="inputs" type = "text" id = "current_position" value = "<?= $GLOBALS['career']?>"></input>
+          <input class="inputs" type = "text" id = "current_position" value = "'.$GLOBALS['career'].'"></input>
         </div>
-        <br>
         <div id="locationD">
           <div><label class="labels" for="location">위치</label>
-            <input class="inputs" type = "text" id = "location" value = "<?= $GLOBALS['location']?>"></input>
+            <input class="inputs" type = "text" id = "location" value = "'.$GLOBALS['location'].'"></input>
           </div>
         </div><br>
         <div id="keywordD">
           <div><label class="labels" for="keyword">전문기술</label>
-            <textarea rows="3" id = "keyword" cols="30" name="contents"><?= $GLOBALS['keyword']?></textarea>
+            <textarea rows="3" id = "keyword" cols="30" name="contents" placeholder="각 기술들을 &comma; 로 나누어 작성해 주세요.">'.$GLOBALS['keyword'].'</textarea>
           </div>
         </div><br>
         <label class="labels" id="career">경력</label>
 
-        <div id="careerGroupD">
-          <?php
+        <div id="careerGroupD">';
           for ($i=0; $i < count($GLOBALS['exOrganization']) ; $i++) { 
   # code...
             echo' 
             <div id="careerD">
               <div id="positionD">
                 <div><label class="labels" for="position" id="positionlabel">직함</label>
-                <input class="inputs" type = "text" id = "position" value = "'.$GLOBALS['exPosition'][$i].'"></input>
+                  <input class="inputs" type = "text" id = "position" value = "'.$GLOBALS['exPosition'][$i].'"></input>
                 </div>
               </div>
               <div id="organizationD">
@@ -137,24 +143,41 @@ class UserController extends Controller
               </div>
             </div>';
           }
-          ?>
 
-          <div id="addExperienceD">
-            <button id="addExperience">+추가</button><br>
-          </div>
+          echo '<div id="addExperienceD">
+          <button id="addExperience">+추가</button><br>
         </div>
-        <div id="editD">
-          <button id="edit">수정</button>
-        </div>
-      </div>
-    </div>
+      </div>';
+    }?> <!-- if PERSON -->
     <?php
-    if($_SESSION['persongroup'] == "group")
-      echo "<div id = 'desdescription'>";
-    echo '<div><label class="labels" for="keyword">그룹 설명</label></div><textarea rows="3" id = "desdescription" cols="30" name="contents">'.$GLOBALS['description'].'</textarea>';
-    echo "</div>";
-    ?>
+    if($_SESSION['isGroup']=="Group"){
+      echo'<div id="locationD">
+      <div><label class="labels" for="location">위치</label>
+        <input class="inputs" type = "text" id = "location" value = "'.$GLOBALS['location'].'"></input>
+      </div>
+    </div><br>
+    <div id="keywordD">
+      <div><label class="labels" for="keyword">키워드</label>
+        <textarea rows="3" id = "keyword" cols="30" name="contents" placeholder="각 키워드들을 &comma; 로 나누어 작성해 주세요.">'.$GLOBALS['keyword'].'</textarea>
+      </div>
+    </div><br>
+    <div id="awardD">
+      <div><label class="labels" for="award">수상경력</label>
+        <textarea rows="3" id = "award" cols="30" name="contents" placeholder="각 수상경력들을 &comma; 로 나누어 작성해 주세요.">'.$GLOBALS['award'].'</textarea>
+      </div>
+    </div><br>
+    <div id = "desdescription">
+      <div><label class="labels" for="description">그룹 설명</label><textarea rows="3" id = "description" cols="30" name="contents">'.$GLOBALS['description'].'</textarea>
+      </div>
+    </div>';
+  }
+  ?>
+  <div id="editD">
+    <button id="edit">수정</button>
+  </div>
+</div>
+</div>
 
-    <script type = "text/javascript" src = "js/jquery-3.1.1.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script type = "text/javascript" src = "js/informationEdit.js"></script>
+<script type = "text/javascript" src = "js/jquery-3.1.1.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script type = "text/javascript" src = "js/informationEdit.js"></script>

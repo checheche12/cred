@@ -136,8 +136,13 @@ class UserController extends Controller
               <hr id="splitter">
               <div id="officialAnswers">
                 <div id="noAnswer">
-                  <img id="noAnswerImg" src="http://dxlfb468n8ekd.cloudfront.net/gsc/P9T9E7/f2/0f/ab/f20fab8c10cd41579e7b9b999babf893/images/post_page3/u16.png?token=1ecd817523b2c668d3ecd2689a1d833b">
-                  <p id="noAnswerP">아직 답변된 질문이 없습니다.</p>
+                  <?php
+                    
+                      include_once('../resources/views/posting/loadCompleteReply.php');
+                      $loadCompleteReply = new loadCompleteReplyClass();
+                      $loadCompleteReply->loadCompleteReply($_GET['int']);
+
+                   ?>
                 </div>
               </div>
             </div>
@@ -148,7 +153,7 @@ class UserController extends Controller
               </div>
               <div id="noUOI">
                 <img id="noUOIImg" src="http://dxlfb468n8ekd.cloudfront.net/gsc/P9T9E7/f2/0f/ab/f20fab8c10cd41579e7b9b999babf893/images/post_page3/u16.png?token=1ecd817523b2c668d3ecd2689a1d833b">
-                <p id="noUOIP">아직 작성된 답변이 없습니다.</p>
+                <p id="noUOIP">아직 작성된 게시물이 없습니다.</p>
               </div>
             </div>
 

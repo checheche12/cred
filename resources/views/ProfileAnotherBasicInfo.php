@@ -28,38 +28,41 @@ class checkAddCredit extends Controller
           $Sentence = "select * from keywordDB where userPK = ".$_GET['userPK'];
 
           $users2 = DB::select(DB::raw($Sentence));
-          $GLOBALS['keyword'] = "";
+              // $GLOBALS['keyword'] = "";
+          $GLOBALS['keywordArr'] =array();
           foreach($users2 as $usera){
-            $a=$usera->keyword;
-            $GLOBALS['keyword'].=$a.',';
+            array_push($GLOBALS['keywordArr'], $usera->keyword);
           }
-          $GLOBALS['keyword'] = substr($GLOBALS['keyword'],0,-1);
+
+          $Sentence = "select * from awardDB where userPK = ".$_GET['userPK'];
+
+          $users2 = DB::select(DB::raw($Sentence));
+          $GLOBALS['awardArr'] =array();
+          foreach($users2 as $usera){
+            array_push($GLOBALS['awardArr'], $usera->award);
+          }
 
           $Sentence2 = "select * from userExperience where userPK = ".$_GET['userPK'];
           $users2 = DB::select(DB::raw($Sentence2));
-          $GLOBALS['exOrganization'] = "";
-          $GLOBALS['exPosition'] = "";
-          $GLOBALS['exWorkLocation'] = "";
+
+          $GLOBALS['experienceArr']=array();
           foreach($users2 as $user){
-            $GLOBALS['exOrganization'] = $user->Organization;
-            $GLOBALS['exPosition'] = $user->Position;
-            $GLOBALS['exWorkLocation'] = '- '.$user->WorkLocation;
+            array_push($GLOBALS['experienceArr'],array($user->Position,$user->Organization,$user->WorkLocation));
           }
 
-            if($GLOBALS['isGroup']=="1"){
-                $Sentence3 = "select description from userinfo where userPK = ".$_SESSION['userPK'];
-                $users3 = DB::select(DB::raw($Sentence3));
-                  $GLOBALS['description'] = "";
-                foreach($users3 as $user){
-                  $GLOBALS['description'] = $user->description;
-                  if(!isset($GLOBALS['description'])){
-                    $GLOBALS['description'] = ' ';
-                  }
-                  break;
-                }
-
+          if($GLOBALS['isGroup']=="1"){
+            $Sentence3 = "select description from userinfo where userPK = ".$_GET['userPK'];
+            $users3 = DB::select(DB::raw($Sentence3));
+            $GLOBALS['description'] = "";
+            foreach($users3 as $user){
+              $GLOBALS['description'] = $user->description;
+              if(!isset($GLOBALS['description'])){
+                $GLOBALS['description'] = ' ';
+              }
+              break;
             }
 
+          }
         }
       }
       $A = new checkAddCredit();
@@ -86,25 +89,61 @@ class checkAddCredit extends Controller
       echo '<p id="location" class="location">'.$GLOBALS['location'].'</p>';
       echo '</div>';
       echo '<div class="lowerInfo">';
-      echo '<div class="infoD"><p class="infoLabel">Contact</p><p class="infoDetail">'.$GLOBALS['email'].'</p></div>';
-      echo '<hr>';
-      echo '<div class="infoD"><p class="infoLabel">학교</p><p id="educationInfo" class="infoDetail">'.$GLOBALS['education'].'</p></div>';
-      echo '<hr>';
-      echo '<div class="infoD"><p class="infoLabel">전문기술</p><p class="infoDetail">'.$GLOBALS['keyword'].'</p></div>';
-      echo '<hr>';
-      echo '<div class="infoD" id="exInfo">
-      <p class="infoLabel">경력</p>
-      <div class="exInfoDetail">
-        <div class="ex_pos_org">
-          <p class="exP">'.$GLOBALS['exPosition'].'&nbsp;</p>
-          <p class="exP" class="exOrganization">'.$GLOBALS['exOrganization'].'</p>
-        </div><p class="exWorkLocation">'.$GLOBALS['exWorkLocation'].'</p></div></div>';
-        echo '</div>';
-        if($GLOBALS['isGroup']=="1"){
-              echo '<p class="infoLabel"><img id="workicon" src="/mainImage/workicon.png">설명</p>';
-              echo '<p class="description">'.$GLOBALS['description'].'&nbsp;</p>';
+      echo '<div class="infoD"><p class="infoLabel"><img id="contacticon" src="/mainImage/airplaneicon.png">연락처</p><p class="infoDetail">'.$GLOBALS['email'].'</p></div>';
+      if($GLOBALS['isGroup']=="0"){ //개인일 시
+        echo '<hr id="infoSplit">';
+        echo '<div class="infoD"><p class="infoLabel"><img id="educationicon" src="/mainImage/educationicon.png">학교</p><p id="educationInfo" class="infoDetail">'.$GLOBALS['education'].'</p></div>';
+        echo '<hr id="infoSplit">';
+        echo '<div class="infoD"><p class="infoLabel"><img id="skillicon" src="/mainImage/skillicon.png">전문기술</p><div id="specialtyInfo" class="infoDetail">';
+        $i = 0;
+        foreach ($GLOBALS['keywordArr'] as $temp) {
+          echo '<p id="specialty'.$i.'" class="specialty">'.$temp.'</p>';
+          $i++;
+        # code...
         }
-        echo '</div>';
+        echo'</div></div>';
+        echo '<hr id="infoSplit">';
+
+        echo '<div class="infoD" id="exInfo">
+        <p class="infoLabel"><img id="workicon" src="/mainImage/workicon.png">경력</p>';
+        $i = 0;
+        foreach ($GLOBALS['experienceArr'] as $temp) {
+          echo'<div class="exInfoDetail">
+          <div class="ex_pos_org">
+            <p id="exPosition'.$i.'" class="exP">'.$temp[0].'&nbsp;</p>
+            <p id="exOrganization'.$i.'" class="exP" class="exOrganization">'.$temp[1].'</p>
+          </div><p id="exWorkLocation'.$i.'" class="exWorkLocation">'.$temp[2].'</p></div>';
+          $i++;
+        }
+      } // if PERSON end
+
+      if($GLOBALS['isGroup']=="1"){ //그룹일 시
+        //keyword starts
+        echo '<hr id="infoSplit">
+        <div class="infoD"><p class="infoLabel"><img id="skillicon" src="/mainImage/skillicon.png">키워드</p><div id="specialtyInfo" class="infoDetail">';
+          $i = 0;
+          foreach ($GLOBALS['keywordArr'] as $temp) {
+            echo '<p id="specialty'.$i.'" class="specialty">'.$temp.'</p>';
+            $i++;
+        # code...
+          }
+          echo'</div></div>'; //keyword end
+
+          //Awards starts
+          echo '<hr id="infoSplit">
+          <div class="infoD"><p class="infoLabel"><img id="awardicon" src="/mainImage/awardicon.png">Awards</p><div id="awardInfo" class="infoDetail">';
+            $i = 0;
+            foreach ($GLOBALS['awardArr'] as $temp) {
+              echo '<p id="award'.$i.'" class="award">'.$temp.'</p>';
+              $i++;
+        # code...
+            }
+          echo'</div></div>'; //Awards end
+
+          echo'<hr id="infoSplit">
+          <div class="infoD"><p class="infoLabel"><img id="workicon" src="/mainImage/workicon.png">그룹소개</p><p class="infoDetail">'.$GLOBALS['description'].'</p></div>';
+        }// if GROUP end
+        echo '</div>';  //lowerInfo division end
         ?>
 
         <script>

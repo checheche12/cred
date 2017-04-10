@@ -203,6 +203,10 @@ Route::group(['middleware' => ['isgetauthpost']],function(){
 		return view('upload.uploadFixedDB');
 	});
 
+	Route::post('uploadReplyReply',function(){
+		return view('posting.uploadReplyReply');
+	});
+
 });
 
 
@@ -265,4 +269,8 @@ Route::get('/searchProcess',function(){
 
 Route::get('/memberLoader',function(){
 	return view('DBSelect.memberLoader');
+});
+
+Route::post('/deleteReply',function(){
+	return view('posting.deleteReply');
 });

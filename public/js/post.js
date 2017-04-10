@@ -123,7 +123,7 @@ var askBt = document.getElementById('askBt');
 if(askBt != null){
 
 	$('#askBt').click(function(){
-			if(confirm("이 답변을 등록하시겠습니까?")==true){
+			if(confirm("이 질문을 등록하시겠습니까?")==true){
 					QInputBR = $("#QInput").val().replace(/\n/g, "<br>");
 					Data4 = {"artPK" : ArtPK, "Description" : QInputBR};
 					$.ajax({
@@ -144,4 +144,65 @@ if(askBt != null){
 			}
 	});
 
+}
+
+
+var answerBtclass = document.getElementsByClassName('answerBtclass');
+var deleteBtclass = document.getElementsByClassName('deleteBtclass');
+
+if(answerBtclass != null){
+	for(var i=0;i<answerBtclass.length;i++){
+			var answerBt = answerBtclass[i];
+			$(answerBt).click(function(){
+					$("#commitBox").remove();
+					var str = '<div id = "commitBox">';
+					str += '<input id = "replyinput"></input>';
+					str += '<button id = "replybutton">답글 등록</button>';
+					str += '</div>';
+					$(this).closest("div").append(str);
+					id = $(this).attr('id').substr(8,300);
+
+					$("#replybutton").click(function(){
+						if(confirm("답글을 등록하시겠습니까?")==true){
+
+								ReplyReply = {'QuestionPK' : id , 'ReplyReply' : $("#replyinput").val(), 'artPK' : ArtPK};
+								$.ajax({
+										type:'post',
+										url : '/uploadReplyReply',
+										data : ReplyReply,
+										success:function(data){
+													alert('답글이 성공적으로 등록되었습니다.'+data);
+													$(location).attr('href','/post?int='+ArtPK);
+										}
+
+								});
+							}
+					});
+			});
+
+	}
+}
+
+if(deleteBtclass != null){
+	for(var i=0;i<deleteBtclass.length;i++){
+			var deleteBt = deleteBtclass[i];
+			$(deleteBt).click(function(){
+					if(confirm("댓글을 정말로 삭제하시겠습니까?")==true){
+
+						id = $(this).attr('id').substr(8,300);
+						ReplyDelete = {'QuestionPK' : id};
+						$.ajax({
+								type:'post',
+								url:'/deleteReply',
+								data : ReplyDelete,
+								success:function(){
+									alert('댓글이 성공적으로 지워졌습니다.');
+									$(location).attr('href','/post?int='+ArtPK);
+								}
+
+						});
+					}
+			});
+
+	}
 }

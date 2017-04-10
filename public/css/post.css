@@ -137,9 +137,17 @@ iframe{
 	display: inline-block;
 	font-size: 3vmin;
 	vertical-align: middle;
-	width: 25vw;
+	width: 23vw;
+	word-break: break-all;
 }
-#answerBt{
+.answerBtclass{
+	display: inline-block;
+	vertical-align: middle;
+	text-align: center;
+	padding: 0px;
+	font-size: 1vw;
+}
+.deleteBtclass{
 	display: inline-block;
 	vertical-align: middle;
 	text-align: center;
