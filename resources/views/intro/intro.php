@@ -34,6 +34,9 @@ $A->post();
 </head>
 <body>
 	<div id ='header'>
+		<?php
+					include_once('../resources/views/header.php');
+		 ?>
 	</div>
 	<div id="ContentWidth">
 		<div id="MainContent_Frame">
@@ -65,13 +68,8 @@ $A->post();
 		?>
 
 	</div>
-	<script type = "text/javascript" src = "js/jquery-3.1.1.min.js"></script>
-	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 	<script type="text/javascript">
-		$(document).ready( function() {
-			$("#header").load("/header");
-			// $("#MainImage").attr('src','http://cfile10.uf.tistory.com/image/265C6045564DAED91C5478');
-		});
 		$('img').on('error',function(){
 			$(this).attr('src', 'http://cfile10.uf.tistory.com/image/265C6045564DAED91C5478');
 		});

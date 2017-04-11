@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
-class UserController extends Controller
+class PostClass extends Controller
 {
       /**
        * Show a list of all of the application's users.
@@ -68,9 +68,9 @@ class UserController extends Controller
         $users = DB::update(DB::raw($Sentence));
       }
     }
-    $A = new UserController();
-    $A->countViews(); //조회수 때문에 index 앞에 위치함
-    $A->index();
+    $PostClass = new PostClass();
+    $PostClass->countViews(); //조회수 때문에 index 앞에 위치함
+    $PostClass->index();
 
 ?>
 
@@ -89,7 +89,9 @@ class UserController extends Controller
     <link rel="stylesheet" type ="text/css" href="css/post.css">
 
     <div id ='header'>
-
+      <?php
+            include_once('../resources/views/header.php');
+       ?>
     </div>
     <!-- <div><button id="close">X</button></div>
 
@@ -104,12 +106,12 @@ class UserController extends Controller
               <p class="creditLabel">Credit</p>
               <div class="positionFrame" id="positionFrame">
                 <?php
-                $A->getWorkPositionList();
+                $PostClass->getWorkPositionList();
                 ?>
               </div>
               <div class="nameFrame" id="nameFrame">
                 <?php
-                $A->getWorkNameList();
+                $PostClass->getWorkNameList();
                 ?>
               </div>
             </div>
@@ -137,7 +139,7 @@ class UserController extends Controller
               <div id="officialAnswers">
                 <div id="noAnswer">
                   <?php
-                    
+
                       include_once('../resources/views/posting/loadCompleteReply.php');
                       $loadCompleteReply = new loadCompleteReplyClass();
                       $loadCompleteReply->loadCompleteReply($_GET['int']);
@@ -149,11 +151,16 @@ class UserController extends Controller
             <div id="unofficialOfficialInfo">
               <div id="UOIbtFrame">
                 <button id="helpUOI">설명</button>
-                <button id="editUOIBt">[편집]</button>
+                <?php
+                      if($_SESSION['is_login']==true){
+                          echo '<button id="editUOIBt">[편집]</button>';
+                      }
+                 ?>
               </div>
               <div id="noUOI">
-                <img id="noUOIImg" src="http://dxlfb468n8ekd.cloudfront.net/gsc/P9T9E7/f2/0f/ab/f20fab8c10cd41579e7b9b999babf893/images/post_page3/u16.png?token=1ecd817523b2c668d3ecd2689a1d833b">
-                <p id="noUOIP">아직 작성된 게시물이 없습니다.</p>
+                <?php
+                    include_once('../resources/views/posting/wikiload.php');
+                ?>
               </div>
             </div>
 
@@ -199,7 +206,7 @@ class UserController extends Controller
           <!--수정, 삭제 버튼이 여기서 달려있게 된다.-->
           <div>
             <?php
-            $A->getUserCreditList();
+            $PostClass->getUserCreditList();
             foreach($GLOBALS['userPKArray'] as $user){
               if($user == $_SESSION['userPK']){
                 echo '<button id="fixed">수정</button>';
@@ -218,8 +225,6 @@ class UserController extends Controller
           var SourceURL = "<?= $GLOBALS['ARTURL'] ?>";
         </script>
 
-        <script type = "text/javascript" src = "js/jquery-3.1.1.min.js"></script>
-        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <script type = "text/javascript" src = "js/post.js"></script>
    <script type="text/javascript">//FOUC(Flash Of Unstyled Content) 방지 용
     $(function(){

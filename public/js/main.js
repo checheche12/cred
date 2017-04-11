@@ -1,10 +1,4 @@
 // Header section 추가
-$(document).ready( function() {
-
-	$("#pfpf").load("/ProfileBasicInfo");
-	$("#header").load("/header");
-
-});
 
 $('body').append("<script src = 'js/makedFunction.js'>");
 
@@ -83,7 +77,7 @@ Project.addEventListener("click", function() {	//	<-- 중복 클릭이 되서 .o
 
 Bridge.addEventListener("click", function() {
 
-	
+
 	var Data = {"_token" : token};
 	Data['userPK'] = userPK;
 	bridge(Data);

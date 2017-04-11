@@ -107,7 +107,7 @@
 </script>
 
 <div class="logo">
-  <img src = "/mainImage/signupImage/credlogowhite.png" width="187px"><br>
+  <img src = "/mainImage/signupImage/signupLogo.png" width="187px"><br>
 </div>
 <div class="quote">CRED. New experience!</div>
 

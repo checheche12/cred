@@ -15,20 +15,24 @@ class UserController extends Controller
     {
         $Sentence = "select userPK from groupMemberDB where groupPK = ".$_GET['userPK'];
         $Users = DB::select(DB::raw($Sentence));
-        $GLOBALS['userinfoArray'] = array();
-        // 0 email, 1 name 2 포토 url 3 career 4 education 5 userPK
+
         foreach($Users as $k){
               $Sentence2 = "select * from userinfo where userPK = '".$k->userPK."'";
               $users2 = DB::select(DB::raw($Sentence2));
               foreach($users2 as $user){
-                $A = array();
-                array_push($A,$user->Email);
-                array_push($A,$user->Name);
-                array_push($A,$user->ProfilePhotoURL);
-                array_push($A,$user->Career);
-                array_push($A,$user->education);
-                array_push($A,$user->userPK);
-                array_push($GLOBALS['userinfoArray'],$A);
+                echo '<div class="bridgeCard" id = "'.$user->userPK.'">
+                  <div class="optionFrame">
+                  <button class="delete" id="delete'.$user->userPK.'">삭제</button>
+                  </div>
+                  <div class="personalImageFrame">
+                  <img class="personalImage" src="'.$user->ProfilePhotoURL.'">
+                  </div>
+                  <div class="personalInfo">
+                  <p class="name">'.$user->Name.'</p>
+                  <p class="organization">'.$user->Career.'</p>
+                  <p class="position">'.$user->education.'</p>
+                  </div>
+                  </div>';
               }
         }
     }
@@ -36,7 +40,6 @@ class UserController extends Controller
 
 $A = new UserController();
 $A->index();
-die(json_encode($GLOBALS['userinfoArray'],JSON_UNESCAPED_UNICODE));
 
 
 ?>

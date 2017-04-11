@@ -28,8 +28,6 @@ a{
 .videoArt{
 	cursor:pointer;
 	width : 232px;
-	/*margin-right : 50px;
-	margin-bottom : 50px;*/
 }
 .ProjectFrame .name{
 	margin: 0px;
@@ -131,6 +129,7 @@ ul{
 .bridgeCard .personalImageFrame{
 	height:100px;
 	width:80px;
+	display: inline-block;
 }
 .bridgeCard .personalImage{
 	border-radius:100%;
@@ -142,6 +141,7 @@ ul{
 	padding-bottom: :5px;
 	padding-top: :5px;
 	width: 160px;
+	display: inline-block;
 }
 .bridgeCard .name, .bridgeCard .organization, .bridgeCard .position{
 	margin-bottom: 5px;
@@ -177,4 +177,12 @@ ul{
 }
 #memberAddFrame{
 	display: none;
+}
+
+.delete{
+	float: right;
+	border: none;
+	background: transparent;
+	margin-right: 5px;
+	margin-top: 5px;
 }

@@ -12,7 +12,7 @@ class checkAddCredit extends Controller
          */
         public function checkEmailCredit()
         {
-          $Sentence = "select * from userinfo where userPK = ".$_GET['userPK'];
+          $Sentence = "select * from userinfo where userPK = ".$_GET['int'];
           $users = DB::select(DB::raw($Sentence));
           foreach($users as $user){
             $GLOBALS['email'] = $user->Email;
@@ -25,7 +25,7 @@ class checkAddCredit extends Controller
             $GLOBALS['isGroup'] = $user->isgroup;
           }
 
-          $Sentence = "select * from keywordDB where userPK = ".$_GET['userPK'];
+          $Sentence = "select * from keywordDB where userPK = ".$_GET['int'];
 
           $users2 = DB::select(DB::raw($Sentence));
               // $GLOBALS['keyword'] = "";
@@ -34,7 +34,7 @@ class checkAddCredit extends Controller
             array_push($GLOBALS['keywordArr'], $usera->keyword);
           }
 
-          $Sentence = "select * from awardDB where userPK = ".$_GET['userPK'];
+          $Sentence = "select * from awardDB where userPK = ".$_GET['int'];
 
           $users2 = DB::select(DB::raw($Sentence));
           $GLOBALS['awardArr'] =array();
@@ -42,7 +42,7 @@ class checkAddCredit extends Controller
             array_push($GLOBALS['awardArr'], $usera->award);
           }
 
-          $Sentence2 = "select * from userExperience where userPK = ".$_GET['userPK'];
+          $Sentence2 = "select * from userExperience where userPK = ".$_GET['int'];
           $users2 = DB::select(DB::raw($Sentence2));
 
           $GLOBALS['experienceArr']=array();
@@ -51,7 +51,7 @@ class checkAddCredit extends Controller
           }
 
           if($GLOBALS['isGroup']=="1"){
-            $Sentence3 = "select description from userinfo where userPK = ".$_GET['userPK'];
+            $Sentence3 = "select description from userinfo where userPK = ".$_GET['int'];
             $users3 = DB::select(DB::raw($Sentence3));
             $GLOBALS['description'] = "";
             foreach($users3 as $user){
@@ -65,8 +65,10 @@ class checkAddCredit extends Controller
           }
         }
       }
-      $A = new checkAddCredit();
-      $A->checkEmailCredit();
+
+      $ProfileAnother = new checkAddCredit();
+      $ProfileAnother->checkEmailCredit();
+
       ?>
 
       <head>
@@ -143,7 +145,7 @@ class checkAddCredit extends Controller
           echo'<hr id="infoSplit">
           <div class="infoD"><p class="infoLabel"><img id="workicon" src="/mainImage/workicon.png">그룹소개</p><p class="infoDetail">'.$GLOBALS['description'].'</p></div>';
         }// if GROUP end
-        echo '</div>';  //lowerInfo division end
+        echo '</div></div></div>';  //lowerInfo division end
         ?>
 
         <script>

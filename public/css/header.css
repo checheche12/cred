@@ -8,7 +8,7 @@
 	white-space: nowrap;
 	box-shadow: 0 1px 5px 0 rgba(41,85,115,.21);
 	border-bottom : 1px solid #e6e6e6;
-	height : 60px;
+	height : 5vh;
 	width: 100%;
 	position: fixed;
 	background: rgba(255, 255, 255, 0.97);
@@ -18,26 +18,28 @@
 	z-index: 99;
 }
 .searchSlot {
-	width: 300px;
+	vertical-align: top;
+	width: 20vw;
+	height: 3vh;
 	box-sizing: border-box;
-	border: 2px solid #008CBA;
+	border: 0.2vmin solid #008CBA;
 	border-radius: 4px;
-	font-size: 16px;
+	font-size: 1.8vmin;
 	color: #008CBA;
 	background-color: white;
-	background-image: url('/mainImage/searchicon.png');
-	background-position: 14px 8px; 
-	background-size: 15px;
+	background-image: url(/mainImage/searchicon.png);
+	background-position: 0.8vw 0.8vh;
+	background-size: 1.5vmin;
 	background-repeat: no-repeat;
-	padding: 6px 20px 6px 40px;
+	padding: 0.6vh 1.2vw 0.6vh 2.4vw;
 
 }
 
 
 /**검색창**/
 #searchbar{
-	margin-top: 12.5px;
-	margin-left: 70px;
+	margin-top: 1vh;
+	margin-left: 4vw;
 	display: inline-flex;
 }
 /**검색버튼**/
@@ -51,17 +53,16 @@
 
 }
 #searchButton{
-	width: 90px;
-	height: 35px;
-
+	width: 5.4vw;
+	height: 3vh;
 	background-color: #008cba;
 	color: white;
-	border: 2px solid #008CBA;
+	border: 0.2px solid #008CBA;
 	text-align: center;
-	margin-left: 5px;
+	margin-left: 0.4vw;
 	text-decoration: none;
 	display: inline-block;
-	font-size: 13px;
+	font-size: 1.4vmin;
 	border-radius: 4px;
 	cursor: pointer;
 	transition: all 0.8s;
@@ -75,39 +76,39 @@ button{
 #credImage{
 	float: left;
 	cursor: pointer;
-	height: 30px;
-	margin-left: 10px;
-	margin-top: 15px;
+	height: 60%;
+	margin-left: 1vh;
+	margin-top: 1vh;
 }
 
 .headIcons {
 	position: absolute;
 	display: inline-block;
 	right: 0px;
-	height: 40px;
-	margin-top: 10px;
+	margin-top: 0.5vh;
 	margin-right: 30px;
 	white-space: nowrap;
 }
 #profile{
 	float: left;
-	display : inline-block;
-	height : 40px;
-	width: 200px;
+	display: table;
+	margin-right: 1vw;
 }
 
 #profileImage{
 	border-radius: 100%;
-	float : left;
-	width : 40px;
-	height : 40px;
-	margin-right: 10px;
+	float: left;
+	width: 4vh;
+	height: 4vh;
+	margin-right: 1vw;
+	display: inline-block;
 }
 
 #profileName{
-	cursor:pointer;
-	margin:11px;
-	word-wrap:normal;
+	cursor: pointer;
+	font-size: 1.7vh;
+	display: table-cell;
+	vertical-align: middle;
 }
 .dropbtn {
 	width: 90px;
@@ -223,6 +224,7 @@ button{
 }
 #searchInfoContainer{
 	display: inline-block;
+	vertical-align: top;
 }
 .resultList{
 	border-bottom: 1px solid gainsboro;
@@ -242,5 +244,8 @@ ul{
 	background: white;
 	border:1px solid #008cba; 
 	border-radius: 3px;
-	z-index: 100;
+}
+.ui-menu{
+	z-index: 999;
+	/*width: 20vw;*/
 }

@@ -9,7 +9,7 @@
 
 #ContentMain {
 	width: 100vw;
-	margin-top: 5vh;
+	margin-top: 8vh;
 	margin-left: 7.5vw;
 	margin-right: 7.5vw;
 }
@@ -91,6 +91,10 @@ button{
 	display: inline-block;
 	width: 35vw;
 	vertical-align: top;
+}
+#workFrame{
+	text-align: center;
+	width: 100%;
 }
 #viewD{
 	float: right;
@@ -203,4 +207,7 @@ iframe{
 	border: none;
 	padding: 1vmin;
 	font-size: 2vmin;
+}
+.PostWork{
+	/*width: 100%;*/
 }

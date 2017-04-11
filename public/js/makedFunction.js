@@ -134,43 +134,57 @@ function bridge(Data){
         $('#bridgeLayout').text('');
 
         if(data){
-                var obj = JSON.parse(data); // 0 email, 1 name 2 포토 url 3 career 4 education 5 userPK
 
-                for(var i =0;i<obj.length;i++){
-                  var q = '<table class="bridgeCard" id = '+obj[i][5]+'>'
-                  +'<tr> '
-                  +'<td class="personalImageFrame">'
-                  +'<img class="personalImage"src="'+obj[i][2]+'"> '
-                  +'</td> '+'<td class="personalInfo"> '
-                  +'<p class="name">'+obj[i][1]+'</p>'
-                  +' <p class="organization">'+obj[i][3]+'</p>'
-                  +'<p class="position">'+obj[i][4]+'</p> '
-                  +'</td> '
-     									// +'<td class="workImageFrame">'
-     									// +'<img class="workImage"src="mainImage/mainBackground.png"> '
-     									// +'</td>'
-     									+'</tr>'
-     									+'</table>';
+          $('#bridgeLayout').append(data);
 
-     									$('#bridgeLayout').append(q);
-     									// document.getElementById("bridgeLayout").style.columnWidth="344px";
+          var cardArr = document.getElementsByClassName('bridgeCard');
+          for(var i=0;i<cardArr.length;i++){
+            var bt = cardArr[i].id;
 
-     									var IDValue2 = '#' + obj[i][5];
-     									$(IDValue2).bind('click', function() {
+            var IDValue2 = '#' + bt;
+            $(IDValue2).bind('click', function() {
 
-     										var t = $(this).attr('id').substr(0, 300);
-     										t *= 1;
+             var t = $(this).attr('id').substr(0, 300);
+             t *= 1;
 
-     										post_to_url("/anotherProfile", t,"get");
+             post_to_url("/anotherProfile", t,"get");
 
-     									});
+           });
+
+            var DeleteIDValue = '#delete' + bt;
+            $(DeleteIDValue).bind('click', function(event) {
+              event.stopPropagation();
+              if(confirm("이 맴버를 삭제하시겠습니까?")==true){
+
+                var t = $(this).attr('id').substr(6, 300);
+                t *= 1;
+
+                var Data = {"_token" : token};
+                Data['MemberUserPK'] = t;
+                Data['updateType']="delete";
+                $.ajax({
+                  type:'GET',
+                  url: "/updateGroupMember",
+                            data: Data, //0 Name,1 Email,2 userPK
+                            success:function( data ) {
+                             alert("맴버 삭제 성공");
+                             location.reload();
+                           },
+                           error:function(request,status,error){
+                            alert("! 에러");
+                            console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+                          }
+
+                        });
+
+              }
+                      }); //end of Binding
+          }
+                    }},  //end of success
+                    error: function(){
+                      alert('error');
                     }
-                  }
-                },
-                error: function(){
-                  alert('error');
-                }
-              })
+                  })
    	// $(location).attr('href','/bridge');
    }
 

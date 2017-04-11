@@ -24,6 +24,18 @@ class searchProcess extends Controller
           $users = DB::select(DB::raw($Sentence));
           foreach($users as $user){
             $imshi = array();
+            if($user->Career == null){
+              $user->Career = '';
+            }
+            if($user->education == null){
+              $user->education = '';
+            }
+            if($user->belong == null){
+              $user->belong = '';
+            }
+            if($user->location == null){
+              $user->location = '';
+            }
             $imshi = array($user->Email,$user->Name,$user->ProfilePhotoURL,$user->userPK,$user->Career,$user->education,$user->belong,$user->location);
             array_push($userSuggest,$imshi);
           }

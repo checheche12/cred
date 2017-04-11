@@ -82,6 +82,7 @@ if(Msg != undefined){
 		});
 }
 
+/*
 nameLengthCheck();
 function nameLengthCheck(){
 var pName = $('#profileName').html();
@@ -90,7 +91,7 @@ if(pName.length>9){
 	$('#profileName').text(temp+" ...");
 }
 }
-
+*/
 
 var temp_userPK;
 searchButton.addEventListener("click", function() {
@@ -133,16 +134,27 @@ $( "#searchSlot" ).autocomplete({
 	return false;
 } )
 .autocomplete( "instance" )._renderItem = function( ul, item ) {
-	return $( "<li>" )
-	.append( '<div id="resultList" class="resultList"><img id="resultImage" src="'+item[2]+'" style="height: 50px;">'
+
+	var k_str = '<div id="resultList" class="resultList"><img id="resultImage" src="'+item[2]+'" style="height: 50px;">'
 		+'<div id="searchInfoContainer" style="display: inline-block;">'
-		+'<div id="name" class="searchInfo">'+item[1]+'</div>'
-		+'<div id="curOrganization" class="searchInfo" style="display: inline-block;">'+item[6]+'</div>'
-		+'<div id="curPosition" class="searchInfo" style="display: inline-block;">'+item[4]+'</div>'
-		+'<div id="location" class="searchInfo">'+item[7]+'</div>'
-		+'<div id="specialty" class="searchInfo">specialty</div>'
-		+'</div></div>')
+		if(item[1]!=''){
+			k_str += '<div id="name" class="searchInfo">'+item[1]+'</div>'
+		}
+		if(item[6]!=''){
+			k_str += '<div id="curOrganization" class="searchInfo" style="display: inline-block;">'+item[6]+'</div><br>';
+		}
+		if(item[4]!=''){
+			k_str += '<div id="curPosition" class="searchInfo" style="display: inline-block;">'+item[4]+'</div>';
+		}
+		if(item[7]!= ''){
+			k_str += '<div id="location" class="searchInfo">'+item[7]+'</div>';
+		}
+		k_str += '</div></div>';
+
+	return $( "<li>" )
+	.append(k_str)
 	.appendTo( ul );
+	$('.ui-autocomplete-input').css('width','15vw')
 };
 
 // $('#searchSlot').autocomplete( "search");

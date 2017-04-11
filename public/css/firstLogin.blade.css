@@ -16,7 +16,7 @@
    */
 
    html{
-    background: #008cba;
+    background: white;
     opacity: 0.95;
   }
   .logo{
@@ -26,7 +26,7 @@
 
   }
   .quote{
-    color:white;
+    color:#262626;
     font-size:20px;
     font-weight: lighter;
     text-align:center;
@@ -46,11 +46,11 @@
   }
   .labels{
     text-align: left;
-    color: white;
+    color: #262626 ;
   }
   .BOX{
    //margin-left : 210px;
-   border : 1px solid white;
+   border : 1px solid #dbdbdb;
    border-radius:7px;
    width : 100%;
    height: 30px;
@@ -68,22 +68,22 @@
   height: 40px;
 
   background-color: white;
-  color :#008cba ;
-  border:2px solid #008CBA ;
+  color :#262626;
+  border:2px solid #dbdbdb;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
   border-radius: 4px;
 
-/* hover effect*/
+  /* hover effect*/
   cursor: pointer;
   transition: all 0.8s;
 }
 
 #subsub:hover {
 
- background-color: #008CBA ;
+ background-color: #ed2a7b;
  color: white;
 
 }
@@ -93,25 +93,25 @@
   height: 40px;
 
   background-color: white;
-  color :#008cba ;
-  border:2px solid #008CBA ;
+  color :#262626;
+  border:2px solid #dbdbdb;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
   border-radius: 4px;
 
-/* hover effect*/
+  /* hover effect*/
   cursor: pointer;
   transition: all 0.8s;
 }
 
 #signupBt:hover {
- background-color: #008CBA ;
+ background-color: #ed2a7b;
  color: white;
 }
 
 .pass{
   font-weight: lighter;
-  color : white;
+  color : #ed2a7b;
 }

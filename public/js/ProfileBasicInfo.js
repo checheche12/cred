@@ -4,6 +4,9 @@ var profileImage2 = document.getElementById('profileImage2');
 var educationInfo = document.getElementById("educationInfo");
 var specialtyInfo = document.getElementById("specialtyInfo");
 
+var specialty = document.getElementsByClassName("specialty");
+var award = document.getElementsByClassName("award");
+
 var another;
 var specialty;
 
@@ -34,13 +37,28 @@ $(document).ready(function() {
 		$('#searchSlot').val($("#location").text());
 		$('#searchSlot').autocomplete( "search");
 	});
+
 	for (var i =0; i<specialty.length;i++) {
-		console.log("check point 1");
-		var bindId = "#specialty" + i;
-		$(bindId).bind("click", function(){
-			console.log("check point 2");
-			$('#searchSlot').val($(bindId).text());
-			$('#searchSlot').autocomplete( "search");
-		});
+		specialtyBinding(i);
+	}
+	if(award!=undefined){
+		for (var i =0; i<award.length;i++) {
+			awardBinding(i);
+		}
 	}
 });
+
+function specialtyBinding(i){
+	var bindId = "#specialty" + i;
+	$(bindId).bind("click", function(){
+		$('#searchSlot').val($(bindId).text());
+		$('#searchSlot').autocomplete( "search");
+	});
+}
+function awardBinding(i){
+	var bindId = "#award" + i;
+	$(bindId).bind("click", function(){
+		$('#searchSlot').val($(bindId).text());
+		$('#searchSlot').autocomplete( "search");
+	});
+}

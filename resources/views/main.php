@@ -47,12 +47,17 @@
 <link rel="stylesheet" type ="text/css" href="css/main.css?v=1">
 
 <div id ='header'>
-
+  <?php
+        include_once('../resources/views/header.php');
+   ?>
 </div>
     <!--
         아래에 있는 코드는 DB에서 값을 가져 온 뒤에 동적으로 수정해야 한다. (수정 2)
       -->
       <div id = "pfpf" class = "ProfileBasicInfo">
+        <?php
+              include_once('../resources/views/ProfileBasicInfo.php');
+         ?>
       </div>
 
       <div id = "profileContent">
@@ -89,8 +94,6 @@
 <script>
   var userPK = <?=$_SESSION['userPK']?>;
 </script>
-<script type = "text/javascript" src = "js/jquery-3.1.1.min.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script type = "text/javascript" src = "js/main.js"></script>
 <script type="text/javascript">//FOUC(Flash Of Unstyled Content) 방지 용
   $(function(){

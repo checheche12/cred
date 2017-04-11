@@ -1,9 +1,3 @@
-// Header section 추가
-$(document).ready( function() {
-
-	$("#header").load("/header");
-
-});
 
 var addCreditButton = document.getElementById('addCredit');
 // var closeButton = document.getElementById('close');
@@ -23,7 +17,7 @@ $.ajax({
 	}
 })
 
-for (var i = 1;i<creditNameArray.length;i++){
+for (var i = 0;i<creditNameArray.length;i++){
 	var numb = creditNameArray[i].id;
 	var IDValue = '#'+numb;
 	console.log(IDValue);
@@ -205,4 +199,50 @@ if(deleteBtclass != null){
 			});
 
 	}
+}
+
+var editUOIBt = document.getElementById('editUOIBt');
+var editUOIBtNum = 0;
+if(editUOIBt != null){
+	$(editUOIBt).click(function(){
+
+			if(editUOIBtNum==0){
+					$(editUOIBt).text('[편집 완료]');
+					editUOIBtNum = 1;
+					var str = '';
+
+					$.ajax({
+						url : '/wikiloadtext',
+						data : {'int' : ArtPK},
+						type : 'get',
+						success:function(data){
+							str += '<textarea id = "wikisubmit">';
+							str += data;
+							str += '</textarea>';
+							$("#noUOI").html(str);
+						}
+					})
+
+			}else{
+
+				$.ajax({
+						url : '/wikiupload',
+						type : 'post',
+						data : {'wiki' : $("#wikisubmit").val().replace(/\n/g, "<br>"), 'artPK' : ArtPK},
+						success:function(){
+								$.ajax({
+									url : '/wikiload',
+									data : {'int' : ArtPK},
+									type : 'get',
+									success:function(data){
+										$("#noUOI").html(data);
+										$(editUOIBt).text('[편집]');
+										editUOIBtNum = 0;
+									}
+								})
+						}
+				})
+			}
+
+	});
 }

@@ -21,6 +21,9 @@ class UserController extends Controller
         }
 
         foreach($users as $A){
+          if($A->userPK == $_POST['userPK']){
+            continue;
+          }
           // 0 email, 1 name 2 포토 url 3 career 4 education 5 userPK 6 isgroup
           echo '<a href = "/anotherProfile?int='.$A->userPK.'">';
           echo '<table class="bridgeCard">';
@@ -46,8 +49,11 @@ class UserController extends Controller
           echo "<div id = 'person'>";
           echo "<p>person</p>";
         }
-        
+
         foreach($users as $A){
+          if($A->userPK==$_POST['userPK']){
+            continue;
+          }
           // 0 email, 1 name 2 포토 url 3 career 4 education 5 userPK 6 isgroup\
           echo '<a href = "/anotherProfile?int='.$A->userPK.'">';
           echo '<table class="bridgeCard">';

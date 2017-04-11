@@ -142,7 +142,7 @@ class checkAddCredit extends Controller
           echo'<hr id="infoSplit">
           <div class="infoD"><p class="infoLabel"><img id="workicon" src="/mainImage/workicon.png">그룹소개</p><p class="infoDetail">'.$GLOBALS['description'].'</p></div>';
         }// if GROUP end
-        echo '</div>';  //lowerInfo division end
+        echo '</div></div></div>';  //lowerInfo division end
         ?>
 
         <script>

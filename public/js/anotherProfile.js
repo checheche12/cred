@@ -20,29 +20,6 @@ var token;
 
 	})
 
-$(document).ready( function() {
-
-	var Data = {"_token" : token };
-	Data['userPK'] = userPK;
-
-	$("#header").load("/header");
-
-	$.ajax({
-			type:'GET',
-			url:'/ProfileAnotherBasicInfo',
-			data : Data,
-			success:function(data){
-
-				$('#pfpf').text('');
-				var q = data;
-				$('#pfpf').html(q);
-			},
-			error: function(){
-				alert('error');
-			}
-	});
-});
-
 bridgeLogDisplay();
 
 function bridgeLogDisplay(){

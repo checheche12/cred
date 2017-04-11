@@ -1,9 +1,6 @@
 <?php
-namespace App\Http\Controllers;
-use Illuminate\Support\Facades\DB;
-use App\Http\Controllers\Controller;
 
-class UserController extends Controller
+class UserController
 {
       /**
        * Show a list of all of the application's users.
@@ -28,8 +25,7 @@ class UserController extends Controller
       }
     }
 
-    $A = new UserController();
-    $A->userinfoMake();
+
 
     ?>
     <head>
@@ -46,11 +42,17 @@ class UserController extends Controller
     <link rel="stylesheet" type ="text/css" href="css/main.css">
     <link rel="icon" type="image/png" href="/mainImage/webicon_16x16.png" sizes="16x16" />
     <div id = "header">
-
+      <?php
+            include_once('../resources/views/header.php');
+            $A = new UserController();
+            $A->userinfoMake();
+       ?>
     </div>
 
     <div id = "pfpf" class = "ProfileBasicInfo">
-
+      <?php
+            include_once('../resources/views/ProfileAnotherBasicInfo.php');
+       ?>
     </div>
 
     <div id = "profileContent">
@@ -76,8 +78,6 @@ class UserController extends Controller
     <script>
       var userPK = <?=$_GET['int']?>;
     </script>
-    <script type = "text/javascript" src = "js/jquery-3.1.1.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script type = "text/javascript" src = "js/anotherProfile.js"></script>
     <script type="text/javascript">//FOUC(Flash Of Unstyled Content) 방지 용
       $(function(){

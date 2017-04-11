@@ -1,9 +1,3 @@
-// Header section 추가
-$(document).ready( function() {
-
-  $("#header").load("/header");
-
-});
 
 $('body').append("<script src = 'js/makedFunction.js'>");
 
@@ -142,7 +136,7 @@ function statusChangeCallback(response) {
    js.src = "//connect.facebook.net/en_US/sdk.js";
    fjs.parentNode.insertBefore(js, fjs);
  }(document, 'script', 'facebook-jssdk'));
-  /*End of Facebook API*/ 
+  /*End of Facebook API*/
 
 //upload autocomplete
 $( "#email" ).autocomplete({

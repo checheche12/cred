@@ -181,6 +181,10 @@ Route::group(['middleware' => ['isLogin']] ,function(){
 			return view('posting.uploadReply');
 		});
 
+		Route::post('wikiupload',function(){
+			return view('posting.wikiupload');
+		});
+
 });
 
 // 권한관계. 내가 크레딧이 걸려있다면... fix와 삭제 하는 경우에는 내 크레딧이 걸려있어야 fixed 가 켜질 수 있다.
@@ -273,4 +277,12 @@ Route::get('/memberLoader',function(){
 
 Route::post('/deleteReply',function(){
 	return view('posting.deleteReply');
+});
+
+Route::get('/wikiload',function(){
+	return view('posting.wikiload');
+});
+
+Route::get('/wikiloadtext',function(){
+	return view('posting.wikiloadtext');
 });
