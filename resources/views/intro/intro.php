@@ -71,15 +71,8 @@ $A->post();
 
 	<script type="text/javascript">
 		$('img').on('error',function(){
-			$(this).attr('src', 'http://cfile10.uf.tistory.com/image/265C6045564DAED91C5478');
+			$(this).attr('src', '/mainImage/noimage.png');
 		});
-
-		// document.addEventListener("DOMContentLoaded", function(event) {
-		// 	document.querySelectorAll('img').forEach(function(img){
-		// 		img.onerror = function(){this.attr("src","https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg")
-		// 	};
-		// })
-		// });
 	</script>
 </body>
 </html>

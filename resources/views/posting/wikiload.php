@@ -11,12 +11,11 @@ class loadWikiClass extends Controller
 
           foreach($loadWikiSentences as $loadWikiSentence){
             if($loadWikiSentence->wikiuploaddate==null){
-              echo '<p id="noUOIP">아직 작성된 게시물이 없습니다.</p>';
+              echo '<p id="noUOIP">처음으로 이 위키에 정보를 게시해 주세요!</p>';
               break;
             }
-            echo $loadWikiSentence->wikiuploaddate;
-            echo "<br><br><br>";
-            echo $loadWikiSentence->wiki;
+            echo '<p id="updatedate">'.$loadWikiSentence->wikiuploaddate.'</p>';
+            echo '<p id="wikiInformation">'.$loadWikiSentence->wiki.'</p>';
             break;
         }
     }

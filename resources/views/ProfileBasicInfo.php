@@ -129,15 +129,18 @@ class checkAddCredit extends Controller
           echo'</div></div>'; //keyword end
 
           //Awards starts
-          echo '<hr id="infoSplit">
-          <div class="infoD"><p class="infoLabel"><img id="awardicon" src="/mainImage/awardicon.png">Awards</p><div id="awardInfo" class="infoDetail">';
-            $i = 0;
-            foreach ($GLOBALS['awardArr'] as $temp) {
-              echo '<p id="award'.$i.'" class="award">'.$temp.'</p>';
-              $i++;
+          if(count($GLOBALS['awardArr'])!=0){
+
+            echo '<hr id="infoSplit">
+            <div class="infoD"><p class="infoLabel"><img id="awardicon" src="/mainImage/awardicon.png">Awards</p><div id="awardInfo" class="infoDetail">';
+              $i = 0;
+              foreach ($GLOBALS['awardArr'] as $temp) {
+                echo '<p id="award'.$i.'" class="award">'.$temp.'</p>';
+                $i++;
         # code...
-            }
-          echo'</div></div>'; //Awards end
+              }
+              echo'</div></div>';
+          } //Awards end
 
           echo'<hr id="infoSplit">
           <div class="infoD"><p class="infoLabel"><img id="workicon" src="/mainImage/workicon.png">그룹소개</p><p class="infoDetail">'.$GLOBALS['description'].'</p></div>';

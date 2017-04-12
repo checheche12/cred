@@ -86,7 +86,7 @@
 	margin-top: 10px;
 }
 
-img{
+#profileImagePreview{
 	width: 100px;
 }
 button{
@@ -106,10 +106,6 @@ button{
 #addExperience{
 	border: none;
 	color: #008cba;
-}
-#positionlabel, #organizationlabel, #locationlabel, #descriptionlabel{
-	font-weight: lighter;
-	color: #999;
 }
 #editD{
 	text-align: center;

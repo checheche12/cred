@@ -8,7 +8,7 @@
 	white-space: nowrap;
 	box-shadow: 0 1px 5px 0 rgba(41,85,115,.21);
 	border-bottom : 1px solid #e6e6e6;
-	height : 5vh;
+	height : 3vmax;
 	width: 100%;
 	position: fixed;
 	background: rgba(255, 255, 255, 0.97);
@@ -18,33 +18,34 @@
 	z-index: 99;
 }
 .searchSlot {
+	
 	vertical-align: top;
-	width: 20vw;
-	height: 3vh;
+	width: 20vmax;
+	height: 2vmax;
 	box-sizing: border-box;
-	border: 0.2vmin solid #008CBA;
+	border: 0.2vmax solid #dbdbdb;
 	border-radius: 4px;
-	font-size: 1.8vmin;
-	color: #008CBA;
+	font-size: 1.2vmax;
+	color: #262626 ;
 	background-color: white;
 	background-image: url(/mainImage/searchicon.png);
-	background-position: 0.8vw 0.8vh;
-	background-size: 1.5vmin;
+	background-position: 5%;
+	background-size: 1.2vmax;
 	background-repeat: no-repeat;
-	padding: 0.6vh 1.2vw 0.6vh 2.4vw;
+	padding: 0.6vmax 1.2vmax 0.6vmax 2.6vmax;
 
 }
 
 
 /**검색창**/
 #searchbar{
-	margin-top: 1vh;
-	margin-left: 4vw;
+	margin-top: .5vmax;
+	margin-left: 4vmax;
 	display: inline-flex;
 }
 /**검색버튼**/
 
-@media screen and (min-width: 0px) and (max-width: 1100px){
+@media screen and (min-width: 0px) and (max-width: 900px){
 	/**검색창**/
 	#searchbar{
 		display: none;
@@ -53,16 +54,16 @@
 
 }
 #searchButton{
-	width: 5.4vw;
-	height: 3vh;
-	background-color: #008cba;
+	width: 5.4vmax;
+	height: 2vmax;
+	background-color: #ed2a7b ;
 	color: white;
-	border: 0.2px solid #008CBA;
+	border: 0.2px solid #ed2a7b ;
 	text-align: center;
-	margin-left: 0.4vw;
+	margin-left: 0.4vmax;
 	text-decoration: none;
 	display: inline-block;
-	font-size: 1.4vmin;
+	font-size: 1vmax;
 	border-radius: 4px;
 	cursor: pointer;
 	transition: all 0.8s;
@@ -77,36 +78,37 @@ button{
 	float: left;
 	cursor: pointer;
 	height: 60%;
-	margin-left: 1vh;
-	margin-top: 1vh;
+	margin-left: 0.6vmax;
+	margin-top: 0.6vmax;
 }
 
 .headIcons {
 	position: absolute;
 	display: inline-block;
 	right: 0px;
-	margin-top: 0.5vh;
-	margin-right: 30px;
+	margin-top: 0.25vmax;
+	margin-right: 2vmax;
 	white-space: nowrap;
 }
 #profile{
 	float: left;
 	display: table;
-	margin-right: 1vw;
+	margin-right: 1vmax
+	;
 }
 
 #profileImage{
 	border-radius: 100%;
 	float: left;
-	width: 4vh;
-	height: 4vh;
-	margin-right: 1vw;
+	width: 2.5vmax;
+	height: 2.5vmax;
+	margin-right: 1vmax;
 	display: inline-block;
 }
 
 #profileName{
 	cursor: pointer;
-	font-size: 1.7vh;
+	font-size: 1vmax;
 	display: table-cell;
 	vertical-align: middle;
 }
@@ -115,8 +117,8 @@ button{
 	height: 30px;
 	margin-top: 6px;
 	background-color: white;
-	color: #008cba;
-	border: 2px solid #008CBA;
+	color: #ed2a7b;
+	border: 2px solid #ed2a7b;
 	text-align: center;
 
 	text-decoration: none;
@@ -127,7 +129,7 @@ button{
 	transition: all 0.8s;
 }
 .dropbtn:hover {
-	background-color: #008CBA ;
+	background-color: #ed2a7b;
 	color: white;
 }
 .dropdown {
@@ -155,10 +157,10 @@ button{
 }
 
 .dropdown:hover .dropbtn {
-	background-color: #008CBA;
+	background-color: #ed2a7b;
 }
 #upload{
-	background-image: url(/mainImage/uploadiconblue.png);
+	background-image: url(/mainImage/uploadiconpink.png);
 }
 #upload:hover {
 	background-image: url(/mainImage/uploadiconwhite.png);
@@ -166,7 +168,7 @@ button{
 
 
 #logout{
-	background-image: url(/mainImage/logouticonblue.png);
+	background-image: url(/mainImage/logouticonpink.png);
 }
 #logout:hover {
 	background-image: url(/mainImage/logouticonwhite.png);
@@ -177,21 +179,20 @@ button{
 #logout:hover {
 	/*이미지 아직 없음*/
 }
-.dropdowns:hover{
-	background-color: #008CBA ;
+.icons:hover{
+	background-color: #ed2a7b ;
 	color: white;
 }
-.dropdowns{
-	width: 90px;
-	margin-top: 6px;
+.icons{
+	width: 3vmax;
+	height: 2.5vmax;
 	background-color: white;
 	background: no-repeat;
-	background-size: 13px;
-	background-position: 11% 42%;
-	color: #008cba ;
-	border: 2px solid #008CBA ;
+	background-size: 2vmax;
+	background-position: 50%;
+	color: #ed2a7b;
+	border: none;
 	text-align: center;
-
 	text-decoration: none;
 	display: inline-block;
 	font-size: 13px;
@@ -218,7 +219,7 @@ button{
 }
 
 #searchInfoContainer #name{
-	color: #008cba ; 
+	color: #ed2a7b ; 
 	font-weight: bold;
 	font-size: 15px; 
 }
@@ -242,10 +243,30 @@ ul{
 	overflow: auto;
 	position: fixed;
 	background: white;
-	border:1px solid #008cba; 
+	border:1px solid #ed2a7b; 
 	border-radius: 3px;
 }
 .ui-menu{
 	z-index: 999;
-	/*width: 20vw;*/
+	/*width: 20vmax
+	;*/
+}
+#buttons{
+	display: inline-block;
+}
+#login{
+	width: 5.4vmax;
+	height: 2vmax;
+	background-color: #ed2a7b ;
+	color: white;
+	border: 0.2px solid #ed2a7b ;
+	text-align: center;
+	margin-left: 0.4vmax;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 1vmax;
+	border-radius: 4px;
+	cursor: pointer;
+	transition: all 0.8s;
+	margin-top: .25vmax;
 }

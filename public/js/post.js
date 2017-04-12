@@ -217,7 +217,7 @@ if(editUOIBt != null){
 						type : 'get',
 						success:function(data){
 							str += '<textarea id = "wikisubmit">';
-							str += data;
+							str += data.replace(/<br>/g,'\n');
 							str += '</textarea>';
 							$("#noUOI").html(str);
 						}

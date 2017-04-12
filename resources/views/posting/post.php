@@ -129,11 +129,11 @@ class PostClass extends Controller
                 <p id="postWriter" class="postInfo"><?= $GLOBALS['uploaderName'] ?></p>
               </div>
               <div id="viewD">
-                <p id="viewLabel" class="view">조회수&nbsp;</p>
+                <p id="viewLabel" class="view">게시물 조회수&nbsp;</p>
                 <p id="viewNum" class="view"><?php echo number_format($GLOBALS['views'],0,"",",");?></p>
               </div>
               <div id="descriptionFrame">
-                <p id="description"><!-- AKMU | #AKMU #악뮤 #악동뮤지션 #사움직 #사춘기 #악뮤사춘기 #思春記 #上권 #COMEBACK #ONLINE0504 #0AM #OFFLINE0509 @akmu_suhyun @akmuchanhk --><?= $GLOBALS['Description']?></p></div>
+                <p id="description"><?php echo $GLOBALS['Description']?></p></div>
               </div>
               <hr id="splitter">
               <div id="officialAnswers">
@@ -150,7 +150,7 @@ class PostClass extends Controller
             </div>
             <div id="unofficialOfficialInfo">
               <div id="UOIbtFrame">
-                <button id="helpUOI">설명</button>
+                <p id="helpUOI">credwiki - 작품에 대해서 제작자가 말하지 못한 정보를 공유해주세요!</p>
                 <?php
                       if($_SESSION['is_login']==true){
                           echo '<button id="editUOIBt">[편집]</button>';
@@ -185,7 +185,7 @@ class PostClass extends Controller
                     if($_SESSION['is_login'] == true){
                       echo '
                       <div id="QInputFrame">
-                      <input id="QInput" type="text" name="Q" placeholder="제작자들에게 직접 질문해 보세요.">
+                      <textarea id="QInput" type="text" name="Q" placeholder="제작자들에게 직접 질문해 보세요."></textarea>
                       </div>
                       <button id="askBt">등록</button>
                       ';

@@ -31,11 +31,11 @@ class loadReplyClass extends Controller
           <img id="Qpics" src='.$Reply->ProfilePhotoURL.'>
           <p id="Qs" class="Qs">'.$Reply->Question.'</p>';
           if($checkInfo){
-              echo '<button class = "answerBtclass" id="answerBt'.$Reply->QuestionPK.'">답글</button>';
-              echo '<button class = "deleteBtclass" id="deleteBt'.$Reply->QuestionPK.'">삭제</button>';
+              echo '<div class="buttons"><button class = "answerBtclass" id="answerBt'.$Reply->QuestionPK.'">답글</button>
+              <button class = "deleteBtclass" id="deleteBt'.$Reply->QuestionPK.'">삭제</button></div>';
           }else if($Reply->userPK == $_SESSION['userPK'])
           {
-              echo '<button class = "deleteBtclass" id="deleteBt'.$Reply->QuestionPK.'">삭제</button>';
+              echo '<div class="buttons"><button class = "deleteBtclass" id="deleteBt'.$Reply->QuestionPK.'">삭제</button></div>';
           }
         echo '</div>';
       }

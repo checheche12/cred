@@ -234,7 +234,7 @@ addCredit.addEventListener("click",function(){
         if(confirm("등록되지 않은 이메일입니다. 만일 가입자가 아닌 사람이라면 확인을 눌러주십시오") == true){
 
           var j = "<div class = 'creditContext'>";
-          j += ("<img class = 'xImage2' id = "+NotUserCreditNumber+" src ='/mainImage/uploadImage/x.jpg'></img>");
+          j += ("a class ='xImage' id = "+NotUserCreditNumber+"'></a>");
           j += ("<div class='name'>"+ email.value + "</div><br>");
           j += ("<div class='position'>"+position.value+"</div></div>");
           $('#creditBox').append(j);
@@ -268,7 +268,7 @@ addCredit.addEventListener("click",function(){
       }else{
 
         var j = "<div class = 'creditContext'>";
-        j += ("<img class = 'xImage' id = "+k[1]+" src ='/mainImage/uploadImage/x.jpg'></img>");
+        j += ("<a class ='xImage' id = "+k[1]+"'></a>");
         j += ("<div class='name'>"+k[0] + "</div><br>");
         j += ("<div class='position'>"+position.value+"</div></div>");
         $('#creditBox').append(j);
@@ -318,7 +318,7 @@ submitButton.addEventListener("click",function(){
   //Data2['Title'] = ((TitleBox.value.replace(/\n/g, "<br>")).replace(/'/,/\'/)).replace(/"/,/\"/);
   Data2['Title'] = TitleBox.value;
   Data2['ArtURL'] = URLBox.value;
-  Data2['Description'] = Description.value;
+  Data2['Description'] = Description.value.replace(/\n/g, "<br>");;
   //Data2['Description'] = ((Description.value.replace(/\n/g, "<br>")).replace(/'/,/\'/)).replace(/"/,/\"/);
   Data2['artPK'] = artPK;
   Data2['int'] = artPK;

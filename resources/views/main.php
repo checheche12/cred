@@ -63,11 +63,11 @@
       <div id = "profileContent">
         <div id = "profileSelection">
           <ul>
-            <li id = "Project">Project</li>
-            <li id = "Bridge">Bridge</li>
+            <li id = "Project">작품</li>
+            <li id = "Bridge">크레딧 공유자</li>
             <?php
             if($_SESSION['isGroup']=="Group"){
-              echo "<li id = 'Members'>Members</li>";
+              echo "<li id = 'Members'>멤버</li>";
             }
             ?>
           </ul>

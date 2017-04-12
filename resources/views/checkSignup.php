@@ -31,11 +31,11 @@ class UserController extends Controller
             }
           }
           if($_POST['chk_info']=="personal"){
-            DB::insert('insert into userinfo (Email, Password, Name, Certification, isgroup, ProfilePhotoURL) values (?, ?, ?, ?, ?, ?)',[$_POST['emailemail'],$GLOBALS['pLock'],$_POST['namename'],1,0,$_POST['hiddenPicURL']]);
-            //self::sendEmail($_POST['emailemail']);
+            DB::insert('insert into userinfo (Email, Password, Name, Certification, isgroup, ProfilePhotoURL) values (?, ?, ?, ?, ?, ?)',[$_POST['emailemail'],$GLOBALS['pLock'],$_POST['namename'],0,0,$_POST['hiddenPicURL']]);
+            self::sendEmail($_POST['emailemail']);
 
           }else if($_POST['chk_info']=="group"){
-            DB::insert('insert into userinfo (Email, Password, Name, Certification, isgroup, ProfilePhotoURL) values (?, ?, ?, ?, ?, ?)',[$_POST['emailemail'],$GLOBALS['pLock'],$_POST['namename'],1,1,$_POST['hiddenPicURL']]);
+            DB::insert('insert into userinfo (Email, Password, Name, Certification, isgroup, ProfilePhotoURL) values (?, ?, ?, ?, ?, ?)',[$_POST['emailemail'],$GLOBALS['pLock'],$_POST['namename'],0,1,$_POST['hiddenPicURL']]);
             self::sendEmail($_POST['emailemail']);
           }
 

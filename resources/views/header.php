@@ -35,7 +35,7 @@ class UserController extends Controller
     ?>
 
     <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
       <style type="text/css">
         .headerFrame{
           display: none;
@@ -69,30 +69,35 @@ class UserController extends Controller
         echo '</div>';
 
         if($_SESSION['is_login'] == false){
-          echo '<button id = "login" class="dropdowns"><div id="yourartBtSp">로그인</div></button><br>';
+          echo '<button id = "login" class="dropdowns">로그인</button><br>';
 
         }else{
 
-          echo '<div class="dropdown">
-              <button class="dropbtn">메뉴</button>
-              <div class="dropdown-content">
-                <button id = "yourart" class="dropdowns"><div id="yourartBtSp">yourArt</div></button><br>
-                <button id = "upload" class="dropdowns"><div id="upBtSp">업로드</div></button><br>
-                <button id = "msg" class="dropdowns"><div id="msgBtsp">MSG</div></button><br>
-                <button id = "logout" class="dropdowns"><div id="logBtSp">로그아웃</div></button>
-              </div>
-          </div>';
+          echo '<div id="buttons">
+          <button id = "yourart" class="icons"></button>
+          <button id = "upload" class="icons"></button>
+          <button id = "logout" class="icons"></button>
+        </div>';
+      //   echo '<div class="dropdown">
+      //   <button class="dropbtn">메뉴</button>
+      //   <div class="dropdown-content">
+      //     <button id = "yourart" class="dropdowns"><div id="yourartBtSp">yourArt</div></button><br>
+      //     <button id = "upload" class="dropdowns"><div id="upBtSp">업로드</div></button><br>
+      //     <button id = "msg" class="dropdowns"><div id="msgBtsp">MSG</div></button><br>
+      //     <button id = "logout" class="dropdowns"><div id="logBtSp">로그아웃</div></button>
+      //   </div>
+      // </div>';
 
-        }
-        ?>
+    }
+    ?>
 
-      </div>
-    </div>
   </div>
+</div>
+</div>
 
-  <script type = "text/javascript" src = "js/jquery-3.1.1.min.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  <script type = "text/javascript" src = "js/header.js"></script>
+<script type = "text/javascript" src = "js/jquery-3.1.1.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script type = "text/javascript" src = "js/header.js"></script>
   <script type="text/javascript"> //FOUC(Flash Of Unstyled Content) 방지 용
     $(function(){
       $('.headerFrame').css('display','block');

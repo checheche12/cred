@@ -67,15 +67,16 @@ html{
 .creditContext {
 	text-align: left;
 	float: left;
-	padding-left: 5px;
+	padding: 12px;
 	margin: 3px;
 	min-width: 80px;
 	border-radius: 6px;
 	background: #dbdbdb;
+	position: relative;
 }
 .creditContext .name {
 	margin-top: 5px;
-	font-size: 5px;
+	font-size: 12px;
 	font-weight: bold;
 }
 .creditContext .position {
@@ -129,8 +130,20 @@ button:hover {
 	box-shadow: 0 0 0 1px rgba(0,0,0,.1), 0 2px 3px rgba(0,0,0,.2);
 	border: 3px dotted rgb(219, 219, 219);
 	margin-bottom: 20px;
+	overflow: auto;
 }
-.xImage{
-	float: right;
-	margin: 3px;
+/* Close Button */
+
+[class*='xImage'] {
+  color: #777;
+  font: 10px/100% arial, sans-serif;
+  position: absolute;
+  right: 5px;
+  text-decoration: none;
+  text-shadow: 0 1px 0 #fff;
+  top: 5px;
+}
+
+.xImage:after {
+  content: '✖';  UTF-8 symbol 
 }
