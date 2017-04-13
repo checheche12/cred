@@ -116,7 +116,8 @@
       <label for="context">내용</label><br>
       <textarea id = "context" cols : "40" rows:"10"><?php echo str_replace("<br>", "\r\n",  $GLOBALS['description']); ?></textarea><br><br>
 
-      <button id = "cancelButton" class="submitButton">cancel</button>
+      <button id = "deleteButton" class="submitButton">작품 삭제</button>
+      <button id = "cancelButton" class="submitButton">취소</button>
       <button id = "saveButton" class="submitButton">수정</button>
 
   </div>

@@ -52,12 +52,12 @@ function imageExists(url, callback) {
 	img.src = url;
 }
 
-	/** urlCheck**/
-	function getImage(urlInput) {
+/** urlCheck**/
+function getImage(urlInput) {
 
-		var width = 1050;
-		var height = 484;
-		var url = urlInput;
+	var width = 1050;
+	var height = 484;
+	var url = urlInput;
 //		var url = urlInput.value; //url input 에서 가져오기
 		var id = matchYoutubeUrl(url); //youtube url 인지 체크 하고 youtube id 반환
 		if (id != false) {
@@ -67,8 +67,8 @@ function imageExists(url, callback) {
 //			$("#testImage")
 //					.html(
 //							"<div> <iframe width='560' height='315' src='https://www.youtube.com/embed/"+id+ "' frameborder='0' allowfullscreen></iframe> </div>");
-					return "<iframe width='"+width+"' height='"+height+"' src='https://www.youtube.com/embed/"+id+ "' frameborder='0' allowfullscreen></iframe>";
-			} else if (matchVimeoUrl(url) != false) {
+return "<iframe width='"+width+"' height='"+height+"' src='https://www.youtube.com/embed/"+id+ "' frameborder='0' allowfullscreen></iframe>";
+} else if (matchVimeoUrl(url) != false) {
 						id = matchVimeoUrl(url); //vimeo id 반환
 		//			$("#checkResult").html("Vimeo Video id: " + id);
 		//			$("#testImage")
@@ -76,66 +76,46 @@ function imageExists(url, callback) {
 		//							"<div> <iframe src='https://player.vimeo.com/video/"
 		//									+ id
 		//									+ "?title=0&byline=0&portrait=0&badge=0' width='640' height='360' frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> </div>");
-						return "<iframe src='https://player.vimeo.com/video/"
-				+ id
-				+ "?title=0&byline=0&portrait=0&badge=0' width='"+width+"' height='"+height+"' frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>";
-				} else {
-							return "<image class='PostWork'src = " + url + ">";
-					}
+		return "<iframe src='https://player.vimeo.com/video/"
+		+ id
+		+ "?title=0&byline=0&portrait=0&badge=0' width='"+width+"' height='"+height+"' frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>";
+	} else {
+		return "<image class='PostWork'src = " + url + ">";
+	}
 }
 function goBack() {
 	window.history.back();
 }
 
 var fixedButton = document.getElementById('fixed');
-var deleteButton = document.getElementById('delete');
 if(fixedButton != null){
 	fixedButton.addEventListener("click",function(){
-			post_to_url('./fixed', ArtPK, 'get');
-	});
-	var Data3 = {"int" : ArtPK};
-	deleteButton.addEventListener("click",function(){
-		$.ajax({
-			url:'./delete',
-			type:'GET',
-			data: Data3,
-			success:function(data){
-				//alert('글 삭제 성공 메인으로 돌아갑니다.');
-				alert(data);
-				$(location).attr('href','/main');
-			},
-
-			error: function(){
-				alert('글 삭제 실패');
-			}
-
-		})
-
+		post_to_url('./fixed', ArtPK, 'get');
 	});
 }
 var askBt = document.getElementById('askBt');
 if(askBt != null){
 
 	$('#askBt').click(function(){
-			if(confirm("이 질문을 등록하시겠습니까?")==true){
-					QInputBR = $("#QInput").val().replace(/\n/g, "<br>");
-					Data4 = {"artPK" : ArtPK, "Description" : QInputBR};
-					$.ajax({
-							url:'/uploadReply',
-							type:'POST',
-							data: Data4,
-							success:function(data){
-									alert('댓글이 정상적으로 등록되었습니다.\n'+data);
-									$(location).attr('href','/post?int='+ArtPK);
-							},
-							error: function(){
+		if(confirm("이 질문을 등록하시겠습니까?")==true){
+			QInputBR = $("#QInput").val().replace(/\n/g, "<br>");
+			Data4 = {"artPK" : ArtPK, "Description" : QInputBR};
+			$.ajax({
+				url:'/uploadReply',
+				type:'POST',
+				data: Data4,
+				success:function(data){
+					alert('댓글이 정상적으로 등록되었습니다.\n'+data);
+					$(location).attr('href','/post?int='+ArtPK);
+				},
+				error: function(){
 
-								alert('등록 실패');
-							}
+					alert('등록 실패');
+				}
 
-					});
+			});
 
-			}
+		}
 	});
 
 }
@@ -146,58 +126,58 @@ var deleteBtclass = document.getElementsByClassName('deleteBtclass');
 
 if(answerBtclass != null){
 	for(var i=0;i<answerBtclass.length;i++){
-			var answerBt = answerBtclass[i];
-			$(answerBt).click(function(){
-					$("#commitBox").remove();
-					var str = '<div id = "commitBox">';
-					str += '<input id = "replyinput"></input>';
-					str += '<button id = "replybutton">답글 등록</button>';
-					str += '</div>';
-					var div = $(this).closest("#Qcard");
-					div.append(str);
-					id = $(this).attr('id').substr(8,300);
+		var answerBt = answerBtclass[i];
+		$(answerBt).click(function(){
+			$("#commitBox").remove();
+			var str = '<div id = "commitBox"><div id="QInputFrame">';
+			str += '<textarea id = "replyinput"></textarea></div>';
+			str += '<button id = "replybutton">등록</button>';
+			str += '</div>';
+			var div = $(this).closest("#Qcard");
+			div.append(str);
+			id = $(this).attr('id').substr(8,300);
 
-					$("#replybutton").click(function(){
-						if(confirm("답글을 등록하시겠습니까?")==true){
+			$("#replybutton").click(function(){
+				if(confirm("답글을 등록하시겠습니까?")==true){
 
-								ReplyReply = {'QuestionPK' : id , 'ReplyReply' : $("#replyinput").val(), 'artPK' : ArtPK};
-								$.ajax({
-										type:'post',
-										url : '/uploadReplyReply',
-										data : ReplyReply,
-										success:function(data){
-													alert('답글이 성공적으로 등록되었습니다.'+data);
-													$(location).attr('href','/post?int='+ArtPK);
-										}
+					ReplyReply = {'QuestionPK' : id , 'ReplyReply' : $("#replyinput").val(), 'artPK' : ArtPK};
+					$.ajax({
+						type:'post',
+						url : '/uploadReplyReply',
+						data : ReplyReply,
+						success:function(data){
+							alert('답글이 성공적으로 등록되었습니다.'+data);
+							$(location).attr('href','/post?int='+ArtPK);
+						}
 
-								});
-							}
 					});
+				}
 			});
+		});
 
 	}
 }
 
 if(deleteBtclass != null){
 	for(var i=0;i<deleteBtclass.length;i++){
-			var deleteBt = deleteBtclass[i];
-			$(deleteBt).click(function(){
-					if(confirm("댓글을 정말로 삭제하시겠습니까?")==true){
+		var deleteBt = deleteBtclass[i];
+		$(deleteBt).click(function(){
+			if(confirm("댓글을 정말로 삭제하시겠습니까?")==true){
 
-						id = $(this).attr('id').substr(8,300);
-						ReplyDelete = {'QuestionPK' : id};
-						$.ajax({
-								type:'post',
-								url:'/deleteReply',
-								data : ReplyDelete,
-								success:function(){
-									alert('댓글이 성공적으로 지워졌습니다.');
-									$(location).attr('href','/post?int='+ArtPK);
-								}
-
-						});
+				id = $(this).attr('id').substr(8,300);
+				ReplyDelete = {'QuestionPK' : id};
+				$.ajax({
+					type:'post',
+					url:'/deleteReply',
+					data : ReplyDelete,
+					success:function(){
+						alert('댓글이 성공적으로 지워졌습니다.');
+						$(location).attr('href','/post?int='+ArtPK);
 					}
-			});
+
+				});
+			}
+		});
 
 	}
 }
@@ -207,43 +187,47 @@ var editUOIBtNum = 0;
 if(editUOIBt != null){
 	$(editUOIBt).click(function(){
 
-			if(editUOIBtNum==0){
-					$(editUOIBt).text('[편집 완료]');
-					editUOIBtNum = 1;
-					var str = '';
+		if(editUOIBtNum==0){
+			$(editUOIBt).css('background', 'none'); 
+			$(editUOIBt).css('width', '4vw'); 
+			$(editUOIBt).text('저장');
+			editUOIBtNum = 1;
+			var str = '';
 
+			$.ajax({
+				url : '/wikiloadtext',
+				data : {'int' : ArtPK},
+				type : 'get',
+				success:function(data){
+					str += '<textarea id = "wikisubmit">';
+					str += data.replace(/<br>/g,'\n');
+					str += '</textarea>';
+					$("#noUOI").html(str);
+				}
+			})
+
+		}else{
+
+			$.ajax({
+				url : '/wikiupload',
+				type : 'post',
+				data : {'wiki' : $("#wikisubmit").val().replace(/\n/g, "<br>"), 'artPK' : ArtPK},
+				success:function(){
 					$.ajax({
-						url : '/wikiloadtext',
+						url : '/wikiload',
 						data : {'int' : ArtPK},
 						type : 'get',
 						success:function(data){
-							str += '<textarea id = "wikisubmit">';
-							str += data.replace(/<br>/g,'\n');
-							str += '</textarea>';
-							$("#noUOI").html(str);
+							$("#noUOI").html(data);
+							$(editUOIBt).text('편집');
+							// $(editUOIBt).css('background', 'url(/mainImage/editicon.png) no-repeat'); 
+							// $(editUOIBt).css('width', '1.5vmax'); 
+							editUOIBtNum = 0;
 						}
 					})
-
-			}else{
-
-				$.ajax({
-						url : '/wikiupload',
-						type : 'post',
-						data : {'wiki' : $("#wikisubmit").val().replace(/\n/g, "<br>"), 'artPK' : ArtPK},
-						success:function(){
-								$.ajax({
-									url : '/wikiload',
-									data : {'int' : ArtPK},
-									type : 'get',
-									success:function(data){
-										$("#noUOI").html(data);
-										$(editUOIBt).text('[편집]');
-										editUOIBtNum = 0;
-									}
-								})
-						}
-				})
-			}
+				}
+			})
+		}
 
 	});
 }

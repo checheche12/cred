@@ -72,7 +72,7 @@ class PostClass extends Controller
     $PostClass->countViews(); //조회수 때문에 index 앞에 위치함
     $PostClass->index();
 
-?>
+    ?>
 
     <head>
       <style type="text/css">
@@ -90,8 +90,8 @@ class PostClass extends Controller
 
     <div id ='header'>
       <?php
-            include_once('../resources/views/header.php');
-       ?>
+      include_once('../resources/views/header.php');
+      ?>
     </div>
     <!-- <div><button id="close">X</button></div>
 
@@ -100,6 +100,18 @@ class PostClass extends Controller
       -->
 
       <div id = "ContentMain">
+        <div id="editBts">
+          <!--수정, 삭제 버튼이 여기서 달려있게 된다.-->
+          <?php
+          $PostClass->getUserCreditList();
+          foreach($GLOBALS['userPKArray'] as $user){
+            if($user == $_SESSION['userPK']){
+              echo '<button id="fixed">편집</button>';
+              break;
+            }
+          }
+          ?>
+        </div>
         <div id = "LeftCont">
           <div class="outCreditFrame">
             <div class="creditFrame">
@@ -122,7 +134,7 @@ class PostClass extends Controller
               <div id="postInfo">
                 <p id="postDateLabel" class="postInfo">게시일:&nbsp;</p>
                 <p id="postDate" class="postInfo">
-                  <?php $t = strtotime($GLOBALS['uploadDate']);
+                  <?php $t = strtotime($GLOBALS['lastloadDate']);
                   echo date('Y/m/d',$t);?>
                 </p>
                 <p id="postWriterLabel" class="postInfo">작성자:&nbsp;</p>
@@ -132,6 +144,8 @@ class PostClass extends Controller
                 <p id="viewLabel" class="view">게시물 조회수&nbsp;</p>
                 <p id="viewNum" class="view"><?php echo number_format($GLOBALS['views'],0,"",",");?></p>
               </div>
+              <hr id="splitter">
+              <p id="descriptionLabel">작품 설명</p>
               <div id="descriptionFrame">
                 <p id="description"><?php echo $GLOBALS['Description']?></p></div>
               </div>
@@ -140,11 +154,11 @@ class PostClass extends Controller
                 <div id="noAnswer">
                   <?php
 
-                      include_once('../resources/views/posting/loadCompleteReply.php');
-                      $loadCompleteReply = new loadCompleteReplyClass();
-                      $loadCompleteReply->loadCompleteReply($_GET['int']);
+                  include_once('../resources/views/posting/loadCompleteReply.php');
+                  $loadCompleteReply = new loadCompleteReplyClass();
+                  $loadCompleteReply->loadCompleteReply($_GET['int']);
 
-                   ?>
+                  ?>
                 </div>
               </div>
             </div>
@@ -152,14 +166,14 @@ class PostClass extends Controller
               <div id="UOIbtFrame">
                 <p id="helpUOI">credwiki - 작품에 대해서 제작자가 말하지 못한 정보를 공유해주세요!</p>
                 <?php
-                      if($_SESSION['is_login']==true){
-                          echo '<button id="editUOIBt">[편집]</button>';
-                      }
-                 ?>
+                if($_SESSION['is_login']==true){
+                  echo '<button id="editUOIBt"></button>';
+                }
+                ?>
               </div>
               <div id="noUOI">
                 <?php
-                    include_once('../resources/views/posting/wikiload.php');
+                include_once('../resources/views/posting/wikiload.php');
                 ?>
               </div>
             </div>
@@ -174,49 +188,33 @@ class PostClass extends Controller
               <div id="QCountFrame">
                 <p id="QCount">질문 -&nbsp;</p>
                 <?php
-                    include_once('../resources/views/posting/loadReply.php');
-                    $LoadReply = new loadReplyClass($_GET['int']);
+                include_once('../resources/views/posting/loadReply.php');
+                $LoadReply = new loadReplyClass($_GET['int']);
                 ?>
                 <p id="QNum"><?=count($LoadReply->Replies);?></p>
               </div>
 
               <div id="submitFrame">
                 <?php
-                    if($_SESSION['is_login'] == true){
-                      echo '
-                      <div id="QInputFrame">
-                      <textarea id="QInput" type="text" name="Q" placeholder="제작자들에게 직접 질문해 보세요."></textarea>
-                      </div>
-                      <button id="askBt">등록</button>
-                      ';
-                    }
+                if($_SESSION['is_login'] == true){
+                  echo '
+                  <div id="QInputFrame">
+                    <textarea id="QInput" type="text" name="Q" placeholder="제작자들에게 직접 질문해 보세요."></textarea>
+                  </div>
+                  <button id="askBt">등록</button>
+                  ';
+                }
                 ?>
 
               </div>
               <div id="QListFrame">
-                  <?php
-                        $LoadReply->loadReply($_GET['int']);
-                   ?>
+                <?php
+                $LoadReply->loadReply($_GET['int']);
+                ?>
               </div>
             </div>
 
           </div>  <!-- RightCont end -->
-
-
-          <!--수정, 삭제 버튼이 여기서 달려있게 된다.-->
-          <div>
-            <?php
-            $PostClass->getUserCreditList();
-            foreach($GLOBALS['userPKArray'] as $user){
-              if($user == $_SESSION['userPK']){
-                echo '<button id="fixed">수정</button>';
-                echo '<button id="delete">삭제</button>';
-                break;
-              }
-            }
-            ?>
-          </div>
-
         </div>
 
         <script>

@@ -36,7 +36,7 @@ p{
 
 }
 p.name, p.position{
-	font-size: 1.1vmax;
+	font-size: 0.9vmax;
 	margin: 0px;
 	line-height: 1.6;
 	word-break: none;
@@ -53,7 +53,7 @@ p.name, p.position{
 	margin-bottom: 5px;
 }
 .RecentWorkPic{
-	margin-bottom: 3vw;
+	margin-bottom: 1vw;
 	/*height: 20vh;*/
 	/*object-fit: contain;*/
 }

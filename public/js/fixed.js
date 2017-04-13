@@ -13,7 +13,7 @@ var position = document.getElementById('position');
 var CreditBox = document.getElementById('creditBox');
 var submitButton = document.getElementById('saveButton');
 var cancelButton = document.getElementById('cancelButton');
-
+var deleteButton = document.getElementById('deleteButton');
 
 var token;
 
@@ -212,9 +212,9 @@ $( "#email" ).autocomplete({
 }
 addCredit.addEventListener("click",function(){
 
-   var Data = {"_token" : token};
+ var Data = {"_token" : token};
 
-  Data['email'] = Email.value;
+ Data['email'] = Email.value;
 
   var dC = function duplicateCheck(k){ // 중복 크레딧 체크해 주는 함수
     console.log(userPKArr);
@@ -310,7 +310,7 @@ addCredit.addEventListener("click",function(){
 
 cancelButton.addEventListener("click",function(){
   goBack();
-})
+});
 
 submitButton.addEventListener("click",function(){
   var Data2 = {"_token" : token};
@@ -339,6 +339,28 @@ submitButton.addEventListener("click",function(){
       alert('error');
     }
   })
+
+});
+
+
+deleteButton.addEventListener("click",function(){
+  var Data3 = {"int" : artPK};
+  console.log("deleteButton Clicked");
+  $.ajax({
+    url:'./delete',
+    type:'GET',
+    data: Data3,
+    success:function(data){
+        alert('글 삭제 성공 메인으로 돌아갑니다.');
+        alert(data);
+        $(location).attr('href','/main');
+      },
+
+      error: function(){
+        alert('글 삭제 실패');
+      }
+
+    })
 
 });
 function goBack() {

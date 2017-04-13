@@ -136,16 +136,6 @@ $(addExperience).click(function(){
 
 })
 
-
-$(document).ready(function(){
-	$("#ProfilePhotoURL").blur(function(){
-		var urlinput = document.getElementById("ProfilePhotoURL").value;
-		$('#pImage').html(getImage(urlinput));
-      // $('#URLBox').val("");
-  });
-});
-
-
 /** urlCheck* */
 function getImage(urlInput) {
 
@@ -167,18 +157,25 @@ function getImage(urlInput) {
 
 
 submitprofile.addEventListener("click",function(){
-	var formData = new FormData();
-	formData.append('Image',$("#ProfilePhotoURL")[0].files[0]);
+		var ImageFile = document.getElementById("ProfilePhotoURL");
+		var Ifile = ImageFile.files[0];
+		var formData = new FormData();
+		formData.append("Image", Ifile);
 
-		  $.ajax({
-				url: '/profilephoto',
-				type: "post",
-				processData: false,  // file전송시 필수
-    	  contentType: false,  // file전송시 필수
-				data: formData
-				})
-				.done(function(data){
-						alert(data);
-				});
+		var xhr = new XMLHttpRequest();
+		xhr.open("POST", "/profilephoto", true);
+		xhr.onreadystatechange = function(){
+			if(this.readyState >=3 && this.status == 200){
+				if(xhr.responseText == "1"){
+						alert('용량 초과 5mb 이하의 파일을 업로드 해주세요');
+				}else{
+					var date = new Date();
+					var url = 'http://credberry.com'+(xhr.responseText.substr(1))+"?"+date.getTime();
+					$("#profileImagePreview").attr('src',url);
+					$("#profileImage").attr('src',url);
+				}
+			}
+		}
+		xhr.send(formData);
 
 });

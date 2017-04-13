@@ -188,7 +188,7 @@ button{
 	height: 2.5vmax;
 	background-color: white;
 	background: no-repeat;
-	background-size: 2vmax;
+	background-size: 1.5vmax;
 	background-position: 50%;
 	color: #ed2a7b;
 	border: none;
@@ -243,7 +243,7 @@ ul{
 	overflow: auto;
 	position: fixed;
 	background: white;
-	border:1px solid #ed2a7b; 
+	border:1px solid #e6e6e6; 
 	border-radius: 3px;
 }
 .ui-menu{
@@ -257,9 +257,9 @@ ul{
 #login{
 	width: 5.4vmax;
 	height: 2vmax;
-	background-color: #ed2a7b ;
-	color: white;
-	border: 0.2px solid #ed2a7b ;
+	background-color: #dbdbdb ;
+	color: black;
+	border: 0.2px solid white;
 	text-align: center;
 	margin-left: 0.4vmax;
 	text-decoration: none;

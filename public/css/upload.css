@@ -147,3 +147,6 @@ button:hover {
 .xImage:after {
   content: '✖';  UTF-8 symbol 
 }
+#deleteButton{
+	float: left;
+}

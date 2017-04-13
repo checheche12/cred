@@ -70,8 +70,8 @@ class UserController
     <link rel="icon" type="image/png" href="/mainImage/webicon_16x16.png" sizes="16x16" />
     <div id = "header">
       <?php
-            include_once('../resources/views/header.php');
-       ?>
+      include_once('../resources/views/header.php');
+      ?>
     </div>
 
     <div id = "uploadContent">
@@ -85,7 +85,9 @@ class UserController
           <label id = "ProfilePhotoLabel"class="labels" for="ProfilePhotoURL">프로파일 사진 업로드</label>
           <input type = "file" id = "ProfilePhotoURL"></input>
         </div>
-        <button id = "submitprofile">프로필 사진 변경</button>
+        <div id="buttonFrame">
+        <button id = "submitprofile">프로필 사진 적용</button>
+        </div>
         <div id="nameD">
           <div><label class="labels" for="name">이름</label>
             <input class="inputs" type = "text" id = "name" value = "<?= $GLOBALS['name']?>"></input>
