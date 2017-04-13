@@ -153,7 +153,8 @@ if(answerBtclass != null){
 					str += '<input id = "replyinput"></input>';
 					str += '<button id = "replybutton">답글 등록</button>';
 					str += '</div>';
-					$(this).closest("div").append(str);
+					var div = $(this).closest("#Qcard");
+					div.append(str);
 					id = $(this).attr('id').substr(8,300);
 
 					$("#replybutton").click(function(){

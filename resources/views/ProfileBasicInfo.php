@@ -23,6 +23,7 @@ class checkAddCredit extends Controller
             $GLOBALS['photoURL'] = $user->ProfilePhotoURL;
             $GLOBALS['location'] = $user->location;
             $GLOBALS['current_organization'] = $user->belong;
+            $GLOBALS['userPK'] = $user->userPK;
           }
 
           $Sentence = "select * from keywordDB where userPK = ".$_SESSION['userPK'];
@@ -80,20 +81,33 @@ class checkAddCredit extends Controller
       <?php
       echo '<div class="profileFrame">';
       echo '<div class="upperInfo">';
+      
+      if($GLOBALS['userPK']==$_SESSION['userPK']){
+        $userProfile = 0;
+      }else{
+        $userProfile = 1;
+      }
+      ?>
+      <script> var usersPro = <?= $userProfile ?></script>
+      <?php
+
       echo '<img id = "profileImage2" src = '.$GLOBALS['photoURL'].'>';
       echo '<button id = "informationEdit"></button>';
       echo '<p class="name">'.$GLOBALS['name'].'</p>';
       echo '<p id="curOrganization" class="curOrganization">'.$GLOBALS['current_organization'].'</p>';
-      echo '<p id="curPosition" class="curPosition">'.$GLOBALS['career'].'</p>';
+      if($GLOBALS['current_organization']!=NULL and $GLOBALS['location']!=NULL){
+        echo'<p class="comma">,&nbsp;</p>';
+      }
       echo '<p id="location" class="location">'.$GLOBALS['location'].'</p>';
+      echo '<p id="curPosition" class="curPosition">'.$GLOBALS['career'].'</p>';
       echo '</div>';
       echo '<div class="lowerInfo">';
-      echo '<div class="infoD"><p class="infoLabel"><img id="contacticon" src="/mainImage/airplaneicon.png">연락처</p><p class="infoDetail">'.$GLOBALS['email'].'</p></div>';
+      echo '<div class="infoD"><p class="infoLabel"><img id="contacticon" class="infoIconClass" src="/mainImage/airplaneicon.png">연락처</p><p class="infoDetail">'.$GLOBALS['email'].'</p></div>';
       if($_SESSION['isGroup']!="Group"){
         echo '<hr id="infoSplit">';
-        echo '<div class="infoD"><p class="infoLabel"><img id="educationicon" src="/mainImage/educationicon.png">학교</p><p id="educationInfo" class="infoDetail">'.$GLOBALS['education'].'</p></div>';
+        echo '<div class="infoD"><p class="infoLabel"><img id="educationicon" class="infoIconClass" src="/mainImage/educationicon.png">학교</p><p id="educationInfo" class="infoDetail">'.$GLOBALS['education'].'</p></div>';
         echo '<hr id="infoSplit">';
-        echo '<div class="infoD"><p class="infoLabel"><img id="skillicon" src="/mainImage/skillicon.png">전문기술</p><div id="specialtyInfo" class="infoDetail">';
+        echo '<div class="infoD"><p class="infoLabel"><img id="skillicon" class="infoIconClass" src="/mainImage/skillicon.png">전문기술</p><div id="specialtyInfo" class="infoDetail">';
         $i = 0;
         foreach ($GLOBALS['keywordArr'] as $temp) {
           echo '<p id="specialty'.$i.'" class="specialty">'.$temp.'</p>';
@@ -104,22 +118,27 @@ class checkAddCredit extends Controller
         echo '<hr id="infoSplit">';
 
         echo '<div class="infoD" id="exInfo">
-        <p class="infoLabel"><img id="workicon" src="/mainImage/workicon.png">경력</p>';
+        <p class="infoLabel"><img id="workicon" class="infoIconClass" src="/mainImage/workicon.png">경력</p>';
         $i = 0;
         foreach ($GLOBALS['experienceArr'] as $temp) {
           echo'<div class="exInfoDetail">
           <div class="ex_pos_org">
-            <p id="exPosition'.$i.'" class="exP">'.$temp[0].'&nbsp;</p>
-            <p id="exOrganization'.$i.'" class="exP" class="exOrganization">'.$temp[1].'</p>
-          </div><p id="exWorkLocation'.$i.'" class="exWorkLocation">'.$temp[2].'</p></div>';
-          $i++;
-        }
+            <p id="exOrganization'.$i.'" class="exO">'.$temp[1].'</p>';
+            if($temp[1]!=NULL and $temp[2]!=NULL){
+              echo'<p class="comma">,&nbsp;</p>';
+            }
+            echo'<p id="exWorkLocation'.$i.'" class="exL">'.$temp[2].'</p>
+          </div>
+          <p id="exPosition'.$i.'" class="exP">'.$temp[0].'</p>
+        </div>';
+        $i++;
+      }
       } // if PERSON end
 
       if($_SESSION['isGroup']=="Group"){
         //keyword starts
         echo '<hr id="infoSplit">
-        <div class="infoD"><p class="infoLabel"><img id="skillicon" src="/mainImage/skillicon.png">키워드</p><div id="specialtyInfo" class="infoDetail">';
+        <div class="infoD"><p class="infoLabel"><img id="skillicon" class="infoIconClass" src="/mainImage/skillicon.png">키워드</p><div id="specialtyInfo" class="infoDetail">';
           $i = 0;
           foreach ($GLOBALS['keywordArr'] as $temp) {
             echo '<p id="specialty'.$i.'" class="specialty">'.$temp.'</p>';
@@ -132,7 +151,7 @@ class checkAddCredit extends Controller
           if(count($GLOBALS['awardArr'])!=0){
 
             echo '<hr id="infoSplit">
-            <div class="infoD"><p class="infoLabel"><img id="awardicon" src="/mainImage/awardicon.png">Awards</p><div id="awardInfo" class="infoDetail">';
+            <div class="infoD"><p class="infoLabel"><img id="awardicon" class="infoIconClass" src="/mainImage/awardicon.png">수상경력</p><div id="awardInfo" class="infoDetail">';
               $i = 0;
               foreach ($GLOBALS['awardArr'] as $temp) {
                 echo '<p id="award'.$i.'" class="award">'.$temp.'</p>';
@@ -143,7 +162,7 @@ class checkAddCredit extends Controller
           } //Awards end
 
           echo'<hr id="infoSplit">
-          <div class="infoD"><p class="infoLabel"><img id="workicon" src="/mainImage/workicon.png">그룹소개</p><p class="infoDetail">'.$GLOBALS['description'].'</p></div>';
+          <div class="infoD"><p class="infoLabel"><img id="workicon" class="infoIconClass" src="/mainImage/workicon.png">그룹소개</p><p class="infoDetail">'.$GLOBALS['description'].'</p></div>';
         }// if GROUP end
         echo '</div></div></div>';  //lowerInfo division end
         ?>

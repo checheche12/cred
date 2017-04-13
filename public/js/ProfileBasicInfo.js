@@ -6,6 +6,9 @@ var specialtyInfo = document.getElementById("specialtyInfo");
 
 var specialty = document.getElementsByClassName("specialty");
 var award = document.getElementsByClassName("award");
+var exO = document.getElementsByClassName("exO");
+var exL = document.getElementsByClassName("exL");
+var exP = document.getElementsByClassName("exP");
 
 var another;
 var specialty;
@@ -41,9 +44,24 @@ $(document).ready(function() {
 	for (var i =0; i<specialty.length;i++) {
 		specialtyBinding(i);
 	}
-	if(award!=undefined){
-		for (var i =0; i<award.length;i++) {
-			awardBinding(i);
+	// if(award!=undefined){
+	// 	for (var i =0; i<award.length;i++) {
+	// 		awardBinding(i);
+	// 	}
+	// }
+	if(exO!=undefined){
+		for (var i =0; i<exO.length;i++) {
+			exOBinding(i);
+		}
+	}
+	if(exL!=undefined){
+		for (var i =0; i<exL.length;i++) {
+			exLBinding(i);
+		}
+	}
+	if(exP!=undefined){
+		for (var i =0; i<exP.length;i++) {
+			exPBinding(i);
 		}
 	}
 });
@@ -61,4 +79,29 @@ function awardBinding(i){
 		$('#searchSlot').val($(bindId).text());
 		$('#searchSlot').autocomplete( "search");
 	});
+}
+function exOBinding(i){
+	var bindId = "#exOrganization" + i;
+	$(bindId).bind("click", function(){
+		$('#searchSlot').val($(bindId).text());
+		$('#searchSlot').autocomplete( "search");
+	});
+}
+function exLBinding(i){
+	var bindId = "#exWorkLocation" + i;
+	$(bindId).bind("click", function(){
+		$('#searchSlot').val($(bindId).text());
+		$('#searchSlot').autocomplete( "search");
+	});
+}
+function exPBinding(i){
+	var bindId = "#exPosition" + i;
+	$(bindId).bind("click", function(){
+		$('#searchSlot').val($(bindId).text());
+		$('#searchSlot').autocomplete( "search");
+	});
+}
+
+if(usersPro==0){	//profileInfo 의 변별력을 주기 위함임
+	$("#profileImage2").css("margin-left", "30px");
 }

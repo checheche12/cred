@@ -32,7 +32,18 @@ p{
 	vertical-align: top;
 }
 .name{
-	color: red;
+	color: #ed2a7b;
+
+}
+p.name, p.position{
+	font-size: 1.1vmax;
+	margin: 0px;
+	line-height: 1.6;
+	word-break: none;
+	white-space: nowrap;
+	width: 8.325vw;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 .workReference{
 	text-align: left;

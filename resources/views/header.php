@@ -88,11 +88,11 @@ class UserController extends Controller
       //   </div>
       // </div>';
 
-    }
-    ?>
+      }
+      ?>
 
+    </div>
   </div>
-</div>
 </div>
 
 <script type = "text/javascript" src = "js/jquery-3.1.1.min.js"></script>
@@ -100,6 +100,9 @@ class UserController extends Controller
 <script type = "text/javascript" src = "js/header.js"></script>
   <script type="text/javascript"> //FOUC(Flash Of Unstyled Content) 방지 용
     $(function(){
+      $('img').on('error',function(){
+        $(this).attr('src', '/mainImage/noimage.png');
+      });
       $('.headerFrame').css('display','block');
     });
   </script>

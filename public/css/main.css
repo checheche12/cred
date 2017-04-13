@@ -1,10 +1,12 @@
 @import url('http://fonts.googleapis.com/earlyaccess/nanumgothic.css');
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
-
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
 * {
-	font-family: 'Montserrat', sans-serif,'Nanum Gothic';
+	/*font-family: 'Montserrat', sans-serif,'Nanum Gothic';*/
 }
-
+*:lang(ko) {
+	font-family: 'Noto Sans KR', sans-serif;
+}
 body{
 	background-color : #fafafa ;
 }
@@ -40,7 +42,7 @@ a{
 	font-weight: lighter;
 	font-size: 13px;
 	margin-left: 10px;
-	color:#008cba;
+	color:#ed2a7b;
 }
 .ProjectFrame .credit{
 	float:right;
@@ -82,7 +84,7 @@ ul{
 	transition: all 0.7s;
 	padding: 20 40 20 40;
 	cursor: pointer;
-	color: #008cba ;
+	color: #ed2a7b ;
 }
 #Bridge:hover, #Project:hover, #Members:hover{
 	border: none ;
@@ -96,7 +98,7 @@ ul{
 	border-radius: 3px;
 	padding: 20 40 20 40;
 	cursor: pointer;
-	color: #008cba ;
+	color: #ed2a7b ;
 	background: #e6e6e6 ;
 }
 #Project:active{
@@ -105,7 +107,7 @@ ul{
 	border-radius: 3px;
 	padding: 20 40 20 40;
 	cursor: pointer;
-	color: #008cba ;
+	color: #ed2a7b ;
 	background: #e6e6e6 ;
 }
 .selected{
@@ -114,7 +116,7 @@ ul{
 	border-radius: 3px;
 	padding: 20 40 20 40;
 	cursor: pointer;
-	color: #008cba ;
+	color: #ed2a7b ;
 	background: #e6e6e6 ;
 }
 .bridgeCard {
@@ -150,7 +152,7 @@ ul{
 .bridgeCard .name {
 	font-size: 15px;
 	font-weight: bold;
-	color: #008cba ;
+	color: #ed2a7b ;
 }
 .bridgeCard .organization {
 	font-size: 10px;

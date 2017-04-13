@@ -1,7 +1,3 @@
-$(document).ready( function() {
-	$("#header").load("/header");
-});
-
 $('body').append("<script src = 'js/makedFunction.js'>");
 
 var token;
@@ -16,28 +12,29 @@ $.ajax({
 var Edit = document.getElementById('edit');
 var addExperience = document.getElementById('addExperience');
 var education = document.getElementById('education');
+var submitprofile = document.getElementById('submitprofile');
 
 if(addExperience!=undefined){
 	addExperience.addEventListener("click",function(){
 		$("#careerGroupD").append('<div id="careerD">'
 			+'<div id="positionD">'
-			+'<div><label class="labels" for="position" id="positionlabel">직함</label>'
-			+'<input class="inputs" type = "text" id = "position" value = ""></input>'
+			+'<div><label class="labelsexp" for="position" id="positionlabel">직함&nbsp;</label>'
+			+'<input class="inputsexp" type = "text" id = "position" value = ""></input>'
 			+'</div>'
 			+'</div>'
 			+'<div id="organizationD">'
-			+'<div><label class="labels" for="organization" id="organizationlabel">소속</label>'
-			+'<input class="inputs" type = "text" id = "organization" value = ""></input><br>'
+			+'<div><label class="labelsexp" for="organization" id="organizationlabel">소속&nbsp;</label>'
+			+'<input class="inputsexp" type = "text" id = "organization" value = ""></input><br>'
 			+'</div>'
 			+'</div>'
 			+'<div id="organizationD">'
-			+'<div><label class="labels" for="exWorkLocation" id="locationlabel">위치</label>'
-			+'<input class="inputs" type = "text" id = "exWorkLocation" value = ""></input>'
+			+'<div><label class="labelsexp" for="exWorkLocation" id="locationlabel">위치&nbsp;</label>'
+			+'<input class="inputsexp" type = "text" id = "exWorkLocation" value = ""></input>'
 			+'</div>'
 			+'</div>'
 			+'<div id="descriptionD">'
-			+'<div><label class="labels" for="career" id="descriptionlabel">설명</label>'
-			+'<input class="inputs" type = "text" id = "career" value = "" id = "career"></input><br>'
+			+'<div><label class="labelsexp" for="career" id="descriptionlabel">설명&nbsp;</label>'
+			+'<input class="inputsexp" type = "text" id = "career" value = "" id = "career"></input><br>'
 			+'</div>'
 			+'</div>'
 			+'</div>')
@@ -143,8 +140,6 @@ $(addExperience).click(function(){
 $(document).ready(function(){
 	$("#ProfilePhotoURL").blur(function(){
 		var urlinput = document.getElementById("ProfilePhotoURL").value;
-		console.log(urlCheck(urlinput));
-		console.log("getImage: "+getImage(urlinput));
 		$('#pImage').html(getImage(urlinput));
       // $('#URLBox').val("");
   });
@@ -169,3 +164,21 @@ function getImage(urlInput) {
   	return "<img class='profileImagePreview' src = '" + url + "'>";
   }
 }
+
+
+submitprofile.addEventListener("click",function(){
+	var formData = new FormData();
+	formData.append('Image',$("#ProfilePhotoURL")[0].files[0]);
+
+		  $.ajax({
+				url: '/profilephoto',
+				type: "post",
+				processData: false,  // file전송시 필수
+    	  contentType: false,  // file전송시 필수
+				data: formData
+				})
+				.done(function(data){
+						alert(data);
+				});
+
+});

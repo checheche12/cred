@@ -29,7 +29,10 @@ class loadReplyClass extends Controller
         echo '
         <div id="Qcard" class="Qcard">
           <img id="Qpics" src='.$Reply->ProfilePhotoURL.'>
-          <p id="Qs" class="Qs">'.$Reply->Question.'</p>';
+          <p id="Qs" class="Qs">'.$Reply->Question.'</p>
+          <p id = "name" class = "name">'.$Reply->Name.'</p>
+          <p id ="uploaddate" class = "uploaddate">'.$Reply->uploaddate.'</p>'
+          ;
           if($checkInfo){
               echo '<div class="buttons"><button class = "answerBtclass" id="answerBt'.$Reply->QuestionPK.'">답글</button>
               <button class = "deleteBtclass" id="deleteBt'.$Reply->QuestionPK.'">삭제</button></div>';

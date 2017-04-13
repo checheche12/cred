@@ -45,10 +45,10 @@ class getRecentClass extends Controller
             $getBridges = DB::select($Sentence3);
 
 
+                // <p class="workReference">'.$GLOBALS['uploaderName'].'</p> 작성자 이름
             echo '<div class="RecentWork">
               <a href="/post?int='.$artPKArr[$i].'">
                 <img class="RecentWorkPic" src="'.$GLOBALS['artURL'].'"></a>
-                <p class="workReference">'.$GLOBALS['uploaderName'].'</p>
                 <div class="credit">
                   <div class="position_Frame">';
 

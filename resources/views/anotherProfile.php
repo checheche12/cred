@@ -58,8 +58,8 @@ class UserController
     <div id = "profileContent">
       <div id = "profileSelection">
         <ul>
-          <li id = "Project">Project</li>
-          <li id = "Bridge">Bridge</li>
+          <li id = "Project">작품</li>
+          <li id = "Bridge">크레딧 공유자</li>
           <?php
             if($GLOBALS['isGroup']=="1"){
               echo "<li id = 'Members'>Members</li>";

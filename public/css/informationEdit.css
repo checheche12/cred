@@ -56,7 +56,16 @@
 }
 .inputs{
 	height: 25px;
-	width: 220px;
+	width: 280px;
+	box-shadow: 0 0 0 1px rgba(0,0,0,.1), 0 2px 3px rgba(0,0,0,.2);
+	border-radius: 3px;
+	border: 1px solid #dbdbdb;
+	margin-top: 10px;
+	padding: 0 10px;
+}
+.inputsexp{
+	height: 25px;
+	width: 223px;
 	box-shadow: 0 0 0 1px rgba(0,0,0,.1), 0 2px 3px rgba(0,0,0,.2);
 	border-radius: 3px;
 	border: 1px solid #dbdbdb;
@@ -65,12 +74,13 @@
 }
 #keyword{
 	height: 25px;
-	width: 220px;
+	width: 280px;
 	box-shadow: 0 0 0 1px rgba(0,0,0,.1), 0 2px 3px rgba(0,0,0,.2);
 	border-radius: 3px;
 	border: 1px solid #dbdbdb;
 	margin-top: 10px;
 	padding: 0 10px;
+	resize: vertical;
 }
 
 .labels{
@@ -79,13 +89,23 @@
 	width: 150px;
 	margin-right: 50px;
 }
+.labelsexp{
+	width: 0px;
+
+}
 #careerD{
 	display: inline-block;
-	padding-bottom: 10px;
-	/*width: 500px;*/
+	border: 1px solid;
+	padding: 10px;
 	margin-top: 10px;
+	margin-left: 205px;
+	box-shadow: 0 0 0 1px rgba(0,0,0,.1), 0 2px 3px rgba(0,0,0,.2);
+	border-radius: 3px;
+	border: 1px solid #dbdbdb;
 }
-
+#careerGroupD{
+	overflow: auto;
+}
 #profileImagePreview{
 	width: 100px;
 }
@@ -100,8 +120,6 @@ button{
 }
 #addExperienceD{
 	text-align: right;
-	display: inline-block;
-	width: 70px;
 }
 #addExperience{
 	border: none;
@@ -110,4 +128,36 @@ button{
 #editD{
 	text-align: center;
 	margin-top: 20px;
+}
+.splitter{
+	width: 277px;
+	display: inline-block;
+	box-shadow: 0 0 0 1px rgba(0,0,0,.1), 0 2px 3px rgba(0,0,0,.2);
+	border-radius: 3px;
+	border: 1px solid #dbdbdb
+}
+#sp2{
+	margin-left: 200px;
+	margin-top: 20px;
+}
+.spacer{
+	display: inline-block;
+}
+#keywordLabel{
+	vertical-align: top;
+	margin-top: 10px;
+}
+
+#submitprofile{
+	width:7vw;
+	height:1.5vw;
+	font-size:0.5vw;
+}
+
+#ProfilePhotoURL{
+	float:left;
+}
+
+#ProfilePhotoLabel{
+	float:left;
 }

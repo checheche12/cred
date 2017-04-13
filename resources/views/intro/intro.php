@@ -29,14 +29,14 @@ $A->post();
 <html>
 <head>
 	<title></title>
-
+	<link rel="icon" type="image/png" href="/mainImage/webicon_16x16.png" sizes="16x16" />
 	<link rel="stylesheet" type ="text/css" href="css/intro.css?v=1">
 </head>
 <body>
 	<div id ='header'>
 		<?php
-					include_once('../resources/views/header.php');
-		 ?>
+		include_once('../resources/views/header.php');
+		?>
 	</div>
 	<div id="ContentWidth">
 		<div id="MainContent_Frame">

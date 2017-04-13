@@ -47,10 +47,11 @@ class getSpotlightClass extends Controller
             $getBridges = DB::select($Sentence3);
 
 
+// <p class="workReference">'.$GLOBALS['uploaderName'].'</p> 작성자 이름임 :recentworkPic 밑에 넣으면 됨
             echo '<div class="RecentWork">
               <a href="/post?int='.$artPKArr[$i].'">
                 <img class="RecentWorkPic" src="'.$GLOBALS['artURL'].'"></a>
-                <p class="workReference">'.$GLOBALS['uploaderName'].'</p>
+                
                 <div class="credit">
                   <div class="position_Frame">';
 

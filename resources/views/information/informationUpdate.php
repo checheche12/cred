@@ -13,8 +13,6 @@ class RunQuery extends Controller
          */
         public function Query()
         {
-          $Sentence = "update userinfo set ProfilePhotoURL = '".$_POST['ProfilePhotoURL']."' where userPK = '".$_SESSION['userPK']."'";
-          $users = DB::update(DB::raw($Sentence));
 
           $Sentence = "update userinfo set Name = '".$_POST['name']."' where userPK = '".$_SESSION['userPK']."'";
           $users = DB::update(DB::raw($Sentence));
