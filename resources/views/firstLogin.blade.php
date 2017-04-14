@@ -131,9 +131,7 @@
   </form>
 
 
-  <a href = "/signup">
-    <input id="signupBt" type="button" name="signupBt" value="회원가입">
-  </a>
+  <a href = "/signup"><input id="signupBt" type="button" name="signupBt" value="회원가입"></a>
 
   <br><br>
 

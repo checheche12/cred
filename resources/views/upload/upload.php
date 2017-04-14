@@ -74,8 +74,8 @@
 <link rel="stylesheet" type ="text/css" href="css/upload.css">
 <div id = "header">
   <?php
-        include_once('../resources/views/header.php');
-   ?>
+  include_once('../resources/views/header.php');
+  ?>
 </div>
 
 <p id = "uploadtext" >upload</p>
@@ -91,7 +91,8 @@
   <label for="titleBox">제목</label><br>
   <input id = "titleBox" type="text"></input><br><br>
 
-  <label for="email">크레딧</label><br><br>
+  <div><label for="email">크레딧</label><img id="credqmark" src="/mainImage/credqmark.png" title="영상 제작에 기여한 모든 사람들에 대해 알려주세요.
+  사람들은 주로 캐스트, 촬영, 편집 ,기획, 클라이언트, 협력사 등에 대한 정보를 알고 싶어합니다."></div>
   <input id = "email" type="text" placeholder=" e-mail"></input>
   <input id = "position" type="text" placeholder=" 담당 역할"></input>
   <button id = "submitCredit" >+추가</button><br><br>
@@ -102,11 +103,11 @@
   </div>
 
   <div id = "creditBox">
-
   </div>
 
-  <label for="context">내용</label><br>
-  <textarea id = "context" cols : "40" rows:"10"></textarea><br><br>
+  <label for="context">작품설명</label><br>
+  <textarea id = "context" cols : "40" rows:"10" placeholder="[TIP] 작품과 작품 제작과정에 대한 모든 정보를 공유해 주세요.
+  사람들은 주로 비디오 저작권자, 기획 인사이트, 사용된 촬영 및 편집 기술과 장비, 음향소스 같은 정보를 궁금해합니다."></textarea><br><br>
 
   <button id = "cancelButton" class="submitButton">cancel</button>
   <button id = "saveButton" class="submitButton">저장</button>

@@ -1,0 +1,21 @@
+.signUpGuideP{
+	font-size: 1.5vmax;
+	color: #ed2a7b;
+	margin: 8px;
+	display: inline-block;
+}
+#signUpGuideFrame{
+	text-align: center;
+	margin-bottom: 20px;
+	padding-top: 20vh;
+}
+#signUpGuideImage1{
+	margin-bottom: 2vmax;
+	width: 5vmax;
+	display: inline-block;
+}
+#signUpGuideImage2{
+	margin-bottom: 2vmax;
+	width: 20vmax;
+	display: inline-block;
+}

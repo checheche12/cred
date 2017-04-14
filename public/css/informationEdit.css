@@ -173,3 +173,22 @@ button{
 #nameD{
 	clear: both;
 }
+#guideFrame{
+	text-align: center;
+	margin-bottom: 20px;
+}
+#guidePImage{
+	margin-bottom: 20px;
+	width: 80px;
+	display: inline-block;
+}
+.guideP{
+	font-size: 12px;
+	color: #ed2a7b;
+	margin: 0;
+	display: inline-block;
+}
+.emphasize{
+	text-decoration: underline;
+	text-decoration-style: dotted;
+}

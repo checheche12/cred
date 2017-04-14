@@ -76,6 +76,12 @@ class UserController
 
     <div id = "uploadContent">
       <div id="infoSheet">
+        <div id="guideFrame">
+          <img id="guidePImage" src="/mainImage/credqmark.png"><br>
+          <p class="guideP">프로필을 더 자세하게 작성해주세요.</p><br><br>
+          <p class="guideP">자신의 정보를&nbsp;</p><p class="guideP emphasize">공개할수록</p><br><p class="guideP">다른 사람들과</p> <p class="guideP emphasize">연결되기가</p> <p class="guideP"> 더 쉽습니다.</p>
+
+        </div>
 
         <div id = "pImage">
           <img id='profileImagePreview' src='<?= $GLOBALS['ProfilePhotoURL']?>'>
@@ -86,7 +92,7 @@ class UserController
           <input type = "file" id = "ProfilePhotoURL"></input>
         </div>
         <div id="buttonFrame">
-        <button id = "submitprofile">프로필 사진 적용</button>
+          <button id = "submitprofile">프로필 사진 적용</button>
         </div>
         <div id="nameD">
           <div><label class="labels" for="name">이름</label>

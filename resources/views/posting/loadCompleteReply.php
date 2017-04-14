@@ -28,8 +28,8 @@ class loadCompleteReplyClass extends Controller
         <div id="Qcard" class="Qcard">
           <div class="personalQnAstatus">
             <div class="personalInfo">
-              <img id="Qpics'.$loadCompleteReply->QuserPK.'" class="Qpics" src='.$loadCompleteReply->askerPhotoURL.'>
-              <p id = "name'.$loadCompleteReply->QuserPK.'" class = "name">'.$loadCompleteReply->askerName.'</p>
+              <a href = "/anotherProfile?int='.$loadCompleteReply->QuserPK.'"><img id="Qpics'.$loadCompleteReply->QuserPK.'" class="Qpics" src='.$loadCompleteReply->askerPhotoURL.'></a>
+              <a href = "/anotherProfile?int='.$loadCompleteReply->QuserPK.'"><p id = "name'.$loadCompleteReply->QuserPK.'" class = "name">'.$loadCompleteReply->askerName.'</p></a>
             </div>
             <p class="qnaLabel">Q</p>
           </div>
@@ -40,8 +40,8 @@ class loadCompleteReplyClass extends Controller
         <div id="Qcard" class="Qcard">
           <div class="personalQnAstatus">
             <div class="personalInfo">
-              <img id="Qpics'.$loadCompleteReply->RuserPK.'" class="Qpics" src='.$loadCompleteReply->ReplierPhotoURL.'>
-              <p id = "name'.$loadCompleteReply->RuserPK.'" class = "name">'.$loadCompleteReply->ReplyName.'</p>
+              <a href = "/anotherProfile?int='.$loadCompleteReply->RuserPK.'"><img id="Qpics'.$loadCompleteReply->RuserPK.'" class="Qpics" src='.$loadCompleteReply->ReplierPhotoURL.'></a>
+              <a href = "/anotherProfile?int='.$loadCompleteReply->RuserPK.'"><p id = "name'.$loadCompleteReply->RuserPK.'" class = "name">'.$loadCompleteReply->ReplyName.'</p></a>
             </div>
             <p class="qnaLabel">A</p>
           </div>

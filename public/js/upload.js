@@ -247,6 +247,7 @@ addCredit.addEventListener("click",function(){
           j += ("<a class ='xImage' id = "+NotUserCreditNumber+"'></a>");
           j += ("<div class='name'>"+ email.value + "</div><br>");
           j += ("<div class='position'>"+position.value+"</div></div>");
+          $('#creditBox').html();
           $('#creditBox').append(j);
 
           var t = [email.value,position.value,NotUserCreditNumber];
@@ -283,6 +284,7 @@ addCredit.addEventListener("click",function(){
         j += ("<a class ='xImage' id = "+k[1]+"'></a>");
         j += ("<div class='name'>"+k[0] + "</div><br>");
         j += ("<div class='position'>"+position.value+"</div></div>");
+        $('#creditBox').html();
         $('#creditBox').append(j);
 
         $(".xImage").click(function(){

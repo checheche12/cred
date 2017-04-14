@@ -32,7 +32,7 @@ class PostClass extends Controller
         $users2 = DB::select(DB::raw($Sentence2));
         $a = 1;
         foreach($users2 as $user){
-          echo "<p class = 'name' id = ".$user->userPK.">".$user->Name."</p>";
+          echo "<a href = '/anotherProfile?int=".$user->userPK."'><p class = 'name' id = ".$user->userPK.">".$user->Name."</p></a>";
           $a+=1;
         }
         $Sentence2 = "select tagUser from TagNotUser where artPK =".$_GET['int'];

@@ -49,43 +49,49 @@ class UserController extends Controller
         else{
           echo "이미 존재하는 회원 email 입니다.";
         }
-        echo "3초뒤에 메인 화면으로 이동합니다./n";
-        echo "<script type='text/javascript'>setTimeout(function(){
-          document.location.href='./';
-        },3000);</script>";
-      }
-
-      public function sendEmail($str){
-
-            echo "입력하신 이메일로 인증 메일을 발송하였습니다. 인증 확인후 사용해주시기 바랍니다.";
-            $to = base64_encode($str);
-          	$subject = 'CRED Certification Email';
-          	$data = [
-          	'title' => 'Certification URL',
-          	'body' => '아래의 URL 을 클릭하시면 인증이 완료됩니다.',
-            'url' => "http://www.credberry.com/certificate?aabbcc=".$to
-          	];
-          	return Mail::send('email.certification',$data,function($message) use($str, $subject){
-          		$message->to($str)->subject($subject);
-          	});
-
-      }
-
-  }
-    $Exp = '/^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i';
-    if(preg_match($Exp,$_POST['emailemail'])==1){
-
-      $A = new UserController();
-      $A->makeNewUser();
-
-    }else{
-      echo "이메일 형식이 틀렸습니다. 3초뒤 메인화면으로 돌아갑니다./n";
+        echo '<head><link rel="stylesheet" type ="text/css" href="css/checkSignup.css"></head>
+        <body>
+        <div id="signUpGuideFrame">
+        <img id="signUpGuideImage1" src="/mainImage/credcheckmark.png"><br>
+        <img id="signUpGuideImage2" src="/mainImage/signupImage/credberrymainlogo.png"><br>
+        <p class="signUpGuideP">입력하신 이메일로 인증 메일을 발송하였습니다. </p><br>
+        <p class="signUpGuideP">인증 확인 해주시면 회원가입이 완료됩니다.</p>
+      </div></body>';
       echo "<script type='text/javascript'>setTimeout(function(){
         document.location.href='./';
       },3000);</script>";
     }
 
+    public function sendEmail($str){
+
+      $to = base64_encode($str);
+      $subject = 'CRED Certification Email';
+      $data = [
+      'title' => 'Certification URL',
+      'body' => '아래의 URL 을 클릭하시면 인증이 완료됩니다.',
+      'url' => "http://www.credberry.com/certificate?aabbcc=".$to
+      ];
+      return Mail::send('email.certification',$data,function($message) use($str, $subject){
+        $message->to($str)->subject($subject);
+      });
+
+    }
+
+  }
+  $Exp = '/^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i';
+  if(preg_match($Exp,$_POST['emailemail'])==1){
+
+    $A = new UserController();
+    $A->makeNewUser();
+
+  }else{
+    echo "이메일 형식이 틀렸습니다. 3초뒤 메인화면으로 돌아갑니다./n";
+    echo "<script type='text/javascript'>setTimeout(function(){
+      document.location.href='./';
+    },3000);</script>";
+  }
 
 
 
-?>
+
+  ?>
