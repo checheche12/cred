@@ -10,7 +10,7 @@ class loadCompleteReplyClass extends Controller
 {
  function loadCompleteReply($artPK)
  {
-  $loadCompleteReplies = DB::select("select B.ProfilePhotoURL as askerPhotoURL, Question,
+  $loadCompleteReplies = DB::select("select A.askeruserPK as QuserPK, C.ReplyuserPK as RuserPK, B.ProfilePhotoURL as askerPhotoURL, Question,
    B.Name as askerName, A.uploaddate as askeruploaddate,
    Reply, D.ProfilePhotoURL as ReplierPhotoURL, D.Name as ReplyName, C.uploaddate as Replyuploaddate from Question
    as A join userinfo as B join QuestionReply as C join userinfo as D where A.askeruserPK = B.userPK
@@ -28,8 +28,8 @@ class loadCompleteReplyClass extends Controller
         <div id="Qcard" class="Qcard">
           <div class="personalQnAstatus">
             <div class="personalInfo">
-              <img id="Qpics" src='.$loadCompleteReply->askerPhotoURL.'>
-              <p id = "name" class = "name">'.$loadCompleteReply->askerName.'</p>
+              <img id="Qpics'.$loadCompleteReply->QuserPK.'" class="Qpics" src='.$loadCompleteReply->askerPhotoURL.'>
+              <p id = "name'.$loadCompleteReply->QuserPK.'" class = "name">'.$loadCompleteReply->askerName.'</p>
             </div>
             <p class="qnaLabel">Q</p>
           </div>
@@ -40,8 +40,8 @@ class loadCompleteReplyClass extends Controller
         <div id="Qcard" class="Qcard">
           <div class="personalQnAstatus">
             <div class="personalInfo">
-              <img id="Qpics" src='.$loadCompleteReply->ReplierPhotoURL.'>
-              <p id = "name" class = "name">'.$loadCompleteReply->ReplyName.'</p>
+              <img id="Qpics'.$loadCompleteReply->RuserPK.'" class="Qpics" src='.$loadCompleteReply->ReplierPhotoURL.'>
+              <p id = "name'.$loadCompleteReply->RuserPK.'" class = "name">'.$loadCompleteReply->ReplyName.'</p>
             </div>
             <p class="qnaLabel">A</p>
           </div>

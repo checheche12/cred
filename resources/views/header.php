@@ -59,7 +59,7 @@ class UserController extends Controller
           </div>
 
         </div>
-        <input type="submit" name="submitbutton" value="검색" id="searchButton">
+        <input type="button" name="submitbutton" value="검색" id="searchButton">
       </form>
       <div class="headIcons">
         <?php

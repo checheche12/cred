@@ -5,6 +5,7 @@ var addCreditButton = document.getElementById('addCredit');
 var position = document.getElementById('position');
 
 var creditNameArray = document.getElementsByClassName('name');
+var creditQpicsArray = document.getElementsByClassName('Qpics');
 
 var token;
 
@@ -22,16 +23,21 @@ for (var i = 0;i<creditNameArray.length;i++){
 	var IDValue = '#'+numb;
 	console.log(IDValue);
 	$(IDValue).bind('click', function() {
-
-		var t = $(this).attr('id').substr(0,300);
-
+		var t = $(this).attr('id').substr(4,300);
 		t *= 1;
-
 		post_to_url("./anotherProfile", t, "get");
-
 	});
 }
-
+for (var i = 0;i<creditQpicsArray.length;i++){
+	var numb = creditQpicsArray[i].id;
+	var IDValue = '#'+numb;
+	console.log(IDValue);
+	$(IDValue).bind('click', function() {
+		var t = $(this).attr('id').substr(5,300);
+		t *= 1;
+		post_to_url("./anotherProfile", t, "get");
+	});
+}
 
 // closeButton.addEventListener("click",function(){
 // 	goBack();

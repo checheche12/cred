@@ -9,6 +9,9 @@ var Msg = document.getElementById('msg');
 var searchButton = document.getElementById('searchButton');
 var searchSlot = document.getElementById('searchSlot');
 
+// var hiddenSearchValue = document.createElement("hiddenSearchValue");
+
+
 var token;
 $.ajax({
 	url:'./token',
@@ -17,69 +20,69 @@ $.ajax({
 	}
 })
 if(Upload!=undefined){
-		Upload.addEventListener("click", function() {
+	Upload.addEventListener("click", function() {
 
-			$(location).attr('href', './upload');
+		$(location).attr('href', './upload');
 
-		});
+	});
 }
 
 if(Login!=undefined){
-		Login.addEventListener("click", function() {
+	Login.addEventListener("click", function() {
 
-			$(location).attr('href', './login');
+		$(location).attr('href', './login');
 
-		});
+	});
 }
 
 
 if(Logout!=undefined){
-		Logout.addEventListener("click", function() {
+	Logout.addEventListener("click", function() {
 
-			$(location).attr('href', './Logout');
+		$(location).attr('href', './Logout');
 
-		});
+	});
 }
 
 
 if(Home!=undefined){
-		Home.addEventListener("click", function() {
+	Home.addEventListener("click", function() {
 
-			$(location).attr('href', './');
+		$(location).attr('href', './');
 
-		});
+	});
 }
 
 if(profileImage!=undefined){
-		profileImage.addEventListener("click", function() {
+	profileImage.addEventListener("click", function() {
 
-			$(location).attr('href', './main');
+		$(location).attr('href', './main');
 
-		});
+	});
 }
 
 if(profileName != undefined){
-		profileName.addEventListener("click", function() {
+	profileName.addEventListener("click", function() {
 
-			$(location).attr('href', './main');
+		$(location).attr('href', './main');
 
-		});
+	});
 }
 
 if(yourart != undefined){
-		yourart.addEventListener("click", function() {
+	yourart.addEventListener("click", function() {
 
-			$(location).attr('href', './Yourart');
+		$(location).attr('href', './Yourart');
 
-		});
+	});
 }
 
 if(Msg != undefined){
-		Msg.addEventListener("click", function() {
+	Msg.addEventListener("click", function() {
 
-			$(location).attr('href', './forward');
+		$(location).attr('href', './forward');
 
-		});
+	});
 }
 
 /*
@@ -92,13 +95,10 @@ if(pName.length>9){
 }
 }
 */
-
-var temp_userPK;
+// $("#hiddenSearchValue").val("");
 searchButton.addEventListener("click", function() {
-
-	if(temp_userPK !=""){
-		post_to_url("/anotherProfile", temp_userPK, "get");
-		temp_userPK="";
+	if($( "#searchSlot" ).val().length>0){
+		$('#searchSlot').autocomplete( "search");
 	}
 });
 
@@ -125,7 +125,7 @@ $( "#searchSlot" ).autocomplete({
 	},
       focus: function( event, ui ) {                //value in inputValue
       	$( "#searchSlot" ).val( ui.item[1] );
-      	temp_userPK = ui.item[3];
+      	// $("#hiddenSearchValue").val(ui.item[3]);
       	return false;
       }
   })
@@ -136,20 +136,20 @@ $( "#searchSlot" ).autocomplete({
 .autocomplete( "instance" )._renderItem = function( ul, item ) {
 
 	var k_str = '<div id="resultList" class="resultList"><img id="resultImage" src="'+item[2]+'" style="height: 50px;">'
-		+'<div id="searchInfoContainer" style="display: inline-block;">'
-		if(item[1]!=''){
-			k_str += '<div id="name" class="searchInfo">'+item[1]+'</div>'
-		}
-		if(item[6]!=''){
-			k_str += '<div id="curOrganization" class="searchInfo" style="display: inline-block;">'+item[6]+'</div><br>';
-		}
-		if(item[4]!=''){
-			k_str += '<div id="curPosition" class="searchInfo" style="display: inline-block;">'+item[4]+'</div>';
-		}
-		if(item[7]!= ''){
-			k_str += '<div id="location" class="searchInfo">'+item[7]+'</div>';
-		}
-		k_str += '</div></div>';
+	+'<div id="searchInfoContainer" style="display: inline-block;">'
+	if(item[1]!=''){
+		k_str += '<div id="name" class="searchInfo">'+item[1]+'</div>'
+	}
+	if(item[6]!=''){
+		k_str += '<div id="curOrganization" class="searchInfo" style="display: inline-block;">'+item[6]+'</div><br>';
+	}
+	if(item[4]!=''){
+		k_str += '<div id="curPosition" class="searchInfo" style="display: inline-block;">'+item[4]+'</div>';
+	}
+	if(item[7]!= ''){
+		k_str += '<div id="location" class="searchInfo">'+item[7]+'</div>';
+	}
+	k_str += '</div></div>';
 
 	return $( "<li>" )
 	.append(k_str)

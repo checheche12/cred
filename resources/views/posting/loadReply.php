@@ -31,8 +31,8 @@ class loadReplyClass extends Controller
         echo '
         <div id="Qcard" class="Qcard">
           <div class="personalInfo">
-            <img id="Qpics" src='.$Reply->ProfilePhotoURL.'>
-            <p id = "name" class = "name">'.$Reply->Name.'</p>
+            <img id="Qpics'.$Reply->userPK.'" class="Qpics" src='.$Reply->ProfilePhotoURL.'>
+            <p id = "name'.$Reply->userPK.'" class = "name">'.$Reply->Name.'</p>
           </div>
           <p id="Qs" class="Qs">'.$Reply->Question.'</p>
           <p id ="uploaddate" class = "uploaddate">'.$Reply->uploaddate.'</p>'

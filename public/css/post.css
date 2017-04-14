@@ -152,7 +152,7 @@ button{
 	font-size: 2vmin;
 	margin-left: 0.64vmax;
 }
-#profilePic, #Qpics{
+#profilePic, .Qpics{
 	padding-bottom: 1vh;
 	padding-top: 1vh;
 	padding-left: 1vw;

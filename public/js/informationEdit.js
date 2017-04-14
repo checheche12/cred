@@ -90,7 +90,6 @@ if(addExperience!=undefined){
 Edit.addEventListener("click",function(){
 
 	var Data = {"_token" : token};
-	Data['ProfilePhotoURL'] = $("#ProfilePhotoURL").val();
 	Data['name'] = $("#name").val();
 	Data['location'] = $("#location").val();
 	Data['keyword'] = $("#keyword").val();
@@ -161,18 +160,25 @@ submitprofile.addEventListener("click",function(){
 		var Ifile = ImageFile.files[0];
 		var formData = new FormData();
 		formData.append("Image", Ifile);
-
+    var checkNum = 0;
 		var xhr = new XMLHttpRequest();
-		xhr.open("POST", "/profilephoto", true);
+		xhr.open("POST", "/profilephoto", false);
 		xhr.onreadystatechange = function(){
 			if(this.readyState >=3 && this.status == 200){
 				if(xhr.responseText == "1"){
-						alert('용량 초과 5mb 이하의 파일을 업로드 해주세요');
+						alert('용량 초과 300kb 이하의 파일을 업로드 해주세요');
+				}else if (xhr.responseText == "2"){
+					alert('jpg,jpeg,png,gif,bmp 5개의 확장자만 허용되어있습니다.');
+				}else if(xhr.responseText == "0"){
+						alert('HTTP로 전송된 파일이 아닙니다.');
 				}else{
-					var date = new Date();
-					var url = 'http://credberry.com'+(xhr.responseText.substr(1))+"?"+date.getTime();
-					$("#profileImagePreview").attr('src',url);
-					$("#profileImage").attr('src',url);
+					checkNum+=1;
+					if(checkNum>=1){
+						var date = new Date();
+						var url = 'http://credberry.com'+(xhr.responseText.substr(1))+"?"+date.getTime();
+						$("#profileImagePreview").attr('src',url);
+						$("#profileImage").attr('src',url);
+					}
 				}
 			}
 		}

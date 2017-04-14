@@ -15,7 +15,10 @@ class UserController extends Controller
         $Sentence = "select DISTINCT A.userPK,C.Name,C.Email,C.ProfilePhotoURL,C.Career,C.education,C.isgroup from workDB as A join workDB as B join userinfo as C where A.artPK = B.artPK and C.isgroup = 1 and A.userPK = C.userPK and B.userPK =".$_POST['userPK'];
         $users = DB::select(DB::raw($Sentence));
 
-        if(count($users)>1){
+        if(count($users)>1 and $_SESSION['isGroup']=="Group"){
+          echo "<div id = 'group'>";
+          echo "<p>group</p>";
+        }elseif($_SESSION['isGroup']!="Group"){
           echo "<div id = 'group'>";
           echo "<p>group</p>";
         }

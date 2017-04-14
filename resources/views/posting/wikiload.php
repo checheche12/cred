@@ -14,7 +14,7 @@ class loadWikiClass extends Controller
               echo '<p id="noUOIP">처음으로 이 위키에 정보를 게시해 주세요!</p>';
               break;
             }
-            echo '<p id="updatedate">'.$loadWikiSentence->wikiuploaddate.'</p>';
+            echo '<p id="updatedate">최종 수정:&nbsp;'.$loadWikiSentence->wikiuploaddate.'</p>';
             echo '<p id="wikiInformation">'.$loadWikiSentence->wiki.'</p>';
             break;
         }
