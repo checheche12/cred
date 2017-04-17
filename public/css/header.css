@@ -246,10 +246,13 @@ ul{
 	border:1px solid #e6e6e6; 
 	border-radius: 3px;
 }
-.ui-menu{
+.ui-autocomplete { 
+	height: 200px; 
+	overflow-y: scroll; 
+	overflow-x: hidden;
 	z-index: 999;
-	/*width: 20vmax
-	;*/
+	background: white;
+	border: 1px solid grey;
 }
 #buttons{
 	display: inline-block;

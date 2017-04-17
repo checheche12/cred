@@ -57,11 +57,10 @@ class RunQuery extends Controller
               $users = DB::delete(DB::raw($Sentence));
 
             foreach ($Array as $item) { //0 position, 1 organization, 2 exWorkLocation, 3 Detail
-              DB::insert('insert into userExperience (userPK, Position, Organization, WorkLocation, Explainn) values (?, ?, ?, ?, ?)',array($_SESSION['userPK'],$item[0],$item[1],$item[2],$item[3]));
+              $Insert = DB::insert('insert into userExperience (userPK, Position, Organization, WorkLocation, Explainn) values (?, ?, ?, ?, ?)',array($_SESSION['userPK'],$item[0],$item[1],$item[2],$item[3]));
             }
           }
         }
-
         if($_SESSION['isGroup']=="Group"){  //구릅 개정 수정
 
           $Sentence = "delete from awardDB where userPK = ".$_SESSION['userPK'];

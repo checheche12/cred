@@ -159,6 +159,6 @@ p{
 	margin: 0px;
 	font-size: 16px;
 }
-p.award, p.infoDetail, .infoLabel, .infoIconClass{
+p.award, #emailP, .infoLabel, .infoIconClass{
 	cursor: unset;
 }

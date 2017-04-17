@@ -18,7 +18,7 @@ class UserController extends Controller
         if(count($users)>1 and $_SESSION['isGroup']=="Group"){
           echo "<div id = 'group'>";
           echo "<p>group</p>";
-        }elseif($_SESSION['isGroup']!="Group"){
+        }elseif(count($users)>0 and $_SESSION['isGroup']!="Group"){
           echo "<div id = 'group'>";
           echo "<p>group</p>";
         }

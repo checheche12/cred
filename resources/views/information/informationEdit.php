@@ -92,7 +92,7 @@ class UserController
           <input type = "file" id = "ProfilePhotoURL"></input>
         </div>
         <div id="buttonFrame">
-          <button id = "submitprofile">프로필 사진 적용</button>
+          <button id = "submitprofilePic">프로필 사진 적용</button>
         </div>
         <div id="nameD">
           <div><label class="labels" for="name">이름</label>
@@ -102,7 +102,7 @@ class UserController
         <!-- <div id="educationD"> -->
         <?php
         if($_SESSION['isGroup']!="Group"){
-          echo '<div><label class="labels" for="education">학력</label>
+          echo '<div><label class="labels" for="education">학교</label>
           <input class="inputs" type = "text" id = "education" value = "'.$GLOBALS['education'].'"></input><br>
         </div>
         <div><label class="labels" for="">현 소속</label>

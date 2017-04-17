@@ -13,8 +13,8 @@ class updateInformation extends Controller
        */
       public function updateInformationData()
       {
-          $Sentence = "insert into userExperience (userPK, Organization, Position, StartDate, EndDate, Explainn)
-          values ('".$_SESSION['userPK']."' , '".$_POST['exOrganization']."', '".$_POST['exPosition']."' , '".$_POST['start_date']."' , '".$_POST['end_date']."' , '".$_POST['explain']."')";
+        $Sentence = "insert into userExperience (userPK, Organization, Position, Explainn)
+          values ('".$_SESSION['userPK']."' , '".$_POST['exOrganization']."', '".$_POST['exPosition']."' , '".$_POST['explain']."')";
 
           $DBRun = DB::insert(DB::raw($Sentence));
       }

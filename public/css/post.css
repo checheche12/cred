@@ -71,7 +71,7 @@ p.name, p.position, p.nameNoAccount, p.positionNoAccount{
 }
 p.nameNoAccount, p.positionNoAccount{
 	color: #b3b2b2;
-	cursor: none;
+	cursor: unset;
 }
 #position {
 	border:none;

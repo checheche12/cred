@@ -53,7 +53,7 @@ class UserController extends Controller
       -->
       <form id="searchbar">
         <div id="searchDropdown">
-          <input id="searchSlot" class="searchSlot" type="text" name="search" placeholder="Search..">
+          <input id="searchSlot" class="searchSlot" type="text" name="search" placeholder="Search.." >
           <br>
           <div id="searchDropdown_content">
           </div>
@@ -73,20 +73,11 @@ class UserController extends Controller
 
         }else{
 
+          // <button id = "yourart" class="icons"></button>
           echo '<div id="buttons">
-          <button id = "yourart" class="icons"></button>
           <button id = "upload" class="icons"></button>
           <button id = "logout" class="icons"></button>
         </div>';
-      //   echo '<div class="dropdown">
-      //   <button class="dropbtn">메뉴</button>
-      //   <div class="dropdown-content">
-      //     <button id = "yourart" class="dropdowns"><div id="yourartBtSp">yourArt</div></button><br>
-      //     <button id = "upload" class="dropdowns"><div id="upBtSp">업로드</div></button><br>
-      //     <button id = "msg" class="dropdowns"><div id="msgBtsp">MSG</div></button><br>
-      //     <button id = "logout" class="dropdowns"><div id="logBtSp">로그아웃</div></button>
-      //   </div>
-      // </div>';
 
       }
       ?>

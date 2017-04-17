@@ -102,7 +102,7 @@ class checkAddCredit extends Controller
       echo '<p id="curPosition" class="curPosition">'.$GLOBALS['career'].'</p>';
       echo '</div>';
       echo '<div class="lowerInfo">';
-      echo '<div class="infoD"><p class="infoLabel"><img id="contacticon" class="infoIconClass" src="/mainImage/airplaneicon.png">연락처</p><p class="infoDetail">'.$GLOBALS['email'].'</p></div>';
+      echo '<div class="infoD"><p class="infoLabel"><img id="contacticon" class="infoIconClass" src="/mainImage/airplaneicon.png">연락처</p><p id="emailP" class="infoDetail">'.$GLOBALS['email'].'</p></div>';
       if($_SESSION['isGroup']!="Group"){
         echo '<hr id="infoSplit">';
         echo '<div class="infoD"><p class="infoLabel"><img id="educationicon" class="infoIconClass" src="/mainImage/educationicon.png">학교</p><p id="educationInfo" class="infoDetail">'.$GLOBALS['education'].'</p></div>';

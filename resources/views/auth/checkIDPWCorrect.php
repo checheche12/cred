@@ -52,7 +52,7 @@ class LoginController extends Controller
                 if(($_POST['ID']==$idid)&&($PasswordLock==$pwpw)) {
                     if($GLOBALS['Certification']=="0"){
                         echo "인증되지 않은 이메일입니다. 인증 이후에 사용해주세요.";
-                        echo "id 혹은 비밀번호가 틀렸습니다. 3초뒤에 로그인화면으로 돌아갑니다.";
+                        echo "3초뒤에 로그인화면으로 돌아갑니다.";
                         echo "<script type='text/javascript'>setTimeout(function(){
                             document.location.href='./login';
                         },3000);</script>";

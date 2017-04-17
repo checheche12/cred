@@ -101,7 +101,18 @@ searchButton.addEventListener("click", function() {
 		$('#searchSlot').autocomplete( "search");
 	}
 });
-
+document.getElementById("searchbar").onkeypress = function(e) {
+	console.log("searchbar clicked");
+	var key = e.charCode || e.keyCode || 0;     
+	if (key == 13) {
+		e.preventDefault();
+		if($( "#searchSlot" ).val().length>0){
+			$('#searchSlot').autocomplete( "search");
+		}
+	} else {
+		return true;
+	}
+}
 
 $( "#searchSlot" ).autocomplete({
 	minLength: 1,

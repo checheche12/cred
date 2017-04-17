@@ -12,7 +12,7 @@ $.ajax({
 var Edit = document.getElementById('edit');
 var addExperience = document.getElementById('addExperience');
 var education = document.getElementById('education');
-var submitprofile = document.getElementById('submitprofile');
+var submitprofilePic = document.getElementById('submitprofilePic');
 
 if(addExperience!=undefined){
 	addExperience.addEventListener("click",function(){
@@ -38,57 +38,29 @@ if(addExperience!=undefined){
 			+'</div>'
 			+'</div>'
 			+'</div>')
-	// var Data = {"_token" : token};
+		var Data = {"_token" : token};
 
-	// Data['exPosition'] = $("#postion").val();
-	// Data['exOrganization'] = $("#organization").val();
-	// Data['explain'] = $("#career").val();
+		Data['exPosition'] = $("#position").val();
+		Data['exOrganization'] = $("#organization").val();
+		Data['explain'] = $("#career").val();
 
-	// var s_year = $("#start_year").val();
-	// var s_month =$("#start_month").val();
 
-	// var e_year = $("#end_year").val();
-	// var e_month =$("#end_month").val();
+		$.ajax({
+			type:'POST',
+			url:'/informationEdit/informationCareer',
+			data : Data,
+			success:function(data){
+			},
+			error: function(){
+				alert('error 서버 연결 안됨!');
+			}
+		})
 
-	// s_month *= 1;
-	// e_month *= 1;
-
-	// if(s_month <10){
-	// 	s_month = '0'+s_month;
-	// }else{
-	// 	s_month += '';
-	// }
-
-	// if(e_month <10){
-	// 	e_month = '0'+e_month;
-	// }else{
-	// 	e_month += '';
-	// }
-
-	// start_date = s_year+s_month+'01';
-	// end_date = e_year+e_month+'01';
-
-	// Data['start_date'] = start_date;
-	// Data['end_date'] = end_date;
-
-	// $.ajax({
-	// 	type:'POST',
-	// 	url:'/informationEdit/informationCareer',
-	// 	data : Data,
-	// 	success:function(data){
-	// 		alert(data);
-	// 	},
-	// 	error: function(){
-	// 		alert('error 서버 연결 안됨!');
-	// 	}
-	// })
-
-});
+	});
 }
 
-
 Edit.addEventListener("click",function(){
-
+	submitprofilePicFunction();
 	var Data = {"_token" : token};
 	Data['name'] = $("#name").val();
 	Data['location'] = $("#location").val();
@@ -102,13 +74,14 @@ Edit.addEventListener("click",function(){
 
 		var experienceArr = [];
 
-		for(var i = 0; i < $("input#position.inputs").length;i++){
+		for(var i = 0; i < $("input#position.inputsexp").length;i++){
 			var tempArr = [];
-			tempArr.push($("input#position.inputs").eq(i).val());
-			tempArr.push($("input#organization.inputs").eq(i).val());
-			tempArr.push($("input#exWorkLocation.inputs").eq(i).val());
-			tempArr.push($("input#career.inputs").eq(i).val());
+			tempArr.push($("input#position.inputsexp").eq(i).val());
+			tempArr.push($("input#organization.inputsexp").eq(i).val());
+			tempArr.push($("input#exWorkLocation.inputsexp").eq(i).val());
+			tempArr.push($("input#career.inputsexp").eq(i).val());
 			experienceArr.push(tempArr);
+			console.log(tempArr);
 		}
 
 		Data['experienceArr'] = experienceArr;
@@ -131,10 +104,6 @@ Edit.addEventListener("click",function(){
 
 });
 
-$(addExperience).click(function(){
-
-})
-
 /** urlCheck* */
 function getImage(urlInput) {
 
@@ -155,33 +124,41 @@ function getImage(urlInput) {
 }
 
 
-submitprofile.addEventListener("click",function(){
-		var ImageFile = document.getElementById("ProfilePhotoURL");
-		var Ifile = ImageFile.files[0];
-		var formData = new FormData();
-		formData.append("Image", Ifile);
-    var checkNum = 0;
-		var xhr = new XMLHttpRequest();
-		xhr.open("POST", "/profilephoto", false);
-		xhr.onreadystatechange = function(){
-			if(this.readyState >=3 && this.status == 200){
-				if(xhr.responseText == "1"){
-						alert('용량 초과 300kb 이하의 파일을 업로드 해주세요');
-				}else if (xhr.responseText == "2"){
-					alert('jpg,jpeg,png,gif,bmp 5개의 확장자만 허용되어있습니다.');
-				}else if(xhr.responseText == "0"){
-						alert('HTTP로 전송된 파일이 아닙니다.');
-				}else{
-					checkNum+=1;
-					if(checkNum>=1){
-						var date = new Date();
-						var url = 'http://credberry.com'+(xhr.responseText.substr(1))+"?"+date.getTime();
-						$("#profileImagePreview").attr('src',url);
-						$("#profileImage").attr('src',url);
-					}
+submitprofilePic.addEventListener("click",function(){
+	submitprofilePicFunction();
+});
+
+
+function submitprofilePicFunction(){
+	var ImageFile = document.getElementById("ProfilePhotoURL");
+	if(ImageFile == null){
+		ImageFile = $("#profileImagePreview").attr('src');
+	}
+	var Ifile = ImageFile.files[0];
+	var formData = new FormData();
+	formData.append("Image", Ifile);
+	var checkNum = 0;
+	var xhr = new XMLHttpRequest();
+	xhr.open("POST", "/profilephoto", false);
+	xhr.onreadystatechange = function(){
+		if(this.readyState >=3 && this.status == 200){
+			if(xhr.responseText == "1"){
+				alert('용량 초과 300kb 이하의 파일을 업로드 해주세요');
+			}else if (xhr.responseText == "2"){
+				alert('jpg,jpeg,png,gif,bmp 5개의 확장자만 허용되어있습니다.');
+			}else if(xhr.responseText == "0"){
+				alert('HTTP로 전송된 파일이 아닙니다.');
+			}else{
+				checkNum+=1;
+				if(checkNum>=1){
+					var date = new Date();
+					var url = 'http://credberry.com'+(xhr.responseText.substr(1))+"?"+date.getTime();
+					$("#profileImagePreview").attr('src',url);
+					$("#profileImage").attr('src',url);
 				}
 			}
 		}
-		xhr.send(formData);
-
-});
+	}
+	xhr.send(formData);
+	
+}

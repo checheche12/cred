@@ -1,0 +1,19 @@
+#companyFrame{
+	padding-top: 5vh;
+	padding-bottom: 2vh;
+	margin-top: 10vh;
+	text-align: center;
+	border-top: 0.1vmax solid #dbdbdb;
+}
+#companyInfoImage{
+	width: 10vw;
+	display: inline-block;
+	float: left;
+}
+#companyInfoFrame{
+	display: inline-block;
+	text-align: center;
+}
+.companyInfo{
+	font-size: 0.8vmax;
+}

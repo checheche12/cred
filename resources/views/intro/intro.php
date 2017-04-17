@@ -68,7 +68,11 @@ $A->post();
 		?>
 
 	</div>
-
+<div id ='footer'>
+		<?php
+		include_once('../resources/views/footer.php');
+		?>
+	</div>
 	<script type="text/javascript">
 		$('img').on('error',function(){
 			$(this).attr('src', '/mainImage/noimage.png');
