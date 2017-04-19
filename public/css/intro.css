@@ -94,14 +94,16 @@ p.name, p.position{
 .Main_position, .Main_name{
 	font-size: 3vw;
 }
-.title{
-	text-align: center;
+.title {
+	text-align: left;
 	font-size: 4vw;
 	font-weight: bolder;
 	margin: 3vw;
 }
-#MainImage{
-	width: 100%;
+#MainImage {
+	width: 90%;
+	display: block;
+	margin: 0 auto;
 }
 #ContentWidth{
 	margin-top: 3vmax;

@@ -4,36 +4,33 @@
 * {
 	font-family: 'Montserrat', sans-serif,'Nanum Gothic';
 }
-#header{
-	white-space: nowrap;
-	box-shadow: 0 1px 5px 0 rgba(41,85,115,.21);
-	border-bottom : 1px solid #e6e6e6;
-	height : 3vmax;
-	width: 100%;
-	position: fixed;
-	background: rgba(255, 255, 255, 0.97);
-	top: 0;
-	left: 0;
-	right: 0;
-	z-index: 99;
+#header {
+   white-space: nowrap;
+   box-shadow: 0 1px 5px 0 rgba(41,85,115,.21);
+   height: 3vmax;
+   width: 100%;
+   position: fixed;
+   background: rgba(255, 255, 255, 0.5);
+   top: 0;
+   left: 0;
+   right: 0;
+   z-index: 99;
 }
 .searchSlot {
-	
-	vertical-align: top;
-	width: 20vmax;
-	height: 2vmax;
-	box-sizing: border-box;
-	border: 0.2vmax solid #dbdbdb;
-	border-radius: 4px;
-	font-size: 1.2vmax;
-	color: #262626 ;
-	background-color: white;
-	background-image: url(/mainImage/searchicon.png);
-	background-position: 5%;
-	background-size: 1.2vmax;
-	background-repeat: no-repeat;
-	padding: 0.6vmax 1.2vmax 0.6vmax 2.6vmax;
-
+   vertical-align: top;
+   width: 20vmax;
+   height: 2vmax;
+   box-sizing: border-box;
+   border: 0.2vmax solid #dbdbdb ;
+   border-radius: 4px;
+   font-size: 0.75rem !important;
+   color: #262626 ;
+   background-color: white;
+   background-image: url(/mainImage/searchicon.png);
+   background-position: 5%;
+   background-size: 1.2vmax;
+   background-repeat: no-repeat;
+   padding: 0.6vmax 1.2vmax 0.6vmax 2.6vmax;
 }
 
 
@@ -173,6 +170,42 @@ button{
 #logout:hover {
 	background-image: url(/mainImage/logouticonwhite.png);
 }
+
+#notification{
+	background-image: url(/mainImage/logouticonpink.png);
+}
+#notification:hover {
+	background-image: url(/mainImage/logouticonwhite.png);
+}
+
+
+.notification_out_none{
+	display:none;
+}
+
+.notiImage{
+	width:30px;
+	height:30px;
+}
+
+.icons_none{
+	width: 3vmax;
+	height: 2.5vmax;
+	background-color: white;
+	background: no-repeat;
+	background-size: 1.5vmax;
+	background-position: 50%;
+	color: #ed2a7b;
+	border: none;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 13px;
+	border-radius: 4px;
+	cursor: pointer;
+	transition: all 0.8s;
+}
+
 #yourart{
 	background-image: url(/mainImage/a.jpg);
 }
@@ -210,7 +243,7 @@ button{
 	font-size: 12px;
 }
 
-#resultImage { 
+#resultImage {
 	margin: 5px;
 	height: 54px;
 	width: 54px;
@@ -219,9 +252,9 @@ button{
 }
 
 #searchInfoContainer #name{
-	color: #ed2a7b ; 
+	color: #ed2a7b ;
 	font-weight: bold;
-	font-size: 15px; 
+	font-size: 15px;
 }
 #searchInfoContainer{
 	display: inline-block;
@@ -231,7 +264,7 @@ button{
 	border-bottom: 1px solid gainsboro;
 }
 ul{
-	list-style-type:none; 
+	list-style-type:none;
 	-webkit-padding-start: 0px;
 }
 .ui-helper-hidden-accessible{
@@ -243,12 +276,12 @@ ul{
 	overflow: auto;
 	position: fixed;
 	background: white;
-	border:1px solid #e6e6e6; 
+	border:1px solid #e6e6e6;
 	border-radius: 3px;
 }
-.ui-autocomplete { 
-	height: 200px; 
-	overflow-y: scroll; 
+.ui-autocomplete {
+	height: 200px;
+	overflow-y: scroll;
 	overflow-x: hidden;
 	z-index: 999;
 	background: white;
@@ -257,19 +290,19 @@ ul{
 #buttons{
 	display: inline-block;
 }
-#login{
-	width: 5.4vmax;
-	height: 2vmax;
-	background-color: #dbdbdb ;
-	color: black;
-	border: 0.2px solid white;
-	text-align: center;
-	margin-left: 0.4vmax;
-	text-decoration: none;
-	display: inline-block;
-	font-size: 1vmax;
-	border-radius: 4px;
-	cursor: pointer;
-	transition: all 0.8s;
-	margin-top: .25vmax;
+#login {
+   width: 5.4vmax;
+   height: 2vmax;
+   background-color: rgba(255, 255, 255, 0.5);
+   color: black;
+   border: 0.2px solid white;
+   text-align: center;
+   margin-left: 0.4vmax;
+   text-decoration: none;
+   display: inline-block;
+   font-size: 1vmax;
+   border-radius: 4px;
+   cursor: pointer;
+   transition: all 0.8s;
+   margin-top: .25vmax;
 }

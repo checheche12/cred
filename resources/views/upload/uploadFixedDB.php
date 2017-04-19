@@ -30,6 +30,10 @@
               values (?, ?, ?)',array($v1[0],$v1[1],$_POST['artPK']));
               DB::insert('insert into artDB (artPK,userPK)
               values (?,?)',array($_POST['artPK'],$v1[0]));
+              if($v1[0]!=$_SESSION['userPK']){
+                DB::insert('insert into notification (senderuserPK,recieveruserPK,notificationKind,notificationPlacePK
+                ,uploaddate) values (?,?,?,?,?)',[$_SESSION['userPK'],$v1[0],"3",$artNumber,date("Y-m-d H:i:s")]);
+              }
           }
 
           if(isset($_POST['Notuser'])){

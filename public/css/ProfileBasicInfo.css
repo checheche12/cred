@@ -21,27 +21,25 @@
 	border-radius: 100%;
 	margin-top: 20px;
 }
-.ProfileBasicInfo .name{
+.ProfileBasicInfo .name {
 	clear: both;
-	font-size:28px;
+	font-size: 1.2rem !important;
 	margin: 25px;
-	line-height: 80%
-
+	line-height: 80%;
 }
-.ProfileBasicInfo .curOrganization{
-	font-size: 17px;
+.ProfileBasicInfo .curOrganization {
+	font-size: 0.75rem !important;
 	display: inline-block;
 }
-.ProfileBasicInfo .curPosition{
-	font-size: 17px;
+.ProfileBasicInfo .curPosition {
+	font-size: 0.75rem !important;
 	font-weight: bold;
 	font-style: italic;
-	color:#ed2a7b;
-	margin-top: 3px;
+	color: #ed2a7b ;
 }
-.ProfileBasicInfo .location{
-	font-weight:lighter;
-	font-size: 12px;
+.ProfileBasicInfo .location {
+	font-weight: lighter;
+	font-size: 0.75rem !important;
 	display: inline-block;
 }
 .comma{
@@ -50,10 +48,6 @@
 .upperInfo{
 	margin-bottom: 20px;
 }
-.ProfileBasicInfo .email{
-	/*	45px;*/
-}
-
 .ProfileBasicInfo .personalDescription{
 	text-align:left;
 	margin-top:20px;
@@ -68,10 +62,10 @@
 	width: 100%;
 	line-height: 120%;
 }
-.infoD .infoLabel{
+.infoD .infoLabel {
 	width: 120px;
 	text-align: left;
-	color:#ed2a7b;
+	font-size: 0.75rem !important;
 	margin-left: 15px;
 }
 .infoDetail{
@@ -87,11 +81,9 @@
 	margin-left: 15px;
 	margin-bottom: 15px;
 }
-
 .ex_pos_org{
 	display: flex;
 }
-
 #informationEdit {
 	background: url(/mainImage/editicon.png) no-repeat;
 	border: none;
@@ -103,7 +95,6 @@
 	float: right;
 	margin: 5px;
 }
-
 #informationEdit:hover{
 	background: url(/mainImage/editiconred.png) no-repeat;
 	border: none;
@@ -113,18 +104,15 @@
 	background-size: 100%;
 	transition:  all 0.8s;
 }
-
 .profileFrame{ 
 	text-align: center;
 	width: 340px; 
 }
-
 #contacticon,#educationicon, #skillicon, #workicon, #awardicon{
 	width: 18px;
 	margin-top: -3px;
 	float: left;
 	padding-right: 10px;
-
 }
 #infoSplit{
 	width: 90%;

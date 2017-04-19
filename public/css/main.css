@@ -77,14 +77,15 @@ ul{
 	margin: 0 40 0 -40;
 	box-sizing: border-box;
 }
-#Project, #Bridge, #Members{
-	border: none ;
-	border-radius: 3px;
-	display: inline-block;
-	transition: all 0.7s;
-	padding: 20 40 20 40;
-	cursor: pointer;
-	color: #ed2a7b ;
+#Project, #Bridge, #Members {
+   border: none;
+   border-radius: 3px;
+   display: inline-block;
+   font-size: 0.75rem !important;
+   transition: all 0.7s;
+   padding: 20 40 20 40;
+   cursor: pointer;
+   color: black;
 }
 #Bridge:hover, #Project:hover, #Members:hover{
 	border: none ;

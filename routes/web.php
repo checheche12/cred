@@ -12,6 +12,13 @@
 */
 
 // only Administrator
+Route::get('/jobposting',function(){
+	return view('jobposting');
+});
+
+Route::post('/jobPostUpdate',function(){
+	return view('jobPostUpdate');
+});
 
 Route::get('/updateGroupMember',function(){
 	return view('updateGroupMember');

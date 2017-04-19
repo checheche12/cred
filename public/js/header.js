@@ -8,7 +8,8 @@ var yourart = document.getElementById('yourart');
 var Msg = document.getElementById('msg');
 var searchButton = document.getElementById('searchButton');
 var searchSlot = document.getElementById('searchSlot');
-
+var notification = document.getElementById('notification');
+var notification_out = document.getElementById('notification_out');
 // var hiddenSearchValue = document.createElement("hiddenSearchValue");
 
 
@@ -19,6 +20,18 @@ $.ajax({
 		token = data;
 	}
 })
+
+$(notification).click(function(){
+	if($(notification).attr('class')=="icons_none"){
+		$(notification).attr('class',"icons");
+		$(notification_out).attr('class',"notification_out");
+	}else{
+		$(notification).attr('class',"icons_none");
+		$(notification_out).attr('class',"notification_out_none");
+	}
+});
+
+
 if(Upload!=undefined){
 	Upload.addEventListener("click", function() {
 
@@ -103,7 +116,7 @@ searchButton.addEventListener("click", function() {
 });
 document.getElementById("searchbar").onkeypress = function(e) {
 	console.log("searchbar clicked");
-	var key = e.charCode || e.keyCode || 0;     
+	var key = e.charCode || e.keyCode || 0;
 	if (key == 13) {
 		e.preventDefault();
 		if($( "#searchSlot" ).val().length>0){
