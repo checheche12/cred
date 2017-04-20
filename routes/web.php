@@ -12,18 +12,6 @@
 */
 
 // only Administrator
-Route::get('/jobposting',function(){
-	return view('jobposting');
-});
-
-Route::post('/jobPostUpdate',function(){
-	return view('jobPostUpdate');
-});
-
-Route::get('/updateGroupMember',function(){
-	return view('updateGroupMember');
-});
-
 Route::get('/certificate',function(){
 	return view('email.certificate');
 });
@@ -67,8 +55,6 @@ Route::get('/getrecent',function(){
 Route::post('/uploadrecent',function(){
 	return view('administrator.uploadRecent');
 });
-
-
 
 
 
@@ -296,4 +282,33 @@ Route::get('/wikiload',function(){
 
 Route::get('/wikiloadtext',function(){
 	return view('posting.wikiloadtext');
+});
+
+
+// 권한 미분류
+Route::get('/jobposting',function(){
+	return view('jobposting');
+});
+
+Route::post('/jobPostUpdate',function(){
+	return view('jobPostUpdate');
+});
+
+Route::get('/updateGroupMember',function(){
+	return view('updateGroupMember');
+});
+
+Route::get('/acceptcredit',function(){
+	return view('checkcredit.acceptcredit');
+});
+
+Route::get('/denycredit',function(){
+	return view('checkcredit.denycredit');
+});
+
+
+
+// testing
+Route::get('/jobPostOutput',function(){
+	return view('jobPostOutput');
 });

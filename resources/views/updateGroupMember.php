@@ -27,7 +27,7 @@ class updateGroupMemberClass extends Controller
             DB::delete("delete from groupMemberDB where userPK = ?",[$_GET['MemberUserPK']]);
             echo "맴버 삭제 성공";
           }else{
-            echo "맴버 삭제 실패: 맴버가 그룹에 존제하지 않습니다.";
+            echo "맴버 삭제 실패: 맴버가 그룹에 존재하지 않습니다.";
           }
         }
       }

@@ -21,15 +21,53 @@ $.ajax({
 	}
 })
 
-$(notification).click(function(){
+
+$(notification).click(function(e){
 	if($(notification).attr('class')=="icons_none"){
 		$(notification).attr('class',"icons");
 		$(notification_out).attr('class',"notification_out");
+		e.stopPropagation();
 	}else{
 		$(notification).attr('class',"icons_none");
 		$(notification_out).attr('class',"notification_out_none");
 	}
 });
+
+$("body").click(function(e){
+	if($(notification).attr('class')=="icons"){
+		$(notification).attr('class',"icons_none");
+		$(notification_out).attr('class',"notification_out_none");
+	}
+});
+
+$(".yesbutton").click(function(e){
+	var div = $(this).closest("div");
+	var artPK = $(this).closest("div").attr('id');
+	var notiPK = $(this).closest("div").attr('notinoti');
+	e.stopPropagation();
+	$.ajax({
+		type : 'get',
+		url : '/acceptcredit',
+		data : {'artPK' : artPK, 'notificationPK' : notiPK},
+		success:function(data){
+				$(div).html('요청을 수락했습니다.');
+		}
+	});
+})
+$(".nobutton").click(function(e){
+	var div = $(this).closest("div");
+	var k = $(this).closest("div").attr('id');
+	var notiPK = $(this).closest("div").attr('notinoti');
+	e.stopPropagation();
+	$.ajax({
+		type : 'get',
+		url : '/denycredit',
+		data : {'artPK' : artPK, 'notificationPK' : notiPK},
+		success:function(data){
+				$(div).html('요청을 거절했습니다.');
+		}
+	});
+})
 
 
 if(Upload!=undefined){

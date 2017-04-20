@@ -160,23 +160,24 @@ $( "#memberSearch" ).autocomplete({
 	.appendTo( ul );
 };
 
-addMember.addEventListener("click", function(){
-	if(confirm("해당 맴버를 그룹에 추가하시겠습니까?")==true){
-		var Data = {"_token" : token};
-		Data['newMemberUserPK'] = $("#hiddenSearchValue").val();
-		$.ajax({
-			type:'GET',
-			url: "/updateGroupMember",
-      		data: Data, //0 Name,1 Email,2 userPK
-      		success:function( data ) {
-      			alert("맴버 추가 성공");
-      			console.log(data);
-      			location.reload();
-      		},
-      		error:function(request,status,error){
-      			alert("! 에러");
-      			console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-      		}
-      	})
-	}
-});
+if(addMemberBt != undefined){
+	addMemberBt.addEventListener("click", function(){
+		if(confirm("해당 맴버를 그룹에 추가하시겠습니까?")==true){
+			var Data = {"MemberUserPK" : $("#hiddenSearchValue").val()};
+			Data['updateType'] = "add";
+			$.ajax({
+				type:'GET',
+				url: "/updateGroupMember",
+						data: Data, //0 Name,1 Email,2 userPK
+						success:function( data ) {
+							alert("맴버 추가 성공");
+							console.log(data);
+							location.reload();
+						},
+						error:function(request,status,error){
+							alert("! 에러");
+						}
+					})
+		}
+	});
+}

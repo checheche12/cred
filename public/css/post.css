@@ -87,10 +87,10 @@ p.nameNoAccount, p.positionNoAccount{
 	font-weight: bold;
 	font-size: 18px;
 }
-button{
+button {
 	background-color: #f6f7f9 ;
 	color: #4b4f56 ;
-	font-size: 1vmax;
+	font-size: 0.75rem !important;
 	width: 4vmax;
 	height: 2vmax;
 	border: 1px solid #aaa;
@@ -132,7 +132,7 @@ button{
 	font-size: 1vmax;
 	color: #90949c ;
 }
-#QInput, #replyinput{
+#QInput, #replyinput {
 	display: inline-block;
 	vertical-align: middle;
 	min-height: 10vh;
@@ -140,7 +140,7 @@ button{
 	box-shadow: 0 0 0 1px rgba(0,0,0,.1), 0 2px 3px rgba(0,0,0,.2);
 	border-radius: 3px;
 	border: 1px solid #dbdbdb ;
-	font-size: 1vmax;
+	font-size: 0.75rem !important;
 	resize: none;
 }
 
@@ -215,13 +215,13 @@ iframe{
 	display: inline-block;
 	margin-left: 0.64vmax;
 }
-.postInfo{
-	font-size: 1vmax;
-	color: #ed2a7b ;
+.postInfo {
+	font-size: 0.75rem !important;
+	color: #555;
 }
 
-#description{
-	font-size: 1vmax;
+#description {
+	font-size: 0.75rem !important;
 	padding-bottom: 2vh;
 }
 #splitter{
@@ -231,9 +231,9 @@ iframe{
 .splitterReply{
 	width: 97%;
 }
-#noAnswer, #noUOI{
+#noAnswer, #noUOI {
 	width: 100%;
-	font-size: 3vmin;
+	font-size: 0.75rem !important;
 }
 #noAnswerImg, #noUOIImg{
 	width: 5vw;
@@ -318,11 +318,11 @@ iframe{
 	font-weight: bold;
 	display: none;
 }
-.answerStatus{
-	font-size: 1vmax;
+.answerStatus {
+	font-size: 0.75rem !important;
 	text-align: left;
 	font-weight: bold;
-	margin-left:0.64vmax;
+	margin-left: 0.64vmax;
 }
 .qnaLabel{
 	display: inline-block;
@@ -374,8 +374,8 @@ iframe{
 #descriptionFrame{
 	margin-left: 0.64vmax;
 }
-#Qcount, #QNum{
-	font-size: 1vmax;
+#Qcount, #QNum {
+	font-size: 0.75rem !important;
 }
 #QInputFrame{
 	text-align: center;

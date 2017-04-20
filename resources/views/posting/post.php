@@ -28,12 +28,14 @@ class PostClass extends Controller
       }
 
       public function getWorkNameList(){
-        $Sentence2 = "select A.userPK, Name from workDB as A join userinfo as B ON A.userPK = B.userPK and artPK = ".$_GET['int'];
+        $Sentence2 = "select A.userPK, Name, checkCredit from workDB as A join userinfo as B ON A.userPK = B.userPK and artPK = ".$_GET['int'];
         $users2 = DB::select(DB::raw($Sentence2));
         $a = 1;
         foreach($users2 as $user){
-          echo "<a href = '/anotherProfile?int=".$user->userPK."'><p class = 'name' id = ".$user->userPK.">".$user->Name."</p></a>";
-          $a+=1;
+          if($user->checkCredit=="1"){
+            echo "<a href = '/anotherProfile?int=".$user->userPK."'><p class = 'name' id = ".$user->userPK.">".$user->Name."</p></a>";
+            $a+=1;
+          }
         }
         $Sentence2 = "select tagUser from TagNotUser where artPK =".$_GET['int'];
         $users2 = DB::select(DB::raw($Sentence2));
@@ -43,10 +45,12 @@ class PostClass extends Controller
       }
 
       public function getWorkPositionList(){
-        $Sentence2 = "select position from workDB as A join userinfo as B ON A.userPK = B.userPK and artPK = ".$_GET['int'];
+        $Sentence2 = "select position, checkCredit from workDB as A join userinfo as B ON A.userPK = B.userPK and artPK = ".$_GET['int'];
         $users2 = DB::select(DB::raw($Sentence2));
         foreach($users2 as $user){
-          echo "<p class = 'position'>".$user->position."</p>";
+          if($user->checkCredit=="1"){
+            echo "<p class = 'position'>".$user->position."</p>";
+          }
         }
         $Sentence2 = "select position from TagNotUser where artPK =".$_GET['int'];
         $users2 = DB::select(DB::raw($Sentence2));

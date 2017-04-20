@@ -1,6 +1,4 @@
-
 $('body').append("<script src = 'js/makedFunction.js'>");
-
 
 var TitleBox = document.getElementById('titleBox');
 var URLBox = document.getElementById('URLBox');
@@ -70,13 +68,6 @@ $(".xImage2").click(function(){
   }
   $(xButton).remove();
 
-});
-
-
-
-
-$('body').click(function(){
-  $('#emailsuggest').html('');
 });
 
 /*Facebook API*/
@@ -172,7 +163,7 @@ function statusChangeCallback(response) {
   /*End of Facebook API*/
 
 //upload autocomplete
-$( "#email" ).autocomplete({
+$("#email").autocomplete({
   minLength: 1,
   source: function( request, response ) {
     var Data = {"_token" : token};
@@ -206,18 +197,22 @@ $( "#email" ).autocomplete({
   .appendTo( ul );
   // checkLoginState();
 };
+
  var userPKArr =[];  //중복 크레딧 체크용 배열
+
  for(i=0;i<creditArray.length;i++){
   userPKArr.push(creditArray[i][0]);
 }
-addCredit.addEventListener("click",function(){
+
+
+
+$(addCredit).click(function(){
 
  var Data = {"_token" : token};
 
  Data['email'] = Email.value;
 
   var dC = function duplicateCheck(k){ // 중복 크레딧 체크해 주는 함수
-    console.log(userPKArr);
     for(i=0;i<userPKArr.length;i++){
       if(userPKArr[i]==k){return true;}
     }
@@ -259,7 +254,8 @@ addCredit.addEventListener("click",function(){
 
           $('#email').val("");
           $('#position').val("");
-        }else if(dC()){
+        }
+      }else if(dC(k[1])){
           alert("동일한 아이디가 미리 크레딧 되어있습니다. (this user is already credited)")
         //중복 이메일/USER PK 발견시 Alarm 또는 표시
       }else if(!position.value){
@@ -300,7 +296,7 @@ addCredit.addEventListener("click",function(){
         console.log("CHEKING POINT");
 
       }
-    }},
+    },
     error: function(){
       alert('error');
     }
@@ -363,9 +359,10 @@ deleteButton.addEventListener("click",function(){
     })
 
 });
-function goBack() {
+
+function goBack(){
   window.history.back();
-}
+};
 
 /** getImage* */
 function getImage(urlInput) {
@@ -383,19 +380,19 @@ function getImage(urlInput) {
 //      $("#testImage")
 //          .html(
 //              "<div> <iframe width='560' height='315' src='https://www.youtube.com/embed/"+id+ "' frameborder='0' allowfullscreen></iframe> </div>");
-return "<iframe class='PostWork' width='"+width+"' height='"+height+"' src='https://www.youtube.com/embed/"+id+ "' frameborder='0' allowfullscreen></iframe>";
-} else if (matchVimeoUrl(url) != false) {
-      id = matchVimeoUrl(url); //vimeo id 반환
-//      $("#checkResult").html("Vimeo Video id: " + id);
-//      $("#testImage")
-//          .html(
-//              "<div> <iframe src='https://player.vimeo.com/video/"
-//                  + id
-//                  + "?title=0&byline=0&portrait=0&badge=0' width='640' height='360' frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> </div>");
-return "<iframe class='PostWork' src='https://player.vimeo.com/video/"
-+ id
-+ "?title=0&byline=0&portrait=0&badge=0' width='"+width+"' height='"+height+"' frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>";
-} else {
-  return "<image class='PostWork' src = " + url + ">";
-}
+    return "<iframe class='PostWork' width='"+width+"' height='"+height+"' src='https://www.youtube.com/embed/"+id+ "' frameborder='0' allowfullscreen></iframe>";
+    } else if (matchVimeoUrl(url) != false) {
+          id = matchVimeoUrl(url); //vimeo id 반환
+    //      $("#checkResult").html("Vimeo Video id: " + id);
+    //      $("#testImage")
+    //          .html(
+    //              "<div> <iframe src='https://player.vimeo.com/video/"
+    //                  + id
+    //                  + "?title=0&byline=0&portrait=0&badge=0' width='640' height='360' frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> </div>");
+    return "<iframe class='PostWork' src='https://player.vimeo.com/video/"
+    + id
+    + "?title=0&byline=0&portrait=0&badge=0' width='"+width+"' height='"+height+"' frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>";
+    } else {
+      return "<image class='PostWork' src = " + url + ">";
+    }
 }

@@ -27,11 +27,66 @@ class UserController extends Controller
           $GLOBALS['photoURL'] = $user->ProfilePhotoURL;
         }
 
-        $GLOBALS['notification'] = DB::select("select A.notificationKind,B.ProfilePhotoURL,B.Name,C.title from notification as A left join
-        userinfo as B on A.senderuserPK = B.userPK
-        left join totalart as C on C.artPK = A.notificationPlacePK where A.recieveruserPK = ? order by notificationPK DESC;",[$_SESSION['userPK']]);
-      }
+        $GLOBALS['notification'] = DB::select("select A.notificationPK ,A.notificationKind,B.userPK,B.ProfilePhotoURL,
+        B.Name,C.title,C.artPK, D.Position,A.notificationPlacePK
+        from notification as A left join userinfo as B on A.senderuserPK = B.userPK
+        left join totalart as C on C.artPK = A.notificationPlacePK
+        left join workDB as D on C.artPK = D.artPK and A.recieveruserPK = D.userPK
+        where A.recieveruserPK = ? order by notificationPK DESC;",[$_SESSION['userPK']]);
     }
+
+    public static function notification($noti)
+    {
+          if($noti->notificationKind == "1")
+          {
+            echo "<a href = '/anotherProfile?int=".$noti->userPK."'>
+            <div>
+            <img class = 'notiImage' src = '".$noti->ProfilePhotoURL."'></img>
+              ".$noti->Name."님으로 부터 알림이 와있습니다.
+            </div>
+            </a>";
+          }
+          else if($noti->notificationKind == "3")
+          {
+            echo "<div id = '".$noti->artPK."' notinoti = '".$noti->notificationPK."'>
+              <a href = '/post?int=".$noti->artPK."'>
+              <div>
+                <img class = 'notiImage' ".$noti->ProfilePhotoURL."></img>
+                ".$noti->Name."님 이 ".$noti->title." 에 ".$noti->Position." 의 역할로 크레딧 요청을 했습니다. 수락하시겠습니까?
+              </div>
+              </a>
+              <button id = 'yes' class = 'yesbutton'>수락</button>
+              <button id = 'no' class = 'nobutton'>취소</button>
+              </div>
+            ";
+          }
+          else if($noti->notificationKind == "5")
+          {
+            echo "<div id = '".$noti->artPK."'>
+              <a href = '/post?int=".$noti->artPK."'>
+              <div>
+                <img class = 'notiImage' ".$noti->ProfilePhotoURL."></img>
+                ".$noti->Name."님 이 ".$noti->title." 에 ".$noti->Position." 의 역할로 크레딧을 요청한것을 수락했습니다.
+              </div>
+              </a>
+              </div>
+            ";
+          }
+          else if($noti->notificationKind == "6")
+          {
+            echo "<div id = '".$noti->artPK."'>
+              <a href = '/post?int=".$noti->artPK."'>
+              <div>
+                <img class = 'notiImage' ".$noti->ProfilePhotoURL."></img>
+                ".$noti->Name."님 이 ".$noti->title." 에 ".$noti->Position." 의 역할로 크레딧을 요청한것을 거절했습니다.
+              </div>
+              </a>
+              </div>
+            ";
+          }
+
+    }
+}
 
     $A = new UserController();
     $A->index();
@@ -84,34 +139,13 @@ class UserController extends Controller
           <button id = "logout" class="icons"></button>
           <div id = "notification_out" class = "notification_out_none">';
           foreach($GLOBALS['notification'] as $noti){
-              echo "<div>";
-              echo "<img class = 'notiImage' src = ".$noti->ProfilePhotoURL."></img>";
-              if($noti->notificationKind == "1"){
-                echo $noti->Name."님으로부터 알림이 와있습니다.";
-              }else if($noti->notificationKind == "2"){
-                echo $noti->Name."님이 ".$noti->title." 작품을 변경했습니다.";
-              }else if($noti->notificationKind == "3"){
-                echo $noti->Name."님으로부터 작품 크레딧 추가에 대한 알림이 와있습니다.";
-                echo "<button id = 'yes' class = 'button'>수락</button>";
-                echo "<button id = 'no' class = 'button'>취소</button>";
-              }else if($noti->notificationKind == "4"){
-                echo $noti->Name."님으로부터 알림이 와있습니다.";
-              }else if($noti->notificationKind == "5"){
-                echo $noti->Name."님으로부터 알림이 와있습니다.";
-              }else if($noti->notificationKind == "6"){
-                echo $noti->Name."님으로부터 알림이 와있습니다.";
-              }else if($noti->notificationKind == "7"){
-                echo $noti->Name."님으로부터 알림이 와있습니다.";
-              }else if($noti->notificationKind == "8"){
-                echo $noti->Name."님으로부터 알림이 와있습니다.";
-              }
-              echo "</div>";
+              UserController::notification($noti);
           }
           echo '</div>
         </div>';
 
       }
-      ?>
+?>
 
     </div>
   </div>

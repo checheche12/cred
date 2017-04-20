@@ -41,6 +41,7 @@ class makeNewArtClass extends Controller
             ,uploaddate) values (?,?,?,?,?)',[$_SESSION['userPK'],$v1[0],"3",$artNumber,date("Y-m-d H:i:s")]);
           }
         }
+        DB::update('update workDB set checkCredit = 1 where userPK = ?',[$_SESSION['userPK']]);
         if(isset($_POST['Notuser'])){
 
           $Array = $_POST['Notuser'];

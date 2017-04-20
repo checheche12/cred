@@ -63,12 +63,18 @@ $A->post();
 	<p class="title">Recent Works</p>
 	<div id="RecentWorks_Frame">
 
-		<<?php
+		<?php
 		include_once('../resources/views/administrator/getrecent.php');
 		?>
 
 	</div>
-<div id ='footer'>
+
+	<div id="jobPosting_Frame">
+		<?php
+		include_once('../resources/views/jobposting.php');
+		?>
+	</div>
+	<div id ='footer'>
 		<?php
 		include_once('../resources/views/footer.php');
 		?>

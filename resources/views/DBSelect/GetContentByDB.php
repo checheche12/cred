@@ -16,26 +16,27 @@ class UserController extends Controller
      {
       $userArt = array();
       $user = $_SESSION['userPK'].'artDB';
-      $Sentence = 'select A.artPK, ArtURL, title,position from totalart A Inner Join workDB B on A.artPK = B.artPK
+      $Sentence = 'select A.artPK, ArtURL, title,position,B.checkCredit from totalart A Inner Join workDB B on A.artPK = B.artPK
       and userPK = '.$_SESSION['userPK'];
       $users = DB::select(DB::raw($Sentence));
 
         // 루프를 돌면서 카드 생성
       foreach($users as $user){
-        $urlType = self::urlCheck($user->ArtURL);
-        if($urlType == "youtube"){
-          $yvID = self::matchYoutubeUrl($user->ArtURL);
-          $imgSrc = "https://img.youtube.com/vi/".$yvID.'/mqdefault.jpg';
-          echo '<a href = "/post?int='.$user->artPK.'"><div class = "ProjectFrame"><img class = "VideoArt" src = '.$imgSrc.'><div class="detail"><p class="name">'.$user->title.'</p><p class="position">'.$user->position.'</p></div></div></a>';
-        }elseif ($urlType == "vimeo") {
-          $vvID = self::matchVimeoUrl($user->ArtURL);
-          // $imgSrc = "https://img.youtube.com/vi/".$vvID.'/mqdefault.jpg';
-          echo '<a href = "/post?int='.$user->artPK.'"><div class = "ProjectFrame"><img class = "VideoArt" src = '; self::getVimeoThumb($vvID); echo'><div class="detail"><p class="name">'.$user->title.'</p><p class="position">'.$user->position.'</p></div></div></a>';
+        if($user->checkCredit == "1"){
+          $urlType = self::urlCheck($user->ArtURL);
+          if($urlType == "youtube"){
+            $yvID = self::matchYoutubeUrl($user->ArtURL);
+            $imgSrc = "https://img.youtube.com/vi/".$yvID.'/mqdefault.jpg';
+            echo '<a href = "/post?int='.$user->artPK.'"><div class = "ProjectFrame"><img class = "VideoArt" src = '.$imgSrc.'><div class="detail"><p class="name">'.$user->title.'</p><p class="position">'.$user->position.'</p></div></div></a>';
+          }elseif ($urlType == "vimeo") {
+            $vvID = self::matchVimeoUrl($user->ArtURL);
+            // $imgSrc = "https://img.youtube.com/vi/".$vvID.'/mqdefault.jpg';
+            echo '<a href = "/post?int='.$user->artPK.'"><div class = "ProjectFrame"><img class = "VideoArt" src = '; self::getVimeoThumb($vvID); echo'><div class="detail"><p class="name">'.$user->title.'</p><p class="position">'.$user->position.'</p></div></div></a>';
 
-        }else{
-          echo '<a href = "/post?int='.$user->artPK.'"><div class = "ProjectFrame"><img class = "VideoArt" src = '.$user->ArtURL.'><div class="detail"><p class="name">'.$user->title.'</p><p class="position">'.$user->position.'</p></div></div></a>';
+          }else{
+            echo '<a href = "/post?int='.$user->artPK.'"><div class = "ProjectFrame"><img class = "VideoArt" src = '.$user->ArtURL.'><div class="detail"><p class="name">'.$user->title.'</p><p class="position">'.$user->position.'</p></div></div></a>';
+          }
         }
-
       }
     }
 
@@ -61,15 +62,15 @@ class UserController extends Controller
         $p = '/https?:\/\/(?:www\.|player\.)?vimeo.com\/(?:channels\/(?:\w+\/)?|groups\/([^\/]*)\/videos\/|album\/(\d+)\/video\/|video\/|)(\d+)(?:$|\/|\?)/';
         if (preg_match($p,$url,$matches)==1) {
     return $matches[3]; // returns Youtube ID <- 왜 인덱스 3이야 ㅡ.ㅡ 모르겠다
-  }
-  return false;
-}
+      }
+      return false;
+    }
 
-public function getVimeoThumb($id)
-{
-  $vimeo = unserialize(file_get_contents("http://vimeo.com/api/v2/video/".$id.".php"));
-  echo $large = $vimeo[0]['thumbnail_large'];
-}
+  public function getVimeoThumb($id)
+  {
+    $vimeo = unserialize(file_get_contents("http://vimeo.com/api/v2/video/".$id.".php"));
+    echo $large = $vimeo[0]['thumbnail_large'];
+  }
 
 // echo getVimeoThumb(102514372);
 

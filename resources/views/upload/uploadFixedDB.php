@@ -14,6 +14,14 @@
         */
           DB::update("update totalart set description = ? , title = ? , ArtURL = ? where artPK = ?", [$_POST['Description'],$_POST['Title'],$_POST['ArtURL'],$_POST['artPK']]);
 
+          $GLOBALS['creditAdder'] = array();
+          $Sentence = DB::select("select * from workDB where artPK = ?",[$_POST['artPK']]);
+          foreach($Sentence as $v){
+            if($v->checkCredit == '1'){
+              array_push($GLOBALS['creditAdder'],$v->userPK);
+            }
+          }
+
           $Sentence = "delete from workDB where artPK = ".$_POST['artPK'];
           $users = DB::delete(DB::raw($Sentence));
 
@@ -31,8 +39,17 @@
               DB::insert('insert into artDB (artPK,userPK)
               values (?,?)',array($_POST['artPK'],$v1[0]));
               if($v1[0]!=$_SESSION['userPK']){
-                DB::insert('insert into notification (senderuserPK,recieveruserPK,notificationKind,notificationPlacePK
-                ,uploaddate) values (?,?,?,?,?)',[$_SESSION['userPK'],$v1[0],"3",$artNumber,date("Y-m-d H:i:s")]);
+
+                if(in_array($v1[0],$GLOBALS['creditAdder'])){
+
+                  DB::update('update workDB set checkCredit = 1 where userPK = ?',[$v1[0]]);
+
+                }else{
+                  DB::insert('insert into notification (senderuserPK,recieveruserPK,notificationKind,notificationPlacePK
+                  ,uploaddate) values (?,?,?,?,?)',[$_SESSION['userPK'],$v1[0],"3",$_POST['artPK'],date("Y-m-d H:i:s")]);
+                }
+              }else{
+                DB::update('update workDB set checkCredit = 1 where userPK = ?',[$_SESSION['userPK']]);
               }
           }
 

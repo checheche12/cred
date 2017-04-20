@@ -50,20 +50,20 @@
 	/**검색버튼**/
 
 }
-#searchButton{
-	width: 5.4vmax;
-	height: 2vmax;
-	background-color: #ed2a7b ;
-	color: white;
-	border: 0.2px solid #ed2a7b ;
-	text-align: center;
-	margin-left: 0.4vmax;
-	text-decoration: none;
-	display: inline-block;
-	font-size: 1vmax;
-	border-radius: 4px;
-	cursor: pointer;
-	transition: all 0.8s;
+#searchButton {
+    width: 5.4vmax;
+    height: 2vmax;
+    background-color: #333;
+    color: white;
+    border: 0.2px solid #333;
+    text-align: center;
+    margin-left: 0.4vmax;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1vmax;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.8s;
 }
 img{
 	cursor: pointer;
@@ -157,25 +157,25 @@ button{
 	background-color: #ed2a7b;
 }
 #upload{
-	background-image: url(/mainImage/uploadiconpink.png);
+	background-image: url(/mainImage/uploadiconblack.png);
 }
 #upload:hover {
-	background-image: url(/mainImage/uploadiconwhite.png);
+	background-image: url(/mainImage/uploadiconpink.png);
 }
 
 
 #logout{
-	background-image: url(/mainImage/logouticonpink.png);
+	background-image: url(/mainImage/logouticonblack.png);
 }
 #logout:hover {
-	background-image: url(/mainImage/logouticonwhite.png);
+	background-image: url(/mainImage/logouticonpink.png);
 }
 
 #notification{
-	background-image: url(/mainImage/logouticonpink.png);
+	background-image: url(/mainImage/logouticonblack.png);
 }
 #notification:hover {
-	background-image: url(/mainImage/logouticonwhite.png);
+	background-image: url(/mainImage/logouticonpink.png);
 }
 
 
@@ -213,7 +213,6 @@ button{
 	/*이미지 아직 없음*/
 }
 .icons:hover{
-	background-color: #ed2a7b ;
 	color: white;
 }
 .icons{
