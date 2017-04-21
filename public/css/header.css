@@ -33,7 +33,6 @@
    padding: 0.6vmax 1.2vmax 0.6vmax 2.6vmax;
 }
 
-
 /**검색창**/
 #searchbar{
 	margin-top: .5vmax;
@@ -172,12 +171,30 @@ button{
 }
 
 #notification{
-	background-image: url(/mainImage/logouticonblack.png);
-}
-#notification:hover {
-	background-image: url(/mainImage/logouticonpink.png);
+	background-image: url(/mainImage/notioff.png);
 }
 
+#notification:hover {
+	background-image: url(/mainImage/notion.png);
+}
+
+#notification_out{
+	background-color: white;
+	overflow:auto;
+	height:400px;
+	width :450px;
+}
+
+.noticlass{
+	border : 1px solid black;
+	border-bottom : none;
+	white-space:normal;
+}
+
+.notification_out{
+	position:absolute;
+	right:1px;
+}
 
 .notification_out_none{
 	display:none;

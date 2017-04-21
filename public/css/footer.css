@@ -1,9 +1,13 @@
-#companyFrame{
-	padding-top: 5vh;
-	padding-bottom: 2vh;
-	margin-top: 10vh;
-	text-align: center;
-	border-top: 0.1vmax solid #dbdbdb;
+#companyFrame {
+   padding-top: 2vh;
+   position: fixed;
+   top: 100%;
+   width: 100vh;
+   transform: rotate(90deg);
+   transform-origin: top right;
+   text-align: center;
+   right: -4px;
+
 }
 #companyInfoImage{
 	width: 10vw;
@@ -14,6 +18,7 @@
 	display: inline-block;
 	text-align: center;
 }
-.companyInfo{
-	font-size: 0.8vmax;
+.companyInfo {
+   font-size: 0.3rem;
+   font-weight: 900;
 }

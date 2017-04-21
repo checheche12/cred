@@ -280,9 +280,9 @@ addCredit.addEventListener("click",function(){
       }else{
 
         var j = "<div class = 'creditContext'>";
-        
-        j += ("<a class ='xImage' id = "+k[1]+"'></a>");
-        j += ("<div class='name'>"+k[0] + "</div><br>");
+
+        j += ("<a class ='xImage' id = "+k[1]+"></a>");
+        j += ("<div class='name'>"+k[0] +"</div><br>");
         j += ("<div class='position'>"+position.value+"</div></div>");
         $('#creditBox').html();
         $('#creditBox').append(j);

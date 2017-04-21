@@ -40,7 +40,7 @@ class UserController extends Controller
           if($noti->notificationKind == "1")
           {
             echo "<a href = '/anotherProfile?int=".$noti->userPK."'>
-            <div>
+            <div class = 'noticlass'>
             <img class = 'notiImage' src = '".$noti->ProfilePhotoURL."'></img>
               ".$noti->Name."님으로 부터 알림이 와있습니다.
             </div>
@@ -48,7 +48,7 @@ class UserController extends Controller
           }
           else if($noti->notificationKind == "3")
           {
-            echo "<div id = '".$noti->artPK."' notinoti = '".$noti->notificationPK."'>
+            echo "<div class = 'noticlass' id = '".$noti->artPK."' notinoti = '".$noti->notificationPK."'>
               <a href = '/post?int=".$noti->artPK."'>
               <div>
                 <img class = 'notiImage' ".$noti->ProfilePhotoURL."></img>
@@ -62,7 +62,7 @@ class UserController extends Controller
           }
           else if($noti->notificationKind == "5")
           {
-            echo "<div id = '".$noti->artPK."'>
+            echo "<div class = 'noticlass' id = '".$noti->artPK."'>
               <a href = '/post?int=".$noti->artPK."'>
               <div>
                 <img class = 'notiImage' ".$noti->ProfilePhotoURL."></img>
@@ -74,7 +74,7 @@ class UserController extends Controller
           }
           else if($noti->notificationKind == "6")
           {
-            echo "<div id = '".$noti->artPK."'>
+            echo "<div class = 'noticlass' id = '".$noti->artPK."'>
               <a href = '/post?int=".$noti->artPK."'>
               <div>
                 <img class = 'notiImage' ".$noti->ProfilePhotoURL."></img>

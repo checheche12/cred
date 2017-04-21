@@ -229,7 +229,7 @@ $(addCredit).click(function(){
         if(confirm("등록되지 않은 이메일입니다. 만일 가입자가 아닌 사람이라면 확인을 눌러주십시오") == true){
 
           var j = "<div class = 'creditContext'>";
-          j += ("a class ='xImage' id = "+NotUserCreditNumber+"'></a>");
+          j += ("<a class ='xImage' id = "+NotUserCreditNumber+"'></a>");
           j += ("<div class='name'>"+ email.value + "</div><br>");
           j += ("<div class='position'>"+position.value+"</div></div>");
           $('#creditBox').append(j);

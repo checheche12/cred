@@ -312,3 +312,7 @@ Route::get('/denycredit',function(){
 Route::get('/jobPostOutput',function(){
 	return view('jobPostOutput');
 });
+
+Route::get('/jobPostInput',function(){
+	return view('jobPostInput');
+});

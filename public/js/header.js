@@ -26,10 +26,12 @@ $(notification).click(function(e){
 	if($(notification).attr('class')=="icons_none"){
 		$(notification).attr('class',"icons");
 		$(notification_out).attr('class',"notification_out");
+		$(notification).css('background-image','url(mainImage/notion.png)');
 		e.stopPropagation();
 	}else{
 		$(notification).attr('class',"icons_none");
 		$(notification_out).attr('class',"notification_out_none");
+		$(notification).css('background-image','url(mainImage/notioff.png)');
 	}
 });
 
@@ -37,6 +39,7 @@ $("body").click(function(e){
 	if($(notification).attr('class')=="icons"){
 		$(notification).attr('class',"icons_none");
 		$(notification_out).attr('class',"notification_out_none");
+		$(notification).css('background-image','url(mainImage/notioff.png)');
 	}
 });
 
@@ -53,10 +56,11 @@ $(".yesbutton").click(function(e){
 				$(div).html('요청을 수락했습니다.');
 		}
 	});
-})
+});
+
 $(".nobutton").click(function(e){
 	var div = $(this).closest("div");
-	var k = $(this).closest("div").attr('id');
+	var artPK = $(this).closest("div").attr('id');
 	var notiPK = $(this).closest("div").attr('notinoti');
 	e.stopPropagation();
 	$.ajax({
