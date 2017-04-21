@@ -24,6 +24,15 @@ class JobPostClass extends Controller
 			array_push($GLOBALS['jobInfoArr'],array($item->jobPostPK,$item->userPK,$item->postPurpose,$item->jobType,$item->workLocation,$item->workField,$item->position,$item->jobDesc,$item->jobPeriod,$item->benefits,$item->earning,$item->companyInfo,$item->experience,$item->education,$item->extraDesc,$item->postDate,$item->updateDate,$item->expiryDate,$item->recruiterName,$GLOBALS['qualSkillArr']));
 		}
 
+		$temp = DB::select(DB::raw("select jobPostPK FROM qualSkillDB ORDER BY jobPostPK DESC LIMIT 1"));
+		foreach($temp as $v1){
+			foreach($v1 as $v2){
+				$GLOBALS['lastJobPK'] = $v2;
+				break;
+			}
+			break;
+		}
+
 	}
 }
 $A = new JobPostClass();
@@ -63,7 +72,7 @@ $A->JobPost();
 		echo'</ul>'; //end of projectList
 		?>
 	</div> <!-- end of ContentWrapper -->
-	<script type="text/javascript">var jobNum = <?= count($GLOBALS['jobInfoArr']) ?></script>
+	<script type="text/javascript">var jobNum = <?= $GLOBALS['lastJobPK'] ?></script>
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<script type = "text/javascript" src = "js/jobposting.js"></script>

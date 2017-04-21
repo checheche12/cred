@@ -37,10 +37,17 @@ $max = $x + ($N)*$x;
 		//0 jobPostPK, 1 userPK, 2 postPurpose, 3 jobType, 4 workLocation, 5 workField, 6 position, 7 jobDesc, 8 jobPeriod, 9 benefits, 10 earning, 11 companyInfo, 12 experience, 13 education, 14 extraDesc, 15 postDate, 16 updateDate, 17 expiryDate, 18 recruiterName, 19 $GLOBALS['qualSkillArr']
 		//Output Page
 // echo'<ul id="projectList">';
+
+
 foreach (array_reverse($GLOBALS['jobInfoArr']) as $temp) {
 	if( $min <= $i and $max > $i ){	//$i 번쨰 이후부터 만 출력. 끊어서 append 하기 위함
 		if($_GET['jobType']===$temp[3] || $_GET['jobType']==='allOptions'){
 
+			for($tempArrRef = 0; $tempArrRef<19; $tempArrRef +=1) {
+				 if($temp[$tempArrRef] == ''){
+				 	$temp[$tempArrRef] = '-';
+				}
+			}
 			echo'<li class="singlePost" id="singlePost'.$temp[0].'">
 			<div class="openInfo">
 				<p class="postNubmer postHighlight">#'.$temp[0].'</p>&nbsp;
@@ -69,24 +76,41 @@ foreach (array_reverse($GLOBALS['jobInfoArr']) as $temp) {
 						foreach ($temp[19] as $v) {
 							echo'<p class="skillEach">'.$v.'</p>';
 						}
+						echo'</p></div>';
+						if($temp[12]=="none"){
+							echo'<div class="experience"><p class="label">경력</p><p class="detail">무관</p></div>';
+						}else{
+							echo'<div class="experience"><p class="label">경력</p><p class="detail">'.$temp[12].'</p></div>';
+						}
+						if($temp[13]=="none"){
+							echo'<div class="education"><p class="label">학력</p><p class="detail">무관';
+						}elseif ($temp[13]=="U_attending") {
+							echo'<div class="education"><p class="label">학력</p><p class="detail">초대졸';
+						}elseif ($temp[13]=="U_Graduate") {
+							echo'<div class="education"><p class="label">학력</p><p class="detail">대졸';
+						}else{
+							echo'<div class="education"><p class="label">학력</p><p class="detail">석사 이상';
+
+						}
+
 						echo'</p></div>
-						<div class="experience"><p class="label">경력</p><p class="detail">'.$temp[12].'</p></div>
-						<div class="education"><p class="label">학력</p><p class="detail">'.$temp[13].'</p></div>
 					</div>
 				</div>
 				<div class="extraInfo">
 					<div class="extraJobDesc"><p class="label">부가설명</p><p class="detail">'.$temp[14].'</p></div>
 				</div>
 				<div class="buttonFrame2">';
-				if($temp[1]==$_SESSION['userPK']){	//Guest 는 못하게 해야함
-						echo'<button id="applyBt'.$temp[0].'">지원</button>';
-					}else{
-						echo'<button id="editBt'.$temp[0].'">수정</button>';
-						echo'<button id="deleteBt'.$temp[0].'">삭제</button>';
-					}
+						if($temp[1]==$_SESSION['userPK']){	//Guest 는 못하게 해야함
+							if($_SESSION['is_login'] == true){
+								echo'<button id="editBt'.$temp[0].'">수정</button>';
+								echo'<button id="deleteBt'.$temp[0].'">삭제</button>';
+							}
+						}else{
+							echo'<button id="applyBt'.$temp[0].'">지원</button>';
+						}
 
-					echo'</div>
-				</div>
+						echo'</div>
+					</div>
 			</li>'; // end of singlePost
 		}
 	}

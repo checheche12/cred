@@ -51,7 +51,6 @@ class jobPostUpdateClass extends Controller
           $expiryDate = date('Y-m-d H:i:s', strtotime($tempDate));
           $Sentence = "update jobPostDB SET postPurpose = '".$_POST['postPurpose']."', recruiterName = '".$_POST['recruiterName']."', workField = '".$_POST['workField']."',companyInfo = '".$_POST['companyInfo']."', position = '".$_POST['position']."', jobDesc = '".$_POST['jobDesc']."',workLocation = '".$_POST['workLocation']."', jobType = '".$_POST['jobType']."', jobPeriod = '".$_POST['jobPeriod']."',earning = '".$_POST['earning']."', benefits = '".$_POST['benefits']."', expiryDate = '".$expiryDate."',education = '".$_POST['education']."', experience = '".$_POST['experience']."', extraDesc = '".$_POST['extraDesc']."' WHERE jobPostPK = ".$_POST['jobPostPK'];
           $users = DB::update(DB::raw($Sentence));
-////////////////////
           //skill 따로 추가 qualSkillDB (qualificationSkillDB 를 줄임)에 추가
           DB::delete(DB::raw("delete from qualSkillDB where jobPostPK='".$_POST['jobPostPK']."'"));
           $Sentence = "insert into qualSkillDB (skill, jobPostPK) values ";
@@ -63,13 +62,24 @@ class jobPostUpdateClass extends Controller
          }
          $Sentence = substr($Sentence, 0, -1);
          $users = DB::insert(DB::raw($Sentence));
+       }elseif ($_POST['controlType']=="apply") {
 
-       }
+        $temp = DB::select(DB::raw("select userPK from jobPostDB where jobPostPK='".$_POST['jobPostPK']."'"));
+        foreach($temp as $tempItem){
+          $GLOBALS['recruiterUserPK'] = $tempItem->userPK;
+        }
+        if($_SESSION['is_login'] == true){
+          DB::insert('insert into notification (senderuserPK,recieveruserPK,notificationKind,uploaddate) values (?,?,?,?)',[$_SESSION['userPK'],$GLOBALS['recruiterUserPK'],"1",date("Y-m-d H:i:s")]);
+          echo "지원 성공!";
+        }else{
+          echo "지원을 하기 위해서는 로그인을 해 주십시오.";
+        }
+      }//end apply
 
-     }
-   }
+    }
+  }
 
-   $A = new jobPostUpdateClass();
-   $A->jobPostUpdate();
+  $A = new jobPostUpdateClass();
+  $A->jobPostUpdate();
 
-   ?>
+  ?>

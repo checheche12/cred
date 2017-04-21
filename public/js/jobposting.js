@@ -39,13 +39,11 @@ function jobPostInputActions(controlType){
 
 	// radio Box controller
 	$( "#experiencePlus" ).focus(function() {
-		console.log("focused experiencePlus");
 		$("input:radio[name=experience]:radio[value='']").prop( "checked", true );
 	});
 	$(document).ready(function() {
 		$('input[type=radio][name=experience]').change(function() {
 			if(this.value === "none"){
-				console.log("radio button changed");
 				$("#experiencePlus").val("");
 			}
 		});
@@ -53,8 +51,6 @@ function jobPostInputActions(controlType){
 
 	$("#cancel").on("click",function(){
 		event.stopPropagation();
-
-		console.log("cancel clicked");
 		$("#post").removeAttr('disabled');
 		$("#projectInputForm").remove();
 	});
@@ -97,7 +93,6 @@ function jobPostInputActions(controlType){
 				alert("업데이트 성공, 메인화면으로 돌아갑니다!");
 				$(location).attr('href','/');
 				$("#post").removeAttr('disabled');
-				// $("#projectInputForm").remove();
 			},
 			error: function(){
 				alert('error 서버 연결 안됨!');
@@ -108,18 +103,13 @@ function jobPostInputActions(controlType){
 		$( "#datepicker" ).datepicker();
 	} );
 }
-
-// bindingJobInfo();	//첫번째에 있는 리스트를 위한 binding
 function bindingJobInfo(){
-	console.log("check point");
 	for (var i = 1; i <= jobNum; i++) {
-		console.log("check point1");
 		jobInfoOpen(i);
 	}
 }
 function jobInfoOpen(i){
 	var bindId = "#singlePost" + i;
-	console.log("check "+ bindId);
 	var bindId2 = "#furtherInfo" + i;
 	$( bindId ).unbind();
 	$(bindId).bind("click", function(){
@@ -129,7 +119,22 @@ function jobInfoOpen(i){
 	$( bindId3 ).unbind();
 	$(bindId3).bind("click",function(event){
 		event.stopPropagation();
-		console.log("clicked applyBt!"+ i);
+
+		var Data = {"controlType":"apply"};
+		var t = $(this).attr('id').substr(7, 300);
+		Data['jobPostPK'] = t;
+		$.ajax({
+			type:'POST',
+			url:'/jobPostUpdate',
+			data : Data,
+			success:function(data){
+				alert(data);	//성공 실패 여부를 출력함
+			},
+			error: function(){
+				alert('error 서버 연결 안됨!');
+			}
+		})
+
 	});
 	var bindId4 = "#editBt" + i;
 	$( bindId4 ).unbind();
@@ -138,6 +143,7 @@ function jobInfoOpen(i){
 
 		var Data = {"inputFormType":"update"};
 		var t = $(this).attr('id').substr(6, 300);
+		Data['jobPostPK'] = t;
 		$.ajax({
 			type:'GET',
 			url:'/jobPostInput',
@@ -154,7 +160,6 @@ function jobInfoOpen(i){
 			}
 		})
 
-		console.log("clicked editBt!"+ i);
 	});
 	var bindId5 = "#deleteBt" + i;
 	$( bindId5 ).unbind();
@@ -183,15 +188,9 @@ function jobInfoOpen(i){
 }
 
 $(window).scroll( function() {
-	// console.log("$(window).scrollTop() + $(window).height() = "+($(window).scrollTop() + $(window).height()));
-	// console.log('$("#companyFrame").position().top= '+($("#companyFrame").position().top));
-	// var elem = $("#projectList"); 
-	// console.log(postSet.appendSensor);
 	if( ( ($(window).scrollTop() + $(window).height() ) >= ( $("#companyFrame").position().top) ) && (postSet.appendSensor==0) ){
 		postSet.appendSensor=1;
 		postAppend();
-		// console.log(postSet.N);
-		// bindingJobInfo();	//추가적으로 append 가 일어나고 나면 원래 존재하던 글들에 binding 에 에러가 나서 해결 방안으로 심어놓음
 	} 
 });
 
@@ -215,7 +214,6 @@ $(".postBt").click(function(){
 });
 
 function postAppend(){
-	// console.log(postSet.jobType+' | '+postSet.N);
 	var Data = {"jobType":postSet.jobType};
 	Data['N'] = postSet.N;
 	$.ajax({
