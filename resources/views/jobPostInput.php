@@ -8,22 +8,25 @@ class JobPostClass extends Controller
 	public function JobPost()
 	{
 
-		$Sentence = "select * from jobPostDB where jobPostPK=".$_GET['jobPostPK'];
-		$list = DB::select(DB::raw($Sentence));
+		if($_GET['inputFormType']=="update"){
+
+			$Sentence = "select * from jobPostDB where jobPostPK=".$_GET['jobPostPK'];
+			$list = DB::select(DB::raw($Sentence));
 
 
-		$GLOBALS['jobInfoArr']=array();
-		foreach($list as $item){
-			$Sentence2 = "select * from qualSkillDB where jobPostPK=".$_GET['jobPostPK'];
-			$list2 = DB::select(DB::raw($Sentence2));
-			$GLOBALS['qualSkillArr']=array();
-			foreach($list2 as $item2){
-				array_push($GLOBALS['qualSkillArr'],$item2->skill);
-			}
+			$GLOBALS['jobInfoArr']=array();
+			foreach($list as $item){
+				$Sentence2 = "select * from qualSkillDB where jobPostPK=".$_GET['jobPostPK'];
+				$list2 = DB::select(DB::raw($Sentence2));
+				$GLOBALS['qualSkillArr']=array();
+				foreach($list2 as $item2){
+					array_push($GLOBALS['qualSkillArr'],$item2->skill);
+				}
 			//0 jobPostPK, 1 userPK, 2 postPurpose, 3 jobType, 4 workLocation, 5 workField, 6 position, 7 jobDesc, 8 jobPeriod, 9 benefits, 10 earning, 11 companyInfo, 12 experience, 13 education, 14 extraDesc, 15 postDate, 16 updateDate, 17 expiryDate, 18 recruiterName, 19 $GLOBALS['qualSkillArr']
-			array_push($GLOBALS['jobInfoArr'],array($item->jobPostPK,$item->userPK,$item->postPurpose,$item->jobType,$item->workLocation,$item->workField,$item->position,$item->jobDesc,$item->jobPeriod,$item->benefits,$item->earning,$item->companyInfo,$item->experience,$item->education,$item->extraDesc,$item->postDate,$item->updateDate,$item->expiryDate,$item->recruiterName,$GLOBALS['qualSkillArr']));
-		}
+				array_push($GLOBALS['jobInfoArr'],array($item->jobPostPK,$item->userPK,$item->postPurpose,$item->jobType,$item->workLocation,$item->workField,$item->position,$item->jobDesc,$item->jobPeriod,$item->benefits,$item->earning,$item->companyInfo,$item->experience,$item->education,$item->extraDesc,$item->postDate,$item->updateDate,$item->expiryDate,$item->recruiterName,$GLOBALS['qualSkillArr']));
+			}
 
+		}
 	}
 }
 $A = new JobPostClass();
@@ -115,20 +118,20 @@ if($_GET['inputFormType']=="new"){
 					}
 					echo'<label class="label inputLabel">경력</label>';
 					if($GLOBALS['jobInfoArr'][0][12]=="none"){
-					echo'<input id="expNone" type="radio" name="experience" value="none" checked>무관<input id="expPlus" type="radio" name="experience" value=""><input id="experiencePlus" type="text" name="experience">년 이상<br>';
+						echo'<input id="expNone" type="radio" name="experience" value="none" checked>무관<input id="expPlus" type="radio" name="experience" value=""><input id="experiencePlus" type="text" name="experience">년 이상<br>';
 					}else{
 						echo'<input id="expNone" type="radio" name="experience" value="none">무관<input id="expPlus" type="radio" name="experience" value="" checked><input id="experiencePlus" type="text" name="experience" value="'.$GLOBALS['jobInfoArr'][0][12].'">년 이상<br>';
 					}
-				echo'</div>
-				<div id="extraDescFrame" class="inputForm">
-					<div class="inputGroup"><label class="label inputLabel">부가설명</label><textarea id="extraDesc" class="inputBox">'.$GLOBALS['jobInfoArr'][0][14].'</textarea></div>
+					echo'</div>
+					<div id="extraDescFrame" class="inputForm">
+						<div class="inputGroup"><label class="label inputLabel">부가설명</label><textarea id="extraDesc" class="inputBox">'.$GLOBALS['jobInfoArr'][0][14].'</textarea></div>
 
+					</div>
+					<div class="buttonFrame1">
+						<button id="postSubmit">수정완료</button>
+						<button id="cancel">취소</button>
+					</div>
 				</div>
-				<div class="buttonFrame1">
-					<button id="postSubmit">수정완료</button>
-					<button id="cancel">취소</button>
-				</div>
-			</div>
-			';
-		}
-		?>
+				';
+			}
+			?>
