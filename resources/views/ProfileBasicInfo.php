@@ -83,15 +83,10 @@ class checkAddCredit extends Controller
       echo '<div class="upperInfo">';
       
       if($GLOBALS['userPK']==$_SESSION['userPK']){
-        $userProfile = 0;
+        echo '<img id = "profileImage2" style="margin-left:30px;" src = '.$GLOBALS['photoURL'].'>';
       }else{
-        $userProfile = 1;
+        echo '<img id = "profileImage2" src = '.$GLOBALS['photoURL'].'>';
       }
-      ?>
-      <script> var usersPro = <?= $userProfile ?></script>
-      <?php
-
-      echo '<img id = "profileImage2" src = '.$GLOBALS['photoURL'].'>';
       echo '<button id = "informationEdit"></button>';
       echo '<p class="name">'.$GLOBALS['name'].'</p>';
       echo '<p id="curOrganization" class="curOrganization">'.$GLOBALS['current_organization'].'</p>';

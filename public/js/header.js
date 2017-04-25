@@ -21,6 +21,14 @@ $.ajax({
 	}
 })
 
+$( document ).ready(function() {
+	$(function(){
+		$('img').on('error',function(){
+			$(this).attr('src', '/mainImage/noimage.png');
+		});
+		$('.headerFrame').css('display','block');
+	});
+});
 
 $(notification).click(function(e){
 	if($(notification).attr('class')=="icons_none"){

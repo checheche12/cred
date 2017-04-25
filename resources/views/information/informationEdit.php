@@ -102,27 +102,28 @@ class UserController
         <!-- <div id="educationD"> -->
         <?php
         if($_SESSION['isGroup']!="Group"){
-          echo '<div><label class="labels" for="education">학교</label>
-          <input class="inputs" type = "text" id = "education" value = "'.$GLOBALS['education'].'"></input><br>
+          echo '<div><label class="labels" for="education">최종학력</label>
+          <input class="inputs" type = "text" id = "education" placeholder="학교/전공" value = "'.$GLOBALS['education'].'"></input><br>
         </div>
-        <div><label class="labels" for="">현 소속</label>
+        <div><label class="labels" for="">현재 직장</label>
           <input class="inputs" type = "text" id = "current_organization" value = "'.$GLOBALS['current_organization'].'"></input>
         </div>
-        <div><label class="labels" for="">현 직책</label>
+        <div><label class="labels" for="">현재 직장 내 포지션</label>
           <input class="inputs" type = "text" id = "current_position" value = "'.$GLOBALS['career'].'"></input>
         </div>
         <div id="locationD">
-          <div><label class="labels" for="location">위치</label>
+          <div><label class="labels" for="location">현재 직장 위치</label>
             <input class="inputs" type = "text" id = "location" value = "'.$GLOBALS['location'].'"></input>
           </div>
         </div><br>
         <div id="keywordD">
           <div><label id="keywordLabel" class="labels" for="keyword">전문기술</label>
-            <textarea rows="3" id = "keyword" cols="30" name="contents" placeholder="각 기술들을 &comma; 로 나누어 작성해 주세요.">'.$GLOBALS['keyword'].'</textarea>
+            <textarea rows="3" id = "keyword" cols="30" name="contents" placeholder="각 항목을 콤마 [ &comma; ] 로 분류하여 작성해 주세요.&#x000A;&#x000A;&#x000D;자신이 활동한 분야와 전문성을 자유롭게 나타내세요&#x000A;&#x000D;ex. 분야/장르 : 바이럴 영상, 뮤직비디오, 다큐멘터리.…&#x000A;&#x000D;전문성 : 촬영, 편집, 기획, 연출,…&#x000A;&#x000D;스킬 : Pr, Ae, MAYA, …">'.$GLOBALS['keyword'].'</textarea>
           </div>
         </div><br>
         <label class="labels" id="career">경력</label>
         <hr class="splitter">
+        <p id="careerInputExplain">자신의 전문성에 관련된 모든 경험을 보여주세요<br>ex. 경력 : 기업, 프로덕션 스튜디오, 중소 프로젝트, 인턴,…<br>학력 : 학교, 단기 레슨, 워크샵, 자격증,…</p>
 
         <div id="careerGroupD">';
           for ($i=0; $i < count($GLOBALS['exOrganization']) ; $i++) {
@@ -130,23 +131,23 @@ class UserController
             echo'
             <div id="careerD">
               <div id="positionD">
-                <div><label class="labels2" for="position" id="positionlabel">직함</label>
+                <div><label class="labels2" for="position" id="positionlabel">타이틀</label>
                   <input class="inputsexp" type = "text" id = "position" value = "'.$GLOBALS['exPosition'][$i].'"></input>
                 </div>
               </div>
               <div id="organizationD">
-                <div><label class="labels2" for="organization" id="organizationlabel">소속</label>
+                <div><label class="labels2" for="organization" id="organizationlabel">기관 명</label>
                   <input class="inputsexp" type = "text" id = "organization" value = "'.$GLOBALS['exOrganization'][$i].'"></input><br>
                 </div>
               </div>
               <div id="organizationD">
-                <div><label class="labels2" for="exWorkLocation" id="locationlabel">위치</label>
-                  <input class="inputsexp" type = "text" id = "exWorkLocation" value = "'.$GLOBALS['exWorkLocation'][$i].'"></input>
+                <div><label class="labels2" for="exWorkLocation" id="locationlabel">기관 위치</label>
+                  <input class="inputsexp" type = "text" id = "exWorkLocation" placeholder="ex. 서울, 서초구" value = "'.$GLOBALS['exWorkLocation'][$i].'"></input>
                 </div>
               </div>
               <div id="descriptionD">
-                <div><label class="labels2" for="career" id="descriptionlabel">설명</label>
-                  <input class="inputsexp" type = "text" id = "career" value = "'.$GLOBALS['Explainn'][$i].'" id = "career"></input><br>
+                <div><label class="labels2" for="career" id="descriptionlabel">세부 설명</label>
+                  <input class="inputsexp" type = "text" id = "career" placeholder="ex. 2016년 4월 - 2017년 4월" value = "'.$GLOBALS['Explainn'][$i].'" id = "career"></input><br>
                 </div>
               </div>
             </div>';
@@ -162,18 +163,18 @@ class UserController
         <?php
         if($_SESSION['isGroup']=="Group"){
           echo'<div id="locationD">
-          <div><label class="labels" for="location">위치</label>
+          <div><label class="labels" for="location">그룹/회사/기관 위치</label>
             <input class="inputs" type = "text" id = "location" value = "'.$GLOBALS['location'].'"></input>
           </div>
         </div><br>
         <div id="keywordD">
-          <div><label class="labels" for="keyword">키워드</label>
-            <textarea rows="3" id = "keyword" cols="30" name="contents" placeholder="각 키워드들을 &comma; 로 나누어 작성해 주세요.">'.$GLOBALS['keyword'].'</textarea>
+          <div><label class="labels" for="keyword">그룹 관련 키워드</label>
+            <textarea rows="3" id = "keyword" cols="30" name="contents" placeholder="각 키워드들을 콤마 [ &comma; ] 로 분류하여 작성해 주세요.">'.$GLOBALS['keyword'].'</textarea>
           </div>
         </div><br>
         <div id="awardD">
           <div><label class="labels" for="award">수상경력</label>
-            <textarea rows="3" id = "award" cols="30" name="contents" placeholder="각 수상경력들을 &comma; 로 나누어 작성해 주세요.">'.$GLOBALS['award'].'</textarea>
+            <textarea rows="3" id = "award" cols="30" name="contents" placeholder="각 수상경력들을 콤마 [ &comma; ] 로 분류하여 작성해 주세요.">'.$GLOBALS['award'].'</textarea>
           </div>
         </div><br>
         <div id = "desdescription">

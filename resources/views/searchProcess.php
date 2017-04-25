@@ -15,9 +15,12 @@ class searchProcess extends Controller
           $userSuggest = array();
           $Sentence = "";
 
+          $Sentence = 'select DISTINCT C.userPK, Name, Email,ProfilePhotoURL, Career, education, belong,location from userExperience as B JOIN userinfo as C ON B.userPK=C.userPK LEFT JOIN keywordDB as A ON B.userPK=A.userPK where Name like "%'.$_GET['inputValue'].'%" OR Career like "%'.$_GET['inputValue'].'%" OR education like "%'.$_GET['inputValue'].'%" OR belong like "%'.$_GET['inputValue'].'%" OR location like "%'.$_GET['inputValue'].'%" OR keyword like "%'.$_GET['inputValue'].'%" OR Organization like "%'.$_GET['inputValue'].'%" OR Position like "%'.$_GET['inputValue'].'%" OR WorkLocation like "%'.$_GET['inputValue'].'%"';
+
           // select A.userPK, Name, Email, Career, education, belong, keyword, Organization from keywordDB as A JOIN userExperience as B ON A.userPK=B.userPK JOIN userinfo as C ON A.userPK=C.userPK;
 
-          $Sentence = ' select DISTINCT A.userPK, Name, Email,ProfilePhotoURL, Career, education, belong,location from keywordDB as A JOIN userExperience as B ON A.userPK=B.userPK JOIN userinfo as C ON A.userPK=C.userPK where Name like "%'.$_GET['inputValue'].'%" OR Career like "%'.$_GET['inputValue'].'%" OR education like "%'.$_GET['inputValue'].'%" OR belong like "%'.$_GET['inputValue'].'%" OR location like "%'.$_GET['inputValue'].'%" OR keyword like "%'.$_GET['inputValue'].'%" OR Organization like "%'.$_GET['inputValue'].'%" OR Position like "%'.$_GET['inputValue'].'%" OR WorkLocation like "%'.$_GET['inputValue'].'%"';
+          // $Sentence = ' select DISTINCT A.userPK, Name, Email,ProfilePhotoURL, Career, education, belong,location from keywordDB as A JOIN userExperience as B ON A.userPK=B.userPK JOIN userinfo as C ON A.userPK=C.userPK where Name like "%'.$_GET['inputValue'].'%" OR Career like "%'.$_GET['inputValue'].'%" OR education like "%'.$_GET['inputValue'].'%" OR belong like "%'.$_GET['inputValue'].'%" OR location like "%'.$_GET['inputValue'].'%" OR keyword like "%'.$_GET['inputValue'].'%" OR Organization like "%'.$_GET['inputValue'].'%" OR Position like "%'.$_GET['inputValue'].'%" OR WorkLocation like "%'.$_GET['inputValue'].'%"';
+
            // select name, GROUP_CONCAT(keyword),GROUP_CONCAT(Organization) from userinfo as A JOIN keywordDB as B ON A.userPK=B.userPK JOIN userExperience as C ON A.userPK=C.userPK GROUP BY name
 
           // select * from userinfo as A JOIN keywordDB as B ON A.userPK=B.userPK JOIN userExperience as C ON A.userPK=C.userPK

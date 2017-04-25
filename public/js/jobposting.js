@@ -109,7 +109,7 @@ function bindingJobInfo(){
 	}
 }
 function jobInfoOpen(i){
-	var bindId = "#singlePost" + i;
+	var bindId = "#openInfo" + i;
 	var bindId2 = "#furtherInfo" + i;
 	$( bindId ).unbind();
 	$(bindId).bind("click", function(){

@@ -21,6 +21,7 @@ class JobPostClass extends Controller
 				array_push($GLOBALS['qualSkillArr'],$item2->skill);
 			}
 			//0 jobPostPK, 1 userPK, 2 postPurpose, 3 jobType, 4 workLocation, 5 workField, 6 position, 7 jobDesc, 8 jobPeriod, 9 benefits, 10 earning, 11 companyInfo, 12 experience, 13 education, 14 extraDesc, 15 postDate, 16 updateDate, 17 expiryDate, 18 recruiterName, 19 $GLOBALS['qualSkillArr']
+			
 			array_push($GLOBALS['jobInfoArr'],array($item->jobPostPK,$item->userPK,$item->postPurpose,$item->jobType,$item->workLocation,$item->workField,$item->position,$item->jobDesc,$item->jobPeriod,$item->benefits,$item->earning,$item->companyInfo,$item->experience,$item->education,$item->extraDesc,$item->postDate,$item->updateDate,$item->expiryDate,$item->recruiterName,$GLOBALS['qualSkillArr']));
 		}
 
@@ -49,11 +50,11 @@ foreach (array_reverse($GLOBALS['jobInfoArr']) as $temp) {
 				}
 			}
 			echo'<li class="singlePost" id="singlePost'.$temp[0].'">
-			<div class="openInfo">
+			<div class="openInfo" id="openInfo'.$temp[0].'">
 				<p class="postNubmer postHighlight">#'.$temp[0].'</p>&nbsp;
 				<p class="hirer postHighlight">'.$temp[18].'</p>&nbsp;:&nbsp;
 				<p class="location postHighlight">'.$temp[4].'</p>에서 일할 수 있는
-				<p class="title postHighlight">'.$temp[6].'</p>님을 구합니다.
+				<p class="titlePosition postHighlight">'.$temp[6].'</p>님을 구합니다.
 			</div>';
 			// <!-- open information -->
 
@@ -72,11 +73,11 @@ foreach (array_reverse($GLOBALS['jobInfoArr']) as $temp) {
 					<div class="companyInfo"><p class="label">회사 정보</p><p class="detail">'.$temp[11].'</p></div>
 				</div>
 				<div class="qualification">
-					<div class="skill"><p class="label">전문 기술</p><p class="detail">'; 
+					<div class="skill"><p class="label">전문 기술</p>'; 
 						foreach ($temp[19] as $v) {
-							echo'<p class="skillEach">'.$v.'</p>';
+							echo'<p class="detail skillEach">'.$v.'</p>';
 						}
-						echo'</p></div>';
+						echo'</div>';
 						if($temp[12]=="none"){
 							echo'<div class="experience"><p class="label">경력</p><p class="detail">무관</p></div>';
 						}else{

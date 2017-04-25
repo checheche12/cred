@@ -101,7 +101,3 @@ function exPBinding(i){
 		$('#searchSlot').autocomplete( "search");
 	});
 }
-
-if(usersPro==0){	//profileInfo 의 변별력을 주기 위함임
-	$("#profileImage2").css("margin-left", "30px");
-}

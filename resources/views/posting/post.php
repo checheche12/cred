@@ -153,7 +153,10 @@ class PostClass extends Controller
               <div id="descriptionFrame">
                 <p id="description"><?php echo $GLOBALS['Description']?></p></div>
               </div>
-              <hr id="splitter">
+
+
+              <!-- 답변과 위키 달리는 곳 -->
+<!--               <hr id="splitter">
               <div id="officialAnswers">
                 <div id="noAnswer">
                   <?php
@@ -180,15 +183,18 @@ class PostClass extends Controller
                 include_once('../resources/views/posting/wikiload.php');
                 ?>
               </div>
+ -->
             </div>
-
           </div>  <!-- LeftCont end -->
 
           <div id = "RightCont">
             <div id="workFrame">
               <!-- <iframe src="https://player.vimeo.com/video/176567696" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> -->
             </div>
-            <div id="QFrame">
+
+
+            <!-- 질문 쓰는곳 -->
+            <!-- <div id="QFrame">
               <div id="QCountFrame">
                 <p id="QCount">질문 -&nbsp;</p>
                 <?php
@@ -216,7 +222,7 @@ class PostClass extends Controller
                 $LoadReply->loadReply($_GET['int']);
                 ?>
               </div>
-            </div>
+            </div> -->
 
           </div>  <!-- RightCont end -->
         </div>

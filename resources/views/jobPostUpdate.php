@@ -19,7 +19,7 @@ class jobPostUpdateClass extends Controller
             $tempDate = $_POST['expiryDate'];
             $expiryDate = date('Y-m-d H:i:s', strtotime($tempDate));
 
-            DB::insert('insert into jobPostDB (userPK, postPurpose, recruiterName, workField, companyInfo, position, jobDesc, workLocation, jobType, jobPeriod, earning, benefits, expiryDate, education, experience, extraDesc) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',array($_SESSION['userPK'],$_POST['postPurpose'],$_POST['recruiterName'],$_POST['workField'],$_POST['companyInfo'],$_POST['position'],$_POST['jobDesc'],$_POST['workLocation'],$_POST['jobType'],$_POST['jobPeriod'],$_POST['earning'],$_POST['benefits'],$expiryDate,$_POST['education'],$_POST['experience'],$_POST['extraDesc']));
+            DB::insert('insert into jobPostDB (userPK, postPurpose, recruiterName, workField, companyInfo, position, jobDesc, workLocation, jobType, jobPeriod, earning, benefits, expiryDate, education, experience, extraDesc, postDate, updateDate) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',array($_SESSION['userPK'],$_POST['postPurpose'],$_POST['recruiterName'],$_POST['workField'],$_POST['companyInfo'],$_POST['position'],$_POST['jobDesc'],$_POST['workLocation'],$_POST['jobType'],$_POST['jobPeriod'],$_POST['earning'],$_POST['benefits'],$expiryDate,$_POST['education'],$_POST['experience'],$_POST['extraDesc'],date("Y-m-d H:i"),date("Y-m-d H:i")));
             $jobPostPK = '';
           //selecting last primary Key = jobPostPK
             $temp = DB::select(DB::raw("select LAST_INSERT_ID()"));
@@ -48,7 +48,7 @@ class jobPostUpdateClass extends Controller
         }elseif ($_POST['controlType']=="update") {
            # code...
           $tempDate = $_POST['expiryDate'];
-          $expiryDate = date('Y-m-d H:i:s', strtotime($tempDate));
+          $expiryDate = date('Y-m-d H:i', strtotime($tempDate));
           $Sentence = "update jobPostDB SET postPurpose = '".$_POST['postPurpose']."', recruiterName = '".$_POST['recruiterName']."', workField = '".$_POST['workField']."',companyInfo = '".$_POST['companyInfo']."', position = '".$_POST['position']."', jobDesc = '".$_POST['jobDesc']."',workLocation = '".$_POST['workLocation']."', jobType = '".$_POST['jobType']."', jobPeriod = '".$_POST['jobPeriod']."',earning = '".$_POST['earning']."', benefits = '".$_POST['benefits']."', expiryDate = '".$expiryDate."',education = '".$_POST['education']."', experience = '".$_POST['experience']."', extraDesc = '".$_POST['extraDesc']."' WHERE jobPostPK = ".$_POST['jobPostPK'];
           $users = DB::update(DB::raw($Sentence));
           //skill 따로 추가 qualSkillDB (qualificationSkillDB 를 줄임)에 추가
@@ -69,7 +69,7 @@ class jobPostUpdateClass extends Controller
           $GLOBALS['recruiterUserPK'] = $tempItem->userPK;
         }
         if($_SESSION['is_login'] == true){
-          DB::insert('insert into notification (senderuserPK,recieveruserPK,notificationKind,uploaddate) values (?,?,?,?)',[$_SESSION['userPK'],$GLOBALS['recruiterUserPK'],"1",date("Y-m-d H:i:s")]);
+          DB::insert('insert into notification (senderuserPK,recieveruserPK,notificationKind,uploaddate) values (?,?,?,?)',[$_SESSION['userPK'],$GLOBALS['recruiterUserPK'],"1",date("Y-m-d H:i")]);
           echo "지원 성공!";
         }else{
           echo "지원을 하기 위해서는 로그인을 해 주십시오.";

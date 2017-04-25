@@ -53,7 +53,7 @@ if($_GET['inputFormType']=="new"){
 			<div class="inputGroup"><label class="label inputLabel">채용기간</label><textarea id="jobPeriod" class="inputBox"></textarea><br></div>
 			<div class="inputGroup"><label class="label inputLabel">급여</label><textarea id="earning" class="inputBox"></textarea><br></div>
 			<div class="inputGroup"><label class="label inputLabel">혜택</label><textarea id="benefits" class="inputBox"></textarea><br></div>
-			<div class="inputGroup"><label class="label inputLabel">마감일</label><input type="text" id="datepicker" class="inputBox"></div>	
+			<div class="inputGroup"><label class="label inputLabel">마감일</label><input type="text" id="datepicker" class="inputBox" value="'; echo date("Y-m-d H:i",strtotime("+14 day"));echo'"></div>	
 		</div>
 		<div id="qualificationInfo" class="inputForm">
 			<label class="label inputLabel">학력</label><input type="radio" name="education" value="none" checked>무관<input type="radio" name="education" value="U_attending">초대졸<input type="radio" name="education" value="U_Graduate">대졸<input type="radio" name="education" value="U_master">석사 이상<br>
