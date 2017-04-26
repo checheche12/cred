@@ -61,5 +61,6 @@ class Kernel extends HttpKernel
         'Login' => \App\Http\Middleware\login::class,
         'isgetauth' => \App\Http\Middleware\isgetauth::class,
         'isgetauthpost' => \App\Http\Middleware\isgetauthpost::class,
+        'anotherProfileAuth' =>\App\Http\Middleware\anotherProfileAuth::class,
     ];
 }

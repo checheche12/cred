@@ -17,6 +17,14 @@ class Mainpost extends Controller
 			$GLOBALS['artText'] = $b->artText;
 		}
 
+		//Intro page 에 X 버튼 눌렀나 안 눌렀나 확인하는 장치
+		if($_SESSION['is_login'] == true){
+			$checkFactor = DB::select(DB::raw("select userPK, eventCheck from userinfo where userPK=".$_SESSION['userPK']));
+			$GLOBALS['eventCheck'] = "";
+			foreach($checkFactor as $check){
+				$GLOBALS['eventCheck'] = $check->eventCheck;
+			}
+		}
 	}
 }
 $A = new Mainpost();
@@ -40,49 +48,54 @@ $A->post();
 	</div>
 	<div id="ContentWidth">
 		<div id="MainContent_Frame">
-			<div id="MainContent">
-				<img id="MainImage" src=<?=$GLOBALS['artURL']?>>
-				<div id="quoteBox">
-					<?php
-					echo $GLOBALS['artText'];
-					?>
-				</div>
+			<?php
+			if(($_SESSION['is_login'] == true and $GLOBALS['eventCheck']==0) or $_SESSION['is_login'] == false){
+				echo'<div id="MainContent">
+				<img id="MainImage" src="'.$GLOBALS['artURL'].'">';
+				if($_SESSION['is_login'] == true){
+					echo'<button id="xBt">X</button>';
+				}
+				echo'<div id="quoteBox">'.$GLOBALS['artText'].'
 			</div>
-		</a>
-	</div>
+		</div>
+		';
+	}
+	?>
+</div>
+</div>
 
+<?php
+if($_SESSION['is_login'] == true){
+	echo'<p class="title">Spotlight</p>
+	<div id="RecentWorks_Frame">';
 
-	<p class="title">Spotlight</p>
-	<div id="RecentWorks_Frame">
-		<?php
 		include_once('../resources/views/administrator/getspotlight.php');
+
+		echo'</div>
+
+
+		<p class="title">Recent Works</p>
+		<div id="RecentWorks_Frame">';
+
+
+			include_once('../resources/views/administrator/getrecent.php');
+
+
+			echo '</div>';
+		}
 		?>
-	</div>
 
-
-	<p class="title">Recent Works</p>
-	<div id="RecentWorks_Frame">
-
-		<?php
-		include_once('../resources/views/administrator/getrecent.php');
-		?>
-
-	</div>
-
-	<div id="jobPosting_Frame">
-		<?php
-		include_once('../resources/views/jobposting.php');
-		?>
-	</div>
-	<div id ='footer'>
-		<?php
-		include_once('../resources/views/footer.php');
-		?>
-	</div>
-	<script type="text/javascript">
-		$('img').on('error',function(){
-			$(this).attr('src', '/mainImage/noimage.png');
-		});
-	</script>
-</body>
-</html>
+		<div id="jobPosting_Frame">
+			<?php
+			include_once('../resources/views/jobposting.php');
+			?>
+		</div>
+		<div id ='footer'>
+			<?php
+			include_once('../resources/views/footer.php');
+			?>
+		</div>
+		<script type = "text/javascript" src = "js/intro.js"></script>
+		<script type="text/javascript"></script>
+	</body>
+	</html>

@@ -127,3 +127,13 @@ p.name, p.position{
 .credit::-webkit-scrollbar-thumb{
 	background-color: #ffffff;
 }
+#xBt{
+	    display: inline-block;
+    position: relative;
+    top: -1439px;
+    left: 800px;
+    background: transparent;
+    border: none;
+    color: rgb(255, 255, 255);
+    font-size: 40.75rem !important;
+}

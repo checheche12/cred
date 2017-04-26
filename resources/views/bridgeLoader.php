@@ -22,8 +22,9 @@ class UserController extends Controller
           echo "<div id = 'group'>";
           echo "<p>group</p>";
         }
-
+        $GLOBALS['photoURL'] = "mainImage/default_profile_pic.png";
         foreach($users as $A){
+          $GLOBALS['photoURL'] = $A->ProfilePhotoURL;
           if($A->userPK == $_POST['userPK']){
             continue;
           }
@@ -32,7 +33,7 @@ class UserController extends Controller
           echo '<table class="bridgeCard">';
           echo '<tr>';
           echo '<td class="personalImageFrame">';
-          echo '<img class="personalImage"src="'.$A->ProfilePhotoURL.'">';
+          echo '<img class="personalImage"src="'.$GLOBALS['photoURL'].'">';
           echo '</td> '.'<td class="personalInfo">';
           echo '<p class="name">'.$A->Name.'</p>';
           echo '<p class="organization">'.$A->Career.'</p>';

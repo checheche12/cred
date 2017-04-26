@@ -211,7 +211,14 @@ Route::group(['middleware' => ['isgetauthpost']],function(){
 });
 
 
+//자기 자신이 자신의 profile에 anotherProfile로 접속할 수는 없다.
+Route::group(['middleware' => ['anotherProfileAuth']],function(){
 
+	Route::get('/anotherProfile',function(){
+		return view('anotherProfile');
+	});
+
+});
 
 Route::get('/post',function(){
 	return view('posting.post');
@@ -239,10 +246,6 @@ Route::post('/uploadWriteDB',function(){
 
 Route::post('/bridgeLoader',function(){
 	return view('bridgeLoader');
-});
-
-Route::get('/anotherProfile',function(){
-	return view('anotherProfile');
 });
 
 Route::get('/getContentAnother',function(){
@@ -294,6 +297,14 @@ Route::post('/jobPostUpdate',function(){
 	return view('jobPostUpdate');
 });
 
+Route::get('/jobPostOutput',function(){
+	return view('jobPostOutput');
+});
+
+Route::get('/jobPostInput',function(){
+	return view('jobPostInput');
+});
+
 Route::get('/updateGroupMember',function(){
 	return view('updateGroupMember');
 });
@@ -307,12 +318,23 @@ Route::get('/denycredit',function(){
 });
 
 
+//Connect 관련한 route들
 
-// testing
-Route::get('/jobPostOutput',function(){
-	return view('jobPostOutput');
+Route::get('/connectApply',function(){
+	return view('connect.connectApply');
 });
 
-Route::get('/jobPostInput',function(){
-	return view('jobPostInput');
+Route::get('/acceptconnect',function(){
+	return view('connect.acceptconnect');
+});
+
+Route::get('/denyconnect',function(){
+	return view('connect.denyconnect');
+});
+
+
+
+// testing
+Route::get('/eventCheck',function(){
+	return view('intro.eventCheck');
 });

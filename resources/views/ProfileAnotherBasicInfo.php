@@ -63,6 +63,47 @@ class checkAddCredit extends Controller
             }
 
           }
+
+          // anotherProfile 의 유저와 Session에 저장된 유저의 관계를 파악해야하는데
+          // 자기 자신일 수는 없다 MiddleWare 단계에서 이미 걸러내서 자기 자신이면 main 으로 보내버리니까.
+          // 4가지의 상태가 있는데
+          // 1번은 무관 2번은 connect 되어있음 3번은 같이 작품을 함 4번은 그룹의 멤버.
+          $selectConnect = DB::select('select * from Connect where connectSenduserPK = ? and connectRecieveruserPK = ?',[$_SESSION['userPK'],$_GET['int']]);
+          $GLOBALS['stats'] = "connect";
+          if($selectConnect != null){
+            foreach($selectConnect as $select){
+
+              if($select->stats == "0"){
+                $GLOBALS['stats'] = "connectwaiting";
+              }else if($select->stats == "1"){
+                $GLOBALS['stats'] = "connectApply";
+              }else if($select->stats == "2"){
+                $GLOBALS['stats'] = "connected";
+              }
+
+            }
+
+          }
+          $connectCredit = DB::select('select * from workDB as A left join workDB as B on A.artPK = B.artPK
+          where A.userPK = ? and B.userPK = ? and B.checkCredit = 1;',[$_SESSION['userPK'],$_GET['int']]);
+          if($connectCredit != null){
+            $GLOBALS['stats'] = "CreditSharing";
+          }
+
+          if($_SESSION['isGroup'] == "Group"){
+              $checkGroupMember =  DB::select("select * from groupMemberDB where groupPK = ? and userPK = ?",[$_SESSION['userPK'],$_GET['int']]);
+              if($checkGroupMember  != null){
+                $GLOBALS['stats'] = "GroupMember";
+              }
+          }
+
+          if($_SESSION['isGroup'] == "Person"){
+              $checkGroupMember =  DB::select("select * from groupMemberDB where groupPK = ? and userPK = ?",[$_GET['int'],$_SESSION['userPK']]);
+              if($checkGroupMember != null){
+                $GLOBALS['stats'] = "Belonged";
+              }
+          }
+
         }
       }
 
@@ -93,6 +134,23 @@ class checkAddCredit extends Controller
       echo '<p id="location" class="location">'.$GLOBALS['location'].'</p>';
       echo '<p id="curPosition" class="curPosition">'.$GLOBALS['career'].'</p>';
       echo '</div>';
+      //DM과 connect 기능이 들어간다.
+
+      echo '<div>';
+      echo '<button id = "DirectMessage">DM</button>';
+      //Connect 종류에 따라서 그룹 멤버인지 아닌지 connect 상태인지가 드러나야한다.
+
+      // if문으로 버튼 상태를 구현해주어야 한다.
+      if($GLOBALS['stats'] == "connectApply"){
+        echo '<div id = "applydeny"><button class = "connect" stats = '.$GLOBALS['stats'].' id = "connectapply">수락</button>';
+        echo '<button class = "connect" stats = '.$GLOBALS['stats'].' id = "connectdeny">거절</button>';
+        echo '</div></div>';
+      }else{
+        echo '<button class = "connect" stats = '.$GLOBALS['stats'].' id = "'.$GLOBALS['stats'].'">'.$GLOBALS['stats'].'</button>';
+        echo '</div>';
+      }
+
+
       echo '<div class="lowerInfo">';
       echo '<div class="infoD"><p class="infoLabel"><img id="contacticon" class="infoIconClass" src="/mainImage/airplaneicon.png">연락처</p><p id="emailP" class="infoDetail">'.$GLOBALS['email'].'</p></div>';
       if($GLOBALS['isGroup']=="0"){ //개인일 시

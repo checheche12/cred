@@ -83,9 +83,38 @@ class UserController extends Controller
     </a>
   </div>
   ";
-}
+  }else if($noti->notificationKind == "7")
+  {
+    echo "<div id = '".$noti->userPK."'>
+          <a href = '/anotherProfile?int=".$noti->userPK."'>
+              <div>
+                  ".$noti->Name."님이 Connect 요청했습니다. 클릭하시면 프로필로 이동합니다.
+              </div>
+          </a>
+  </div>";
+  }else if($noti->notificationKind == "8")
+  {
+    echo "<div id = '".$noti->userPK."'>
+          <a href = '/anotherProfile?int=".$noti->userPK."'>
+              <div>
+                  ".$noti->Name."님의 Connect 요청을 수락했습니다.
+              </div>
+          </a>
+  </div>";
+  }else if($noti->notificationKind == "9")
+  {
+    echo "<div id = '".$noti->userPK."'>
+          <a href = '/anotherProfile?int=".$noti->userPK."'>
+              <div>
+                  ".$noti->Name."님이 Connect 요청을 거절했습니다.
+              </div>
+          </a>
+  </div>";
+  }
 
-}
+
+
+  }
 }
 
 $A = new UserController();

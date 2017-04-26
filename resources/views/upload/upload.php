@@ -93,7 +93,7 @@
 
   <div><label for="email">크레딧</label><img id="credqmark" src="/mainImage/credqmark.png" title="영상 제작에 기여한 모든 사람들에 대해 알려주세요.
   사람들은 주로 캐스트, 촬영, 편집 ,기획, 클라이언트, 협력사 등에 대한 정보를 알고 싶어합니다."></div>
-  <input id = "email" type="text" placeholder=" e-mail"></input>
+  <input id = "email" type="text" placeholder="이름 / e-mail"></input>
   <input id = "position" type="text" placeholder=" 담당 역할"></input>
   <button id = "submitCredit" >+추가</button><br><br>
   <!-- 추가된 크레딧 -->

@@ -9,6 +9,10 @@ var award = document.getElementsByClassName("award");
 var exO = document.getElementsByClassName("exO");
 var exL = document.getElementsByClassName("exL");
 var exP = document.getElementsByClassName("exP");
+var connect = document.getElementById("connect");
+var connectapply = document.getElementById("connectapply");
+var connectdeny = document.getElementById("connectdeny");
+var connected = document.getElementById("connected");
 
 var another;
 var specialty;
@@ -16,6 +20,74 @@ var specialty;
 if(another=='no'){
 	informationEdit.addEventListener("click",function(){
 		$(location).attr('href', './informationEdit');
+	})
+}
+
+if(connect != undefined){
+	$(connect).click(function(){
+
+			$.ajax({
+					data : {'userPK' : userPK},
+					type : 'get',
+					url : '/connectApply',
+					success:function(data){
+						if(data == "success"){
+								$(connect).html('connectwaiting');
+						}else{
+								console.log("이미 추가되어있습니다.");
+						}
+
+					}
+			})
+
+	})
+}
+
+if(connectapply != undefined){
+	$(connectapply).click(function(){
+
+			$.ajax({
+					data : {'userPK' : userPK},
+					type : 'get',
+					url : '/acceptconnect',
+					success:function(data){
+						$("#applydeny").html('추가되었습니다.');
+					}
+			})
+
+	})
+}
+
+if(connectdeny != undefined){
+	$(connectdeny).click(function(){
+
+			$.ajax({
+					data : {'userPK' : userPK},
+					type : 'get',
+					url : '/denyconnect',
+					success:function(data){
+						$("#applydeny").html('취소되었습니다.');
+					}
+			})
+
+	})
+}
+
+if(connected != undefined){
+	$(connected).click(function(){
+		if(confirm("정말로 disconnected 하시겠습니까?")==true){
+
+			$.ajax({
+					data : {'userPK' : userPK},
+					type : 'get',
+					url : '/denyconnect',
+					success:function(data){
+						$("#connected").html('취소되었습니다.');
+					}
+			})
+
+		}
+			
 	})
 }
 

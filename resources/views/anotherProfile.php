@@ -22,8 +22,10 @@ class UserController
           array_push($GLOBALS['userinfoArray'],$user->education);
           array_push($GLOBALS['userinfoArray'],$user->userPK);
         }
+
+
       }
-    }
+}
 
 
 
