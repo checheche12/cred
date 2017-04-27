@@ -13,12 +13,12 @@ class jobPostUpdateClass extends Controller
          */
         public function jobPostUpdate()
         {
+          $_POST['postPurpose']="person"; //구직 폼이 아직 만들어지지 않아서 에러 방지 차원에서 미리 값 지정.
           if($_POST['controlType']=="insert"){
 
           //String -> Date
             $tempDate = $_POST['expiryDate'];
             $expiryDate = date('Y-m-d H:i:s', strtotime($tempDate));
-
             DB::insert('insert into jobPostDB (userPK, postPurpose, recruiterName, workField, companyInfo, position, jobDesc, workLocation, jobType, jobPeriod, earning, benefits, expiryDate, education, experience, extraDesc, postDate, updateDate) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',array($_SESSION['userPK'],$_POST['postPurpose'],$_POST['recruiterName'],$_POST['workField'],$_POST['companyInfo'],$_POST['position'],$_POST['jobDesc'],$_POST['workLocation'],$_POST['jobType'],$_POST['jobPeriod'],$_POST['earning'],$_POST['benefits'],$expiryDate,$_POST['education'],$_POST['experience'],$_POST['extraDesc'],date("Y-m-d H:i"),date("Y-m-d H:i")));
             $jobPostPK = '';
           //selecting last primary Key = jobPostPK

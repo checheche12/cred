@@ -1,0 +1,39 @@
+#contents{
+	margin-top: 70px;
+	width : 1000px;
+	height : 1000px;
+}
+
+#DMTotalList{
+	margin-right:50px;
+	width: 300px;
+	height:700px;
+	overflow-y: scroll;
+	border : 1px solid black;
+	float:left;
+}
+
+
+#DMoneDetail{
+	width : 900px;
+	height: 700px;
+	border: 1px solid black;
+	margin-left: 350px;
+}
+
+#DMDetail{
+	overflow-y: scroll;
+	width : 800px;
+	height : 500px;
+	border : 1px solid black;
+	margin-left : 30px;
+	margin-top : 10px;
+}
+
+#DMSend{
+	width : 850px;
+	height : 150px;
+	border : 1px solid black;
+	margin-top:30px;
+	margin-left:30px;
+}

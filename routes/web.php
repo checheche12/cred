@@ -174,12 +174,20 @@ Route::group(['middleware' => ['isLogin']] ,function(){
 			return view('posting.uploadReply');
 		});
 
-		Route::post('wikiupload',function(){
+		Route::post('/wikiupload',function(){
 			return view('posting.wikiupload');
 		});
 
-		Route::post('profilephoto',function(){
+		Route::post('/profilephoto',function(){
 				return view('information.profilephoto');
+		});
+
+		Route::get('/dm',function(){
+			return view('dm.dm');
+		});
+
+		Route::post('/dmSend',function(){
+			return view('dm.dmSend');
 		});
 
 });

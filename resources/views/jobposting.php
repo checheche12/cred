@@ -55,7 +55,11 @@ $A->JobPost();
 	<p class="title">On the Street</p>
 	<div id="ContentWrapper">
 		<div id="postHeader">
-			<button id="post">글쓰기</button>
+			<?php
+			if($_SESSION['is_login'] == true){
+				echo '<button id="post">글쓰기</button>';
+			}
+			?>
 		</div>
 
 		<!-- Input Page -->

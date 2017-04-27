@@ -145,3 +145,6 @@ p.skillEach{
 	line-height: 1.786 !important;
 	padding-bottom: 0.625rem !important;
 }
+.required, .optional{
+	color:red;
+}

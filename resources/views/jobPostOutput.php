@@ -21,8 +21,11 @@ class JobPostClass extends Controller
 				array_push($GLOBALS['qualSkillArr'],$item2->skill);
 			}
 			//0 jobPostPK, 1 userPK, 2 postPurpose, 3 jobType, 4 workLocation, 5 workField, 6 position, 7 jobDesc, 8 jobPeriod, 9 benefits, 10 earning, 11 companyInfo, 12 experience, 13 education, 14 extraDesc, 15 postDate, 16 updateDate, 17 expiryDate, 18 recruiterName, 19 $GLOBALS['qualSkillArr']
-			
-			array_push($GLOBALS['jobInfoArr'],array($item->jobPostPK,$item->userPK,$item->postPurpose,$item->jobType,$item->workLocation,$item->workField,$item->position,$item->jobDesc,$item->jobPeriod,$item->benefits,$item->earning,$item->companyInfo,$item->experience,$item->education,$item->extraDesc,$item->postDate,$item->updateDate,$item->expiryDate,$item->recruiterName,$GLOBALS['qualSkillArr']));
+			if($_SESSION['is_login'] == true){
+				array_push($GLOBALS['jobInfoArr'],array($item->jobPostPK,$item->userPK,$item->postPurpose,$item->jobType,$item->workLocation,$item->workField,$item->position,$item->jobDesc,$item->jobPeriod,$item->benefits,$item->earning,$item->companyInfo,$item->experience,$item->education,$item->extraDesc,$item->postDate,$item->updateDate,$item->expiryDate,$item->recruiterName,$GLOBALS['qualSkillArr']));
+			}elseif ($_SESSION['is_login'] == false) {
+				array_push($GLOBALS['jobInfoArr'],array($item->jobPostPK,$item->userPK,$item->postPurpose,$item->jobType,$item->workLocation,$item->workField,$item->position,$item->jobDesc,$item->jobPeriod,$item->benefits,$item->earning,$item->companyInfo,$item->experience,$item->education,$item->extraDesc,$item->postDate,$item->updateDate,$item->expiryDate,"CRED Recruiter",$GLOBALS['qualSkillArr']));
+			}
 		}
 
 	}
@@ -45,15 +48,20 @@ foreach (array_reverse($GLOBALS['jobInfoArr']) as $temp) {
 		if($_GET['jobType']===$temp[3] || $_GET['jobType']==='allOptions'){
 
 			for($tempArrRef = 0; $tempArrRef<19; $tempArrRef +=1) {
-				 if($temp[$tempArrRef] == ''){
-				 	$temp[$tempArrRef] = '-';
+				if($temp[$tempArrRef] == ''){
+					$temp[$tempArrRef] = '-';
 				}
 			}
 			echo'<li class="singlePost" id="singlePost'.$temp[0].'">
 			<div class="openInfo" id="openInfo'.$temp[0].'">
-				<p class="postNubmer postHighlight">#'.$temp[0].'</p>&nbsp;
-				<p class="hirer postHighlight">'.$temp[18].'</p>&nbsp;:&nbsp;
-				<p class="location postHighlight">'.$temp[4].'</p>에서 일할 수 있는
+				<p class="postNubmer postHighlight">#'.$temp[0].'</p>&nbsp;';
+				echo'<p class="hirer postHighlight">'.$temp[18].'</p>&nbsp;:&nbsp;';
+				// if($_SESSION['is_login'] == true){
+				// 	echo'<p class="hirer postHighlight">'.$temp[18].'</p>&nbsp;:&nbsp;';
+				// }else{
+				// 	echo'<p class="hirer postHighlight">CRED</p>&nbsp;:&nbsp;';
+				// }
+				echo'<p class="location postHighlight">'.$temp[4].'</p>에서 일할 수 있는
 				<p class="titlePosition postHighlight">'.$temp[6].'</p>님을 구합니다.
 			</div>';
 			// <!-- open information -->
@@ -67,17 +75,21 @@ foreach (array_reverse($GLOBALS['jobInfoArr']) as $temp) {
 
 				<div class="jobDescription">
 					<div class="positionDesc"><p class="label">모집부문</p><p class="detail">'.$temp[6].'</p></div>
-					<div class="hiringPeriod"><p class="label">프로젝트 기간</p><p class="detail">'.$temp[8].'</p></div>
-					<div class="earning"><p class="label">수입</p><p class="detail">'.$temp[10].'</p></div>
-					<div class="benefit"><p class="label">혜택</p><p class="detail">'.$temp[9].'</p></div>
-					<div class="companyInfo"><p class="label">회사 정보</p><p class="detail">'.$temp[11].'</p></div>
+					<div class="hiringPeriod"><p class="label">프로젝트 기간</p><p class="detail">'.$temp[8].'</p></div>';
+					if($temp[10]!="-"){
+						echo'<div class="earning"><p class="label">수입</p><p class="detail">'.$temp[10].'</p></div>';
+					}
+					if($temp[9]!="-"){
+						echo'<div class="benefit"><p class="label">혜택</p><p class="detail">'.$temp[9].'</p></div>';
+					}
+					echo'<div class="companyInfo"><p class="label">채용자 정보</p><a id="directToRecruiter" href="anotherProfile?int='.$temp[1].'">채용자 프로파일 보기</a><p class="detail">'.$temp[11].'</p></div>
 				</div>
 				<div class="qualification">
-					<div class="skill"><p class="label">전문 기술</p>'; 
+					<div class="skill"><p class="label">전문 기술</p><div class="detail">'; 
 						foreach ($temp[19] as $v) {
-							echo'<p class="detail skillEach">'.$v.'</p>';
+							echo'<p class="skillEach">'.$v.'</p>';
 						}
-						echo'</div>';
+						echo'</div></div>';
 						if($temp[12]=="none"){
 							echo'<div class="experience"><p class="label">경력</p><p class="detail">무관</p></div>';
 						}else{

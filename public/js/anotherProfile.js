@@ -6,6 +6,8 @@ var Bridge = document.getElementById('Bridge');
 
 var Members = document.getElementById('Members');
 
+var DirectMessage = document.getElementById('DirectMessage');
+
 var token;
 
 	$.ajax({
@@ -112,4 +114,10 @@ if(Members!=undefined){
 			  }
 		})
 
+}
+
+if(DirectMessage != undefined){
+	$(DirectMessage).click(function(){
+		$(location).attr('href','/dm?userPK='+userPK);
+	});
 }

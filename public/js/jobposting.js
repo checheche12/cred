@@ -13,27 +13,27 @@ var freeLancer = document.getElementById('freeLancer');
 var noPay = document.getElementById('noPay');
 // var cancel = document.getElementById('cancel');
 
+if(post!=undefined){
+	//버튼 php 로 생성 해서 취소 눌렀을때 안에 input 값들이 다 지워지게 추후에 수정 할 것.
+	post.addEventListener("click",function(){
+		// $( "#projectInputForm" ).toggle();
+		$("#post").attr('disabled',true);
 
-
-//버튼 php 로 생성 해서 취소 눌렀을때 안에 input 값들이 다 지워지게 추후에 수정 할 것.
-post.addEventListener("click",function(){
-	// $( "#projectInputForm" ).toggle();
-	$("#post").attr('disabled',true);
-
-	var Data = {"inputFormType":"new"};
-	$.ajax({
-		type:'GET',
-		url:'/jobPostInput',
-		data : Data,
-		success:function(data){
-			$("#projectInputFrame").append(data);
-			jobPostInputActions("insert");
-		},
-		error: function(){
-			alert('error 서버 연결 안됨!');
-		}
-	})
-});
+		var Data = {"inputFormType":"new"};
+		$.ajax({
+			type:'GET',
+			url:'/jobPostInput',
+			data : Data,
+			success:function(data){
+				$("#projectInputFrame").append(data);
+				jobPostInputActions("insert");
+			},
+			error: function(){
+				alert('error 서버 연결 안됨!');
+			}
+		})
+	});
+}
 
 function jobPostInputActions(controlType){
 
@@ -56,49 +56,53 @@ function jobPostInputActions(controlType){
 	});
 	$("#postSubmit").on("click",function(){
 		event.stopPropagation();
+		if(($("#workLocation").val()=="") || (($("#position").val()==""))){
+			alert("필수사항을 입력해 주십시오");
+		}else{
 
-		var Data = {"controlType":controlType};
-		if(($(this).closest('li').attr('id'))!=undefined){
-			var jobPostPK = $(this).closest('li').attr('id').substr(10, 300);
-			Data['jobPostPK'] = jobPostPK;
-		}
-		
-		Data['postPurpose'] = $('input:radio[name=postPurpose]:checked').val()
-		Data['recruiterName'] = $("#recruiterName").val();
-		Data['workField'] = $("#workField").val();
-		Data['companyInfo'] = $("#companyInfo").val();
-		Data['position'] = $("#position").val();
-		Data['jobDesc'] = $("#jobDesc").val();
-		Data['skill'] = $("#skill").val();
-		Data['workLocation'] = $("#workLocation").val();
-		Data['jobType'] = $('input:radio[name=jobType]:checked').val();
-		Data['jobPeriod'] = $("#jobPeriod").val();
-		Data['earning'] = $("#earning").val();
-		Data['benefits'] = $("#benefits").val();
-		Data['expiryDate'] = $("#datepicker").val();
-		Data['education'] = $('input:radio[name=education]:checked').val();
-
-		var experience = $('input:radio[name=experience]:checked').val();
-		if (experience===""){
-			experience = $("#experiencePlus").val();
-		}
-		Data['experience'] = experience;
-		Data['extraDesc'] = $("#extraDesc").val();
-
-		$.ajax({
-			type:'POST',
-			url:'/jobPostUpdate',
-			data : Data,
-			success:function(data){
-				alert("업데이트 성공, 메인화면으로 돌아갑니다!");
-				$(location).attr('href','/');
-				$("#post").removeAttr('disabled');
-			},
-			error: function(){
-				alert('error 서버 연결 안됨!');
+			var Data = {"controlType":controlType};
+			if(($(this).closest('li').attr('id'))!=undefined){
+				var jobPostPK = $(this).closest('li').attr('id').substr(10, 300);
+				Data['jobPostPK'] = jobPostPK;
 			}
-		})
-	});
+
+			Data['postPurpose'] = $('input:radio[name=postPurpose]:checked').val()
+			Data['recruiterName'] = $("#recruiterName").val();
+			Data['workField'] = $("#workField").val();
+			Data['companyInfo'] = $("#companyInfo").val();
+			Data['position'] = $("#position").val();
+			Data['jobDesc'] = $("#jobDesc").val();
+			Data['skill'] = $("#skill").val();
+			Data['workLocation'] = $("#workLocation").val();
+			Data['jobType'] = $('input:radio[name=jobType]:checked').val();
+			Data['jobPeriod'] = $("#jobPeriod").val();
+			Data['earning'] = $("#earning").val();
+			Data['benefits'] = $("#benefits").val();
+			Data['expiryDate'] = $("#datepicker").val();
+			Data['education'] = $('input:radio[name=education]:checked').val();
+
+			var experience = $('input:radio[name=experience]:checked').val();
+			if (experience===""){
+				experience = $("#experiencePlus").val();
+			}
+			Data['experience'] = experience;
+			Data['extraDesc'] = $("#extraDesc").val();
+
+			$.ajax({
+				type:'POST',
+				url:'/jobPostUpdate',
+				data : Data,
+				success:function(data){
+					alert("업데이트 성공, 메인화면으로 돌아갑니다!");
+					$(location).attr('href','/');
+					$("#post").removeAttr('disabled');
+				},
+				error: function(){
+					alert('error 서버 연결 안됨!');
+				}
+			})
+		}});
+
 	$( function() {
 		$( "#datepicker" ).datepicker();
 	} );
