@@ -13,6 +13,7 @@
     document.documentElement.className = 'noJs';
   </script>
   <link rel="icon" type="image/png" href="/mainImage/webicon_16x16.png" sizes="16x16" />
+  <link rel="stylesheet" type ="text/css" href="css/dm.css?v=1">
 </head>
 
 <!-- Facebook API -->
@@ -43,7 +44,6 @@
    fjs.parentNode.insertBefore(js, fjs);
  }(document, 'script', 'facebook-jssdk'));
 </script>
-
 
     <div id ='header'>
       <?php

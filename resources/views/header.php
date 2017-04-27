@@ -139,7 +139,7 @@ $A->index();
     <!--
         아래에 있는 코드는 DB에서 값을 가져 온 뒤에 동적으로 수정해야 한다. (수정 1)
       -->
-      <form id="searchbar">
+      <form id="searchbar" <?php if($_SESSION['is_login'] == false){echo'style="display:none"';}?>>
         <div id="searchDropdown">
           <input id="searchSlot" class="searchSlot" type="text" name="search" placeholder="Search.." >
           <br>

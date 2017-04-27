@@ -1,0 +1,33 @@
+.right{
+	min-height : 35px;
+	text-align: right;
+	max-width: 50%;
+	margin-left: 50%;
+}
+
+.left{
+	min-height : 35px;
+	max-width: 50%;
+}
+
+.text{
+	vertical-align: middle;
+}
+
+.img{
+	border-radius: 100%;
+	float: left;
+	width: 2.5vmax;
+	height: 2.5vmax;
+	margin-right: 1vmax;
+	display: inline-block;
+}
+
+.rightimg{
+	border-radius: 100%;
+	float: right;
+	width: 2.5vmax;
+	height: 2.5vmax;
+	margin-right: 1vmax;
+	display: inline-block;
+}
