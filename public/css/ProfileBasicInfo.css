@@ -5,15 +5,17 @@
 	font-family: 'Montserrat', sans-serif,'Nanum Gothic';
 }
 
-.ProfileBasicInfo{
+.ProfileBasicInfo {
 	text-align: center;
 	background: rgba(255, 255, 255, 0.97);
 	width: 340px;
-	border: 1px solid #e6e6e6;
 	float: left;
 	margin-left: 50px;
 	padding-bottom: 20px;
 	line-height: 30%;
+	padding-top: 15px;
+	border-right: 1px solid #eaeaea;
+	padding-right: 20px;
 }
 #profileImage2{
 	width: 100px;
@@ -116,7 +118,8 @@
 }
 #infoSplit{
 	width: 90%;
-	border: 1px solid #eaeaea;
+	/*border: 1px solid #eaeaea;*/
+	border:none;
 }
 .specialty{
 	background: rgba(220, 220, 220, 0.34);

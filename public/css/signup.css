@@ -7,6 +7,7 @@
 
 #logoImage{
 	cursor: pointer;
+	width: 400px;
 }
 
 img{
@@ -25,17 +26,21 @@ body{
 	text-align: center;
 	margin-top: 0px;
 }
-#logoImage{
-	width:187px;
-}
-
 .quote {
-	color: #ed2a7b ;
     font-weight: lighter;
-	font-size: 22px;
-	text-align: center;
-	margin-top: 22px;
-	margin-bottom: 22px;
+    font-size: 34px;
+    text-align: center;
+    margin-top: 22px;
+    line-height: 200%;
+}
+.quote1{
+	color: #999;
+    font-weight: bolder;
+    font-size: 20px;
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 40px;
+
 }
 
 .infoFrame {
@@ -45,41 +50,38 @@ body{
 }
 
 .BOX {
-   margin-top: 10px;
-   border: 0px;
-   font-size: 12px;
-   box-shadow: 0 0 0 1px rgba(0,0,0,.1), 0 2px 3px rgba(0,0,0,.2);
-   color: #b3b3b3 ;
-   border-bottom: 1px gray solid;
-   border-bottom-color: #f2f2f2 ;
-   width: 100%;
-   padding-left: 10px;
-   height: 40px;
-   font-weight: normal;
+	margin-top: 10px;
+	padding-left: 10px;
+	border: 1px solid #dbdbdb;
+	border-radius: 7px;
+	width: 50%;
+	height: 30px;
+	background: rgba(255, 255, 255, 0.5);
 }
 #signUp:hover {
-	background-color: #ed2a7b ;
+	background-color: #ed2a7b;
 	color: white;
 }
 #signUp {
-   width: 90px;
-   height: 30px;
-   margin-top: 20px;
-   background-color: white;
-   color: #ed2a7b ;
-   border: 2px solid #ed2a7b ;
-   text-align: center;
-   text-decoration: none;
-   display: inline-block;
-   font-size: 13px;
-   border-radius: 4px;
-   cursor: pointer;
-   transition: all 0.8s;
+	margin-top: 20px;
+	cursor: pointer;
+	width: 130px;
+	height: 40px;
+	background-color: white;
+	color: #262626;
+	border: 2px solid #dbdbdb;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	border-radius: 4px;
+	cursor: pointer;
+	transition: all 0.8s;
 }
 #infoFrame{
 	display:inline-block;
 	background-color: #ffffff;
-	width:450px;
+	width:800px;
 	height:650px;
 	margin-top:67px;
 }

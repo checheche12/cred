@@ -216,7 +216,7 @@ $(".postBt").click(function(){
 
 	postAppend();
 });
-
+postAppend();
 function postAppend(){
 	var Data = {"jobType":postSet.jobType};
 	Data['N'] = postSet.N;

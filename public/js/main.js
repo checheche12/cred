@@ -54,7 +54,7 @@ function bridgeLogDisplay(){
 	})
 
 }//bridgeLogDisplay()
-
+$('#Project').addClass('selected');
 Project.addEventListener("click", function() {	//	<-- 중복 클릭이 되서 .one 이라는 jquery 로 바꿨음. 확인 시 지울것. -soo
 	// $("#Project").one("click",function(){
 

@@ -17,10 +17,10 @@ class UserController extends Controller
 
         if(count($users)>1 and $_SESSION['isGroup']=="Group"){
           echo "<div id = 'group'>";
-          echo "<p>group</p>";
+          echo "<p>그룹 프로필</p>";
         }elseif(count($users)>0 and $_SESSION['isGroup']!="Group"){
           echo "<div id = 'group'>";
-          echo "<p>group</p>";
+          echo "<p>그룹 프로필</p>";
         }
         $GLOBALS['photoURL'] = "mainImage/default_profile_pic.png";
         foreach($users as $A){
@@ -51,7 +51,7 @@ class UserController extends Controller
         if(count($users)>0){
           echo "</div>";
           echo "<div id = 'person'>";
-          echo "<p>person</p>";
+          echo "<p>개인 프로필</p>";
         }
 
         foreach($users as $A){

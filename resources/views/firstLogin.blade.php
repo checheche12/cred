@@ -109,7 +109,8 @@
 <div class="logo">
   <img src = "/mainImage/signupImage/signupLogo.png" width="187px"><br>
 </div>
-<div class="quote">CRED. New experience!</div>
+<div class="quote">모든 이들이 각자 스토리의 주인공이다.</div>
+<div class="quoteCredit">Sarah Waters</div>
 
 <form id = "form" method="post" action = "auth">
   <div class="infoFrame">

@@ -66,15 +66,15 @@ $A->post();
 
 <?php
 if($_SESSION['is_login'] == true){
-	echo'<p class="title">Spotlight</p>
-	<div id="RecentWorks_Frame">';
+	// echo'<p class="title">Spotlight</p>
+	// <div id="RecentWorks_Frame">';
 
-		include_once('../resources/views/administrator/getspotlight.php');
+	// 	include_once('../resources/views/administrator/getspotlight.php');
 
-		echo'</div>
+	// 	echo'</div>
 
 
-		<p class="title">Recent Works</p>
+		echo'<p class="title">Newest Project</p>
 		<div id="RecentWorks_Frame">';
 
 

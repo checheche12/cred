@@ -78,7 +78,7 @@
   ?>
 </div>
 
-<p id = "uploadtext" >upload</p>
+<p id = "uploadtext" >UPLOAD</p>
 
 <div id = "video">
 
@@ -91,10 +91,13 @@
   <label for="titleBox">제목</label><br>
   <input id = "titleBox" type="text"></input><br><br>
 
-  <div><label for="email">크레딧</label><img id="credqmark" src="/mainImage/credqmark.png" title="영상 제작에 기여한 모든 사람들에 대해 알려주세요.
-  사람들은 주로 캐스트, 촬영, 편집 ,기획, 클라이언트, 협력사 등에 대한 정보를 알고 싶어합니다."></div>
+  <div>
+  <label for="email">크레딧</label>
+  <p class="help">작품제작에 참여한 모든 이들이 주인공입니다.<br>영상 제작에 기여한 모든 사람들을 크레딧에 달아주세요.</p>
+
+  </div>
   <input id = "email" type="text" placeholder="이름 / e-mail"></input>
-  <input id = "position" type="text" placeholder=" 담당 역할"></input>
+  <input id = "position" type="text" placeholder="포지션 (ex.촬영, 기획, 클라이언트, 협력사, ...)"></input>
   <button id = "submitCredit" >+추가</button><br><br>
   <!-- 추가된 크레딧 -->
 
@@ -103,13 +106,15 @@
   </div>
 
   <div id = "creditBox">
+  <p id="creditTitle">Credit</p>
   </div>
 
   <label for="context">작품설명</label><br>
-  <textarea id = "context" cols : "40" rows:"10" placeholder="[TIP] 작품과 작품 제작과정에 대한 모든 정보를 공유해 주세요.
-  사람들은 주로 비디오 저작권자, 기획 인사이트, 사용된 촬영 및 편집 기술과 장비, 음향소스 같은 정보를 궁금해합니다."></textarea><br><br>
+  <p class="help">작품과 작품 제작과정에 대한 모든 정보를 공유해 주세요.<br>
+  사람들은 주로 비디오 저작권자, 기획 인사이트, 사용된 촬영 및 편집 기술과 장비, 음향소스 같은 정보를 궁금해합니다.</p>
+  <textarea id = "context" cols : "40" rows:"10"></textarea><br><br>
 
-  <button id = "cancelButton" class="submitButton">cancel</button>
+  <button id = "cancelButton" class="submitButton">취소</button>
   <button id = "saveButton" class="submitButton">저장</button>
 
 </div>

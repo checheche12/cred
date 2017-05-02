@@ -229,9 +229,9 @@ $(addCredit).click(function(){
         if(confirm("등록되지 않은 이메일입니다. 만일 가입자가 아닌 사람이라면 확인을 눌러주십시오") == true){
 
           var j = "<div class = 'creditContext'>";
-          j += ("<a class ='xImage' id = "+NotUserCreditNumber+"'></a>");
-          j += ("<div class='name'>"+ email.value + "</div><br>");
-          j += ("<div class='position'>"+position.value+"</div></div>");
+          j += ("<p class='position'>"+position.value+"</p>");
+          j += ("<p class='name'>"+ email.value + "</p>");
+          j += ("<a class ='xImage' id = "+NotUserCreditNumber+"'></a></div>");
           $('#creditBox').append(j);
 
           var t = [email.value,position.value,NotUserCreditNumber];
@@ -256,7 +256,7 @@ $(addCredit).click(function(){
           $('#position').val("");
         }
       }else if(dC(k[1])){
-          alert("동일한 아이디가 미리 크레딧 되어있습니다. (this user is already credited)")
+        alert("동일한 아이디가 미리 크레딧 되어있습니다. (this user is already credited)")
         //중복 이메일/USER PK 발견시 Alarm 또는 표시
       }else if(!position.value){
         alert("position 이 비어있습니다. (please type in position.)");
@@ -264,9 +264,9 @@ $(addCredit).click(function(){
       }else{
 
         var j = "<div class = 'creditContext'>";
-        j += ("<a class ='xImage' id = "+k[1]+"'></a>");
-        j += ("<div class='name'>"+k[0] + "</div><br>");
-        j += ("<div class='position'>"+position.value+"</div></div>");
+        j += ("<p class='position'>"+position.value+"</p>");
+        j += ("<p class='name'>"+k[0] + "</p>");
+        j += ("<a class ='xImage' id = "+k[1]+"'></a></div>");
         $('#creditBox').append(j);
 
         $(".xImage").click(function(){
@@ -347,16 +347,16 @@ deleteButton.addEventListener("click",function(){
     type:'GET',
     data: Data3,
     success:function(data){
-        alert('글 삭제 성공 메인으로 돌아갑니다.');
-        alert(data);
-        $(location).attr('href','/main');
-      },
+      alert('글 삭제 성공 메인으로 돌아갑니다.');
+      alert(data);
+      $(location).attr('href','/main');
+    },
 
-      error: function(){
-        alert('글 삭제 실패');
-      }
+    error: function(){
+      alert('글 삭제 실패');
+    }
 
-    })
+  })
 
 });
 
@@ -380,8 +380,8 @@ function getImage(urlInput) {
 //      $("#testImage")
 //          .html(
 //              "<div> <iframe width='560' height='315' src='https://www.youtube.com/embed/"+id+ "' frameborder='0' allowfullscreen></iframe> </div>");
-    return "<iframe class='PostWork' width='"+width+"' height='"+height+"' src='https://www.youtube.com/embed/"+id+ "' frameborder='0' allowfullscreen></iframe>";
-    } else if (matchVimeoUrl(url) != false) {
+return "<iframe class='PostWork' width='"+width+"' height='"+height+"' src='https://www.youtube.com/embed/"+id+ "' frameborder='0' allowfullscreen></iframe>";
+} else if (matchVimeoUrl(url) != false) {
           id = matchVimeoUrl(url); //vimeo id 반환
     //      $("#checkResult").html("Vimeo Video id: " + id);
     //      $("#testImage")
@@ -392,7 +392,7 @@ function getImage(urlInput) {
     return "<iframe class='PostWork' src='https://player.vimeo.com/video/"
     + id
     + "?title=0&byline=0&portrait=0&badge=0' width='"+width+"' height='"+height+"' frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>";
-    } else {
-      return "<image class='PostWork' src = " + url + ">";
-    }
+  } else {
+    return "<image class='PostWork' src = " + url + ">";
+  }
 }

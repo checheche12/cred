@@ -60,7 +60,7 @@ class makeNewArtClass extends Controller
       ?>
     </div>
 
-    <p id = "uploadtext" >upload</p>
+    <p id = "uploadtext" >UPLOAD</p>
 
     <div id = "video">
 
@@ -73,57 +73,61 @@ class makeNewArtClass extends Controller
       <label for="titleBox">제목</label><br>
       <textarea id = "titleBox"><?php echo $GLOBALS['title'] ?></textarea><br><br>
 
-      <div><label for="email">크레딧</label><img id="credqmark" src="/mainImage/credqmark.png" title="영상 제작에 기여한 모든 사람들에 대해 알려주세요.
-      사람들은 주로 캐스트, 촬영, 편집 ,기획, 클라이언트, 협력사 등에 대한 정보를 알고 싶어합니다."></div>
-        <input id = "email" type="text" placeholder=" e-mail"></input>
-        <input id = "position" type="text" placeholder=" 담당 역할"></input>
-        <button id = "submitCredit" >+추가</button><br><br>
-        <!-- 추가된 크레딧 -->
+      <div><label for="email">크레딧</label>
+        <p class="help">작품제작에 참여한 모든 이들이 주인공입니다.<br>영상 제작에 기여한 모든 사람들을 크레딧에 달아주세요.</p>
+      </div>
+      <input id = "email" type="text" placeholder="이름 / e-mail"></input>
+      <input id = "position" type="text" placeholder="포지션 (ex.촬영, 기획, 클라이언트, 협력사, ...)"></input>
+      <button id = "submitCredit" >+추가</button><br><br>
+      <!-- 추가된 크레딧 -->
 
-        <div id = "emailsuggest">
-
-        </div>
-
-        <div id = "creditBox">
-          <script>
-            var creditArray = [];
-            var NotUserCreditArray = [];
-            var NotUserCreditNumber = 0;
-          </script>
-          <?php
-          foreach($GLOBALS['userData'] as $i){
-            echo "<div class = 'creditContext'>";
-            echo "<a class = 'xImage' id = ".$i[0]."></a>";
-            echo "<div class='name'>".$i[1]."</div><br>";
-            echo "<div class='position'>".$i[2]."</div></div>";
-            echo "<script>";
-            echo "var t = [".$i[0].",'".$i[2]."']; creditArray.push(t);";
-            echo "</script>";
-          }
-          $NotUserCreditNumber = 0;
-          foreach($GLOBALS['notUserData'] as $i){
-            echo "<div class = 'creditContext'>";
-            echo "<img class = 'xImage2' id = ".$NotUserCreditNumber." src ='/mainImage/uploadImage/x.jpg'></img>";
-            $NotUserCreditNumber +=1;
-            echo "<div class='name'>".$i[1]."</div><br>";
-            echo "<div class='position'>".$i[2]."</div></div>";
-            echo "<script>";
-            echo "var t = ['".$i[1]."', '".$i[2]."', NotUserCreditNumber]; NotUserCreditArray.push(t); NotUserCreditNumber++";
-            echo "</script>";
-          }
-          ?>
-        </div>
-
-        <label for="context">작품설명</label><br>
-        <textarea id = "context" cols : "40" rows:"10" placeholder="[TIP] 작품과 작품 제작과정에 대한 모든 정보를 공유해 주세요.
-        사람들은 주로 비디오 저작권자, 기획 인사이트, 사용된 촬영 및 편집 기술과 장비, 음향소스 같은 정보를 궁금해합니다."><?php echo str_replace("<br>", "\r\n",  $GLOBALS['description']); ?></textarea><br><br>
-
-        <button id = "deleteButton" class="submitButton">작품 삭제</button>
-        <button id = "cancelButton" class="submitButton">취소</button>
-        <button id = "saveButton" class="submitButton">수정</button>
+      <div id = "emailsuggest">
 
       </div>
-      <script>
-        artPK = <?= $_GET['int']?>;
-      </script>
-      <script type = "text/javascript" src = "js/fixed.js"></script>
+
+      <div id = "creditBox">
+      <p id="creditTitle">Credit</p>
+        <script>
+          var creditArray = [];
+          var NotUserCreditArray = [];
+          var NotUserCreditNumber = 0;
+        </script>
+        <?php
+        foreach($GLOBALS['userData'] as $i){
+          echo "<div class = 'creditContext'>";
+          echo "<div class='position'>".$i[2]."</div>";
+          echo "<div class='name'>".$i[1]."</div>";
+          echo "<a class = 'xImage' id = ".$i[0]."></a></div>";
+          echo "<script>";
+          echo "var t = [".$i[0].",'".$i[2]."']; creditArray.push(t);";
+          echo "</script>";
+        }
+        $NotUserCreditNumber = 0;
+        foreach($GLOBALS['notUserData'] as $i){
+          echo "<div class = 'creditContext'>";
+          $NotUserCreditNumber +=1;
+          echo "<div class='position'>".$i[2]."</div>";
+          echo "<div class='name'>".$i[1]."</div>";
+          echo "<img class = 'xImage2' id = ".$NotUserCreditNumber." src ='/mainImage/uploadImage/x.jpg'></img></div>";
+          echo "<script>";
+          echo "var t = ['".$i[1]."', '".$i[2]."', NotUserCreditNumber]; NotUserCreditArray.push(t); NotUserCreditNumber++";
+          echo "</script>";
+        }
+        ?>
+      </div>
+
+      <label for="context">작품설명</label><br>
+      <p class="help">작품과 작품 제작과정에 대한 모든 정보를 공유해 주세요.<br>
+  사람들은 주로 비디오 저작권자, 기획 인사이트, 사용된 촬영 및 편집 기술과 장비, 음향소스 같은 정보를 궁금해합니다.</p>
+      <textarea id = "context" cols : "40" rows:"10" placeholder="[TIP] 작품과 작품 제작과정에 대한 모든 정보를 공유해 주세요.
+      사람들은 주로 비디오 저작권자, 기획 인사이트, 사용된 촬영 및 편집 기술과 장비, 음향소스 같은 정보를 궁금해합니다."><?php echo str_replace("<br>", "\r\n",  $GLOBALS['description']); ?></textarea><br><br>
+
+      <button id = "deleteButton" class="submitButton">작품 삭제</button>
+      <button id = "cancelButton" class="submitButton">취소</button>
+      <button id = "saveButton" class="submitButton">수정</button>
+
+    </div>
+    <script>
+      artPK = <?= $_GET['int']?>;
+    </script>
+    <script type = "text/javascript" src = "js/fixed.js"></script>

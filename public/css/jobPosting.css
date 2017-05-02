@@ -32,7 +32,7 @@ ul{
 .singlePost {
 	padding: 15px;
 	background: white;
-	border: 1px solid #e6e6e6;
+	
 }
 .requiredInfo{
 	display: flex;
@@ -55,6 +55,8 @@ ul{
 	color: black;
 	font-weight: 300 !important;
 	background-color: white;
+	transition: 0.3s all;
+	cursor: pointer;
 }
 .jobDescription{
 	padding: 15px;
@@ -109,18 +111,21 @@ ul{
 	color: #ed2a7b;
 }
 button{
-	background-color: #f6f7f9;
+	background-color: #fff;
 	color: #4b4f56;
 	font-size: 0.75rem !important;
 	width: 7vmax;
 	height: 2vmax;
-	border: 1px solid #e6e6e6 ;
+	border: none;
 	border-radius: 2px;
 	margin-bottom: 10px;
 	cursor: pointer;
 }
+button:hover{
+	text-decoration: underline;
+}
 body{
-	background-color: #fafafa;
+	background-color: #fff;
 }
 
 .inputGroup{
@@ -147,4 +152,8 @@ p.skillEach{
 }
 .required, .optional{
 	color:red;
+}
+.openInfo:hover{
+	background: #f9f9f9;
+	cursor: pointer;
 }

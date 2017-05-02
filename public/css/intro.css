@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Abril+Fatface');
+
 a{
 	all:unset;
 }
@@ -10,17 +12,17 @@ a img{
 #MainContent_Frame{
 
 }
-#RecentWorks_Frame{
-	margin-left: 12.5%;
-	margin-right: 12.5%;
-	font-size: 0px;
-	text-align: center;
+#RecentWorks_Frame {
+	padding-left: 1%;
+	max-width: 62.5em;
+	margin-left: auto;
+	margin-right: auto;
 }
 .RecentWork{
-	width: 25%;
+	width: 24%;
+	margin-right: 1%;
 	display: inline-block;
 	vertical-align: top;
-	/*border-right: 1px solid #e4e4e4;*/
 }
 p{
 	font-size: 1.3vw;
@@ -41,7 +43,6 @@ p.name, p.position{
 	line-height: 1.6;
 	word-break: none;
 	white-space: nowrap;
-	width: 8.325vw;
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
@@ -54,12 +55,11 @@ p.name, p.position{
 }
 .RecentWorkPic{
 	margin-bottom: 1vw;
-	/*height: 20vh;*/
-	/*object-fit: contain;*/
 }
 .position_Frame{
 	text-align: right;
 	width: 45%;
+	margin-right: 10%
 }
 .name_Frame{
 	text-align: left;
@@ -95,12 +95,15 @@ p.name, p.position{
 	font-size: 3vw;
 }
 .title {
-	text-align: left;
+	font-family: 'Abril Fatface', cursive;
+	text-align: center;
 	font-size: 4vw;
-	font-weight: bolder;
+	font-weight: 500;
 	margin: 3vw;
 }
 #MainImage {
+	height: 90vh;
+	object-fit: contain;
 	width: 90%;
 	display: block;
 	margin: 0 auto;
@@ -112,6 +115,7 @@ p.name, p.position{
 	height: 10vh;
 	overflow: auto;
 	overflow-x: hidden;
+	display: flex;
 }
 
 .credit::-webkit-scrollbar-track{
@@ -128,12 +132,12 @@ p.name, p.position{
 	background-color: #ffffff;
 }
 #xBt{
-	    display: inline-block;
-    position: relative;
-    top: -1439px;
-    left: 800px;
-    background: transparent;
-    border: none;
-    color: rgb(255, 255, 255);
-    font-size: 40.75rem !important;
+	display: inline-block;
+	position: relative;
+	top: -1439px;
+	left: 800px;
+	background: transparent;
+	border: none;
+	color: rgb(255, 255, 255);
+	font-size: 40.75rem !important;
 }

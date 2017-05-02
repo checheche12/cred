@@ -2,6 +2,7 @@
 
 @import url('http://fonts.googleapis.com/earlyaccess/nanumgothic.css');
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import url('https://fonts.googleapis.com/css?family=Abril+Fatface');
 
 * {
 	font-family: 'Montserrat', sans-serif,'Nanum Gothic';
@@ -22,8 +23,6 @@
 	min-height: 40vh;
 	max-height: 40vh;
 	padding-bottom: 2vh;
-	border: 0.1vmin solid #e6e6e6 ;
-	box-shadow: 0 0 0 1px rgba(0,0,0,.1), 0 2px 3px rgba(0,0,0,.2);
 	display: inline-block;
 	overflow: scroll;
 	overflow-x: hidden;
@@ -47,6 +46,7 @@
 	margin-bottom: 3vh;
 	font-size: 2vmax;
 	text-align: center;
+	font-family: 'Abril Fatface', cursive;
 }
 
 .positionFrame {
@@ -88,13 +88,15 @@ p.nameNoAccount, p.positionNoAccount{
 	font-size: 18px;
 }
 button {
-	background-color: #f6f7f9 ;
-	color: #4b4f56 ;
+	background-color: white ;
 	font-size: 0.75rem !important;
 	width: 4vmax;
 	height: 2vmax;
-	border: 1px solid #aaa;
-	border-radius: 2px;
+	border: none;
+	cursor: pointer;
+}
+button:hover{
+	text-decoration: underline;
 	cursor: pointer;
 }
 .postInfo, #postInfo, #viewD, #viewLabel, #viewNum, #description, #QCount, #QNum{
@@ -104,7 +106,6 @@ button {
 
 #officialInfo,#unofficialOfficialInfo,#QFrame{
 	border: 0.1vmin solid #e6e6e6 ;
-	box-shadow: 0 0 0 1px rgba(0,0,0,.1), 0 2px 3px rgba(0,0,0,.2);
 }
 #QFrame{
 	margin-top: 2vh;

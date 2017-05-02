@@ -8,16 +8,18 @@
 			><br>
 		</div>
 		<div class="quote">
-			CRED에서 여러 사람들과의 협업을 <br>공유하고 관리하세요!
+			프로젝트에서 당신의 역할은 무엇이었나요?<br>모든 이들은 당신을 궁금해합니다.
 		</div>
-
+		<div class="quote1">
+			무료로 가입하세요.
+		</div>
 		<form method="post" action="checkSignup">
 
 			<input type="hidden" name="_token" value="<?php echo csrf_token() ?>">
 
 			<input type="radio" name="chk_info" value="personal" checked="checked">Personal
-		  &nbsp; &nbsp; &nbsp; &nbsp;
-		  <input type="radio" name="chk_info" value="group">Group
+			&nbsp; &nbsp; &nbsp; &nbsp;
+			<input type="radio" name="chk_info" value="group">Group
 			
 			<div class="infoFrame">
 				<input class="BOX" type="text" id='email' name="emailemail"

@@ -7,22 +7,25 @@
 *:lang(ko) {
 	font-family: 'Noto Sans KR', sans-serif;
 }
-body{
-	background-color : #fafafa ;
+body {
+	background-color: #fff;
 }
 
 a{
 	all:unset;
 }
 
-.ProjectFrame{
-	width : 232px;
-	margin-bottom : 20px;
+.ProjectFrame {
+	width: 232px;
+	margin-bottom: 20px;
 	display: inline-block;
-	box-shadow: 0 0 0 1px rgba(0,0,0,.1), 0 2px 3px rgba(0,0,0,.2);
-	border: 1px solid #e6e6e6 ;
 	padding-bottom: 10px;
 	background-color: white;
+	transition: 0.3s all;
+}
+.ProjectFrame:hover{
+	background: #eaeaea;
+	cursor: pointer;
 }
 .ProjectFrame .detail{
 	display: inline-block;
@@ -33,7 +36,6 @@ a{
 }
 .ProjectFrame .name{
 	margin: 0px;
-	margin-left: 10px;
 	margin-top: 10px;
 }
 .ProjectFrame .position{
@@ -41,7 +43,6 @@ a{
 	margin: 0px;
 	font-weight: lighter;
 	font-size: 13px;
-	margin-left: 10px;
 	color:#ed2a7b;
 }
 .ProjectFrame .credit{
@@ -56,78 +57,55 @@ a{
 }
 
 #profileSelection{
-	text-align : center;
 	height : 100px;
 }
-#profileBody{
+#profileBody {
 	margin: -25 0 0 -40;
 	width: 100%;
 	padding: 30px;
-	border: 1px solid #e6e6e6 ;
 	background: white;
 	column-gap: 20px;
 	box-sizing: border-box;
 }
-ul{
-	list-style:none;
+#titleButton{
+	text-align: center;
+}
+ul {
+	list-style: none;
 	width: 100%;
 	white-space: nowrap;
 	background: white;
-	border: 1px solid #e6e6e6;
 	margin: 0 40 0 -40;
 	box-sizing: border-box;
 }
 #Project, #Bridge, #Members {
-   border: none;
-   border-radius: 3px;
-   display: inline-block;
-   font-size: 0.75rem !important;
-   transition: all 0.7s;
-   padding: 20 40 20 40;
-   cursor: pointer;
-   color: black;
+	border: none;
+	border-radius: 3px;
+	display: inline-block;
+	font-size: 1.1rem !important;
+	transition: all 0.7s;
+	padding: 20 40 20 30;
+	cursor: pointer;
+	color: black;
 }
 #Bridge:hover, #Project:hover, #Members:hover{
 	border: none ;
-	border-radius: 3px;
-	background: #e6e6e6
+	text-decoration: underline;
+	cursor: pointer;
 }
 
-#Bridge:active{
-	display: inline-block;
-	border: none ;
-	border-radius: 3px;
-	padding: 20 40 20 40;
-	cursor: pointer;
-	color: #ed2a7b ;
-	background: #e6e6e6 ;
-}
-#Project:active{
-	display: inline-block;
-	border: none ;
-	border-radius: 3px;
-	padding: 20 40 20 40;
-	cursor: pointer;
-	color: #ed2a7b ;
-	background: #e6e6e6 ;
-}
 .selected{
 	display: inline-block;
-	border: none ;
-	border-radius: 3px;
+	text-decoration: underline;
 	padding: 20 40 20 40;
 	cursor: pointer;
-	color: #ed2a7b ;
-	background: #e6e6e6 ;
 }
 .bridgeCard {
 	cursor: pointer;
 	height: 100px;
 	width: 344px;
-	box-shadow: 0 0 0 1px rgba(0,0,0,.1), 0 2px 3px rgba(0,0,0,.2);
-	border: 1px solid #e2e2e2 ;
 	margin: 5px;
-	display: inline-block;;
+	display: inline-block;
 }
 .bridgeCard .personalImageFrame{
 	height:100px;

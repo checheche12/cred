@@ -14,50 +14,57 @@
     text-align:center;
    }
    */
-
-   html{
+   img{
+    width: 400px;
+  }
+  html{
     background: white;
     opacity: 0.95;
   }
   .logo{
     text-align:center;
-    /*margin-top:5%;*/
     margin-top: 75px;
 
   }
   .quote{
     color:#262626;
     font-size:20px;
-    font-weight: lighter;
+    font-weight: bolder;
     text-align:center;
     /*margin-top:5%;*/
     margin-top: 75px;
-    /*margin-bottom:10%;*/
-    margin-bottom: 100px;
   }
-  #form{
-    text-align: center;
-  }
-  .infoFrame{
-    display: inline-block;
-    color:#999999;
-    width: 400px;
-
-  }
-  .labels{
-    text-align: left;
-    color: #262626 ;
-  }
-  .BOX{
-   //margin-left : 210px;
-   border : 1px solid #dbdbdb;
-   border-radius:7px;
-   width : 100%;
-   height: 30px;
-   background: rgba(255, 255, 255, 0.5);
+  .quoteCredit {
+   color: #999;
+   font-weight: lighter;
+   font-size: 14px;
+   text-align: center;
+   margin-top: 10px;
+   margin-bottom: 100px;
  }
+ #form{
+  text-align: center;
+}
+.infoFrame{
+  display: inline-block;
+  color:#999999;
+  width: 400px;
 
- .buttons{
+}
+.labels{
+  text-align: left;
+  color: #262626 ;
+}
+.BOX{
+ //margin-left : 210px;
+ border : 1px solid #dbdbdb;
+ border-radius:7px;
+ width : 100%;
+ height: 30px;
+ background: rgba(255, 255, 255, 0.5);
+}
+
+.buttons{
   text-align:center;
   white-space: nowrap;
 }
