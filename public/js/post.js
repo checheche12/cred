@@ -205,3 +205,29 @@ if(editUOIBt != null){
 
 	});
 }
+var requestSwitch = 'notFocus';
+$('#creditRequestBt').on('click',function(){
+	if(requestSwitch=='notFocus'){
+		requestSwitch = 'focus'
+		$('#creditRequestQuote').remove();
+		$('#creditRequest').prepend('<input type="text" id="requestPosition" placeholder="포지션 (ex.촬영, 기획, 클라이언트, 협력사, ...)">');
+	}else{
+		var Data = {"artPK": ArtPK};
+		Data['position'] = $('#requestPosition').val();
+
+		$.ajax({
+			type:'GET',
+			url:'/requestCredit',
+			data : Data,
+			success:function(data){
+				alert("크레딧 요청 성공! 작성자의 승낙 후에 크레딧에 올라가게 됩니다.");
+				location.reload();
+			},
+			error: function(){
+				alert('error 서버 연결 안됨!');
+			}
+		})
+
+	}
+
+});

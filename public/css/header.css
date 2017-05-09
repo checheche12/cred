@@ -70,8 +70,15 @@
 img{
 	cursor: pointer;
 }
+img:focus{
+	cursor: progress;
+}
 button{
 	cursor:pointer;
+}
+button:focus{
+	cursor:progress;
+	outline: 0;
 }
 button:hover{
 

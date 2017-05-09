@@ -194,6 +194,28 @@ Route::group(['middleware' => ['isLogin']] ,function(){
 			return view('dm.dmaddDetail');
 		});
 
+		Route::get('/notiaddDetail',function(){
+			return view('noti.notiaddDetail');
+		});
+
+
+		//Connect 관련한 route들
+
+		Route::get('/connectApply',function(){
+			return view('connect.connectApply');
+		});
+
+		Route::get('/acceptconnect',function(){
+			return view('connect.acceptconnect');
+		});
+
+		Route::get('/denyconnect',function(){
+			return view('connect.denyconnect');
+		});
+
+		Route::get('/requestCredit',function(){
+			return view('posting.requestCredit');
+		});
 
 });
 
@@ -329,22 +351,6 @@ Route::get('/acceptcredit',function(){
 Route::get('/denycredit',function(){
 	return view('checkcredit.denycredit');
 });
-
-
-//Connect 관련한 route들
-
-Route::get('/connectApply',function(){
-	return view('connect.connectApply');
-});
-
-Route::get('/acceptconnect',function(){
-	return view('connect.acceptconnect');
-});
-
-Route::get('/denyconnect',function(){
-	return view('connect.denyconnect');
-});
-
 
 
 // testing

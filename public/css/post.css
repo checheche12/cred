@@ -16,7 +16,7 @@
 }
 
 .creditFrame {
-	margin-bottom: 2vh;
+	/*margin-bottom: 2vh;*/
 	background: black;
 	color: white;
 	width: 100%;
@@ -384,4 +384,28 @@ iframe{
 #commitBox{
 	text-align: right;
 	margin-top: 3vh;
+}
+#creditRequest{
+	text-align: right;
+	margin-bottom: 0.5em;
+	margin-top: 0.5em;
+}
+#creditRequestQuote{
+	display: inline-block;
+	color: #999;
+	margin-top: 0;
+	font-size: 0.7em;
+}
+#creditRequestBt{
+	display: inline-block;
+	width: 9em;
+	padding-right: 0;
+	text-align: right;
+}
+#requestPosition{
+	height: 40px; 
+	padding: 0 10px;
+	border-radius: 3px;
+	border: 1px solid #dbdbdb ;
+	width: 260px;
 }

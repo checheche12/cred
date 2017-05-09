@@ -71,10 +71,25 @@ class PostClass extends Controller
         $Sentence = "update totalart set views = views + 1 where artPK = '".$_GET['int']."'";
         $users = DB::update(DB::raw($Sentence));
       }
+      public function duplicateCheck(){
+        $users = DB::select("select * from workDB where userPK = ? and artPK = ?" ,[$_SESSION['userPK'],$_GET['int']]);
+        $GLOBALS['exists']='0';
+        if(empty($users)){
+          $GLOBALS['exists']='0';
+        }else{
+          $GLOBALS['exists']='1';
+        }
+          // foreach($users as $user){
+          //   foreach ($user as $temp) {
+          //     $GLOBALS['exists'] = $temp;
+          //   }
+      }
+
     }
     $PostClass = new PostClass();
     $PostClass->countViews(); //조회수 때문에 index 앞에 위치함
     $PostClass->index();
+    $PostClass->duplicateCheck();
 
     ?>
 
@@ -132,6 +147,19 @@ class PostClass extends Controller
               </div>
             </div>
           </div> <!-- outCreditFrame end -->
+          <!-- 크레딧 중복 요청 방지를 위해 workDB 에서 검사 exists 가 0 일 경우 credit 이 달려있지 않다는 의미-->
+          <?php
+          
+          // echo "GLOBALS[exists] : ".$GLOBALS['exists'];
+            // <!-- credit Request -->
+          if($GLOBALS['exists'] == '0'){
+            echo'<div id="creditRequest"> 
+            <p id="creditRequestQuote">당신도 이 작품에 참여했나요?</p>
+            <button id="creditRequestBt">크레딧 요청하기</button>
+            </div>';//<!-- credit Request end-->
+          }
+          ?>
+
           <div id="officialInfo">
             <div id = "officialDesc">
               <p id="workTitle"><!-- AKMU - How People Move --><?php echo $GLOBALS['Title'];?></p>
@@ -183,17 +211,17 @@ class PostClass extends Controller
                 include_once('../resources/views/posting/wikiload.php');
                 ?>
               </div>
- -->
-            </div>
-          </div>  <!-- LeftCont end -->
+            -->
+          </div>
+        </div>  <!-- LeftCont end -->
 
-          <div id = "RightCont">
-            <div id="workFrame">
-              <!-- <iframe src="https://player.vimeo.com/video/176567696" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> -->
-            </div>
+        <div id = "RightCont">
+          <div id="workFrame">
+            <!-- <iframe src="https://player.vimeo.com/video/176567696" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> -->
+          </div>
 
 
-            <!-- 질문 쓰는곳 -->
+          <!-- 질문 쓰는곳 -->
             <!-- <div id="QFrame">
               <div id="QCountFrame">
                 <p id="QCount">질문 -&nbsp;</p>
