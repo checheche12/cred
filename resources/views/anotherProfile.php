@@ -59,7 +59,7 @@ class UserController
 
     <div id = "profileContent">
       <div id = "profileSelection">
-        <ul>
+        <ul id="titleButton">
           <li id = "Project">프로젝트</li>
           <li id = "Bridge">크레딧 공유자</li>
           <?php

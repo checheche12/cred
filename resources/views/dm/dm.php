@@ -68,7 +68,7 @@
                   }
                   include_once('../resources/views/dm/dmoneDetail.php');
                   $CalloneDetail = new dmoneDetailClass();
-                  $CalloneDetail->dmoneDetail($_GET['userPK']);
+                  $CalloneDetail->dmoneDetail($_GET['userPK'],0);
               ?>
             </div>
 

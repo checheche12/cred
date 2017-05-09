@@ -190,6 +190,11 @@ Route::group(['middleware' => ['isLogin']] ,function(){
 			return view('dm.dmSend');
 		});
 
+		Route::get('/dmaddDetail',function(){
+			return view('dm.dmaddDetail');
+		});
+
+
 });
 
 // 권한관계. 내가 크레딧이 걸려있다면... fix와 삭제 하는 경우에는 내 크레딧이 걸려있어야 fixed 가 켜질 수 있다.

@@ -55,7 +55,11 @@ foreach (array_reverse($GLOBALS['jobInfoArr']) as $temp) {
 			echo'<li class="singlePost" id="singlePost'.$temp[0].'">
 			<div class="openInfo" id="openInfo'.$temp[0].'">
 				<p class="postNubmer postHighlight">#'.$temp[0].'</p>&nbsp;';
-				echo'<p class="hirer postHighlight">'.$temp[18].'</p>&nbsp;:&nbsp;';
+				if($temp[18] == "CRED Recruiter"){
+					echo'<p class="hirer postHighlight">'.$temp[18].'</p></a>&nbsp;:&nbsp;';
+				}else{
+					echo'<a class="directToRecruiter" href="anotherProfile?int='.$temp[1].'"><p class="hirer postHighlight">'.$temp[18].'</p></a>&nbsp;:&nbsp;';
+				}
 				// if($_SESSION['is_login'] == true){
 				// 	echo'<p class="hirer postHighlight">'.$temp[18].'</p>&nbsp;:&nbsp;';
 				// }else{
@@ -82,37 +86,37 @@ foreach (array_reverse($GLOBALS['jobInfoArr']) as $temp) {
 					if($temp[9]!="-"){
 						echo'<div class="benefit"><p class="label">혜택</p><p class="detail">'.$temp[9].'</p></div>';
 					}
-					echo'<div class="companyInfo"><p class="label">채용자 정보</p><a id="directToRecruiter" href="anotherProfile?int='.$temp[1].'">채용자 프로파일 보기</a><p class="detail">'.$temp[11].'</p></div>
-				</div>
-				<div class="qualification">
-					<div class="skill"><p class="label">전문 기술</p><div class="detail">'; 
-						foreach ($temp[19] as $v) {
-							echo'<p class="skillEach">'.$v.'</p>';
-						}
-						echo'</div></div>';
-						if($temp[12]=="none"){
-							echo'<div class="experience"><p class="label">경력</p><p class="detail">무관</p></div>';
-						}else{
-							echo'<div class="experience"><p class="label">경력</p><p class="detail">'.$temp[12].'</p></div>';
-						}
-						if($temp[13]=="none"){
-							echo'<div class="education"><p class="label">학력</p><p class="detail">무관';
-						}elseif ($temp[13]=="U_attending") {
-							echo'<div class="education"><p class="label">학력</p><p class="detail">초대졸';
-						}elseif ($temp[13]=="U_Graduate") {
-							echo'<div class="education"><p class="label">학력</p><p class="detail">대졸';
-						}else{
-							echo'<div class="education"><p class="label">학력</p><p class="detail">석사 이상';
+					// echo'<div class="companyInfo"><p class="label">채용자 정보</p><a id="directToRecruiter" href="anotherProfile?int='.$temp[1].'">채용자 프로파일 보기</a><p class="detail">'.$temp[11].'</p></div>';
+					echo'</div>
+					<div class="qualification">
+						<div class="skill"><p class="label">전문 기술</p><div class="detail">'; 
+							foreach ($temp[19] as $v) {
+								echo'<p class="skillEach">'.$v.'</p>';
+							}
+							echo'</div></div>';
+							if($temp[12]=="none"){
+								echo'<div class="experience"><p class="label">경력</p><p class="detail">무관</p></div>';
+							}else{
+								echo'<div class="experience"><p class="label">경력</p><p class="detail">'.$temp[12].'</p></div>';
+							}
+							if($temp[13]=="none"){
+								echo'<div class="education"><p class="label">학력</p><p class="detail">무관';
+							}elseif ($temp[13]=="U_attending") {
+								echo'<div class="education"><p class="label">학력</p><p class="detail">초대졸';
+							}elseif ($temp[13]=="U_Graduate") {
+								echo'<div class="education"><p class="label">학력</p><p class="detail">대졸';
+							}else{
+								echo'<div class="education"><p class="label">학력</p><p class="detail">석사 이상';
 
-						}
+							}
 
-						echo'</p></div>
+							echo'</p></div>
+						</div>
 					</div>
-				</div>
-				<div class="extraInfo">
-					<div class="extraJobDesc"><p class="label">부가설명</p><p class="detail">'.$temp[14].'</p></div>
-				</div>
-				<div class="buttonFrame2">';
+					<div class="extraInfo">
+						<div class="extraJobDesc"><p class="label">부가설명</p><p class="detail">'.$temp[14].'</p></div>
+					</div>
+					<div class="buttonFrame2">';
 						if($temp[1]==$_SESSION['userPK']){	//Guest 는 못하게 해야함
 							if($_SESSION['is_login'] == true){
 								echo'<button id="editBt'.$temp[0].'">수정</button>';

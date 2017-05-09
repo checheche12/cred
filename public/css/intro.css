@@ -17,6 +17,7 @@ a img{
 	max-width: 62.5em;
 	margin-left: auto;
 	margin-right: auto;
+	height: 80vh;
 }
 .RecentWork{
 	width: 24%;
@@ -102,11 +103,29 @@ p.name, p.position{
 	margin: 3vw;
 }
 #MainImage {
-	height: 90vh;
+	height: 100vh;
 	object-fit: contain;
 	width: 90%;
 	display: block;
 	margin: 0 auto;
+}
+.featureImage{
+	height: 100vh;
+	object-fit: contain;
+	display: block;
+	margin: 0 auto;
+}
+#featureImage1{
+width: 100%;
+background: #ffd1dd;
+}
+#featureImage2{
+width: 100%;
+background: #fc91ac;
+}
+#featureImage3{
+width: 100%;
+background: #fe7295;
 }
 #ContentWidth{
 	margin-top: 3vmax;

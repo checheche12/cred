@@ -46,7 +46,7 @@ if($_GET['inputFormType']=="new"){
 			// <label class="label inputLabel">구인/구직</label><input type="radio" name="postPurpose" value="person" checked>구인<input type="radio" name="postPurpose" value="project">구직<br>
 		// </div>
 		echo'<div id="recruiterInfo" class="inputForm">
-			<div class="inputGroup"><label class="label inputLabel">채용자</label><textarea id="recruiterName" class="inputBox">'.$GLOBALS['recruiterName'].'</textarea><br></div>
+			<div class="inputGroup"><label class="label inputLabel">채용자</label><textarea id="recruiterName" class="inputBox" disabled="disabled">'.$GLOBALS['recruiterName'].'</textarea><br></div>
 			<div class="inputGroup"><label class="label inputLabel">산업분야근무필드/장르</label><textarea id="workField" class="inputBox"></textarea><br></div>
 			<div class="inputGroup"><label class="label inputLabel">회사소개</label><textarea id="companyInfo" class="inputBox"></textarea><br></div>
 		</div>
@@ -88,7 +88,7 @@ if($_GET['inputFormType']=="new"){
 			// }
 			// </div>
 			echo'<div id="recruiterInfo" class="inputForm">
-				<div class="inputGroup"><label class="label inputLabel">채용자</label><textarea id="recruiterName" class="inputBox">'.$GLOBALS['jobInfoArr'][0][18].'</textarea><br></div>
+				<div class="inputGroup"><label class="label inputLabel">채용자</label><textarea id="recruiterName" class="inputBox" disabled="disabled">'.$GLOBALS['jobInfoArr'][0][18].'</textarea><br></div>
 				<div class="inputGroup"><label class="label inputLabel">산업분야근무필드/장르</label><textarea id="workField" class="inputBox">'.$GLOBALS['jobInfoArr'][0][5].'</textarea><br></div>
 				<div class="inputGroup"><label class="label inputLabel">회사소개</label><textarea id="companyInfo" class="inputBox">'.$GLOBALS['jobInfoArr'][0][11].'</textarea><br></div>
 			</div>

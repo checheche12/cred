@@ -1,4 +1,30 @@
 var DMText = document.getElementById('DMText');
+var recieverAccount = 0;
+
+
+$( document ).ready(function() {
+  $("#DMDetail").scrollTop('1000');
+
+	$("#DMDetail").scroll(function() {
+			var minHeight = 0;
+			var currentScroll = $("#DMDetail").scrollTop();
+
+					if (minHeight >= currentScroll) {
+							recieverAccount += 15;
+							Data = {"recieveruserPK" : recieveruserPK , "recieverAccount" : recieverAccount};
+							$.ajax({
+									type:'GET',
+									url : '/dmaddDetail',
+									data : Data,
+									success:function(data){
+										$("#DMDetail").scrollTop("1");
+										$("#DMDetail").prepend(data);
+									}
+							});
+					}
+			})
+});
+
 
 $("#send").click(function(){
 	if(confirm("실제로 전송하시겠습니까?")==true){

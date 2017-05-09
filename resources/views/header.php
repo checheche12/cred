@@ -41,8 +41,8 @@ class UserController extends Controller
         {
           echo "<a href = '/anotherProfile?int=".$noti->userPK."'>
           <div>
-            <img class = 'notiImage' src = '".$noti->ProfilePhotoURL."'></img>
-            ".$noti->Name."님이 당신의 채용 공고에 지원하였습니다.
+            <img class = 'notiImage' src = '".$noti->ProfilePhotoURL."'></img><p class='notiStatement'>
+            ".$noti->Name."님이 당신의 채용 공고에 지원하였습니다.</p>
           </div>
         </a>";
       }
@@ -87,9 +87,10 @@ class UserController extends Controller
           {
             echo "<div id = '".$noti->userPK."'>
             <a href = '/anotherProfile?int=".$noti->userPK."'>
-              <div><p class='notiStatement'>
+              <img class = 'notiImage' ".$noti->ProfilePhotoURL."></img>
+              <p class='notiStatement'>
                 ".$noti->Name."님이 Connect 요청했습니다. 클릭하시면 프로필로 이동합니다.
-              </p></div>
+              </p>
             </a>
           </div>";
         }else if($noti->notificationKind == "8")
@@ -134,7 +135,7 @@ $A->index();
 <link rel="stylesheet" type ="text/css" href="css/header.css?v=1">
 <div class="headerFrame">
   <div id = "header">
-    <img id = "credImage" src = "mainImage/signupImage/signupLogo.png">
+    <img id = "credImage" src = "mainImage/signupImage/signupLogo.png" title="홈페이지">
 
     <!--
         아래에 있는 코드는 DB에서 값을 가져 온 뒤에 동적으로 수정해야 한다. (수정 1)
@@ -153,8 +154,8 @@ $A->index();
         <?php
         if($_SESSION['is_login'] == true){
           echo '<div id = "profile">';
-          echo '<img id = "profileImage" src = '.$GLOBALS['photoURL'].'>';
-          echo '<p id = "profileName">'.$GLOBALS['name'].'</p>';
+          echo '<img id = "profileImage" src = '.$GLOBALS['photoURL'].' title="나의 프로필">';
+          echo '<p id = "profileName" title="나의 프로필">'.$GLOBALS['name'].'</p>';
           echo '</div>';
         }
         if($_SESSION['is_login'] == false){
@@ -164,24 +165,24 @@ $A->index();
 
           // <button id = "yourart" class="icons"></button>
           echo '<div id="buttons">
-          <button id = "notification" class = "icons_none"></button>
-          <button id = "upload" class="icons"></button>
-          <button id = "logout" class="icons"></button>
-          <div id = "notification_out" class = "notification_out_none">
-            <p id="notiText">알림</p>
-            ';
-            foreach($GLOBALS['notification'] as $noti){
-              UserController::notification($noti);
-            }
-            echo '</div>
-          </div>';
-        }
-        ?>
+          <button id = "notification" class = "icons_none" title="알림"</button>
+            <button id = "upload" class="icons" title="업로드"></button>
+            <button id = "logout" class="icons" title="로그아웃"></button>
+            <div id = "notification_out" class = "notification_out_none">
+              <p id="notiText">알림</p>
+              ';
+              foreach($GLOBALS['notification'] as $noti){
+                UserController::notification($noti);
+              }
+              echo '</div>
+            </div>';
+          }
+          ?>
 
+        </div>
       </div>
     </div>
-  </div>
 
-  <script type = "text/javascript" src = "js/jquery-3.1.1.min.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  <script type = "text/javascript" src = "js/header.js"></script>
+    <script type = "text/javascript" src = "js/jquery-3.1.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script type = "text/javascript" src = "js/header.js"></script>

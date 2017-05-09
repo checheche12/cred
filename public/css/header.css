@@ -347,7 +347,11 @@ ul{
 .notiStatement{
 	display: inline-block;
 	font-size: 0.8vw;
-
+	word-wrap: break-word;
+	white-space: normal;
+	width: 380px;
+	padding-right: 20px;
+	vertical-align: middle;
 }
 #notiText{
 	padding: 12px;
