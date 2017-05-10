@@ -10,6 +10,7 @@ var searchButton = document.getElementById('searchButton');
 var searchSlot = document.getElementById('searchSlot');
 var notification = document.getElementById('notification');
 var notification_out = document.getElementById('notification_out');
+var directMessage = document.getElementById('dm');
 // var hiddenSearchValue = document.createElement("hiddenSearchValue");
 
 var recieverNotiAccount = 0;
@@ -167,6 +168,12 @@ if(Msg != undefined){
 
 		$(location).attr('href', './forward');
 
+	});
+}
+
+if(directMessage != undefined){
+	directMessage.addEventListener("click",function(){
+			$(location).attr('href','./dm');
 	});
 }
 

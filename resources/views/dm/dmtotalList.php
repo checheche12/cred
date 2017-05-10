@@ -18,6 +18,7 @@ class DMTotalListClass
 
                 $SelectDMLasts = DB::select("select senderuserPK, recieveruserPK, sendDate, context,
                 B.ProfilePhotoURL as SenderProfilePhotoURL, C.ProfilePhotoURL as RecieverProfilePhotoURL
+                ,B.Name as SenderName , C.Name as RecieverName
                  from DirectMessage left join
                  userinfo as B on senderuserPK = B.userPK left join userinfo as C on recieveruserPK = C.userPK where
                  (senderuserPK = ? and recieveruserPK = ?) or (senderuserPK = ? and recieveruserPK = ?)
@@ -25,11 +26,20 @@ class DMTotalListClass
                 [$SelectsDMTotalList->value1,$SelectsDMTotalList->value2,$SelectsDMTotalList->value2,$SelectsDMTotalList->value1]);
 
                 foreach($SelectDMLasts as $SelectDMLast){
-                  echo '<a href = "/dm">';
-                  echo '<div>';
-                  echo "<img class = 'img' src = '".$SelectDMLast->SenderProfilePhotoURL."'></img>";
-                  echo "<img class = 'img' src = '".$SelectDMLast->RecieverProfilePhotoURL."'></img>";
-                  echo $SelectDMLast->context;
+                  if($_SESSION['userPK']==$SelectDMLast->senderuserPK){
+                    echo '<a href = "/dm?userPK='.$SelectDMLast->recieveruserPK.'">';
+                    echo '<div>';
+                    echo "<img class = 'img' src = '".$SelectDMLast->RecieverProfilePhotoURL."'></img>";
+                    echo $SelectDMLast->RecieverName." 님께 보낸 메세지";
+                    echo $SelectDMLast->context;
+                  }else{
+                    echo '<a href = "/dm?userPK='.$SelectDMLast->senderuserPK.'">';
+                    echo '<div>';
+                    echo "<img class = 'img' src = '".$SelectDMLast->SenderProfilePhotoURL."'></img>";
+                    echo $SelectDMLast->SenderName." 님께 받은 메세지";
+                    echo $SelectDMLast->context;
+                  }
+
                   echo '</div><br><br>';
                   echo '</a>';
                   break;

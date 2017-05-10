@@ -84,6 +84,7 @@ $A->index();
 
           // <button id = "yourart" class="icons"></button>
           echo '<div id="buttons">
+          <button id = "dm" class="icons" title = "DM">DM</button>
           <button id = "notification" class = "icons_none" title="알림"</button>
             <button id = "upload" class="icons" title="업로드"></button>
             <button id = "logout" class="icons" title="로그아웃"></button>

@@ -70,21 +70,23 @@ $A->post();
 <?php
 if($_SESSION['is_login'] == true){
 	// echo'<p class="title">Spotlight</p>
-	// <div id="RecentWorks_Frame">';
-
-	// 	include_once('../resources/views/administrator/getspotlight.php');
-
-	// 	echo'</div>
 
 
-		echo'<p class="title">Newest Project</p>
+	echo'<p class="title">Newest Project</p>
+	<div id="workFrame">
 		<div id="RecentWorks_Frame">';
+
+			include_once('../resources/views/administrator/getspotlight.php');
+
+			echo'</div>';
+
+			echo'<div id="RecentWorks_Frame">';
 
 
 			include_once('../resources/views/administrator/getrecent.php');
 
 
-			echo '</div>';
+			echo '</div></div>';
 		}
 		?>
 

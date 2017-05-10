@@ -17,7 +17,7 @@ a img{
 	max-width: 62.5em;
 	margin-left: auto;
 	margin-right: auto;
-	height: 80vh;
+	/*height: 80vh;*/
 }
 .RecentWork{
 	width: 24%;
@@ -116,16 +116,16 @@ p.name, p.position{
 	margin: 0 auto;
 }
 #featureImage1{
-width: 100%;
-background: #ffd1dd;
+	width: 100%;
+	background: #ffd1dd;
 }
 #featureImage2{
-width: 100%;
-background: #ffacc1;
+	width: 100%;
+	background: #fc91ac;
 }
 #featureImage3{
-width: 100%;
-background: #ff91ad;
+	width: 100%;
+	background: #fe7295;
 }
 #ContentWidth{
 	margin-top: 3vmax;
@@ -159,4 +159,7 @@ background: #ff91ad;
 	border: none;
 	color: rgb(255, 255, 255);
 	font-size: 40.75rem !important;
+}
+#workFrame{
+	height: 80vh;
 }
