@@ -33,25 +33,22 @@ $(document).ready(function() {
 
 });
 
-$("#notification_out").scroll(function(){
-		var maxHeight = $("#notification_out").prop("scrollHeight");
-		var currentScroll = $("#notification_out").scrollTop();
-		var elem = $("#notification_out");
-		if (elem[0].scrollHeight <= elem.outerHeight() + elem.scrollTop()) {
-						console.log(elem[0].scrollHeight);
-						console.log(elem.scrollTop());
-						console.log(elem.outerHeight());
-						recieverNotiAccount += 7;
-						Data = {"recieverNotiAccount" : recieverNotiAccount};
-						$.ajax({
-								type:'GET',
-								url : '/notiaddDetail',
-								data : Data,
-								success:function(data){
-									$("#notiBox").append(data);
-								}
-						});
-				}
+$("#notification_out").scroll(function(event){
+	var maxHeight = $("#notification_out").prop("scrollHeight");
+	var currentScroll = $("#notification_out").scrollTop();
+	var elem = $("#notification_out");
+	if (elem[0].scrollHeight <= elem.outerHeight() + elem.scrollTop()) {
+					recieverNotiAccount += 7;
+					Data = {"recieverNotiAccount" : recieverNotiAccount};
+					$.ajax({
+							type:'GET',
+							url : '/notiaddDetail',
+							data : Data,
+							success:function(data){
+								$("#notiBox").append(data);
+							}
+					});
+			}
 	})
 
 $(notification).click(function(e){
