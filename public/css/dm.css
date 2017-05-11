@@ -1,18 +1,36 @@
-.right{
-	min-height : 35px;
-	text-align: right;
-	max-width: 50%;
-	margin-left: 50%;
-}
-
-.left{
-	min-height : 35px;
-	max-width: 50%;
-}
-
-.text{
+.right, .left{
+	max-width: 80%;
+	clear: both;
+	
 	vertical-align: middle;
+	padding: 0.6rem;
+	border-radius: 8px;
+	text-align: left;
+	word-wrap: break-word;
+	margin: 5px 8px 4px;
 }
+.right{
+	float: right;
+	background-color: #ed2a7b;
+	color: #fff;
+
+}
+.left{
+	float: left;
+	background-color: #ccc;
+	color: #000;
+}
+
+/*.text {
+	vertical-align: middle;
+	padding: 0.6rem;
+	border-radius: 8px;
+	text-align: left;
+	word-wrap: break-word;
+	background-color: #ed2a7b;
+	color: #fff;
+	margin: 5px 8px 4px;
+}*/
 
 .img{
 	border-radius: 100%;

@@ -1,39 +1,90 @@
 #contents{
-	margin-top: 70px;
-	width : 1000px;
-	height : 1000px;
+	margin-top: 10vh;
+	text-align: center;
+	width: 100%;
+	height: 1000px;
+	display: flex;
+	margin-left: 20%;
 }
 
 #DMTotalList{
-	margin-right:50px;
+	display: inline-block;
 	width: 300px;
-	height:700px;
-	overflow-y: scroll;
-	border : 1px solid black;
-	float:left;
+	height: 80vh;
+	overflow-y: auto;
+	border: 1px solid rgba(0, 0, 0, .10);
 }
 
 
 #DMoneDetail{
-	width : 900px;
-	height: 700px;
-	border: 1px solid black;
-	margin-left: 350px;
+	width: 700px;
+	height: 80vh;
+	border: 1px solid rgba(0, 0, 0, .10);
+	display: inline-block;
 }
 
 #DMDetail{
-	overflow-y: scroll;
-	width : 800px;
-	height : 500px;
-	border : 1px solid black;
-	margin-left : 30px;
-	margin-top : 10px;
+	overflow-y: auto;
+	height: 74vh;
+	border-bottom: 1px solid rgba(0, 0, 0, .10);
 }
 
 #DMSend{
-	width : 850px;
-	height : 150px;
-	border : 1px solid black;
-	margin-top:30px;
-	margin-left:30px;
+	height: 6vh;
+	display: flex;
+}
+
+#DMtext{
+	border: none;
+	padding: 0 1rem;
+	background: none;
+	color: #111;
+	float: left;
+	width: 80%;
+	display: inline-block;
+	resize: none;
+	overflow-y: auto;
+}
+#DMtext:focus{
+	outline: 0;
+}
+#send{
+	border: none;
+	width: 20%;
+	padding: 0px;
+	display: inline-block;
+	height: 6vh;
+	font-size: 1rem;
+	box-sizing: content-box;
+}
+.dmListSelection{
+	height: 50px;
+	width: 270px;
+	font-size: 14px;
+	padding: 5px;
+	padding-left: 15px;
+	padding-right: 15px;
+	text-align: left;
+	transition: 0.2s all;
+}
+.dmListSelection:hover{
+	background: #d4d4d4;
+	cursor: pointer;
+}
+.dmAnchor{
+	text-decoration: none;
+}
+.listSent, .contextSent, .listRecieved, .contextRecieved{
+	margin: 0px;
+	display: inline-block;
+}
+.listRecieved, .listSent{
+	font-weight: 600;
+}
+.contextSent, .contextRecieved{
+	font-weight: lighter;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	width: 200px;
 }
