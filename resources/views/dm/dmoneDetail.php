@@ -34,12 +34,12 @@ class dmoneDetailClass
             foreach($Selects as $Select){
               if($Select->senderuserPK == $_SESSION['userPK']){
                 echo "<div class = 'right'>
-                      <div class = 'text'>".$Select->context." : 당신 </div>
-                      <img class = 'rightimg' src = '".$Pict1['ProfilePhotoURL']."'></div>";
+                      <div class = 'rtext'>".$Select->context."</div>
+                      <img class = 'rightImg' src = '".$Pict1['ProfilePhotoURL']."'></div>";
               }else{
                 echo "<div class = 'left'>
-                <img class = 'img' src = '".$Pict2['ProfilePhotoURL']."'>
-                <div class = 'text'>".$Pict2['Name']."님 : ".$Select->context."</div></div>";
+                <img class = 'leftImg' src = '".$Pict2['ProfilePhotoURL']."'>
+                <div class = 'ltext'>".$Select->context."</div></div>";
               }
 
             }

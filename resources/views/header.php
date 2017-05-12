@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-
+//use App\Http\Middleware\notiSendFunction as notiSendFunction;
 
 class UserController extends Controller
 {
@@ -84,7 +84,7 @@ $A->index();
 
           // <button id = "yourart" class="icons"></button>
           echo '<div id="buttons">
-          <button id = "dm" class="icons" title = "DM">DM</button>
+          <button id = "dm" class="icons" title = "DM"></button>
           <button id = "notification" class = "icons_none" title="알림"</button>
             <button id = "upload" class="icons" title="업로드"></button>
             <button id = "logout" class="icons" title="로그아웃"></button>
@@ -100,6 +100,8 @@ $A->index();
               </div>
             </div>';
           }
+        //  \App\Http\Middleware\notiSendFunction::notiMake_Place();
+        //  \App\Http\Middleware\notiSendFunction::notiMake_noPlace();
           ?>
 
         </div>

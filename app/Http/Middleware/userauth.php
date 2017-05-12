@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Middleware;
-
+use App\Http\Middleware\notiSendFunction as notiSendFunction;
 use Closure;
 
 class userauth

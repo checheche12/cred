@@ -23,8 +23,7 @@ class requestCreditClass extends Controller
           $GLOBALS['uploader'] = $user->uploader; //이름이 아닌 userPK 값임.
         }
 
-        DB::insert('insert into notification (senderuserPK,recieveruserPK,notificationKind,notificationPlacePK
-          ,uploaddate) values (?,?,?,?,?)',[$_SESSION['userPK'],$GLOBALS['uploader'],"2",$_GET['artPK'],date("Y-m-d H:i:s")]);
+        \App\Http\Middleware\notiSendFunction::notiMake_Place($_SESSION['userPK'],$GLOBALS['uploader'],"2",$_GET['artPK']);
 
       }
     }

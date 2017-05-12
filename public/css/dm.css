@@ -1,7 +1,16 @@
-.right, .left{
-	max-width: 80%;
+.left, .right{
+	display: flex;
 	clear: both;
-	
+}
+.right{
+	float: right;
+	margin-left: 20%;
+}
+.left{
+	float: left;
+}
+.rtext, .ltext{
+	display: inline-block;
 	vertical-align: middle;
 	padding: 0.6rem;
 	border-radius: 8px;
@@ -9,14 +18,12 @@
 	word-wrap: break-word;
 	margin: 5px 8px 4px;
 }
-.right{
-	float: right;
+.rtext{
 	background-color: #ed2a7b;
 	color: #fff;
 
 }
-.left{
-	float: left;
+.ltext{
 	background-color: #ccc;
 	color: #000;
 }
@@ -30,22 +37,30 @@
 	background-color: #ed2a7b;
 	color: #fff;
 	margin: 5px 8px 4px;
-}*/
+	}*/
 
-.img{
-	border-radius: 100%;
-	float: left;
-	width: 2.5vmax;
-	height: 2.5vmax;
-	margin-right: 1vmax;
-	display: inline-block;
-}
+	.rightImg, .leftImg{
+		border-radius: 100%;
+		width: 2.5vmax;
+		height: 2.5vmax;
+		margin-right: 1vmax;
+		margin-left: 1vmax;
+		display: inline-block;
+		margin-top: auto;
+		margin-bottom: auto;
+	}
 
-.rightimg{
-	border-radius: 100%;
-	float: right;
-	width: 2.5vmax;
-	height: 2.5vmax;
-	margin-right: 1vmax;
-	display: inline-block;
-}
+	.rightImg{
+		float: right;
+	}
+	.leftImg{
+		float: left;
+	}
+	.img{
+		border-radius: 100%;
+		float: left;
+		width: 2.5vmax;
+		height: 2.5vmax;
+		margin-right: 1vmax;
+		display: inline-block;
+	}

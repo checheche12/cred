@@ -33,13 +33,14 @@
 	height: 6vh;
 	display: flex;
 }
-
-#DMtext{
+#DMtext {
 	border: none;
 	padding: 0 1rem;
 	background: none;
 	color: #111;
 	float: left;
+	font-size: 14px;
+	padding: 12px;
 	width: 80%;
 	display: inline-block;
 	resize: none;
@@ -48,12 +49,15 @@
 #DMtext:focus{
 	outline: 0;
 }
-#send{
+#send {
 	border: none;
 	width: 20%;
 	padding: 0px;
 	display: inline-block;
 	height: 6vh;
+	border-radius: 4px;
+	color: white;
+	background: #ed2a7b ;
 	font-size: 1rem;
 	box-sizing: content-box;
 }

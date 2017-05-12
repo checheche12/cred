@@ -30,13 +30,13 @@ class DMTotalListClass
               echo '<a class="dmAnchor" href = "/dm?userPK='.$SelectDMLast->recieveruserPK.'">';
               echo '<div class="dmListSelection">';
               echo "<img class = 'img' src = '".$SelectDMLast->RecieverProfilePhotoURL."'></img>";
-              echo '<p class="listSent">'.$SelectDMLast->RecieverName.' 님께 보낸 메세지</p><br>';
+              echo '<p class="listSent">'.$SelectDMLast->RecieverName.' 님께 보낸 메세지</p>';
               echo '<p class="contextSent">'.$SelectDMLast->context.'</p>';
             }else{
               echo '<a class="dmAnchor" href = "/dm?userPK='.$SelectDMLast->senderuserPK.'">';
               echo '<div class="dmListSelection">';
               echo "<img class = 'img' src = '".$SelectDMLast->SenderProfilePhotoURL."'></img>";
-              echo '<p class="listRecieved">'.$SelectDMLast->SenderName.' 님께 받은 메세지</p><br>';
+              echo '<p class="listRecieved">'.$SelectDMLast->SenderName.' 님께 받은 메세지</p>';
               echo '<p class="contextRecieved">'.$SelectDMLast->context.'</p>';
             }
 

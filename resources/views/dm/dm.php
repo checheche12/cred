@@ -74,7 +74,7 @@
 
             <div id = 'DMSend'>
                 <textarea id = 'DMText' placeholder="메시지 입력 ..."></textarea>
-                <button id = 'send'>보내기</textarea>
+                <button id = 'send'>전송</textarea>
             </div>
 
         </div>
