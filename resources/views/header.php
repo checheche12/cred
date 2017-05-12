@@ -67,7 +67,7 @@ $A->index();
           </div>
 
         </div>
-        <input type="button" name="submitbutton" value="검색" id="searchButton">
+        <input type="button" name="submitbutton" id="searchButton">
       </form>
       <div class="headIcons">
         <?php

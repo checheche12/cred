@@ -1,24 +1,41 @@
 #companyFrame {
-   padding-top: 2vh;
-   position: fixed;
-   top: 100%;
-   width: 100vh;
-   transform: rotate(90deg);
-   transform-origin: top right;
+   display: block;
    text-align: center;
-   right: -4px;
+   background-color: #ffffff; 
+   border-top: 1px solid #cccccc ;
+   color: #484848 ;
 
 }
-#companyInfoImage{
-	width: 10vw;
-	display: inline-block;
-	float: left;
-}
 #companyInfoFrame{
-	display: inline-block;
-	text-align: center;
+   text-align: left;
+  margin: 0 auto ;
+  position: relative ;
+  padding: 15px 0;
+  max-width: 960px;
 }
+#companyInfoImage{
+ width: 30px;
+ display: inline-block;
+}
+#companyName{
+   font-size: 1rem;
+   color: #767676;
+   display: table-cell;
+   vertical-align: middle;
+   box-sizing: border-box;
+   text-align: left;
+}
+
 .companyInfo {
+   display: inline-block;
    font-size: 0.3rem;
    font-weight: 900;
+   color: #999;
+}
+
+.companyInfo2{
+  text-align: right;
+  display: table-cell;
+  vertical-align: middle;
+  padding: 0 0 0 90vh;
 }

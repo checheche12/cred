@@ -8,11 +8,9 @@ class DMTotalListClass
        * @return Response
        */
 
-      public function DMTotalList()
+      public function DMTotalList($clickedPK)
       {
-        $SelectsDMTotalLists = DB::select("select distinct least(A.senderuserPK, A.recieveruserPK)
-          as value1, greatest(A.senderuserPK,A.recieveruserPK) as value2
-          from DirectMessage as A where senderuserPK = ? or recieveruserPK = ?",[$_SESSION['userPK'],$_SESSION['userPK']]);
+        $SelectsDMTotalLists = DB::select("select distinct least(A.senderuserPK, A.recieveruserPK) as value1, greatest(A.senderuserPK,A.recieveruserPK) as value2 from DirectMessage as A where senderuserPK = ? or recieveruserPK = ?",[$_SESSION['userPK'],$_SESSION['userPK']]);
 
         foreach($SelectsDMTotalLists as $SelectsDMTotalList){
 
@@ -28,13 +26,21 @@ class DMTotalListClass
           foreach($SelectDMLasts as $SelectDMLast){
             if($_SESSION['userPK']==$SelectDMLast->senderuserPK){
               echo '<a class="dmAnchor" href = "/dm?userPK='.$SelectDMLast->recieveruserPK.'">';
-              echo '<div class="dmListSelection">';
+              if($clickedPK==$SelectDMLast->recieveruserPK){
+                echo '<div class="dmListSelection dmActive">';
+              }else{
+                echo '<div class="dmListSelection">';
+              }
               echo "<img class = 'img' src = '".$SelectDMLast->RecieverProfilePhotoURL."'></img>";
               echo '<p class="listSent">'.$SelectDMLast->RecieverName.' 님께 보낸 메세지</p>';
               echo '<p class="contextSent">'.$SelectDMLast->context.'</p>';
             }else{
               echo '<a class="dmAnchor" href = "/dm?userPK='.$SelectDMLast->senderuserPK.'">';
-              echo '<div class="dmListSelection">';
+              if($clickedPK==$SelectDMLast->senderuserPK){
+                echo '<div class="dmListSelection dmActive">';
+              }else{
+                echo '<div class="dmListSelection">';
+              }
               echo "<img class = 'img' src = '".$SelectDMLast->SenderProfilePhotoURL."'></img>";
               echo '<p class="listRecieved">'.$SelectDMLast->SenderName.' 님께 받은 메세지</p>';
               echo '<p class="contextRecieved">'.$SelectDMLast->context.'</p>';
@@ -49,8 +55,8 @@ class DMTotalListClass
       }
     }
 
-    $DMTotalListClass = new DMTotalListClass();
-    $DMTotalListClass->DMTotalList();
+    // $DMTotalListClass = new DMTotalListClass();
+    // $DMTotalListClass->DMTotalList();
 
     ?>
     <link rel="stylesheet" type ="text/css" href="css/dmtotalList.css?v=1">

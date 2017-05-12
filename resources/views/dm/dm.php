@@ -54,8 +54,13 @@
     <div id = 'contents'>
         <div id = 'DMTotalList'>
           <?php
+              // $GLOBALS['who'] = $_GET['userPK'];
+              if(!isset($_GET['userPK'])){
+                    $_GET['userPK'] = 0;
+              }
               include_once('../resources/views/dm/dmtotalList.php');
-
+              $DMTotalListClass = new DMTotalListClass();
+              $DMTotalListClass->DMTotalList($_GET['userPK']);
           ?>
         </div>
 

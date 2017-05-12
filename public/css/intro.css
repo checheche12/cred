@@ -1,4 +1,8 @@
-@import url('https://fonts.googleapis.com/css?family=Abril+Fatface');
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import url( "http://fonts.googleapis.com/earlyaccess/notosanskr.css" );
+* {
+	font-family: 'Montserrat', sans-serif,'Noto Sans KR', sans-serif;
+}
 
 a{
 	all:unset;
@@ -8,16 +12,37 @@ body{
 }
 a img{
 	width: 100%;
+	
+}
+.featureImage{
+	height: 100vh;
+	object-fit: contain;
+	display: block;
+	margin: 0 auto;
+}
+#featureImage1{
+	width: 100%;
+	background: #ffd1dd;
+}
+#featureImage2{
+	width: 100%;
+	background: #ffacc1;
+}
+#featureImage3{
+	width: 100%;
+	background: #ff91ad;
 }
 #MainContent_Frame{
 
 }
 #RecentWorks_Frame {
-	padding-left: 1%;
-	max-width: 62.5em;
-	margin-left: auto;
-	margin-right: auto;
-	/*height: 80vh;*/
+	
+	max-width: 960px;
+    width: 100%;
+	margin: 5vh auto 5vh;
+	height: 28vh;
+    
+
 }
 .RecentWork{
 	width: 24%;
@@ -29,14 +54,18 @@ p{
 	font-size: 1.3vw;
 	margin: 0px;
 	line-height: 1.6;
+	font-family: 'Montserrat', sans-serif,'Noto Sans KR', sans-serif;
 }
 .position_Frame, .name_Frame, .splitter, #Main_position_Frame, #Main_name_Frame, #Main_splitter{
 	display: inline-block;
 	vertical-align: top;
 }
 .name{
-	color: #ed2a7b;
+	color: #000;
 
+}
+.position{
+	color: #a0a0a0;
 }
 p.name, p.position{
 	font-size: 0.9vmax;
@@ -73,7 +102,8 @@ p.name, p.position{
 	width: 5vw;
 }
 #MainContent{
-	margin-bottom: 5vw;
+	
+   
 }
 #quoteBox{
 	position: relative;
@@ -96,11 +126,22 @@ p.name, p.position{
 	font-size: 3vw;
 }
 .title {
-	font-family: 'Abril Fatface', cursive;
-	text-align: center;
-	font-size: 4vw;
-	font-weight: 500;
-	margin: 3vw;
+	text-align: left;
+    font-size: 2vw;
+    margin: auto;
+    /*margin-top: 6vmax;*/
+    letter-spacing: -1px;
+    border-top: 3px solid #000;
+    width: 100%;
+    max-width: 960px;
+
+}
+.Newest_Frame {
+    background: #fafafa;
+    padding: 10vh 0 0;
+    height: 90vh;
+    margin: 0 0 10vh;
+  
 }
 #MainImage {
 	height: 100vh;
@@ -109,29 +150,11 @@ p.name, p.position{
 	display: block;
 	margin: 0 auto;
 }
-.featureImage{
-	height: 100vh;
-	object-fit: contain;
-	display: block;
-	margin: 0 auto;
-}
-#featureImage1{
-	width: 100%;
-	background: #ffd1dd;
-}
-#featureImage2{
-	width: 100%;
-	background: #fc91ac;
-}
-#featureImage3{
-	width: 100%;
-	background: #fe7295;
-}
 #ContentWidth{
-	margin-top: 3vmax;
-}
+	height: 400vh;
+	}
 .credit{
-	height: 10vh;
+	/*height: 10vh;*/
 	overflow: auto;
 	overflow-x: hidden;
 	display: flex;
@@ -150,16 +173,13 @@ p.name, p.position{
 .credit::-webkit-scrollbar-thumb{
 	background-color: #ffffff;
 }
-#xBt{
-	display: inline-block;
-	position: relative;
-	top: -1439px;
-	left: 800px;
-	background: transparent;
-	border: none;
-	color: rgb(255, 255, 255);
-	font-size: 40.75rem !important;
-}
-#workFrame{
-	height: 80vh;
+#xBt {
+    display: inline-block;
+    position: relative;
+    top: -100px;
+    left: 90%;
+    background: transparent;
+    border: none;
+    color: rgb(255, 255, 255);
+    font-size: 5rem !important;
 }

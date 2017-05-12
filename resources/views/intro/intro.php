@@ -71,7 +71,7 @@ $A->post();
 if($_SESSION['is_login'] == true){
 	// echo'<p class="title">Spotlight</p>
 
-
+	echo '<div class="Newest_Frame"> ';
 	echo'<p class="title">Newest Project</p>
 	<div id="workFrame">
 		<div id="RecentWorks_Frame">';
@@ -87,9 +87,10 @@ if($_SESSION['is_login'] == true){
 
 
 			echo '</div></div>';
+			echo "</div>"; /*end Newest_Frame*/
 		}
 		?>
-
+	
 		<div id="jobPosting_Frame">
 			<?php
 			include_once('../resources/views/jobposting.php');

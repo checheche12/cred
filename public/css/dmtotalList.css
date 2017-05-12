@@ -71,9 +71,13 @@
 	text-align: left;
 	transition: 0.2s all;
 }
+.dmActive{
+	box-shadow: 4px 0 0 #ed2a7b inset, 0 -1px 0 #f3f6f8 inset;
+}
 .dmListSelection:hover{
 	background: #d4d4d4;
 	cursor: pointer;
+	box-shadow: 4px 0 0 #ed2a7b inset, 0 -1px 0 #f3f6f8 inset;
 }
 .dmAnchor{
 	text-decoration: none;

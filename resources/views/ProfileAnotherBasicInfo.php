@@ -69,16 +69,16 @@ class checkAddCredit extends Controller
           // 4가지의 상태가 있는데
           // 1번은 무관 2번은 connect 되어있음 3번은 같이 작품을 함 4번은 그룹의 멤버.
           $selectConnect = DB::select('select * from Connect where connectSenduserPK = ? and connectRecieveruserPK = ?',[$_SESSION['userPK'],$_GET['int']]);
-          $GLOBALS['stats'] = "connect";
+          $GLOBALS['stats'] = "인맥 추가";
           if($selectConnect != null){
             foreach($selectConnect as $select){
 
               if($select->stats == "0"){
-                $GLOBALS['stats'] = "connectwaiting";
+                $GLOBALS['stats'] = "인맥 요청함";
               }else if($select->stats == "1"){
-                $GLOBALS['stats'] = "connectApply";
+                $GLOBALS['stats'] = "요청 받음";
               }else if($select->stats == "2"){
-                $GLOBALS['stats'] = "connected";
+                $GLOBALS['stats'] = "인맥";
               }
 
             }
@@ -87,7 +87,7 @@ class checkAddCredit extends Controller
           $connectCredit = DB::select('select * from workDB as A left join workDB as B on A.artPK = B.artPK
           where A.userPK = ? and B.userPK = ? and B.checkCredit = 1;',[$_SESSION['userPK'],$_GET['int']]);
           if($connectCredit != null){
-            $GLOBALS['stats'] = "CreditSharing";
+            $GLOBALS['stats'] = "크레딧 공유됨";
           }
 
           if($_SESSION['isGroup'] == "Group"){
@@ -137,16 +137,25 @@ class checkAddCredit extends Controller
       //DM과 connect 기능이 들어간다.
 
       echo '<div>';
-      echo '<button id = "DirectMessage">DM</button>';
+      echo '<button id = "DirectMessage">메세지</button>';
       //Connect 종류에 따라서 그룹 멤버인지 아닌지 connect 상태인지가 드러나야한다.
 
       // if문으로 버튼 상태를 구현해주어야 한다.
-      if($GLOBALS['stats'] == "connectApply"){
+      if($GLOBALS['stats'] == "요청 받음"){
         echo '<div id = "applydeny"><button class = "connect" stats = '.$GLOBALS['stats'].' id = "connectapply">수락</button>';
-        echo '<button class = "connect" stats = '.$GLOBALS['stats'].' id = "connectdeny">거절</button>';
+        echo '<button class = "connect noHover" stats = '.$GLOBALS['stats'].' id = "connectdeny">거절</button>';
         echo '</div></div>';
-      }else{
-        echo '<button class = "connect" stats = '.$GLOBALS['stats'].' id = "'.$GLOBALS['stats'].'">'.$GLOBALS['stats'].'</button>';
+      }elseif($GLOBALS['stats'] == "크레딧 공유됨"){
+        echo '<button class = "connect noHover" stats = '.$GLOBALS['stats'].' id = "creditSharin">'.$GLOBALS['stats'].'</button>';
+        echo '</div>';
+      }elseif($GLOBALS['stats'] == "인맥 "){
+        echo '<button class = "connect noHover" stats = '.$GLOBALS['stats'].' id = "connected">'.$GLOBALS['stats'].'</button>';
+        echo '</div>';
+      }elseif($GLOBALS['stats'] == "인맥 요청함"){
+        echo '<button class = "connect noHover" stats = '.$GLOBALS['stats'].' id = "connectPending">'.$GLOBALS['stats'].'</button>';
+        echo '</div>';
+      }elseif($GLOBALS['stats'] == "인맥 추가"){
+        echo '<button class = "connect Hover" stats = '.$GLOBALS['stats'].' id = "connect">'.$GLOBALS['stats'].'</button>';
         echo '</div>';
       }
 

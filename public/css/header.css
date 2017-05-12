@@ -1,7 +1,7 @@
-@import url('http://fonts.googleapis.com/earlyaccess/nanumgothic.css');
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import url( "http://fonts.googleapis.com/earlyaccess/notosanskr.css" );
 * {
-	font-family: 'Montserrat', sans-serif,'Nanum Gothic';
+	font-family: 'Montserrat', sans-serif,'Noto Sans KR', sans-serif;
 }
 
 
@@ -22,15 +22,14 @@
 	height: 2vmax;
 	box-sizing: border-box;
 	border: 0.1vmax solid #dbdbdb ;
-	border-radius: 4px;
 	font-size: 0.75rem !important;
 	color: #262626 ;
 	background-color: rgba(255, 255, 255, 0.5);
-	background-image: url(/mainImage/searchicon.png);
+	/*background-image: url(/mainImage/searchicon.png);*/
 	background-position: 5%;
 	background-size: 1.2vmax;
 	background-repeat: no-repeat;
-	padding: 0.6vmax 1.2vmax 0.6vmax 2.6vmax;
+	padding: 0 5vmax 0 0.5vmax;
 }
 
 /**검색창**/
@@ -50,10 +49,11 @@
 
 }
 #searchButton {
-	width: 5.4vmax;
+	width: 3vmax;
 	height: 2vmax;
 	color: #000;
-	background-color: rgba(255, 255, 255, 0.5);
+	background: #fff url(/mainImage/searchicon.png) center no-repeat;
+    background-size: 1.5vmax 1.4vmax;
 	border: none;
 	text-align: center;
 	margin-left: 0.4vmax;
@@ -69,16 +69,10 @@
 }
 img{
 	cursor: pointer;
-}
-img:focus{
-	cursor: progress;
+	vertical-align: middle;
 }
 button{
 	cursor:pointer;
-}
-button:focus{
-	cursor:progress;
-	outline: 0;
 }
 button:hover{
 
@@ -86,9 +80,10 @@ button:hover{
 #credImage{
 	float: left;
 	cursor: pointer;
-	height: 60%;
-	margin-left: 0.6vmax;
+    height: 60%;
+    margin-left: 3.125vmax;
 	margin-top: 0.6vmax;
+	
 }
 
 .headIcons {
@@ -245,7 +240,7 @@ button:hover{
 	font-size: 13px;
 	border-radius: 4px;
 	cursor: pointer;
-	transition: all 0.8s;
+	transition: all 0.3s;
 }
 #dm{
 	background-image: url(/mainImage/dm_off.png);
@@ -277,7 +272,7 @@ button:hover{
 	font-size: 13px;
 	border-radius: 4px;
 	cursor: pointer;
-	transition: all 0.8s;
+	transition: all 0.3s;
 }
 #upBtSp{
 	margin-left: 10px;
@@ -360,15 +355,8 @@ ul{
 	display: inline-block;
 	font-size: 0.8vw;
 	word-wrap: break-word;
-	white-space: normal;
-	width: 380px;
-	padding-right: 20px;
-	vertical-align: middle;
 }
 #notiText{
 	padding: 12px;
 	font-weight: bolder;
-}
-#dm{
-	vertical-align: top;
 }

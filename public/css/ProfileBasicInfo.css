@@ -153,3 +153,22 @@ p{
 p.award, #emailP, .infoLabel, .infoIconClass{
 	cursor: unset;
 }
+#DirectMessage, .connect{
+	background-color: white;
+	color: #262626 ;
+	border: 1px solid #dbdbdb ;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 12px;
+	border-radius: 4px;
+	cursor: pointer;
+	transition: all 0.8s;
+	margin-right: 5px;
+}
+
+#DirectMessage:hover, .Hover:hover{
+	color: #fff;
+	border: 1px solid #ed2a7b ;
+	background-color: #ed2a7b ;
+}

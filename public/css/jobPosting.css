@@ -1,11 +1,15 @@
-#ContentWrapper{
-
-}
 .postHighlight {
 	display: inline-block;
 	font-weight: 400 !important;
 	margin: 0 5px 0 5px;
-	font-size: 1.5rem !important;
+	}
+.postNubmer{
+	color: #cccccc;
+	font-size: 0.8rem;
+	vertical-align: middle;
+}
+.hirer{
+	font-size: 1rem;
 }
 ul{
 	list-style-type: none;
@@ -41,8 +45,10 @@ ul{
 	text-align: right;
 }
 #jobTypeSelector{
-	margin-top: 10px;
-	margin-bottom: 5px;
+	width: 100%;
+    max-width: 960px;
+    margin: auto;
+	
 }
 #ContentWrapper{
 	max-width: 62.5em;
@@ -50,13 +56,14 @@ ul{
 	margin-right: auto;
 }
 .openInfo {
-	font-size: 1.5rem !important;
+	font-size: 1rem !important;
 	padding: 15px;
 	color: black;
 	font-weight: 300 !important;
 	background-color: white;
 	transition: 0.3s all;
 	cursor: pointer;
+	letter-spacing: -1px;
 }
 .jobDescription{
 	padding: 15px;
@@ -111,15 +118,28 @@ ul{
 	color: #ed2a7b;
 }
 button{
-	background-color: #fff;
-	color: #4b4f56;
-	font-size: 0.75rem !important;
-	width: 7vmax;
-	height: 2vmax;
-	border: none;
-	border-radius: 2px;
+    background-color: #fff;
+    color: #4b4f56;
+    font-size: 0.75rem !important;
+    width: 140px;
+    height: 40px;
 	margin-bottom: 10px;
 	cursor: pointer;
+	border: none;
+   }
+.postBt{
+	margin-left: -1px;
+    margin-right: -5px;
+    border: #cccccc;
+    border-style: solid;
+    border-width: 1px;
+    border-bottom-width: 0;
+    box-sizing: border-box;
+    display: inline-block;
+    position: relative;
+    padding: 0;
+    vertical-align: baseline;
+
 }
 button:hover{
 	text-decoration: underline;
@@ -156,7 +176,4 @@ p.skillEach{
 .openInfo:hover{
 	background: #f9f9f9;
 	cursor: pointer;
-}
-.hirer:hover{
-	text-decoration: underline;
 }
