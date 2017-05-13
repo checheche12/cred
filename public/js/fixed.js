@@ -340,6 +340,7 @@ submitButton.addEventListener("click",function(){
 
 
 deleteButton.addEventListener("click",function(){
+  if(confirm("글 삭제 수락 시 모든 크레딧 공유 유저로부터 영구적으로 삭제 됩니다. 그래도 진행하시겠습니까?")==true){
   var Data3 = {"int" : artPK};
   console.log("deleteButton Clicked");
   $.ajax({
@@ -353,11 +354,11 @@ deleteButton.addEventListener("click",function(){
     },
 
     error: function(){
-      alert('글 삭제 실패');
+      alert('error: 글 삭제 실패');
     }
 
   })
-
+}
 });
 
 function goBack(){

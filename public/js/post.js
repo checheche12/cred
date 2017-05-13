@@ -41,7 +41,7 @@ function getImage(urlInput) {
 //			$("#testImage")
 //					.html(
 //							"<div> <iframe width='560' height='315' src='https://www.youtube.com/embed/"+id+ "' frameborder='0' allowfullscreen></iframe> </div>");
-return "<iframe width='"+width+"' height='"+height+"' src='https://www.youtube.com/embed/"+id+ "' frameborder='0' allowfullscreen></iframe>";
+return "<iframe width='"+width+"' height='"+height+"' src='https://www.youtube.com/embed/"+id+ "?rel=0&autoplay=1' frameborder='0' allowfullscreen></iframe>";
 } else if (matchVimeoUrl(url) != false) {
 						id = matchVimeoUrl(url); //vimeo id 반환
 		//			$("#checkResult").html("Vimeo Video id: " + id);
@@ -52,7 +52,7 @@ return "<iframe width='"+width+"' height='"+height+"' src='https://www.youtube.c
 		//									+ "?title=0&byline=0&portrait=0&badge=0' width='640' height='360' frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> </div>");
 		return "<iframe src='https://player.vimeo.com/video/"
 		+ id
-		+ "?title=0&byline=0&portrait=0&badge=0' width='"+width+"' height='"+height+"' frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>";
+		+ "?autoplay=1&title=0&byline=0&portrait=0&badge=0' width='"+width+"' height='"+height+"' frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>";
 	} else {
 		return "<image class='PostWork'src = " + url + ">";
 	}

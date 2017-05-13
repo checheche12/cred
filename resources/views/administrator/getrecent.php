@@ -79,7 +79,11 @@ class getRecentClass extends Controller
             </div>';
 
         }
-
+        echo '<input id = "getrecent0" type = "hidden" value='.$artPKArr[0].'>
+            <input id = "getrecent1" type = "hidden" value='.$artPKArr[1].'>
+            <input id = "getrecent2" type = "hidden" value='.$artPKArr[2].'>
+            <input id = "getrecent3" type = "hidden" value='.$artPKArr[3].'>
+            ';
     }
 
     public function urlCheck($url){

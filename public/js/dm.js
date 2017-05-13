@@ -27,7 +27,7 @@ $( document ).ready(function() {
 
 
 $("#send").click(function(){
-	if(confirm("실제로 전송하시겠습니까?")==true){
+	// if(confirm("실제로 전송하시겠습니까?")==true){
 
 			Data = {"recieveruserPK" : recieveruserPK};
 			Data['DMText'] = DMText.value.replace(/\n/g, "<br>");
@@ -40,5 +40,5 @@ $("#send").click(function(){
 				}
 			})
 
-	}
+	// }
 });

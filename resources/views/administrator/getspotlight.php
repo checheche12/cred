@@ -82,7 +82,11 @@ class getSpotlightClass extends Controller
             </div>';
 
         }
-
+            echo '<input id = "getspotlight0" type = "hidden" value='.$artPKArr[0].'>
+            <input id = "getspotlight1" type = "hidden" value='.$artPKArr[1].'>
+            <input id = "getspotlight2" type = "hidden" value='.$artPKArr[2].'>
+            <input id = "getspotlight3" type = "hidden" value='.$artPKArr[3].'>
+            ';
     }
 
     public function urlCheck($url){

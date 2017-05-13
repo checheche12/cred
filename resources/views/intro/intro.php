@@ -46,12 +46,13 @@ $A->post();
 		include_once('../resources/views/header.php');
 		?>
 	</div>
-	<div id="ContentWidth">
-		<div id="MainContent_Frame">
 			<?php
 			if(($_SESSION['is_login'] == true and $GLOBALS['eventCheck']==0) or $_SESSION['is_login'] == false){
-				echo'<div id="MainContent">
-				<img id="MainImage" src="'.$GLOBALS['artURL'].'">';
+				echo'
+				<div id="ContentWidth">
+				<div id="MainContent_Frame">
+				<div id="MainContent">
+				<img id="MainImage" src="mainImage/credberryindexartwork.png">';
 				echo'<div id="featureImage1"><img class="featureImage" src="mainImage/credberryindex_feature1.png"></div>';
 				echo'<div id="featureImage2"><img class="featureImage" src="mainImage/credberryindex_feature2.png"></div>';
 				echo'<div id="featureImage3"><img class="featureImage" src="mainImage/credberryindex_feature3.png"></div>';
@@ -61,11 +62,11 @@ $A->post();
 				echo'<div id="quoteBox">'.$GLOBALS['artText'].'
 			</div>
 		</div>
+	</div>
+</div>
 		';
 	}
 	?>
-</div>
-</div>
 
 <?php
 if($_SESSION['is_login'] == true){

@@ -3,7 +3,7 @@ $('img').on('error',function(){
 });
 
 $("#xBt").on('click',function(){
-	$("#MainContent").remove();
+	$("#ContentWidth").remove();
 	$.ajax({
 		type:'GET',
 		url:'/eventCheck',

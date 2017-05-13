@@ -157,6 +157,11 @@ $("#Spotlight").click(function(){
           kk += '<input id = "fourthS" type = "text">';
           kk += '<button id = "subS">스포트라이트 등록하기</button>';
           $("#controller").append(kk);
+          
+          $('#firstS').val($('#getspotlight0').val());
+          $('#secondS').val($('#getspotlight1').val());
+          $('#thirdS').val($('#getspotlight2').val());
+          $('#fourthS').val($('#getspotlight3').val());
 
           $("#subS").click(function(){
                 var Spotdata = {"first" : $('#firstS').val(), "second" : $('#secondS').val(), "third" : $('#thirdS').val(), "fourth" : $('#fourthS').val()};
@@ -194,6 +199,12 @@ $("#RecentWork").click(function(){
             kk += '<button id = "subS">최근작품 등록하기</button>';
             $("#controller").append(kk);
 
+
+            $('#firstS').val($('#getrecent0').val());
+            $('#secondS').val($('#getrecent1').val());
+            $('#thirdS').val($('#getrecent2').val());
+            $('#fourthS').val($('#getrecent3').val());
+            
             $("#subS").click(function(){
                   var Spotdata = {"first" : $('#firstS').val(), "second" : $('#secondS').val(), "third" : $('#thirdS').val(), "fourth" : $('#fourthS').val()};
                   $.ajax({
