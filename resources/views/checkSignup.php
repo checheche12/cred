@@ -45,18 +45,26 @@ class UserController extends Controller
           foreach($users as $user){$GLOBALS['userPK'] = $user->userPK;}
           DB::insert('insert into userExperience (userPK) values ('.$GLOBALS['userPK'].')');
 
+          echo '<head><link rel="stylesheet" type ="text/css" href="css/checkSignup.css"></head>
+          <body>
+          <div id="signUpGuideFrame">
+          <img id="signUpGuideImage1" src="/mainImage/credcheckmark.png"><br>
+          <img id="signUpGuideImage2" src="/mainImage/signupImage/credberrymainlogo.png"><br>
+          <p class="signUpGuideP">입력하신 이메일로 인증 메일을 발송하였습니다. </p><br>
+          <p class="signUpGuideP">인증 확인 해주시면 회원가입이 완료됩니다.</p>
+          </div></body>';
+
         }
         else{
-          echo "이미 존재하는 회원 email 입니다.";
+            echo '<head><link rel="stylesheet" type ="text/css" href="css/checkSignup.css"></head>
+            <body>
+            <div id="signUpGuideFrame">
+            <img id="signUpGuideImage1" src="/mainImage/credcheckmark.png"><br>
+            <img id="signUpGuideImage2" src="/mainImage/signupImage/credberrymainlogo.png"><br>
+            <p class="signUpGuideP">이미 있는 회원 이메일입니다.</p><br>
+            </div></body>';
         }
-        echo '<head><link rel="stylesheet" type ="text/css" href="css/checkSignup.css"></head>
-        <body>
-        <div id="signUpGuideFrame">
-        <img id="signUpGuideImage1" src="/mainImage/credcheckmark.png"><br>
-        <img id="signUpGuideImage2" src="/mainImage/signupImage/credberrymainlogo.png"><br>
-        <p class="signUpGuideP">입력하신 이메일로 인증 메일을 발송하였습니다. </p><br>
-        <p class="signUpGuideP">인증 확인 해주시면 회원가입이 완료됩니다.</p>
-      </div></body>';
+
       echo "<script type='text/javascript'>setTimeout(function(){
         document.location.href='./';
       },3000);</script>";

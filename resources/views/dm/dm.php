@@ -1,5 +1,5 @@
 <?php
-
+  DB::update('update userinfo set msgCheck = 0 where userPK = ?',[$_SESSION['userPK']]);
 ?>
 <!-- FOUC(Flash Of Unstyled Content) 방지 용 head-->
 <head>
@@ -50,6 +50,8 @@
             include_once('../resources/views/header.php');
        ?>
     </div>
+
+    <p id = "uploadtext">Message</p>
 
     <div id = 'contents'>
         <div id = 'DMTotalList'>

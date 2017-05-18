@@ -27,7 +27,13 @@ class UserController extends Controller
           $GLOBALS['photoURL'] = $user->ProfilePhotoURL;
         }
 
-        $GLOBALS['notification'] = DB::select("select A.notificationPK ,A.notificationKind,B.eventCheck, B.userPK,B.ProfilePhotoURL,
+        $eventChecks = DB::select("select eventCheck,msgCheck from userinfo where userPK = ?",[$_SESSION['userPK']]);
+        foreach($eventChecks as $eventCheck){
+          $GLOBALS['eventCheck'] = $eventCheck->eventCheck;
+          $GLOBALS['msgCheck']=$eventCheck->msgCheck;
+        }
+
+        $GLOBALS['notification'] = DB::select("select A.checknotification, A.notificationPK ,A.notificationKind, B.userPK,B.ProfilePhotoURL,
           B.Name,C.title,C.artPK, D.Position,A.notificationPlacePK
           from notification as A left join userinfo as B on A.senderuserPK = B.userPK
           left join totalart as C on C.artPK = A.notificationPlacePK
@@ -82,12 +88,42 @@ $A->index();
 
         }else{
 
+
           // <button id = "yourart" class="icons"></button>
           echo '<div id="buttons">
-          <button id = "dm" class="icons" title = "DM"></button>
-          <button id = "notification" class = "icons_none" title="알림"</button>
-            <button id = "upload" class="icons" title="업로드"></button>
-            <button id = "logout" class="icons" title="로그아웃"></button>
+          <button id = "dm" class="icons" title = "DM">';
+          echo '<div>';
+          if($GLOBALS['msgCheck']==0){
+            echo "";
+          }
+          else if($GLOBALS['msgCheck']<=9){
+            echo "<img id = 'notiSmallImage' class = 'smallImage' src ='/mainImage/notiLogo/noti".$GLOBALS['msgCheck'].".png'></img>";
+          }else{
+            echo "<img id = 'notiSmallImage' class = 'smallImage 'src ='/mainImage/notiLogo/noti9p.png'></img>";
+          }
+          echo '</div>';
+          echo '<span class = "tooltiptext">메세지</span>
+          </button>
+          <button id = "notification" class = "icons_none" title="알림" style = "background-image: url(mainImage/notioff.png)">';
+
+          echo '<div>';
+          if($GLOBALS['eventCheck']==0){
+          }
+          else if($GLOBALS['eventCheck']<=9){
+            echo "<img id = 'notiSmallImage' class = 'smallImage' src ='/mainImage/notiLogo/noti".$GLOBALS['eventCheck'].".png'></img>";
+          }else{
+            echo "<img id = 'notiSmallImage' class = 'smallImage 'src ='/mainImage/notiLogo/noti9p.png'></img>";
+          }
+          echo '</div>';
+
+          echo '<span class = "tooltiptext">알림</span>
+          </button>
+            <button id = "upload" class="icons" title="업로드">
+              <span class = "tooltiptext">업로드</span>
+            </button>
+            <button id = "logout" class="icons" title="로그아웃">
+              <span class = "tooltiptext">로그아웃</span>
+            </button>
             <div id = "notification_out" class = "notification_out_none">
               <p id="notiText">알림</p>
               <div id = "notiBox">

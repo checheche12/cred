@@ -65,6 +65,7 @@
           <ul id="titleButton">
             <li id = "Project">프로젝트</li>
             <li id = "Bridge">크레딧 공유자</li>
+            <li id = "Connected">커넥트 공유자</li>
             <?php
             if($_SESSION['isGroup']=="Group"){
               echo "<li id = 'Members'>멤버</li>";

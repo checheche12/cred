@@ -64,6 +64,10 @@ class checkAddCredit extends Controller
             }
 
           }
+
+          $GLOBALS['MyGroups'] = DB::select('select * from groupMemberDB left join
+          userinfo on groupPK = userinfo.userPK
+          where groupMemberDB.userPK = ?',[$_SESSION['userPK']]);
         }
       }
 
@@ -81,7 +85,7 @@ class checkAddCredit extends Controller
       <?php
       echo '<div class="profileFrame">';
       echo '<div class="upperInfo">';
-      
+
       if($GLOBALS['userPK']==$_SESSION['userPK']){
         echo '<img id = "profileImage2" style="margin-left:30px;" src = '.$GLOBALS['photoURL'].'>';
       }else{
@@ -98,6 +102,7 @@ class checkAddCredit extends Controller
       echo '</div>';
       echo '<div class="lowerInfo">';
       echo '<div class="infoD"><p class="infoLabel"><img id="contacticon" class="infoIconClass" src="/mainImage/airplaneicon.png">연락처</p><p id="emailP" class="infoDetail">'.$GLOBALS['email'].'</p></div>';
+
       if($_SESSION['isGroup']!="Group"){
         echo '<hr id="infoSplit">';
         echo '<div class="infoD"><p class="infoLabel"><img id="educationicon" class="infoIconClass" src="/mainImage/educationicon.png">학교</p><p id="educationInfo" class="infoDetail">'.$GLOBALS['education'].'</p></div>';
@@ -127,7 +132,17 @@ class checkAddCredit extends Controller
           <p id="exPosition'.$i.'" class="exP">'.$temp[0].'</p>
         </div>';
         $i++;
-      }
+        }
+        echo '</div>';
+        foreach($GLOBALS['MyGroups'] as $MyGroup){
+          echo '<div class = "myGroup">
+            <p class = "infoLabel"><img class = "infoIconClass" src = "/mainImage/group.png">소속 그룹</img></p><a href = "/anotherProfile?int='.$MyGroup->groupPK.'"><p class = "infoDetail">'.$MyGroup->Name.'</p></a>
+          </div>'
+          ;
+        }
+
+
+
       } // if PERSON end
 
       if($_SESSION['isGroup']=="Group"){
@@ -158,8 +173,9 @@ class checkAddCredit extends Controller
 
           echo'<hr id="infoSplit">
           <div class="infoD"><p class="infoLabel"><img id="workicon" class="infoIconClass" src="/mainImage/workicon.png">그룹소개</p><p class="infoDetail">'.$GLOBALS['description'].'</p></div>';
+          echo '</div>';
         }// if GROUP end
-        echo '</div></div></div>';  //lowerInfo division end
+        echo '</div></div>';  //lowerInfo division end
         ?>
 
         <script>

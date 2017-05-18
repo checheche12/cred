@@ -78,7 +78,7 @@ ul {
 	margin: 0 40 0 -40;
 	box-sizing: border-box;
 }
-#Project, #Bridge, #Members {
+#Project, #Bridge, #Members, #Connected {
 	border: none;
 	border-radius: 3px;
 	display: inline-block;
@@ -88,7 +88,7 @@ ul {
 	cursor: pointer;
 	color: black;
 }
-#Bridge:hover, #Project:hover, #Members:hover{
+#Bridge:hover, #Project:hover, #Members:hover, #Connected:hover{
 	border: none ;
 	text-decoration: underline;
 	cursor: pointer;

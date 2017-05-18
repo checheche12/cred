@@ -8,6 +8,8 @@ var Bridge = document.getElementById('Bridge');
 
 var Members = document.getElementById('Members');
 
+var Connected = document.getElementById('Connected');
+
 var token;
 
 var addMemberBt = document.getElementById('addMember');
@@ -54,7 +56,10 @@ function bridgeLogDisplay(){
 	})
 
 }//bridgeLogDisplay()
+
 $('#Project').addClass('selected');
+
+
 Project.addEventListener("click", function() {	//	<-- 중복 클릭이 되서 .one 이라는 jquery 로 바꿨음. 확인 시 지울것. -soo
 	// $("#Project").one("click",function(){
 
@@ -63,17 +68,18 @@ Project.addEventListener("click", function() {	//	<-- 중복 클릭이 되서 .o
 
 	$('#Bridge').removeClass('selected');
 	$('#Members').removeClass('selected');
+	$('#Connected').removeClass('selected');
 	if ($(this).hasClass('selected')) {
 	}
 	else
 	{
 		$('#Project').addClass('selected');
-            	// $(this).addClass('selected');
-                //Insert event handling logic
-            }
-            $('#memberAddFrame').css('display','none');
+	  // $(this).addClass('selected');
+	  //Insert event handling logic
+  }
+  $('#memberAddFrame').css('display','none');
 
-        });
+});
 
 Bridge.addEventListener("click", function() {
 
@@ -83,16 +89,17 @@ Bridge.addEventListener("click", function() {
 	bridge(Data);
 	$('#Project').removeClass('selected');
 	$('#Members').removeClass('selected');
+	$('#Connected').removeClass('selected');
 	if ($(this).hasClass('selected')) {
 	}
 	else
 	{
 		$('#Bridge').addClass('selected');
-            	// $(this).addClass('selected');
-                //Insert event handling logic
-            }
-            $('#memberAddFrame').css('display','none');
-        });
+    // $(this).addClass('selected');
+    //Insert event handling logic
+  }
+  $('#memberAddFrame').css('display','none');
+});
 
 if(Members!=undefined){
 
@@ -101,6 +108,7 @@ if(Members!=undefined){
 		memberFunction(abcde);
 		$('#Bridge').removeClass('selected');
 		$('#Project').removeClass('selected');
+		$('#Connected').removeClass('selected');
 		if ($(this).hasClass('selected')) {
 		}
 		else
@@ -108,11 +116,29 @@ if(Members!=undefined){
 			$('#Members').addClass('selected');
 			            	// $(this).addClass('selected');
 			                //Insert event handling logic
-			            }
-			            $('#memberAddFrame').css('display','block');
-			        })
+		}
+			$('#memberAddFrame').css('display','block');
+	})
 
 }
+
+Connected.addEventListener("click",function(){
+	var Data = {"_token" : token};
+	Data['userPK'] = userPK;
+	connected(Data);
+	$('#Project').removeClass('selected');
+	$('#Members').removeClass('selected');
+	$('#Bridge').removeClass('selected');
+	if ($(this).hasClass('selected')) {
+	}
+	else
+	{
+		$('#Connected').addClass('selected');
+    // $(this).addClass('selected');
+    //Insert event handling logic
+  }
+  $('#memberAddFrame').css('display','none');
+});
 
 // var infoDetail = document.getElementsByClassName("infoDetail");
 

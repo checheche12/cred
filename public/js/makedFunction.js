@@ -112,7 +112,7 @@ function bridge(Data){
     $('#projectLayout').text('');
     $('#bridgeLayout').text('');
    // 0 email, 1 name 2 포토 url 3 career 4 education 5 userPK 6 isgroup
-   $('#bridgeLayout').append(data);
+    $('#bridgeLayout').append(data);
  },
  error: function(){
    alert('error');
@@ -121,6 +121,23 @@ function bridge(Data){
 
   	// $(location).attr('href','/bridge');
   }
+
+
+function connected(Data){
+  $.ajax({
+    type:'POST',
+    url:'/connected',
+    data : Data,
+    success:function(data){
+      $('#projectLayout').text('');
+      $('#bridgeLayout').text('');
+      $('#bridgeLayout').append(data);
+    },
+    error:function(){
+      alert('error');
+    }
+  })
+}
 
 
   function memberFunction(Data){

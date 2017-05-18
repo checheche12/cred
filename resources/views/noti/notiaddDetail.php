@@ -10,7 +10,7 @@ class notiaddClass
 
       public function notiadd()
       {
-            $GLOBALS['notification'] = DB::select("select A.notificationPK ,A.notificationKind,B.userPK,B.ProfilePhotoURL,
+            $GLOBALS['notification'] = DB::select("select A.checknotification, A.notificationPK ,A.notificationKind,B.userPK,B.ProfilePhotoURL,
               B.Name,C.title,C.artPK, D.Position,A.notificationPlacePK
               from notification as A left join userinfo as B on A.senderuserPK = B.userPK
               left join totalart as C on C.artPK = A.notificationPlacePK

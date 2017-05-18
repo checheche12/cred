@@ -8,6 +8,8 @@ var Members = document.getElementById('Members');
 
 var DirectMessage = document.getElementById('DirectMessage');
 
+var Connected = document.getElementById('Connected');
+
 var token;
 
 	$.ajax({
@@ -62,16 +64,19 @@ Project.addEventListener("click", function() {	//	<-- 중복 클릭이 되서 .o
 	// 토큰값을 가지고 와야한다. 토큰용 php 파일을 하나 만든다.
 	bridgeLogDisplay();
 
-		$('#Bridge').removeClass('selected');
-		$('#Members').removeClass('selected');
+	$('#Bridge').removeClass('selected');
+	$('#Members').removeClass('selected');
+	$('#Connected').removeClass('selected');
 	if ($(this).hasClass('selected')) {
 	}
 	else
 	{
 		$('#Project').addClass('selected');
-            	// $(this).addClass('selected');
-                //Insert event handling logic
+	  // $(this).addClass('selected');
+	  //Insert event handling logic
   }
+  $('#memberAddFrame').css('display','none');
+
 
 });
 // DB에서 값 긁어 오는지 볼려고 만든 함수인데 잘 긁어 와짐. 만족함. 당연히 나중에
@@ -81,40 +86,62 @@ Project.addEventListener("click", function() {	//	<-- 중복 클릭이 되서 .o
 
 Bridge.addEventListener("click", function() {
 
-	    var Data = {"_token" : token};
-			Data['userPK'] = userPK;
-			bridge(Data);
-			$('#Project').removeClass('selected');
-			$('#Members').removeClass('selected');
-			if ($(this).hasClass('selected')) {
-			}
-			else
-			{
-				$('#Bridge').addClass('selected');
-		            	// $(this).addClass('selected');
-		                //Insert event handling logic
-		  }
+	var Data = {"_token" : token};
+	Data['userPK'] = userPK;
+	bridge(Data);
+	$('#Project').removeClass('selected');
+	$('#Members').removeClass('selected');
+	$('#Connected').removeClass('selected');
+	if ($(this).hasClass('selected')) {
+	}
+	else
+	{
+		$('#Bridge').addClass('selected');
+		// $(this).addClass('selected');
+		//Insert event handling logic
+	}
+	$('#memberAddFrame').css('display','none');
 });
 
 
 if(Members!=undefined){
 
-		var abcde = {"userPK" : userPK};
-		Members.addEventListener("click", function(){
-				memberFunction(abcde);
-				$('#Bridge').removeClass('selected');
-				$('#Project').removeClass('selected');
-				if ($(this).hasClass('selected')) {
-				}
-				else
-				{
-					$('#Members').addClass('selected');
-			            	// $(this).addClass('selected');
-			                //Insert event handling logic
-			  }
-		})
+	var abcde = {"userPK" : userPK};
+	Members.addEventListener("click", function(){
+		memberFunction(abcde);
+		$('#Bridge').removeClass('selected');
+		$('#Project').removeClass('selected');
+		$('#Connected').removeClass('selected');
+		if ($(this).hasClass('selected')) {
+		}
+		else
+		{
+			$('#Members').addClass('selected');
+										// $(this).addClass('selected');
+											//Insert event handling logic
+		}
+			$('#memberAddFrame').css('display','block');
+	})
 
 }
+
+Connected.addEventListener("click",function(){
+	var Data = {"_token" : token};
+	Data['userPK'] = userPK;
+	connected(Data);
+	$('#Project').removeClass('selected');
+	$('#Members').removeClass('selected');
+	$('#Bridge').removeClass('selected');
+	if ($(this).hasClass('selected')) {
+	}
+	else
+	{
+		$('#Connected').addClass('selected');
+    // $(this).addClass('selected');
+    //Insert event handling logic
+  }
+  $('#memberAddFrame').css('display','none');
+});
 
 if(DirectMessage != undefined){
 	$(DirectMessage).click(function(){

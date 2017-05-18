@@ -104,6 +104,10 @@ class checkAddCredit extends Controller
               }
           }
 
+          $GLOBALS['MyGroups'] = DB::select('select * from groupMemberDB left join
+          userinfo on groupPK = userinfo.userPK
+          where groupMemberDB.userPK = ?',[$_GET['int']]);
+
         }
       }
 
@@ -142,23 +146,19 @@ class checkAddCredit extends Controller
 
       // if문으로 버튼 상태를 구현해주어야 한다.
       if($GLOBALS['stats'] == "요청 받음"){
-        echo '<div id = "applydeny"><button class = "connect" stats = '.$GLOBALS['stats'].' id = "connectapply">수락</button>';
-        echo '<button class = "connect noHover" stats = '.$GLOBALS['stats'].' id = "connectdeny">거절</button>';
-        echo '</div></div>';
-      }elseif($GLOBALS['stats'] == "크레딧 공유됨"){
-        echo '<button class = "connect noHover" stats = '.$GLOBALS['stats'].' id = "creditSharin">'.$GLOBALS['stats'].'</button>';
+        echo '<div id = "applydeny"><button class = "connect" stats = "'.$GLOBALS['stats'].'" id = "connectapply">수락</button>';
+        echo '<button class = "connect noHover" stats = "'.$GLOBALS['stats'].'" id = "connectdeny">거절</button>';
         echo '</div>';
-      }elseif($GLOBALS['stats'] == "인맥 "){
-        echo '<button class = "connect noHover" stats = '.$GLOBALS['stats'].' id = "connected">'.$GLOBALS['stats'].'</button>';
-        echo '</div>';
-      }elseif($GLOBALS['stats'] == "인맥 요청함"){
-        echo '<button class = "connect noHover" stats = '.$GLOBALS['stats'].' id = "connectPending">'.$GLOBALS['stats'].'</button>';
-        echo '</div>';
-      }elseif($GLOBALS['stats'] == "인맥 추가"){
-        echo '<button class = "connect Hover" stats = '.$GLOBALS['stats'].' id = "connect">'.$GLOBALS['stats'].'</button>';
-        echo '</div>';
+      }else if($GLOBALS['stats'] == "크레딧 공유됨"){
+        echo '<button class = "connect noHover" stats = "'.$GLOBALS['stats'].'" id = "creditSharin">'.$GLOBALS['stats'].'</button>';
+      }else if($GLOBALS['stats'] == "인맥"){
+        echo '<button class = "connect noHover" stats = "'.$GLOBALS['stats'].'" id = "connected">'.$GLOBALS['stats'].'</button>';
+      }else if($GLOBALS['stats'] == "인맥 요청함"){
+        echo '<button class = "connect noHover" stats = "'.$GLOBALS['stats'].'" id = "connectPending">'.$GLOBALS['stats'].'</button>';
+      }else if($GLOBALS['stats'] == "인맥 추가"){
+        echo '<button class = "connect Hover" stats = "'.$GLOBALS['stats'].'" id = "connect">'.$GLOBALS['stats'].'</button>';
       }
-
+      echo '</div>';
 
       echo '<div class="lowerInfo">';
       echo '<div class="infoD"><p class="infoLabel"><img id="contacticon" class="infoIconClass" src="/mainImage/airplaneicon.png">연락처</p><p id="emailP" class="infoDetail">'.$GLOBALS['email'].'</p></div>';
@@ -191,7 +191,15 @@ class checkAddCredit extends Controller
           <p id="exPosition'.$i.'" class="exP">'.$temp[0].'</p>
         </div>';
         $i++;
-      }
+        }
+        echo '</div>';
+        foreach($GLOBALS['MyGroups'] as $MyGroup){
+          echo '<div class = "myGroup">
+            <p class = "infoLabel"><img class = "infoIconClass" src = "/mainImage/group.png">소속 그룹</img></p><a href = "/anotherProfile?int='.$MyGroup->groupPK.'"><p class = "infoDetail">'.$MyGroup->Name.'</p></a>
+          </div>'
+          ;
+        }
+
       } // if PERSON end
 
       if($GLOBALS['isGroup']=="1"){ //그룹일 시
@@ -219,8 +227,9 @@ class checkAddCredit extends Controller
 
           echo'<hr id="infoSplit">
           <div class="infoD"><p class="infoLabel"><img id="workicon" class="infoIconClass" src="/mainImage/workicon.png">그룹소개</p><p class="infoDetail">'.$GLOBALS['description'].'</p></div>';
+          echo '</div>';
         }// if GROUP end
-        echo '</div></div></div>';  //lowerInfo division end
+        echo '</div></div>';  //lowerInfo division end
         ?>
 
         <script>

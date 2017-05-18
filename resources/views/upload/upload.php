@@ -78,7 +78,7 @@
   ?>
 </div>
 
-<p id = "uploadtext" >UPLOAD</p>
+<p id = "uploadtext" >Upload</p>
 
 <div id = "video">
 

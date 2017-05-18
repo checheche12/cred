@@ -36,7 +36,14 @@ $("#send").click(function(){
 				url : '/dmSend',
 				data : Data,
 				success:function(data){
-					location.reload();
+          var string = "<div class = 'right'>"+
+                "<p class='Date'>"+data+"</p>"+
+                "<div class = 'rtext'>"+Data['DMText']+"</div>"+
+                "<img class = 'rightImg' src = '"+$("#profileImage").attr('src')+"'>"+
+                "</div>";
+					$("#DMDetail").append(string);
+          var k = $('body').prop("scrollHeight");
+          $("#DMDetail").scrollTop(k);
 				}
 			})
 

@@ -17,13 +17,16 @@ html {
 	margin-top : 80px;
 }
 
-#uploadtext{
-	font-family: 'Abril Fatface', cursive;
-	margin-left: 100px;
-	margin-top: 80px;
-	margin-bottom: 10px;
-	font-size: 40px;
-	font-weight: lighter;
+#uploadtext {
+    border-top: 3px solid #000;
+    margin-left: 90px;
+    margin-top: 80px;
+    margin-bottom: 10px;
+    font-size: 2vw;
+    padding-top: 5px;
+    letter-spacing: -1px;
+    background-color: white;
+    max-width: 1200px;
 }
 
 #video {
@@ -96,7 +99,7 @@ html {
 input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
 	color: #999;
 	font-size: 11px;
-	
+
 }
 .submitButton{
 	float: right;
@@ -161,7 +164,7 @@ button:hover {
 }
 
 .xImage:after {
-	content: '✖';  UTF-8 symbol 
+	content: '✖';  UTF-8 symbol
 }
 #deleteButton{
 	float: left;

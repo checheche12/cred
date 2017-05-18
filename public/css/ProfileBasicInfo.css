@@ -73,7 +73,9 @@
 .infoDetail{
 	text-align: left;
 	word-break: break-word;
-	width: 200px;
+	width: 350px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 #exInfo{
 	display: inline-block;
@@ -106,9 +108,9 @@
 	background-size: 100%;
 	transition:  all 0.8s;
 }
-.profileFrame{ 
+.profileFrame{
 	text-align: center;
-	width: 340px; 
+	width: 340px;
 }
 #contacticon,#educationicon, #skillicon, #workicon, #awardicon{
 	width: 18px;
@@ -153,10 +155,20 @@ p{
 p.award, #emailP, .infoLabel, .infoIconClass{
 	cursor: unset;
 }
+
+.infoIconClass{
+	width: 20px;
+	 float: left;
+	 padding-right: 10px;
+	 margin-top: -7px;
+}
+
+
+
 #DirectMessage, .connect{
 	background-color: white;
 	color: #262626 ;
-	border: 1px solid #dbdbdb ;
+	border: 1px solid #dbdbdb;
 	text-align: center;
 	text-decoration: none;
 	display: inline-block;
@@ -171,4 +183,18 @@ p.award, #emailP, .infoLabel, .infoIconClass{
 	color: #fff;
 	border: 1px solid #ed2a7b ;
 	background-color: #ed2a7b ;
+}
+
+
+.myGroup{
+	float:left;
+}
+
+p.infolabel{
+	display: inline-block;
+    margin-left: 15px;
+    font-size: 0.75rem !important;
+    float: left;
+    text-align: left;
+    width: 120px;
 }

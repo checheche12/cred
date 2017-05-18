@@ -57,8 +57,16 @@ $(notification).click(function(e){
 		$(notification).attr('class',"icons");
 		$(notification_out).attr('class',"notification_out");
 		$(notification).css('background-image','url(mainImage/notion.png)');
-
+		$('#notiSmallImage').remove();
 		e.stopPropagation();
+		$.ajax({
+				type : 'GET',
+				url : '/notiGotoZero',
+				success:function(data){
+
+				}
+		});
+
 	}else{
 		$(notification).attr('class',"icons_none");
 		$(notification_out).attr('class',"notification_out_none");

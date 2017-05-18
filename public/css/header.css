@@ -83,7 +83,7 @@ button:hover{
     height: 60%;
     margin-left: 3.125vmax;
 	margin-top: 0.6vmax;
-	
+
 }
 
 .headIcons {
@@ -163,6 +163,11 @@ button:hover{
 .dropdown:hover .dropbtn {
 	background-color: #ed2a7b;
 }
+
+[hovertext]:hover{
+	position:relative;
+}
+
 #upload{
 	background-image: url(/mainImage/uploadiconblack.png);
 }
@@ -226,6 +231,7 @@ button:hover{
 }
 
 .icons_none{
+	position: relative;
 	width: 3vmax;
 	height: 2.5vmax;
 	background-color: white;
@@ -254,10 +260,9 @@ button:hover{
 #logout:hover {
 	/*이미지 아직 없음*/
 }
-.icons:hover{
-	color: white;
-}
+
 .icons{
+	position :relative;
 	width: 3vmax;
 	height: 2.5vmax;
 	background-color: white;
@@ -274,6 +279,36 @@ button:hover{
 	cursor: pointer;
 	transition: all 0.3s;
 }
+
+.tooltiptext{
+	color: #999;
+	font-size: 0.5vmax;
+}
+
+.icons .tooltiptext{
+	padding-top: 1.5vw;
+	left : 1px;
+	text-align: center;
+	visibility: hidden;
+	position: absolute;
+}
+
+.icons_none .tooltiptext{
+	left : 0.5vw;
+	padding-top: 1.5vw;
+	text-align: center;
+	visibility: hidden;
+	position: absolute;
+}
+
+.icons:hover .tooltiptext{
+	visibility: visible;
+}
+
+.icons_none:hover .tooltiptext{
+	visibility: visible;
+}
+
 #upBtSp{
 	margin-left: 10px;
 }
@@ -352,6 +387,8 @@ ul{
 	cursor: pointer;
 }
 .notiStatement{
+	white-space: normal;
+	padding-right: 7vw;
 	display: inline-block;
 	font-size: 0.8vw;
 	word-wrap: break-word;
@@ -359,4 +396,10 @@ ul{
 #notiText{
 	padding: 12px;
 	font-weight: bolder;
+}
+
+.smallImage{
+	position: absolute;
+	width:1.2vw;
+
 }

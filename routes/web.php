@@ -198,6 +198,10 @@ Route::group(['middleware' => ['isLogin']] ,function(){
 			return view('noti.notiaddDetail');
 		});
 
+		Route::post('/connected',function(){
+			return view('connected');
+		});
+
 
 		//Connect 관련한 route들
 
@@ -215,6 +219,10 @@ Route::group(['middleware' => ['isLogin']] ,function(){
 
 		Route::get('/requestCredit',function(){
 			return view('posting.requestCredit');
+		});
+
+		Route::get('/notiGotoZero',function(){
+			return view('noti.notiGotoZero');
 		});
 
 });

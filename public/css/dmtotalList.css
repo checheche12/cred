@@ -1,11 +1,13 @@
 #contents{
-	margin-top: 10vh;
+	margin-top: 12vh;
 	text-align: center;
 	width: 100%;
 	height: 1000px;
 	display: flex;
-	margin-left: 20%;
+	margin-left: 12%;
 }
+
+
 
 #DMTotalList{
 	display: inline-block;
@@ -63,19 +65,34 @@
 }
 .dmListSelection{
 	height: 50px;
-	width: 270px;
-	font-size: 14px;
-	padding: 5px;
-	padding-left: 15px;
-	padding-right: 15px;
-	text-align: left;
-	transition: 0.2s all;
+	 width: 270px;
+	 font-size: 14px;
+	 padding: 5px;
+	 padding-left: 15px;
+	 padding-right: 15px;
+	 border-bottom: 1px solid #e6e6e6 ;
+	 text-align: left;
+	 transition: 0.2s all;
 }
+
+p.contextSent, p.contextrecieved{
+float: left;
+color: #4b4f56 ;
+}
+p.finaldate{
+text-align: right;
+font-size: 0.7rem;
+color: #90949C;
+}
+p.listsent, p.listrecieved{
+color: #1d2129 ;
+}
+
 .dmActive{
 	box-shadow: 4px 0 0 #ed2a7b inset, 0 -1px 0 #f3f6f8 inset;
 }
 .dmListSelection:hover{
-	background: #d4d4d4;
+	background: #fafafa;
 	cursor: pointer;
 	box-shadow: 4px 0 0 #ed2a7b inset, 0 -1px 0 #f3f6f8 inset;
 }
@@ -95,4 +112,5 @@
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	width: 200px;
+	height: 1.5vw;
 }

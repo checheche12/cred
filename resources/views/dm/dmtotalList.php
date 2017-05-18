@@ -34,6 +34,9 @@ class DMTotalListClass
               echo "<img class = 'img' src = '".$SelectDMLast->RecieverProfilePhotoURL."'></img>";
               echo '<p class="listSent">'.$SelectDMLast->RecieverName.' 님께 보낸 메세지</p>';
               echo '<p class="contextSent">'.$SelectDMLast->context.'</p>';
+              $date = date("Y-m-d H:m",strtotime($SelectDMLast->sendDate));
+              echo '<p class="finalDate">'.$date.'</p>';
+
             }else{
               echo '<a class="dmAnchor" href = "/dm?userPK='.$SelectDMLast->senderuserPK.'">';
               if($clickedPK==$SelectDMLast->senderuserPK){
@@ -44,6 +47,8 @@ class DMTotalListClass
               echo "<img class = 'img' src = '".$SelectDMLast->SenderProfilePhotoURL."'></img>";
               echo '<p class="listRecieved">'.$SelectDMLast->SenderName.' 님께 받은 메세지</p>';
               echo '<p class="contextRecieved">'.$SelectDMLast->context.'</p>';
+              $date = date("Y-m-d H:m",strtotime($SelectDMLast->sendDate));
+              echo '<p class="finalDate">'.$date.'</p>';
             }
 
             echo '</div>';
