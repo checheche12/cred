@@ -10,7 +10,9 @@ class DMTotalListClass
 
       public function DMTotalList($clickedPK)
       {
-        $SelectsDMTotalLists = DB::select("select distinct least(A.senderuserPK, A.recieveruserPK) as value1, greatest(A.senderuserPK,A.recieveruserPK) as value2 from DirectMessage as A where senderuserPK = ? or recieveruserPK = ?",[$_SESSION['userPK'],$_SESSION['userPK']]);
+        $SelectsDMTotalLists = DB::select("select least(senderuserPK, recieveruserPK) as value1,
+        greatest(senderuserPK, recieveruserPK) as value2 , MAX(DMPK) as DMPK from DirectMessage where
+         senderuserPK = ? or recieveruserPK = ? group by value1, value2 order by MAX(DMPK) desc;",[$_SESSION['userPK'],$_SESSION['userPK']]);
 
         foreach($SelectsDMTotalLists as $SelectsDMTotalList){
 
@@ -24,6 +26,7 @@ class DMTotalListClass
             [$SelectsDMTotalList->value1,$SelectsDMTotalList->value2,$SelectsDMTotalList->value2,$SelectsDMTotalList->value1]);
 
           foreach($SelectDMLasts as $SelectDMLast){
+
             if($_SESSION['userPK']==$SelectDMLast->senderuserPK){
               echo '<a class="dmAnchor" href = "/dm?userPK='.$SelectDMLast->recieveruserPK.'">';
               if($clickedPK==$SelectDMLast->recieveruserPK){

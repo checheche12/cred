@@ -362,6 +362,15 @@ Route::get('/denycredit',function(){
 
 
 // testing
-Route::get('/eventCheck',function(){
-	return view('intro.eventCheck');
+Route::get('/eventStatus',function(){
+	return view('intro.eventStatus');
+});
+
+
+Route::get('/bugReport',function(){
+	return view('bugReport.bugReport');
+});
+
+Route::post('/bugSend',function(){
+	return view('bugReport.bugSend');
 });

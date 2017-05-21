@@ -44,6 +44,7 @@ $("#send").click(function(){
 					$("#DMDetail").append(string);
           var k = $('body').prop("scrollHeight");
           $("#DMDetail").scrollTop(k);
+          $("#DMText").val("");
 				}
 			})
 

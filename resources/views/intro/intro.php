@@ -19,10 +19,10 @@ class Mainpost extends Controller
 
 		//Intro page 에 X 버튼 눌렀나 안 눌렀나 확인하는 장치
 		if($_SESSION['is_login'] == true){
-			$checkFactor = DB::select(DB::raw("select userPK, eventCheck from userinfo where userPK=".$_SESSION['userPK']));
-			$GLOBALS['eventCheck'] = "";
+			$checkFactor = DB::select(DB::raw("select userPK, eventStatus from userinfo where userPK=".$_SESSION['userPK']));
+			$GLOBALS['eventStatus'] = "";
 			foreach($checkFactor as $check){
-				$GLOBALS['eventCheck'] = $check->eventCheck;
+				$GLOBALS['eventStatus'] = $check->eventStatus;
 			}
 		}
 	}
@@ -47,7 +47,7 @@ $A->post();
 		?>
 	</div>
 			<?php
-			if(($_SESSION['is_login'] == true and $GLOBALS['eventCheck']==0) or $_SESSION['is_login'] == false){
+			if(($_SESSION['is_login'] == true and $GLOBALS['eventStatus']==0) or $_SESSION['is_login'] == false){
 				echo'
 				<div id="ContentWidth">
 				<div id="MainContent_Frame">

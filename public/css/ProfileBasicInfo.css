@@ -82,6 +82,7 @@
 }
 .exInfoDetail{
 	text-align: left;
+	clear: both;
 	margin-left: 15px;
 	margin-bottom: 15px;
 }

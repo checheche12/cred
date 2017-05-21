@@ -11,6 +11,7 @@ var searchSlot = document.getElementById('searchSlot');
 var notification = document.getElementById('notification');
 var notification_out = document.getElementById('notification_out');
 var directMessage = document.getElementById('dm');
+var bugReport = document.getElementById('bugReportBt');
 // var hiddenSearchValue = document.createElement("hiddenSearchValue");
 
 var recieverNotiAccount = 0;
@@ -185,6 +186,11 @@ if(directMessage != undefined){
 	});
 }
 
+if(bugReport != undefined){
+	bugReport.addEventListener("click",function(){
+			$(location).attr('href','./bugReport');
+	});
+}
 /*
 nameLengthCheck();
 function nameLengthCheck(){

@@ -121,6 +121,7 @@ $A->index();
             <button id = "upload" class="icons" title="업로드">
               <span class = "tooltiptext">업로드</span>
             </button>
+            <button id = "bugReportBt" class="icons" title="버그리포트">버그리포트</button>
             <button id = "logout" class="icons" title="로그아웃">
               <span class = "tooltiptext">로그아웃</span>
             </button>

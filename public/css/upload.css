@@ -18,15 +18,21 @@ html {
 }
 
 #uploadtext {
-    border-top: 3px solid #000;
-    margin-left: 90px;
-    margin-top: 80px;
-    margin-bottom: 10px;
-    font-size: 2vw;
-    padding-top: 5px;
-    letter-spacing: -1px;
-    background-color: white;
-    max-width: 1200px;
+	border-top: 3px solid #000;
+	margin-left: auto;
+	margin-top: 80px;
+	margin-right: auto;
+	margin-bottom: 10px;
+	font-size: 2vw;
+	padding-top: 5px;
+	letter-spacing: -1px;
+	background-color: white;
+	max-width: 1150px;
+}
+#uploadSheet{
+	width: 1150px;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 #video {
@@ -34,14 +40,13 @@ html {
 	width: 322px;
 	height: 180px;
 	border: 3px solid #e6e6e6 ;
-	margin-left: 90px;
 	float: left;
 	background: black;
 }
 
 #contextBox {
 	background: white;
-	margin-left: 500px;
+	margin-left: 350px;
 	width: 700px;
 	padding: 50px;
 	height: auto;

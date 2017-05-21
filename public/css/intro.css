@@ -182,3 +182,6 @@ p.name, p.position{
     color: rgb(255, 255, 255);
     font-size: 5rem !important;
 }
+.workTitle{
+	font-size: 0.8rem;
+}

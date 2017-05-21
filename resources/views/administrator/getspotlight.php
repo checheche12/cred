@@ -35,6 +35,7 @@ class getSpotlightClass extends Controller
             foreach($getArts as $getArt){
                 $GLOBALS['artURL']=$getArt->ArtURL;
                 $GLOBALS['uploaderName'] = $getArt->uploaderName;
+                $GLOBALS['title'] = $getArt->title;
             }
             if(self::urlCheck($GLOBALS['artURL'])=="youtube"){
 
@@ -51,7 +52,7 @@ class getSpotlightClass extends Controller
             echo '<div class="RecentWork">
               <a href="/post?int='.$artPKArr[$i].'">
                 <img class="RecentWorkPic" src="'.$GLOBALS['artURL'].'"></a>
-                
+                <p class = "workTitle">'.$GLOBALS['title'].'</p>
                 <div class="credit">
                   <div class="position_Frame">';
 

@@ -6,7 +6,7 @@ $("#xBt").on('click',function(){
 	$("#ContentWidth").remove();
 	$.ajax({
 		type:'GET',
-		url:'/eventCheck',
+		url:'/eventStatus',
 		success:function(data){
 			alert("Button Disable");
 		},error: function(){
