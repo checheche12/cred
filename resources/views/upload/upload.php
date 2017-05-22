@@ -99,7 +99,11 @@
       <p class="help">작품제작에 참여한 모든 이들이 주인공입니다.<br>영상 제작에 기여한 모든 사람들을 크레딧에 달아주세요.</p>
 
     </div>
+    <!-- menu-container 들은 autocomplete width 조정을 위한 목적으로 존재 함. css 를 다루기 쉽게 하기 위해 생성-->
+    <div id="email-menu-container"></div>
+    <div id="position-menu-container"></div>
     <input id = "email" type="text" placeholder="이름 / e-mail"></input>
+
     <input id = "position" type="text" placeholder="포지션 (ex.촬영, 기획, 클라이언트, 협력사, ...)"></input>
     <button id = "submitCredit" >+추가</button><br><br>
     <!-- 추가된 크레딧 -->

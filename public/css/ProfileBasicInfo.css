@@ -75,7 +75,6 @@
 	word-break: break-word;
 	width: 350px;
 	text-overflow: ellipsis;
-	white-space: nowrap;
 }
 #exInfo{
 	display: inline-block;
@@ -159,9 +158,9 @@ p.award, #emailP, .infoLabel, .infoIconClass{
 
 .infoIconClass{
 	width: 20px;
-	 float: left;
-	 padding-right: 10px;
-	 margin-top: -7px;
+	float: left;
+	padding-right: 10px;
+	margin-top: -7px;
 }
 
 
@@ -193,9 +192,14 @@ p.award, #emailP, .infoLabel, .infoIconClass{
 
 p.infolabel{
 	display: inline-block;
-    margin-left: 15px;
-    font-size: 0.75rem !important;
-    float: left;
-    text-align: left;
-    width: 120px;
+	margin-left: 15px;
+	font-size: 0.75rem !important;
+	float: left;
+	text-align: left;
+	width: 120px;
+}
+
+#specialtyInfo{
+	margin-top: auto;
+	margin-bottom: auto;
 }

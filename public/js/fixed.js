@@ -162,9 +162,17 @@ function statusChangeCallback(response) {
  }(document, 'script', 'facebook-jssdk'));
   /*End of Facebook API*/
 
+
+// 사이즈 조정하는 코드
+jQuery.ui.autocomplete.prototype._resizeMenu = function () {
+  var ul = this.menu.element;
+  ul.outerWidth($('#email-menu-container').outerWidth());
+}
+
+
 //upload autocomplete
 $("#email").autocomplete({
-  minLength: 1,
+  minLength: 0,
   source: function( request, response ) {
     var Data = {"_token" : token};
     Data['email'] = Email.value;
@@ -188,9 +196,9 @@ $("#email").autocomplete({
         return false;
       }
     })
-.on( "autocompleteselect", function( event, ui ) {
-  return false;
-} )
+.on("focus", function () {
+  $(this).autocomplete("search", "");
+})
 .autocomplete( "instance" )._renderItem = function( ul, item ) {
   return $( '<li id="suggestList">' )
   .append( '<li class = "suggestList"> name : '+item[0]+' email : '+item[1]+'</li>')
@@ -341,24 +349,24 @@ submitButton.addEventListener("click",function(){
 
 deleteButton.addEventListener("click",function(){
   if(confirm("글 삭제 수락 시 모든 크레딧 공유 유저로부터 영구적으로 삭제 됩니다. 그래도 진행하시겠습니까?")==true){
-  var Data3 = {"int" : artPK};
-  console.log("deleteButton Clicked");
-  $.ajax({
-    url:'./delete',
-    type:'GET',
-    data: Data3,
-    success:function(data){
-      alert('글 삭제 성공 메인으로 돌아갑니다.');
-      alert(data);
-      $(location).attr('href','/main');
-    },
+    var Data3 = {"int" : artPK};
+    console.log("deleteButton Clicked");
+    $.ajax({
+      url:'./delete',
+      type:'GET',
+      data: Data3,
+      success:function(data){
+        alert('글 삭제 성공 메인으로 돌아갑니다.');
+        alert(data);
+        $(location).attr('href','/main');
+      },
 
-    error: function(){
-      alert('error: 글 삭제 실패');
-    }
+      error: function(){
+        alert('error: 글 삭제 실패');
+      }
 
-  })
-}
+    })
+  }
 });
 
 function goBack(){

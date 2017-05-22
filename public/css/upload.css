@@ -195,3 +195,10 @@ button:hover {
 	color: white;
 	font-weight: lighter;
 }
+
+#email-menu-container{
+	width: 500px;
+}
+#position-menu-container{
+	width: 400px;
+}

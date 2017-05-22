@@ -138,9 +138,15 @@ function statusChangeCallback(response) {
  }(document, 'script', 'facebook-jssdk'));
   /*End of Facebook API*/
 
+  // 사이즈 조정하는 코드
+  jQuery.ui.autocomplete.prototype._resizeMenu = function () {
+    var ul = this.menu.element;
+    ul.outerWidth($('#email-menu-container').outerWidth());
+  }
+
 //upload autocomplete
 $( "#email" ).autocomplete({
-  minLength: 1,
+  minLength: 0,
   source: function( request, response ) {
     var Data = {"_token" : token};
     Data['email'] = Email.value;
@@ -164,9 +170,9 @@ $( "#email" ).autocomplete({
         return false;
       }
     })
-.on( "autocompleteselect", function( event, ui ) {
-  return false;
-} )
+.on("focus", function () {
+  $(this).autocomplete("search", "");
+})
 .autocomplete( "instance" )._renderItem = function( ul, item ) {
   return $( '<li id="suggestList">' )
   .append( '<li class = "suggestList"> name : '+item[0]+' email : '+item[1]+'</li>')

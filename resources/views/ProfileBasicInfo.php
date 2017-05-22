@@ -107,7 +107,7 @@ class checkAddCredit extends Controller
         echo '<hr id="infoSplit">';
         echo '<div class="infoD"><p class="infoLabel"><img id="educationicon" class="infoIconClass" src="/mainImage/educationicon.png">학교</p><p id="educationInfo" class="infoDetail">'.$GLOBALS['education'].'</p></div>';
         echo '<hr id="infoSplit">';
-        echo '<div class="infoD"><p class="infoLabel"><img id="skillicon" class="infoIconClass" src="/mainImage/skillicon.png">전문기술</p><div id="specialtyInfo" class="infoDetail">';
+        echo '<div class="infoD"><p class="infoLabel"><img id="skillicon" class="infoIconClass" src="/mainImage/skillicon.png">전문기술</p><div id="specialtyInfo" class="infoDetail specialtyInfo">';
         $i = 0;
         foreach ($GLOBALS['keywordArr'] as $temp) {
           echo '<p id="specialty'.$i.'" class="specialty">'.$temp.'</p>';
