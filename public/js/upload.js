@@ -248,34 +248,38 @@ addCredit.addEventListener("click",function(){
       var k = JSON.parse(data);
       if(k == 'There is no Email'){
         if(confirm("등록되지 않은 이메일입니다. 만일 가입자가 아닌 사람이라면 확인을 눌러주십시오") == true){
+          if(!position.value){
+            alert("position 이 비어있습니다. (please type in position.)");
+          }else{
+            var j = "<div class = 'creditContext'>";
+            j += ("<p class='position'>"+position.value+"</p>");
+            j += ("<p class='name unsignedUser' style='color:gray'>"+ email.value + "</p>");
+            j += ("<input class='unsignedUserEmail' placeholder='미가입자 email' ></input>");
+            j += ("<a class ='xImage' id = "+NotUserCreditNumber+"></a></div>");
+            $('#creditBox').html();
+            $('#creditBox').append(j);
 
-          var j = "<div class = 'creditContext'>";
-          j += ("<p class='position'>"+position.value+"</p>");
-          j += ("<p class='name'>"+ email.value + "</p>");
-          j += ("<a class ='xImage' id = "+NotUserCreditNumber+"'></a></div>");
-          $('#creditBox').html();
-          $('#creditBox').append(j);
+            var t = [email.value,position.value,NotUserCreditNumber];
+            NotUserCreditArray.push(t);
+            NotUserCreditNumber += 1;
+            $(".xImage").click(function(){
+              var xButton = $(this).closest('div');
+              var xButtonID = $(this).attr('id');
+              xButtonID = xButtonID * 1;
 
-          var t = [email.value,position.value,NotUserCreditNumber];
-          NotUserCreditArray.push(t);
-          NotUserCreditNumber += 1;
-          $(".xImage").click(function(){
-            var xButton = $(this).closest('div');
-            var xButtonID = $(this).attr('id');
-            xButtonID = xButtonID * 1;
-
-            for(var k = 0; k<NotUserCreditArray.length;k++){
-              if(NotUserCreditArray[k].indexOf(xButtonID)!=-1){
-                NotUserCreditArray.splice(k,1);
-                break;
+              for(var k = 0; k<NotUserCreditArray.length;k++){
+                if(NotUserCreditArray[k].indexOf(xButtonID)!=-1){
+                  NotUserCreditArray.splice(k,1);
+                  break;
+                }
               }
-            }
-            $(xButton).remove();
+              $(xButton).remove();
 
-          });
+            });
 
-          $('#email').val("");
-          $('#position').val("");
+            $('#email').val("");
+            $('#position').val("");
+          }
         }
       }else if(dC(k[1])){
         alert("동일한 아이디가 미리 크레딧 되어있습니다. (this user is already credited)")
@@ -333,27 +337,35 @@ cancelButton.addEventListener("click",function(){
 })
 
 submitButton.addEventListener("click",function(){
-  var Data2 = {"_token" : token};
 
-  Data2['Title'] = TitleBox.value;
-  Data2['ArtURL'] = URLBox.value;
-  Data2['Description'] = Description.value.replace(/\n/g, "<br>");
-  Data2['Notuser'] = NotUserCreditArray;
-  Data2['main'] = creditArray;
+//미가입자의 이메일은 submit 시에 바로 가져와서 NotUserCreditArray 직접 넣어준다.
+var unEmail = document.getElementsByClassName("unsignedUserEmail");
+for (var i = 0; i < unEmail.length; i++) {
+  NotUserCreditArray[i].push(unEmail[i].value);
+  console.log(NotUserCreditArray[i]);
+}
 
-  $.ajax({
-    type:'POST',
-    url:'/uploadWriteDB',
-    data : Data2,
-    success:function(data){
-      alert('success  '+ data);
-      $(location).attr('href','/main');
-    },
-    error: function(){
-      console.log(Data2);
-      alert('error');
-    }
-  })
+var Data2 = {"_token" : token};
+
+Data2['Title'] = TitleBox.value;
+Data2['ArtURL'] = URLBox.value;
+Data2['Description'] = Description.value.replace(/\n/g, "<br>");
+Data2['Notuser'] = NotUserCreditArray;
+Data2['main'] = creditArray;
+
+$.ajax({
+  type:'POST',
+  url:'/uploadWriteDB',
+  data : Data2,
+  success:function(data){
+    alert('success  '+ data);
+    $(location).attr('href','/main');
+  },
+  error: function(){
+    console.log(Data2);
+    alert('error');
+  }
+})
 
 });
 function goBack() {

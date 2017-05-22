@@ -53,7 +53,7 @@
 	height: 2vmax;
 	color: #000;
 	background: #fff url(/mainImage/searchicon.png) center no-repeat;
-    background-size: 1.5vmax 1.4vmax;
+	background-size: 1.5vmax 1.4vmax;
 	border: none;
 	text-align: center;
 	margin-left: 0.4vmax;
@@ -80,15 +80,15 @@ button:hover{
 #credImage{
 	float: left;
 	cursor: pointer;
-    height: 60%;
-    margin-left: 3.125vmax;
+	height: 60%;
+	margin-left: 3.125vmax;
 	margin-top: 0.6vmax;
 
 }
 
 .headIcons {
 	position: absolute;
-	display: inline-block;
+	display: inline-flex;
 	right: 0px;
 	margin-top: 0.25vmax;
 	margin-right: 2vmax;
@@ -402,4 +402,15 @@ ul{
 	position: absolute;
 	width:1.2vw;
 
+}
+#aligner{
+	display: inline-block;
+}
+#bugReportBt{
+	width: 80px;
+	color: #ed2a7b ;
+	height: 2.5vmax;
+	background: none;
+	border: none;
+	font-size: 1vmax;
 }

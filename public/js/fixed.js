@@ -55,7 +55,7 @@ $(".xImage").click(function(){
   $(xButton).remove();
 });
 
-$(".xImage2").click(function(){
+$(".xImage").click(function(){
   var xButton = $(this).closest('div');
   var xButtonID = $(this).attr('id');
   xButtonID = xButtonID * 1;
@@ -238,14 +238,15 @@ $(addCredit).click(function(){
 
           var j = "<div class = 'creditContext'>";
           j += ("<p class='position'>"+position.value+"</p>");
-          j += ("<p class='name'>"+ email.value + "</p>");
-          j += ("<a class ='xImage' id = "+NotUserCreditNumber+"'></a></div>");
+          j += ("<p class='name unsignedUser' style='color:gray'>"+ email.value + "</p>");
+          j += ("<input class='unsignedUserEmail' placeholder='미가입자 email' ></input>");
+          j += ("<a class ='xImage' id = "+NotUserCreditNumber+"></a></div>");
           $('#creditBox').append(j);
 
           var t = [email.value,position.value,NotUserCreditNumber];
           NotUserCreditArray.push(t);
           NotUserCreditNumber += 1;
-          $(".xImage2").click(function(){
+          $(".xImage").click(function(){
             var xButton = $(this).closest('div');
             var xButtonID = $(this).attr('id');
             xButtonID = xButtonID * 1;
@@ -319,6 +320,13 @@ cancelButton.addEventListener("click",function(){
 submitButton.addEventListener("click",function(){
   var Data2 = {"_token" : token};
 
+//미가입자의 이메일은 submit 시에 바로 가져와서 NotUserCreditArray 직접 넣어준다.
+var unEmail = document.getElementsByClassName("unsignedUserEmail");
+for (var i = 0; i < unEmail.length; i++) {
+  NotUserCreditArray[i].push(unEmail[i].value);
+  console.log(NotUserCreditArray[i]);
+}
+
   //Data2['Title'] = ((TitleBox.value.replace(/\n/g, "<br>")).replace(/'/,/\'/)).replace(/"/,/\"/);
   Data2['Title'] = TitleBox.value;
   Data2['ArtURL'] = URLBox.value;
@@ -350,14 +358,12 @@ submitButton.addEventListener("click",function(){
 deleteButton.addEventListener("click",function(){
   if(confirm("글 삭제 수락 시 모든 크레딧 공유 유저로부터 영구적으로 삭제 됩니다. 그래도 진행하시겠습니까?")==true){
     var Data3 = {"int" : artPK};
-    console.log("deleteButton Clicked");
     $.ajax({
       url:'./delete',
       type:'GET',
       data: Data3,
       success:function(data){
         alert('글 삭제 성공 메인으로 돌아갑니다.');
-        alert(data);
         $(location).attr('href','/main');
       },
 

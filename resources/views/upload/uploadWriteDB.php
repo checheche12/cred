@@ -46,8 +46,8 @@ class makeNewArtClass extends Controller
 
           $Array = $_POST['Notuser'];
           foreach($Array as $v1){
-            DB::insert('insert into TagNotUser (tagUser, position, artPK)
-              values (?, ?, ?)',array($v1[0],$v1[1],$artNumber));
+            DB::insert('insert into TagNotUser (tagUser, position, artPK, unsignedEmail)
+              values (?, ?, ?, ?)',array($v1[0],$v1[1],$artNumber,$v1[3]));
 
           }
         }

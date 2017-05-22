@@ -41,26 +41,26 @@ class UserController extends Controller
           where A.recieveruserPK = ? order by notificationPK DESC limit ?, 15;",[$_SESSION['userPK'],0]);
       }
 
-}
-include_once('../resources/views/noti/notifunction.php');
-$A = new UserController();
-$A->index();
-
-?>
-
-<head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <style type="text/css">
-    .headerFrame{
-      display: none;
     }
-  </style>
+    include_once('../resources/views/noti/notifunction.php');
+    $A = new UserController();
+    $A->index();
 
-</head>
-<link rel="stylesheet" type ="text/css" href="css/header.css?v=1">
-<div class="headerFrame">
-  <div id = "header">
-    <img id = "credImage" src = "mainImage/signupImage/signupLogo.png" title="홈페이지">
+    ?>
+
+    <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <style type="text/css">
+        .headerFrame{
+          display: none;
+        }
+      </style>
+
+    </head>
+    <link rel="stylesheet" type ="text/css" href="css/header.css?v=1">
+    <div class="headerFrame">
+      <div id = "header">
+        <img id = "credImage" src = "mainImage/signupImage/signupLogo.png" title="홈페이지">
 
     <!--
         아래에 있는 코드는 DB에서 값을 가져 온 뒤에 동적으로 수정해야 한다. (수정 1)
@@ -78,62 +78,62 @@ $A->index();
       <div class="headIcons">
         <?php
         if($_SESSION['is_login'] == true){
-          echo '<div id = "profile">';
-          echo '<img id = "profileImage" src = '.$GLOBALS['photoURL'].' title="나의 프로필">';
-          echo '<p id = "profileName" title="나의 프로필">'.$GLOBALS['name'].'</p>';
-          echo '</div>';
-        }
-        if($_SESSION['is_login'] == false){
-          echo '<button id = "login" class="dropdowns">로그인</button><br>';
+          echo '<button id = "bugReportBt" title="버그신고">버그신고</button>
+          <div id="aligner"><div id = "profile">';
+            echo '<img id = "profileImage" src = '.$GLOBALS['photoURL'].' title="나의 프로필">';
+            echo '<p id = "profileName" title="나의 프로필">'.$GLOBALS['name'].'</p>';
+            echo '</div></div>';
+          }
+          if($_SESSION['is_login'] == false){
+            echo '<button id = "login" class="dropdowns">로그인</button><br>';
 
-        }else{
+          }else{
 
 
           // <button id = "yourart" class="icons"></button>
-          echo '<div id="buttons">
-          <button id = "dm" class="icons" title = "DM">';
-          echo '<div>';
-          if($GLOBALS['msgCheck']==0){
-            echo "";
-          }
-          else if($GLOBALS['msgCheck']<=9){
-            echo "<img id = 'notiSmallImage' class = 'smallImage' src ='/mainImage/notiLogo/noti".$GLOBALS['msgCheck'].".png'></img>";
-          }else{
-            echo "<img id = 'notiSmallImage' class = 'smallImage 'src ='/mainImage/notiLogo/noti9p.png'></img>";
-          }
-          echo '</div>';
-          echo '<span class = "tooltiptext">메세지</span>
-          </button>
-          <button id = "notification" class = "icons_none" title="알림" style = "background-image: url(mainImage/notioff.png)">';
+            echo '<div id="buttons">
+            <button id = "dm" class="icons" title = "DM">';
+              echo '<div>';
+              if($GLOBALS['msgCheck']==0){
+                echo "";
+              }
+              else if($GLOBALS['msgCheck']<=9){
+                echo "<img id = 'notiSmallImage' class = 'smallImage' src ='/mainImage/notiLogo/noti".$GLOBALS['msgCheck'].".png'></img>";
+              }else{
+                echo "<img id = 'notiSmallImage' class = 'smallImage 'src ='/mainImage/notiLogo/noti9p.png'></img>";
+              }
+              echo '</div>';
+              echo '<span class = "tooltiptext">메세지</span>
+            </button>
+            <button id = "notification" class = "icons_none" title="알림" style = "background-image: url(mainImage/notioff.png)">';
 
-          echo '<div>';
-          if($GLOBALS['eventCheck']==0){
-          }
-          else if($GLOBALS['eventCheck']<=9){
-            echo "<img id = 'notiSmallImage' class = 'smallImage' src ='/mainImage/notiLogo/noti".$GLOBALS['eventCheck'].".png'></img>";
-          }else{
-            echo "<img id = 'notiSmallImage' class = 'smallImage 'src ='/mainImage/notiLogo/noti9p.png'></img>";
-          }
-          echo '</div>';
+              echo '<div>';
+              if($GLOBALS['eventCheck']==0){
+              }
+              else if($GLOBALS['eventCheck']<=9){
+                echo "<img id = 'notiSmallImage' class = 'smallImage' src ='/mainImage/notiLogo/noti".$GLOBALS['eventCheck'].".png'></img>";
+              }else{
+                echo "<img id = 'notiSmallImage' class = 'smallImage 'src ='/mainImage/notiLogo/noti9p.png'></img>";
+              }
+              echo '</div>';
 
-          echo '<span class = "tooltiptext">알림</span>
-          </button>
+              echo '<span class = "tooltiptext">알림</span>
+            </button>
             <button id = "upload" class="icons" title="업로드">
               <span class = "tooltiptext">업로드</span>
             </button>
-            <button id = "bugReportBt" class="icons" title="버그리포트">버그리포트</button>
             <button id = "logout" class="icons" title="로그아웃">
               <span class = "tooltiptext">로그아웃</span>
             </button>
             <div id = "notification_out" class = "notification_out_none">
               <p id="notiText">알림</p>
               <div id = "notiBox">
-              ';
-              foreach($GLOBALS['notification'] as $noti){
-                $notifunctionClass->notification($noti);
-              }
-              echo '</div>
-              <div id = "addMore">더보기</div>
+                ';
+                foreach($GLOBALS['notification'] as $noti){
+                  $notifunctionClass->notification($noti);
+                }
+                echo '</div>
+                <div id = "addMore">더보기</div>
               </div>
             </div>';
           }

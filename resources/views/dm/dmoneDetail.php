@@ -33,14 +33,14 @@ class dmoneDetailClass
             echo "<div id = 'forAppend'></div>";
             foreach($Selects as $Select){
               if($Select->senderuserPK == $_SESSION['userPK']){
-                $date = date("Y-m-d H:m",strtotime($Select->sendDate));
+                $date = date("Y-m-d H:i",strtotime($Select->sendDate));
                 echo "<div class = 'right'>
                       <p class='Date'>".$date."</p>
                       <div class = 'rtext'>".$Select->context."</div>
                       <img class = 'rightImg' src = '".$Pict1['ProfilePhotoURL']."'>";
                       echo '</div>';
               }else{
-                $date = date("Y-m-d H:m",strtotime($Select->sendDate));
+                $date = date("Y-m-d H:i",strtotime($Select->sendDate));
                 echo "<div class = 'left'>
                 <img class = 'leftImg' src = '".$Pict2['ProfilePhotoURL']."'>
                 <div class = 'ltext'>".$Select->context."</div>";
