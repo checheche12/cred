@@ -26,19 +26,22 @@ if(another=='no'){
 if(connect != undefined){
 	$(connect).click(function(){
 
-			$.ajax({
-					data : {'userPK' : userPK},
-					type : 'get',
-					url : '/connectApply',
-					success:function(data){
-						if(data == "success"){
-								$(connect).html('connectwaiting');
-						}else{
-								console.log("이미 추가되어있습니다.");
-						}
+		$.ajax({
+			data : {'userPK' : userPK},
+			type : 'get',
+			url : '/connectApply',
+			success:function(data){
+				if(data == "success"){
+					$(connect).html('인맥 요청함');
+					$("#connect").removeClass('Hover');
+					$("#connect").addClass('noHover');
+					$('#connect').prop('disabled', true);
+				}else{
+					console.log("이미 추가되어있습니다.");
+				}
 
-					}
-			})
+			}
+		})
 
 	})
 }
@@ -46,14 +49,16 @@ if(connect != undefined){
 if(connectapply != undefined){
 	$(connectapply).click(function(){
 
-			$.ajax({
-					data : {'userPK' : userPK},
-					type : 'get',
-					url : '/acceptconnect',
-					success:function(data){
-						$("#applydeny").html('추가되었습니다.');
-					}
-			})
+		$.ajax({
+			data : {'userPK' : userPK},
+			type : 'get',
+			url : '/acceptconnect',
+			success:function(data){
+				$("#connectapply").html('인맥에 추가되었습니다.');
+				$("#connectdeny").remove();
+				$("#connect").removeClass('Hover');
+			}
+		})
 
 	})
 }
@@ -61,14 +66,18 @@ if(connectapply != undefined){
 if(connectdeny != undefined){
 	$(connectdeny).click(function(){
 
-			$.ajax({
-					data : {'userPK' : userPK},
-					type : 'get',
-					url : '/denyconnect',
-					success:function(data){
-						$("#applydeny").html('취소되었습니다.');
-					}
-			})
+		$.ajax({
+			data : {'userPK' : userPK},
+			type : 'get',
+			url : '/denyconnect',
+			success:function(data){
+				$("#connectdeny").remove();
+				$("#connectapply").html('인맥 거절 되었습니다.');
+				$("#connectapply").removeClass('Hover');
+				$("#connectapply").addClass('noHover');
+				$('#connectapply').prop('disabled', true);
+			}
+		})
 
 	})
 }
@@ -78,16 +87,16 @@ if(connected != undefined){
 		if(confirm("정말로 disconnected 하시겠습니까?")==true){
 
 			$.ajax({
-					data : {'userPK' : userPK},
-					type : 'get',
-					url : '/denyconnect',
-					success:function(data){
-						$("#connected").html('취소되었습니다.');
-					}
+				data : {'userPK' : userPK},
+				type : 'get',
+				url : '/denyconnect',
+				success:function(data){
+					$("#connected").html('취소되었습니다.');
+				}
 			})
 
 		}
-			
+
 	})
 }
 

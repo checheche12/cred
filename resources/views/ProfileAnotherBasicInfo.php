@@ -146,13 +146,13 @@ class checkAddCredit extends Controller
 
       // if문으로 버튼 상태를 구현해주어야 한다.
       if($GLOBALS['stats'] == "요청 받음"){
-        echo '<div id = "applydeny"><button class = "connect" stats = "'.$GLOBALS['stats'].'" id = "connectapply">수락</button>';
-        echo '<button class = "connect noHover" stats = "'.$GLOBALS['stats'].'" id = "connectdeny">거절</button>';
+        echo '<div id = "applyRespond"><button class = "connect Hover" stats = "'.$GLOBALS['stats'].'" id = "connectapply">인맥 수락</button>';
+        echo '<button class = "connect Hover" stats = "'.$GLOBALS['stats'].'" id = "connectdeny">인맥 거절</button>';
         echo '</div>';
       }else if($GLOBALS['stats'] == "크레딧 공유됨"){
         echo '<button class = "connect noHover" stats = "'.$GLOBALS['stats'].'" id = "creditSharin">'.$GLOBALS['stats'].'</button>';
       }else if($GLOBALS['stats'] == "인맥"){
-        echo '<button class = "connect noHover" stats = "'.$GLOBALS['stats'].'" id = "connected">'.$GLOBALS['stats'].'</button>';
+        echo '<button class = "connect noHover" stats = "'.$GLOBALS['stats'].'" id = "connectedMember">'.$GLOBALS['stats'].'</button>';
       }else if($GLOBALS['stats'] == "인맥 요청함"){
         echo '<button class = "connect noHover" stats = "'.$GLOBALS['stats'].'" id = "connectPending">'.$GLOBALS['stats'].'</button>';
       }else if($GLOBALS['stats'] == "인맥 추가"){

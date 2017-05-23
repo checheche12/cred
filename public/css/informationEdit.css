@@ -158,7 +158,8 @@ button:hover{
 	margin-right: 16px;
 	float: right;
 	cursor: pointer;
-	width: 7vw;
+	width: 9vw;
+	white-space: nowrap;
 	height: 1.5vw;
 	font-size: 0.75rem !important;
 	color: gray;

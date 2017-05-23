@@ -203,3 +203,6 @@ p.infolabel{
 	margin-top: auto;
 	margin-bottom: auto;
 }
+#applyRespond{
+	display: inline-block;
+}

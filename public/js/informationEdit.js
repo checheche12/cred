@@ -10,6 +10,7 @@ $.ajax({
 
 
 var Edit = document.getElementById('edit');
+var deleteExp = document.getElementsByClassName('deleteExp');
 var addExperience = document.getElementById('addExperience');
 var education = document.getElementById('education');
 var submitprofilePic = document.getElementById('submitprofilePic');
@@ -102,6 +103,12 @@ Edit.addEventListener("click",function(){
 		}
 	})
 
+});
+
+$(".deleteExp").on("click",function(){
+
+	console.log(this.id);
+	$(this).closest("div",document.getElementById('careerD')).remove();
 });
 
 /** urlCheck* */

@@ -130,6 +130,7 @@ class UserController
   # code...
             echo'
             <div id="careerD">
+            <button class="deleteExp">삭제</button>
               <div id="positionD">
                 <div><label class="labels2" for="position" id="positionlabel">타이틀</label>
                   <input class="inputsexp" type = "text" id = "position" value = "'.$GLOBALS['exPosition'][$i].'"></input>

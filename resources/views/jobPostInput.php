@@ -57,8 +57,8 @@ if($_GET['inputFormType']=="new"){
 			<div class="inputGroup"><label class="label inputLabel">근무지<span class="required">&nbsp;(필수사항)</span></label><textarea id="workLocation" class="inputBox"></textarea><br></div>
 			<div class="inputGroup"><label class="label inputLabel">채용형태</label><input type="radio" name="jobType" value="fullTime" checked>정규직<input type="radio" name="jobType" value="freeLancer">계약직<input type="radio" name="jobType" value="noPay">무급<br></div>
 			<div class="inputGroup"><label class="label inputLabel">채용기간</label><textarea id="jobPeriod" class="inputBox"></textarea><br></div>
-			<div class="inputGroup"><label class="label inputLabel">급여<span class="optional">&nbsp;(선택사항)</span></label><textarea id="earning" class="inputBox"></textarea><br></div>
-			<div class="inputGroup"><label class="label inputLabel">혜택<span class="optional">&nbsp;(선택사항)</span></label><textarea id="benefits" class="inputBox"></textarea><br></div>
+			<div class="inputGroup"><label class="label inputLabel">급여</label><textarea id="earning" class="inputBox"></textarea><br></div>
+			<div class="inputGroup"><label class="label inputLabel">혜택</label><textarea id="benefits" class="inputBox"></textarea><br></div>
 			<div class="inputGroup"><label class="label inputLabel">마감일</label><input type="text" id="datepicker" class="inputBox" value="'; echo date("Y-m-d H:i",strtotime("+14 day"));echo'"></div>	
 		</div>
 		<div id="qualificationInfo" class="inputForm">
