@@ -55,7 +55,7 @@ $(".xImage").click(function(){
   $(xButton).remove();
 });
 
-$(".xImage").click(function(){
+$(".xImage2").click(function(){
   var xButton = $(this).closest('div');
   var xButtonID = $(this).attr('id');
   xButtonID = xButtonID * 1;
@@ -240,13 +240,13 @@ $(addCredit).click(function(){
           j += ("<p class='position'>"+position.value+"</p>");
           j += ("<p class='name unsignedUser' style='color:gray'>"+ email.value + "</p>");
           j += ("<input class='unsignedUserEmail' placeholder='미가입자 email' ></input>");
-          j += ("<a class ='xImage' id = "+NotUserCreditNumber+"></a></div>");
+          j += ("<a class ='xImage2' id = "+NotUserCreditNumber+"></a></div>");
           $('#creditBox').append(j);
 
           var t = [email.value,position.value,NotUserCreditNumber];
           NotUserCreditArray.push(t);
           NotUserCreditNumber += 1;
-          $(".xImage").click(function(){
+          $(".xImage2").click(function(){
             var xButton = $(this).closest('div');
             var xButtonID = $(this).attr('id');
             xButtonID = xButtonID * 1;
@@ -337,7 +337,7 @@ for (var i = 0; i < unEmail.length; i++) {
   Data2['Notuser'] = NotUserCreditArray;
 
   Data2['main'] = creditArray;
-
+  console.log('length = '+NotUserCreditArray.length);
   $.ajax({
     type:'POST',
     url:'/uploadFixedDB',

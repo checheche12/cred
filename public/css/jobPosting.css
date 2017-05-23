@@ -2,7 +2,7 @@
 	display: inline-block;
 	font-weight: 400 !important;
 	margin: 0 5px 0 5px;
-	}
+}
 .postNubmer{
 	color: #cccccc;
 	font-size: 0.8rem;
@@ -46,8 +46,8 @@ ul{
 }
 #jobTypeSelector{
 	width: 100%;
-    max-width: 960px;
-    margin: auto;
+	max-width: 960px;
+	margin: auto;
 	
 }
 #ContentWrapper{
@@ -118,27 +118,27 @@ ul{
 	color: #ed2a7b;
 }
 button{
-    background-color: #fff;
-    color: #4b4f56;
-    font-size: 0.75rem !important;
-    width: 140px;
-    height: 40px;
+	background-color: #fff;
+	color: #4b4f56;
+	font-size: 0.75rem !important;
+	width: 140px;
+	height: 40px;
 	margin-bottom: 10px;
 	cursor: pointer;
 	border: none;
-   }
+}
 .postBt{
 	margin-left: -1px;
-    margin-right: -5px;
-    border: #cccccc;
-    border-style: solid;
-    border-width: 1px;
-    border-bottom-width: 0;
-    box-sizing: border-box;
-    display: inline-block;
-    position: relative;
-    padding: 0;
-    vertical-align: baseline;
+	margin-right: -5px;
+	border: #cccccc;
+	border-style: solid;
+	border-width: 1px;
+	border-bottom-width: 0;
+	box-sizing: border-box;
+	display: inline-block;
+	position: relative;
+	padding: 0;
+	vertical-align: baseline;
 
 }
 button:hover{
@@ -175,5 +175,85 @@ p.skillEach{
 }
 .openInfo:hover{
 	background: #f9f9f9;
+	cursor: pointer;
+}
+
+/*달력*/
+.ui-datepicker-title{
+	text-align: center;
+	box-shadow: inset 0 1px 0 0 #e88486 ;
+	background-color: #ed2a7b ;
+	border-radius: 1px;
+	background-image: -webkit-linear-gradient(top, #ed2a7b , #bd3f41 );
+	border-bottom: 1px solid #ac2826 ;
+	border-top: 1px solid #ac2826 ;
+	color: white;
+	font-weight: bold;
+	padding: 5px 0;
+	text-align: center;
+	text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.2);
+}
+.ui-datepicker-month{
+	color:#fff;
+	font-size: 13px;
+}
+.ui-datepicker-year{
+	color: #fff;
+	font-size: 13px;
+}
+/*요일*/
+span{
+	font-size: 7.5px;
+}
+th{
+	border-bottom: 1px solid #d4d4d4 ;
+	color: #666666 ;
+	font-size: 7.5pt;
+	font-weight: normal;
+	box-shadow: inset 0 1px 0 0 white;
+	background-color: #f5f5f5 ;
+	background-image: -webkit-linear-gradient(top, #f5f5f5 , #e8e8e8 );
+	padding: 4px 0;
+	text-align: center;
+	text-shadow: 0 1px 0 #ffffff ;
+	text-transform: uppercase;
+	width: 34px;
+}
+/*일*/
+td{
+	background-color: #fcfdfd ;
+	border-bottom: 1px solid #e2e2e2 ;
+	border-left: 1px solid #e2e2e2 ;
+	font-size: 11pt;
+	font-weight: bold;
+	color: #444444 ;
+	height: 27px !important;
+	padding: 0;
+	text-align: center;
+	width: 34px;
+}
+
+/*바탕*/
+.ui-datepicker{
+	background: white;
+}
+table.ui-datepicker-calender{
+	background: #fff;
+	border: 1px solid #e6e6e6 ;
+	box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.3);
+}
+/*헤더*/
+.ui-datepicker-header.ui-widget-header.ui-helper-clearfix.ui-corner-all{
+	text-align: center;
+	background-color: #fff;
+}
+.ui-icon.ui-icon-circle-triangle-w{
+	padding-right: 10px;
+	font-size: 12px;
+	cursor: pointer;
+}
+.ui-icon.ui-icon-circle-triangle-e{
+	padding-left: 10px;
+	font-size: 12px;
 	cursor: pointer;
 }

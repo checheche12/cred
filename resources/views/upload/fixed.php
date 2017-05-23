@@ -34,7 +34,7 @@ class makeNewArtClass extends Controller
           array_push($GLOBALS['userData'],$imshi);
         }
 
-        $Sentence = 'select tagPK, tagUser, position from TagNotUser where ArtPK = '.$_GET['int'];
+        $Sentence = 'select tagPK, tagUser, position, unsignedEmail from TagNotUser where ArtPK = '.$_GET['int'];
         $users = DB::select(DB::raw($Sentence));
 
         $GLOBALS['notUserData'] = array();
@@ -43,6 +43,7 @@ class makeNewArtClass extends Controller
           array_push($imshi,$user->tagPK);
           array_push($imshi,$user->tagUser);
           array_push($imshi,$user->position);
+          array_push($imshi,$user->unsignedEmail);
           array_push($GLOBALS['notUserData'],$imshi);
         }
       }
@@ -112,7 +113,8 @@ class makeNewArtClass extends Controller
             $NotUserCreditNumber +=1;
             echo "<div class='position'>".$i[2]."</div>";
             echo "<div class='name'>".$i[1]."</div>";
-            echo "<img class = 'xImage' id = ".$NotUserCreditNumber." src ='/mainImage/uploadImage/x.jpg'></img></div>";
+            echo "<input class='unsignedUserEmail' placeholder='미가입자 email' value='".$i[3]."'></input>";
+            echo "<img class = 'xImage2' id = ".$NotUserCreditNumber." src ='/mainImage/uploadImage/x.jpg'></img></div>";
             echo "<script>";
             echo "var t = ['".$i[1]."', '".$i[2]."', NotUserCreditNumber]; NotUserCreditArray.push(t); NotUserCreditNumber++";
             echo "</script>";

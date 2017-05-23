@@ -1,5 +1,15 @@
 <?php
   DB::update('update userinfo set msgCheck = 0 where userPK = ?',[$_SESSION['userPK']]);
+  if(isset($_GET['userPK'])){
+
+    $Names = DB::select('select Name from userinfo where userPK = ?',[$_GET['userPK']]);
+    foreach($Names as $Name){
+      $GLOBALS['Name'] = $Name->Name;
+      break;
+    }
+
+  }
+
 ?>
 <!-- FOUC(Flash Of Unstyled Content) 방지 용 head-->
 <head>
@@ -51,7 +61,13 @@
        ?>
     </div>
 
-    <p id = "uploadtext">Message</p>
+    <?php
+      if(isset($GLOBALS['Name'])){
+        echo '<p id = "uploadtext">Message <span id = "conversation">'.$GLOBALS['Name'].'님과 대화중입니다.</span></p>';
+      }else{
+        echo '<p id = "uploadtext">Message</p>';
+      }
+    ?>
 
     <div id = 'contents'>
         <div id = 'DMTotalList'>

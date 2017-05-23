@@ -87,3 +87,8 @@ p.date {
 		margin-right: 1vmax;
 		display: inline-block;
 	}
+
+  #conversation{
+    margin-left: 48vw;
+    font-size: 1vw;
+  }

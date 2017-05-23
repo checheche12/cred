@@ -5,7 +5,7 @@ class notifunctionClass
 
   //notistate = "checknotification" 은 notification 이 읽힌상태라면 1 안읽힌 상태라면 0을 반환한다.
   //notificationPK 를 받아오는 이유는 클릭 감지해서 읽었다라고 만들려고...
-  
+
       public static function notification($noti)
       {
         if($noti->notificationKind == "1")
@@ -93,6 +93,26 @@ class notifunctionClass
           <a href = '/anotherProfile?int=".$noti->userPK."'>
             <div><p class='notiStatement'>
               ".$noti->Name."님이 Connect 요청을 거절했습니다.
+            </p></div>
+          </a>
+        </div>";
+      }
+      else if($noti->notificationKind == "10")
+      {
+          echo "<div notistate = ".$noti->checknotification." notinum = ".$noti->notificationPK." class = 'notidiv' id = '".$noti->userPK."'>
+          <a href = '/anotherProfile?int=".$noti->userPK."'>
+            <div><p class='notiStatement'>
+              ".$noti->Name."님이 회원님을 그룹에 추가하였습니다..
+            </p></div>
+          </a>
+        </div>";
+      }
+      else if($noti->notificationKind == "11")
+      {
+          echo "<div notistate = ".$noti->checknotification." notinum = ".$noti->notificationPK." class = 'notidiv' id = '".$noti->userPK."'>
+          <a href = '/anotherProfile?int=".$noti->userPK."'>
+            <div><p class='notiStatement'>
+              ".$noti->Name."님이 회원님을 그룹에서 제외하였습니다..
             </p></div>
           </a>
         </div>";
