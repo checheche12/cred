@@ -173,9 +173,12 @@ $( "#email" ).autocomplete({
 .on("focus", function () {
   $(this).autocomplete("search", "");
 })
+.on( "autocompleteselect", function( event, ui ) {
+  return false;
+} )
 .autocomplete( "instance" )._renderItem = function( ul, item ) {
   return $( '<li id="suggestList">' )
-  .append( '<li class = "suggestList"> name : '+item[0]+' email : '+item[1]+'</li>')
+  .append( '<li class = "suggestList"> <p class=sugName>'+item[0]+'<p class=sugEmail>'+item[1]+'</p></li>')
   .appendTo( ul );
   // checkLoginState();
 };
@@ -254,7 +257,7 @@ addCredit.addEventListener("click",function(){
             var j = "<div class = 'creditContext'>";
             j += ("<p class='position'>"+position.value+"</p>");
             j += ("<p class='name unsignedUser' style='color:gray'>"+ email.value + "</p>");
-            j += ("<input class='unsignedUserEmail' placeholder='미가입자 email' ></input>");
+            j += ("<input class='unsignedUserEmail' placeholder='email을 적어주세요' ></input>");
             j += ("<a class ='xImage' id = "+NotUserCreditNumber+"></a></div>");
             $('#creditBox').html();
             $('#creditBox').append(j);

@@ -79,6 +79,18 @@ class RunQuery extends Controller
           $Sentence = "update userinfo set description = '".$_POST['description']."' where userPK = '".$_SESSION['userPK']."'";
           $users = DB::update(DB::raw($Sentence));
         }
+
+        $users = DB::select(DB::raw("select eventStatus from userinfo where userPK = ".$_SESSION['userPK'].""));
+
+        foreach ($users as $user) {
+          $GLOBALS['eventStatus'] = $user->eventStatus;
+        }
+        if( 10<=$GLOBALS['eventStatus'] and $GLOBALS['eventStatus']<100 ){  //첫번째 아님
+          echo'notFirstTime';
+        }else{  //첫번째
+          echo'FirstTime';
+          DB::update("update userinfo set eventStatus = ? where userPK = ?", [(int)$GLOBALS['eventStatus']+10, $_SESSION['userPK']]);
+        }
       }
     }
 

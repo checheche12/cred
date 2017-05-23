@@ -95,8 +95,12 @@ Edit.addEventListener("click",function(){
 		url:'/informationEdit/informationUp',
 		data : Data,
 		success:function(data){
+			if(data=="notFirstTime"){
+				$(location).attr('href','/main');
+			}else if(data=="FirstTime"){	//firstTime
+				$(location).attr('href','/');
+			}
 			alert("업데이트 성공, 메인화면으로 돌아갑니다!");
-			$(location).attr('href','/main');
 		},
 		error: function(){
 			alert('error 서버 연결 안됨!');

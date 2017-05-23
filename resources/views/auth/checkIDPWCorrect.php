@@ -68,9 +68,15 @@ class LoginController extends Controller
                     }else{
                       $_SESSION['isGroup'] = "Group";
                     }
-
-                    header('Location: ./');
-                    exit;
+                      //첫번째 가입시에 프로파일 edit 으로 보냄
+                      //첫번째가 이닌 상태 eventStatus: 10<= x <100.
+                      if( 10<=$GLOBALS['eventStatus'] and $GLOBALS['eventStatus']<100 ){ //첫번째 아님
+                        header('Location: ./');
+                        exit;
+                      }else{  //첫번째
+                        header('Location: ./informationEdit');
+                        exit;
+                      }
                   }
                 }else{
                     header('Location: ./');
@@ -92,7 +98,7 @@ class LoginController extends Controller
       public function personal()
       {
           try{
-            $users = DB::select(DB::raw("select Email, Password, userPK, isgroup, Certification from userinfo where Email = "."'".$_POST['ID']."'"));
+            $users = DB::select(DB::raw("select Email, Password, userPK, isgroup, Certification, eventStatus from userinfo where Email = "."'".$_POST['ID']."'"));
 
             foreach ($users as $user) {
                 $GLOBALS['IDCheck'] = $user->Email;
@@ -100,6 +106,7 @@ class LoginController extends Controller
                 $GLOBALS['UserPK'] = $user->userPK;
                 $GLOBALS['isGroup'] = $user->isgroup;
                 $GLOBALS['Certification'] = $user->Certification;
+                $GLOBALS['eventStatus'] = $user->eventStatus;
             }
 
           }catch(Exception $e){

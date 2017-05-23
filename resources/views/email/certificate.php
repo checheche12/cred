@@ -15,8 +15,7 @@ class changeAuthClass extends Controller
         <div id="signUpGuideFrame">
         <img id="signUpGuideImage1" src="/mainImage/credcheckmark.png"><br>
         <img id="signUpGuideImage2" src="/mainImage/signupImage/credberrymainlogo.png"><br>
-        <p class="signUpGuideP">입력하신 이메일로 인증 메일을 발송하였습니다. </p><br>
-        <p class="signUpGuideP">인증 확인 해주시면 회원가입이 완료됩니다.</p>
+        <p class="signUpGuideP">인증이 확인되었습니다. 등록하신 이메일로 로그인 하실 수 있습니다.</p><br>
         </div></body>';
 
     }

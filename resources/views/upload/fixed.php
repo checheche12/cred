@@ -110,14 +110,14 @@ class makeNewArtClass extends Controller
           $NotUserCreditNumber = 0;
           foreach($GLOBALS['notUserData'] as $i){
             echo "<div class = 'creditContext'>";
-            $NotUserCreditNumber +=1;
             echo "<div class='position'>".$i[2]."</div>";
             echo "<div class='name'>".$i[1]."</div>";
             echo "<input class='unsignedUserEmail' placeholder='미가입자 email' value='".$i[3]."'></input>";
-            echo "<img class = 'xImage2' id = ".$NotUserCreditNumber." src ='/mainImage/uploadImage/x.jpg'></img></div>";
+            echo "<a class = 'xImage2' id = ".$NotUserCreditNumber."></a></div>";
             echo "<script>";
-            echo "var t = ['".$i[1]."', '".$i[2]."', NotUserCreditNumber]; NotUserCreditArray.push(t); NotUserCreditNumber++";
+            echo "var t = ['".$i[1]."', '".$i[2]."', NotUserCreditNumber, '".$i[3]."']; NotUserCreditArray.push(t); NotUserCreditNumber++";
             echo "</script>";
+            $NotUserCreditNumber +=1;
           }
           ?>
         </div>
