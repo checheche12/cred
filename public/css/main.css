@@ -29,6 +29,7 @@ a{
 }
 .ProjectFrame .detail{
 	display: inline-block;
+	width: 100%;
 }
 .videoArt{
 	cursor:pointer;
@@ -37,6 +38,10 @@ a{
 .ProjectFrame .name{
 	margin: 0px;
 	margin-top: 10px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	width: 100%;
+	white-space: nowrap;
 }
 .ProjectFrame .position{
 	float:left;
@@ -44,6 +49,10 @@ a{
 	font-weight: lighter;
 	font-size: 13px;
 	color:#ed2a7b;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	width: 100%;
+	white-space: nowrap;
 }
 .ProjectFrame .credit{
 	float:right;

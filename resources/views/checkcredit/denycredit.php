@@ -13,11 +13,15 @@ class deleteCreditClass
 			$GLOBALS['senderuserPK'] = $user->senderuserPK;
 		}
 		if($GLOBALS['notificationKind'] == '3'){ //포스트 작성자가 크레딧을 주는 형식 notificationKind 3
-			DB::delete('delete from workDB where userPK = ? and artPK = ?',[$_SESSION['userPK'],$_GET['artPK']]);
-			DB::update('update notification set notificationKind = "6" where notificationPK = ?',[$_GET['notificationPK']]);
+			DB::transaction(function(){
+				DB::delete('delete from workDB where userPK = ? and artPK = ?',[$_SESSION['userPK'],$_GET['artPK']]);
+				DB::update('update notification set notificationKind = "6" where notificationPK = ?',[$_GET['notificationPK']]);
+			});
 		}else{	//자신 또한 크레딧을 주라고 요구하는 경우 notificationKind 2
-			DB::delete('delete from workDB where userPK = ? and artPK = ?',[$GLOBALS['senderuserPK'],$_GET['artPK']]);
-			DB::update('update notification set notificationKind = "6" where notificationPK = ?',[$_GET['notificationPK']]);
+			DB::transaction(function(){
+				DB::delete('delete from workDB where userPK = ? and artPK = ?',[$GLOBALS['senderuserPK'],$_GET['artPK']]);
+				DB::update('update notification set notificationKind = "6" where notificationPK = ?',[$_GET['notificationPK']]);
+			});
 		}
 	}
 }

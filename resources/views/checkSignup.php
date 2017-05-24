@@ -77,7 +77,7 @@ class UserController extends Controller
       $data = [
       'title' => 'Certification URL',
       'body' => '아래의 URL 을 클릭하시면 인증이 완료됩니다.',
-      'url' => "http://www.credberry.com/certificate?aabbcc=".$to
+      'url' => "http://www.credmob.com/certificate?aabbcc=".$to
       ];
       return Mail::send('email.certification',$data,function($message) use($str, $subject){
         $message->to($str)->subject($subject);

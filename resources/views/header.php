@@ -28,6 +28,8 @@ class UserController extends Controller
         }
 
         $eventChecks = DB::select("select eventCheck,msgCheck from userinfo where userPK = ?",[$_SESSION['userPK']]);
+        $GLOBALS['msgCheck']=0;
+        $GLOBALS['eventCheck']=0;
         foreach($eventChecks as $eventCheck){
           $GLOBALS['eventCheck'] = $eventCheck->eventCheck;
           $GLOBALS['msgCheck']=$eventCheck->msgCheck;

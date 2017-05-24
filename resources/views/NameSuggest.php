@@ -17,7 +17,7 @@
             $users = DB::select(DB::raw($Sentence));
             foreach($users as $user){
                   $imshi = array();
-                  $imshi = array($user->Name,$user->Email,$user->userPK);
+                  $imshi = array($user->Name,$user->Email,$user->userPK,$user->ProfilePhotoURL);
                   array_push($userSuggest,$imshi);
             }
 

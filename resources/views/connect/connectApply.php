@@ -19,11 +19,13 @@ class ConnectApplyClass
           where A.userPK = ? and B.userPK = ? and B.checkCredit = 1;',[$_SESSION['userPK'],$_GET['userPK']]);
 
           if(($selectConnect == null) && ($connectCredit == null)){
-            $Connect1 = DB::insert('insert into Connect (connectSenduserPK, connectRecieveruserPK, stats) values (?,?,?)',[$_SESSION['userPK'],$_GET['userPK'],0]);
-            $Connect2 = DB::insert('insert into Connect (connectSenduserPK, connectRecieveruserPK, stats) values (?,?,?)',[$_GET['userPK'],$_SESSION['userPK'],1]);
-            $notification = DB::insert('insert into notification (senderuserPK, recieveruserPK, notificationKind, uploaddate) values
-             (?,?,?,?)',[$_SESSION['userPK'],$_GET['userPK'],"7",date("Y-m-d H:i:s")]);
-            echo "success";
+            DB::transaction(function(){
+              $Connect1 = DB::insert('insert into Connect (connectSenduserPK, connectRecieveruserPK, stats) values (?,?,?)',[$_SESSION['userPK'],$_GET['userPK'],0]);
+              $Connect2 = DB::insert('insert into Connect (connectSenduserPK, connectRecieveruserPK, stats) values (?,?,?)',[$_GET['userPK'],$_SESSION['userPK'],1]);
+              $notification = DB::insert('insert into notification (senderuserPK, recieveruserPK, notificationKind, uploaddate) values
+               (?,?,?,?)',[$_SESSION['userPK'],$_GET['userPK'],"7",date("Y-m-d H:i:s")]);
+              echo "success";
+            });
           }else{
             echo "already";
           }

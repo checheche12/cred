@@ -256,6 +256,14 @@ button:hover {
 	display: none;
 	overflow: auto;
 }
+.sugInfo{
+	display: inline-block;
+}
+.sugProfileImage{
+	object-fit: contain;
+	/*height: inherit;*/
+	height: 2em;
+}
 .sugName, .sugEmail{
 	margin: 0;
 }

@@ -12,12 +12,15 @@ class deletepost extends Controller
 {
     public function delete()
     {
-        $sentence = "delete from totalart where artPK = ".$_GET['number'];
-        $a = DB::delete($sentence);
-        $sentence = "delete from workDB where artPK = ".$_GET['number'];
-        $a = DB::delete($sentence);
-        $sentence = "delete from artDB where artPK = ".$_GET['number'];
-        $a = DB::delete($sentence);
+        DB::transaction(function()
+        {
+          $sentence = "delete from totalart where artPK = ".$_GET['number'];
+          $a = DB::delete($sentence);
+          $sentence = "delete from workDB where artPK = ".$_GET['number'];
+          $a = DB::delete($sentence);
+          $sentence = "delete from artDB where artPK = ".$_GET['number'];
+          $a = DB::delete($sentence);
+        });
     }
 }
 $A = new deletepost();

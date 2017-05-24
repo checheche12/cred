@@ -14,10 +14,12 @@ class denyConnectClass
        */
       public function denyConnect()
       {
-            $deleteConnect = DB::delete("delete from Connect where connectSenduserPK = ? and connectRecieveruserPK =?",
-            [$_SESSION['userPK'],$_GET['userPK']]);
-            $deleteConnect = DB::delete("delete from Connect where connectSenduserPK = ? and connectRecieveruserPK =?",
-            [$_GET['userPK'],$_SESSION['userPK']]);
+            DB::transaction(function(){
+              $deleteConnect = DB::delete("delete from Connect where connectSenduserPK = ? and connectRecieveruserPK =?",
+              [$_SESSION['userPK'],$_GET['userPK']]);
+              $deleteConnect = DB::delete("delete from Connect where connectSenduserPK = ? and connectRecieveruserPK =?",
+              [$_GET['userPK'],$_SESSION['userPK']]);
+            });
       }
 
 }

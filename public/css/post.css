@@ -67,7 +67,9 @@ p.name, p.position, p.nameNoAccount, p.positionNoAccount{
 	cursor: pointer;
 	margin: 0;
 	font-size: 1vmax;
-	margin-bottom: 0.5vh;;
+	margin-bottom: 0.5vh;
+	overflow: hidden;
+    text-overflow: ellipsis
 }
 p.nameNoAccount, p.positionNoAccount{
 	color: #b3b2b2;

@@ -17,12 +17,16 @@ class acceptCreditClass
 		echo "notificationKind:".$GLOBALS['notificationKind']."|| senderuserPK:".$GLOBALS['senderuserPK']."|| artPK:".$_GET['artPK']." ||myUserPK:".$_SESSION['userPK'];
 
 		if($GLOBALS['notificationKind'] == '3'){ //포스트 작성자가 크레딧을 주는 형식
-			DB::update('update workDB set checkCredit = 1 where userPK = ? and artPK = ?',[$_SESSION['userPK'],$_GET['artPK']]);
-			DB::update('update notification set notificationKind = "5" where notificationPK = ?',[$_GET['notificationPK']]);
+			DB::transaction(function(){
+				DB::update('update workDB set checkCredit = 1 where userPK = ? and artPK = ?',[$_SESSION['userPK'],$_GET['artPK']]);
+				DB::update('update notification set notificationKind = "5" where notificationPK = ?',[$_GET['notificationPK']]);
+			});
 		}else{	//자신 또한 크레딧을 주라고 요구하는 경우
 			echo "자신 또한 크레딧을 주라고 요구하는 경우";
-			DB::update('update workDB set checkCredit = 1 where userPK = ? and artPK = ?',[$GLOBALS['senderuserPK'],$_GET['artPK']]);
-			DB::update('update notification set notificationKind = "5" where notificationPK = ?',[$_GET['notificationPK']]);
+			DB::transaction(function(){
+				DB::update('update workDB set checkCredit = 1 where userPK = ? and artPK = ?',[$GLOBALS['senderuserPK'],$_GET['artPK']]);
+				DB::update('update notification set notificationKind = "5" where notificationPK = ?',[$_GET['notificationPK']]);
+			});	
 		}
 	}
 }

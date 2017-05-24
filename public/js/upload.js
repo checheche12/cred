@@ -177,8 +177,8 @@ $( "#email" ).autocomplete({
   return false;
 } )
 .autocomplete( "instance" )._renderItem = function( ul, item ) {
-  return $( '<li id="suggestList">' )
-  .append( '<li class = "suggestList"> <p class=sugName>'+item[0]+'<p class=sugEmail>'+item[1]+'</p></li>')
+  return $( '<li id="suggestList">' ) //0 Name, 1 Email,2 userPK, 3 ProfileURL
+  .append( '<li class = "suggestList"><img class="sugProfileImage" src="'+item[3]+'"><div class="sugInfo"><p class="sugName">'+item[0]+'<p class="sugEmail">'+item[1]+'</p></div></li>')
   .appendTo( ul );
   // checkLoginState();
 };
