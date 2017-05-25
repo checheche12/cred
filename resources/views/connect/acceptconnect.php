@@ -33,8 +33,7 @@ class acceptConnectClass
             DB::transaction(function(){
               $affected1 = DB::update('update Connect set stats = 2 where connectPK = ?', [$GLOBALS['connectPK1']]);
               $affected2 = DB::update('update Connect set stats = 2 where connectPK = ?', [$GLOBALS['connectPK2']]);
-              $notification = DB::insert('insert into notification (senderuserPK, recieveruserPK, notificationKind, uploaddate) values
-               (?,?,?,?)',[$_SESSION['userPK'],$_GET['userPK'],"10",date("Y-m-d H:i:s")]);
+               \App\Http\Middleware\notiSendFunction::notiMake_noPlace($_SESSION['userPK'],$_GET['userPK'],"10");
               $changenoti = DB::update('update notification set notificationKind = 8 where
               senderuserPK = ? and recieveruserPK = ? and notificationKind = 7', [$_GET['userPK'],$_SESSION['userPK']]);
               echo "success";

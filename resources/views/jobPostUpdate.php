@@ -69,7 +69,7 @@ class jobPostUpdateClass extends Controller
           $GLOBALS['recruiterUserPK'] = $tempItem->userPK;
         }
         if($_SESSION['is_login'] == true){
-          DB::insert('insert into notification (senderuserPK,recieveruserPK,notificationKind,uploaddate) values (?,?,?,?)',[$_SESSION['userPK'],$GLOBALS['recruiterUserPK'],"1",date("Y-m-d H:i")]);
+          \App\Http\Middleware\notiSendFunction::notiMake_noPlace($_SESSION['userPK'],$GLOBALS['recruiterUserPK'],"1");
           echo "지원 성공!";
         }else{
           echo "지원을 하기 위해서는 로그인을 해 주십시오.";

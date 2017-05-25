@@ -85,28 +85,28 @@ class checkAddCredit extends Controller
 
           }
           $connectCredit = DB::select('select * from workDB as A left join workDB as B on A.artPK = B.artPK
-          where A.userPK = ? and B.userPK = ? and B.checkCredit = 1;',[$_SESSION['userPK'],$_GET['int']]);
+            where A.userPK = ? and B.userPK = ? and B.checkCredit = 1;',[$_SESSION['userPK'],$_GET['int']]);
           if($connectCredit != null){
             $GLOBALS['stats'] = "크레딧 공유됨";
           }
 
           if($_SESSION['isGroup'] == "Group"){
-              $checkGroupMember =  DB::select("select * from groupMemberDB where groupPK = ? and userPK = ?",[$_SESSION['userPK'],$_GET['int']]);
-              if($checkGroupMember  != null){
-                $GLOBALS['stats'] = "GroupMember";
-              }
+            $checkGroupMember =  DB::select("select * from groupMemberDB where groupPK = ? and userPK = ?",[$_SESSION['userPK'],$_GET['int']]);
+            if($checkGroupMember  != null){
+              $GLOBALS['stats'] = "GroupMember";
+            }
           }
 
           if($_SESSION['isGroup'] == "Person"){
-              $checkGroupMember =  DB::select("select * from groupMemberDB where groupPK = ? and userPK = ?",[$_GET['int'],$_SESSION['userPK']]);
-              if($checkGroupMember != null){
-                $GLOBALS['stats'] = "Belonged";
-              }
+            $checkGroupMember =  DB::select("select * from groupMemberDB where groupPK = ? and userPK = ?",[$_GET['int'],$_SESSION['userPK']]);
+            if($checkGroupMember != null){
+              $GLOBALS['stats'] = "Belonged";
+            }
           }
 
           $GLOBALS['MyGroups'] = DB::select('select * from groupMemberDB left join
-          userinfo on groupPK = userinfo.userPK
-          where groupMemberDB.userPK = ?',[$_GET['int']]);
+            userinfo on groupPK = userinfo.userPK
+            where groupMemberDB.userPK = ?',[$_GET['int']]);
 
         }
       }
@@ -158,13 +158,24 @@ class checkAddCredit extends Controller
       }else if($GLOBALS['stats'] == "인맥 추가"){
         echo '<button class = "connect Hover" stats = "'.$GLOBALS['stats'].'" id = "connect">'.$GLOBALS['stats'].'</button>';
       }
-      echo '</div>';
+      foreach($GLOBALS['MyGroups'] as $MyGroup){
+        echo '<div class = "myGroup">
+        <p class = "infoLabel"><img class = "infoIconClass" src = "/mainImage/group.png">소속 그룹</img></p><a href = "/anotherProfile?int='.$MyGroup->groupPK.'"><p class = "infoDetail">'.$MyGroup->Name.'</p></a>
+      </div>'
+      ;
+    }
+    echo '</div>';
 
-      echo '<div class="lowerInfo">';
-      echo '<div class="infoD"><p class="infoLabel"><img id="contacticon" class="infoIconClass" src="/mainImage/airplaneicon.png">연락처</p><p id="emailP" class="infoDetail">'.$GLOBALS['email'].'</p></div>';
+    echo '<div class="lowerInfo">';
+
+      //연락처 숨기기로 함: 조건??
+      // echo '<div class="infoD"><p class="infoLabel"><img id="contacticon" class="infoIconClass" src="/mainImage/airplaneicon.png">연락처</p><p id="emailP" class="infoDetail">'.$GLOBALS['email'].'</p></div>';
+
       if($GLOBALS['isGroup']=="0"){ //개인일 시
-        echo '<hr id="infoSplit">';
-        echo '<div class="infoD"><p class="infoLabel"><img id="educationicon" class="infoIconClass" src="/mainImage/educationicon.png">학교</p><p id="educationInfo" class="infoDetail">'.$GLOBALS['education'].'</p></div>';
+        if($GLOBALS['education']!=NULL){ //학력 비어 있을 시 학력란을 아에 띄우지 않음.
+          echo '<hr id="infoSplit">';
+          echo '<div class="infoD"><p class="infoLabel"><img id="educationicon" class="infoIconClass" src="/mainImage/educationicon.png">학교</p><p id="educationInfo" class="infoDetail">'.$GLOBALS['education'].'</p></div>';
+        }
         echo '<hr id="infoSplit">';
         echo '<div class="infoD"><p class="infoLabel"><img id="skillicon" class="infoIconClass" src="/mainImage/skillicon.png">전문기술</p><div id="specialtyInfo" class="infoDetail">';
         $i = 0;
@@ -191,14 +202,8 @@ class checkAddCredit extends Controller
           <p id="exPosition'.$i.'" class="exP">'.$temp[0].'</p>
         </div>';
         $i++;
-        }
-        echo '</div>';
-        foreach($GLOBALS['MyGroups'] as $MyGroup){
-          echo '<div class = "myGroup">
-            <p class = "infoLabel"><img class = "infoIconClass" src = "/mainImage/group.png">소속 그룹</img></p><a href = "/anotherProfile?int='.$MyGroup->groupPK.'"><p class = "infoDetail">'.$MyGroup->Name.'</p></a>
-          </div>'
-          ;
-        }
+      }
+      echo '</div>';
 
       } // if PERSON end
 

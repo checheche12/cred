@@ -66,8 +66,8 @@ class checkAddCredit extends Controller
           }
 
           $GLOBALS['MyGroups'] = DB::select('select * from groupMemberDB left join
-          userinfo on groupPK = userinfo.userPK
-          where groupMemberDB.userPK = ?',[$_SESSION['userPK']]);
+            userinfo on groupPK = userinfo.userPK
+            where groupMemberDB.userPK = ?',[$_SESSION['userPK']]);
         }
       }
 
@@ -99,13 +99,23 @@ class checkAddCredit extends Controller
       }
       echo '<p id="location" class="location">'.$GLOBALS['location'].'</p>';
       echo '<p id="curPosition" class="curPosition">'.$GLOBALS['career'].'</p>';
-      echo '</div>';
-      echo '<div class="lowerInfo">';
-      echo '<div class="infoD"><p class="infoLabel"><img id="contacticon" class="infoIconClass" src="/mainImage/airplaneicon.png">연락처</p><p id="emailP" class="infoDetail">'.$GLOBALS['email'].'</p></div>';
+      foreach($GLOBALS['MyGroups'] as $MyGroup){
+        echo '<div class = "myGroup">
+        <p class = "infoLabel"><img class = "infoIconClass" src = "/mainImage/group.png">소속 그룹</img></p><a href = "/anotherProfile?int='.$MyGroup->groupPK.'"><p class = "infoDetail">'.$MyGroup->Name.'</p></a>
+      </div>'
+      ;
+    }
+    echo '</div>';
+    echo '<div class="lowerInfo">';
 
-      if($_SESSION['isGroup']!="Group"){
-        echo '<hr id="infoSplit">';
-        echo '<div class="infoD"><p class="infoLabel"><img id="educationicon" class="infoIconClass" src="/mainImage/educationicon.png">학교</p><p id="educationInfo" class="infoDetail">'.$GLOBALS['education'].'</p></div>';
+      //연락처 숨기기로 함: 조건??
+      // echo '<div class="infoD"><p class="infoLabel"><img id="contacticon" class="infoIconClass" src="/mainImage/airplaneicon.png">연락처</p><p id="emailP" class="infoDetail">'.$GLOBALS['email'].'</p></div>';
+
+    if($_SESSION['isGroup']!="Group"){
+        if($GLOBALS['education']!=NULL){ //학력 비어 있을 시 학력란을 아에 띄우지 않음.
+          echo '<hr id="infoSplit">';
+          echo '<div class="infoD"><p class="infoLabel"><img id="educationicon" class="infoIconClass" src="/mainImage/educationicon.png">학교</p><p id="educationInfo" class="infoDetail">'.$GLOBALS['education'].'</p></div>';
+        }
         echo '<hr id="infoSplit">';
         echo '<div class="infoD"><p class="infoLabel"><img id="skillicon" class="infoIconClass" src="/mainImage/skillicon.png">전문기술</p><div id="specialtyInfo" class="infoDetail specialtyInfo">';
         $i = 0;
@@ -132,14 +142,8 @@ class checkAddCredit extends Controller
           <p id="exPosition'.$i.'" class="exP">'.$temp[0].'</p>
         </div>';
         $i++;
-        }
-        echo '</div>';
-        foreach($GLOBALS['MyGroups'] as $MyGroup){
-          echo '<div class = "myGroup">
-            <p class = "infoLabel"><img class = "infoIconClass" src = "/mainImage/group.png">소속 그룹</img></p><a href = "/anotherProfile?int='.$MyGroup->groupPK.'"><p class = "infoDetail">'.$MyGroup->Name.'</p></a>
-          </div>'
-          ;
-        }
+      }
+      echo '</div>';
 
 
 

@@ -145,7 +145,7 @@ p.name, p.position{
 #MainImage {
 	height: 100vh;
 	object-fit: contain;
-	width: 90%;
+	/*width: 90%;*/
 	display: block;
 	margin: 0 auto;
 }

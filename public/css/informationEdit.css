@@ -72,13 +72,14 @@
 	padding: 0 10px;
 }
 #keyword{
-	height: 25px;
+	height: 13em;
 	width: 280px;
 	border-radius: 3px;
 	border: 1px solid #dbdbdb;
 	margin-top: 10px;
 	padding: 0 10px;
-	resize: vertical;
+	resize: none;
+	overflow-y: auto;
 }
 
 .labels {
