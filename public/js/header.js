@@ -40,18 +40,18 @@ $("#notification_out").scroll(function(event){
 	var currentScroll = $("#notification_out").scrollTop();
 	var elem = $("#notification_out");
 	if (elem[0].scrollHeight <= elem.outerHeight() + elem.scrollTop()) {
-					recieverNotiAccount += 7;
-					Data = {"recieverNotiAccount" : recieverNotiAccount};
-					$.ajax({
-							type:'GET',
-							url : '/notiaddDetail',
-							data : Data,
-							success:function(data){
-								$("#notiBox").append(data);
-							}
-					});
+		recieverNotiAccount += 7;
+		Data = {"recieverNotiAccount" : recieverNotiAccount};
+		$.ajax({
+			type:'GET',
+			url : '/notiaddDetail',
+			data : Data,
+			success:function(data){
+				$("#notiBox").append(data);
 			}
-	})
+		});
+	}
+})
 
 $(notification).click(function(e){
 	if($(notification).attr('class')=="icons_none"){
@@ -61,11 +61,11 @@ $(notification).click(function(e){
 		$('#notiSmallImage').remove();
 		e.stopPropagation();
 		$.ajax({
-				type : 'GET',
-				url : '/notiGotoZero',
-				success:function(data){
+			type : 'GET',
+			url : '/notiGotoZero',
+			success:function(data){
 
-				}
+			}
 		});
 
 	}else{
@@ -74,6 +74,15 @@ $(notification).click(function(e){
 		$(notification).css('background-image','url(mainImage/notioff.png)');
 	}
 });
+
+$("#menu").click(function(){
+	$(".smt_inMenu").addClass('smt_inMenu_on');
+	$(".smt_inMenu").removeClass('smt_inMenu');
+});
+
+// $( "#menu" ).focusout(function() {
+// 	$(".smt_inMenu").css('none');
+// }
 
 $("body").click(function(e){
 	if($(notification).attr('class')=="icons"){
@@ -93,7 +102,7 @@ $(".yesbutton").click(function(e){
 		url : '/acceptcredit',
 		data : {'artPK' : artPK, 'notificationPK' : notiPK},
 		success:function(data){
-				$(div).html('요청을 수락했습니다.');
+			$(div).html('요청을 수락했습니다.');
 		}
 	});
 });
@@ -108,7 +117,7 @@ $(".nobutton").click(function(e){
 		url : '/denycredit',
 		data : {'artPK' : artPK, 'notificationPK' : notiPK},
 		success:function(data){
-				$(div).html('요청을 거절했습니다.');
+			$(div).html('요청을 거절했습니다.');
 		}
 	});
 })
@@ -182,13 +191,13 @@ if(Msg != undefined){
 
 if(directMessage != undefined){
 	directMessage.addEventListener("click",function(){
-			$(location).attr('href','./dm');
+		$(location).attr('href','./dm');
 	});
 }
 
 if(bugReport != undefined){
 	bugReport.addEventListener("click",function(){
-			$(location).attr('href','./bugReport');
+		$(location).attr('href','./bugReport');
 	});
 }
 /*

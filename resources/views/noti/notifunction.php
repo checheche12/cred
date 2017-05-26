@@ -40,8 +40,8 @@ class notifunctionClass
             <p class='notiStatement'>".$noti->Name."님 이 ".$noti->title." 에 ".$noti->Position." 의 역할로 크레딧 요청을 했습니다. 수락하시겠습니까?
               <p/></div>
             </a>
-            <button id = 'yes' class = 'yesbutton'>수락</button>
-            <button id = 'no' class = 'nobutton'>취소</button>
+            <button id = 'yes' class = 'yesbutton'>확인</button>
+            <button id = 'no' class = 'nobutton'>거절</button>
           </div>
           ";
         }
@@ -51,7 +51,7 @@ class notifunctionClass
           <a href = '/post?int=".$noti->artPK."'>
             <div notistate = ".$noti->checknotification." notinum = ".$noti->notificationPK." class = 'notidiv'>
               <img class = 'notiImage' ".$noti->ProfilePhotoURL."></img>
-              <p class='notiStatement'>".$noti->Name."님 이 ".$noti->title." 에 ".$noti->Position." 의 역할로 크레딧을 요청한것을 수락했습니다.
+              <p class='notiStatement'>".$noti->Name."님 이 ".$noti->title." 에 ".$noti->Position." 의 역할로 크레딧을 요청한것을 확인했습니다.
                 <p/></div>
               </a>
             </div>

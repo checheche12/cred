@@ -139,13 +139,13 @@ p.name, p.position{
 .Newest_Frame {
     background: #fafafa;
     height: 90vh;
-    margin: 0 0 10vh;
+    margin: 4rem 0 10vh;
   
 }
 #MainImage {
 	height: 100vh;
 	object-fit: contain;
-	/*width: 90%;*/
+	width: 90%;
 	display: block;
 	margin: 0 auto;
 }

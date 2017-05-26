@@ -44,7 +44,7 @@ class getSpotlightClass extends Controller
 
             }
 
-            $Sentence3 = "select A.userPK ,Position, Name from workDB as A join userinfo as B ON A.userPK = B.userPK and artPK = ".$artPKArr[$i];
+            $Sentence3 = "select A.userPK ,Position, Name, checkCredit from workDB as A join userinfo as B ON A.userPK = B.userPK and artPK = ".$artPKArr[$i];
             $getBridges = DB::select($Sentence3);
 
 
@@ -56,14 +56,25 @@ class getSpotlightClass extends Controller
                 <div class="credit">
                   <div class="position_Frame">';
 
-                    $k = 0;
-                    foreach($getBridges as $getBridge){
+                  $k = 0;
+                  foreach($getBridges as $getBridge){
+                    if($getBridge->checkCredit==1){
                       echo '<p class="position">'.$getBridge->Position.'</p>';
-                      $k+=1;
-                      if($k >= 4){
-                        break;
-                      }
+                    }else{
+                      echo '<p class ="noCreditposition">'.$getBridge->Position.'</p>';
                     }
+                    $k+=1;
+                    /*
+                    if($k >= 4){
+                      break;
+                    }
+                    */
+                  }
+                  $Sentence2 = "select position from TagNotUser where artPK =".$artPKArr[$i];
+                  $users2 = DB::select(DB::raw($Sentence2));
+                  foreach($users2 as $user){
+                    echo "<p class = 'noCreditposition'>".$user->position."</p>";
+                  }
 
                   echo '</div>
                   <div class="splitter">
@@ -71,11 +82,22 @@ class getSpotlightClass extends Controller
                   <div class="name_Frame">';
                   $k = 0;
                   foreach($getBridges as $getBridge){
-                    echo '<a href = /anotherProfile?int='.$getBridge->userPK.'><p class="name">'.$getBridge->Name.'</p></a>';
+                    if($getBridge->checkCredit==1){
+                      echo '<a href = /anotherProfile?int='.$getBridge->userPK.'><p class="name">'.$getBridge->Name.'</p></a>';
+                    }else{
+                      echo '<a href = /anotherProfile?int='.$getBridge->userPK.'><p class="noCreditname">'.$getBridge->Name.'</p></a>';
+                    }
+                    /*
                     $k+=1;
                     if($k >= 4){
                       break;
                     }
+                    */
+                  }
+                  $Sentence2 = "select tagUser from TagNotUser where artPK =".$artPKArr[$i];
+                  $users2 = DB::select(DB::raw($Sentence2));
+                  foreach($users2 as $user){
+                    echo "<p class = 'noCreditname'>".$user->tagUser."</p>";
                   }
 
                   echo '</div>

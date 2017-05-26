@@ -35,6 +35,8 @@ class PostClass extends Controller
           if($user->checkCredit=="1"){
             echo "<a href = '/anotherProfile?int=".$user->userPK."'><p class = 'name' id = ".$user->userPK.">".$user->Name."</p></a>";
             $a+=1;
+          }else{
+            echo "<a href = '/anotherProfile?int=".$user->userPK."'><p class = 'nameNoAccount' id = ".$user->userPK.">".$user->Name."</p></a>";
           }
         }
         $Sentence2 = "select tagUser from TagNotUser where artPK =".$_GET['int'];
@@ -50,6 +52,8 @@ class PostClass extends Controller
         foreach($users2 as $user){
           if($user->checkCredit=="1"){
             echo "<p class = 'position'>".$user->position."</p>";
+          }else{
+            echo "<p class = 'positionNoAccount'>".$user->position."</p>";
           }
         }
         $Sentence2 = "select position from TagNotUser where artPK =".$_GET['int'];
@@ -149,11 +153,11 @@ class PostClass extends Controller
           </div> <!-- outCreditFrame end -->
           <!-- 크레딧 중복 요청 방지를 위해 workDB 에서 검사 exists 가 0 일 경우 credit 이 달려있지 않다는 의미-->
           <?php
-          
+
           // echo "GLOBALS[exists] : ".$GLOBALS['exists'];
             // <!-- credit Request -->
           if($GLOBALS['exists'] == '0'){
-            echo'<div id="creditRequest"> 
+            echo'<div id="creditRequest">
             <p id="creditRequestQuote">당신도 이 작품에 참여했나요?</p>
             <button id="creditRequestBt">크레딧 요청하기</button>
             </div>';//<!-- credit Request end-->

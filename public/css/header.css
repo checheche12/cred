@@ -7,7 +7,7 @@
 
 #header {
 	white-space: nowrap;
-	height: 3vmax;
+	height: 2.5rem;
 	width: 100%;
 	position: fixed;
 	background: rgba(255, 255, 255, 0.5);
@@ -18,48 +18,97 @@
 }
 .searchSlot {
 	vertical-align: top;
-	width: 20vmax;
-	height: 2vmax;
+	width: 17.5rem;
+	height: 1.5625rem;
 	box-sizing: border-box;
 	border: 0.1vmax solid #dbdbdb ;
 	font-size: 0.75rem !important;
 	color: #262626 ;
-	background-color: rgba(255, 255, 255, 0.5);
-	/*background-image: url(/mainImage/searchicon.png);*/
-	background-position: 5%;
-	background-size: 1.2vmax;
-	background-repeat: no-repeat;
 	padding: 0 5vmax 0 0.5vmax;
 }
 
+#searchDropdown{
+	height: 1.5625rem;
+}
 /**검색창**/
 #searchbar{
-	margin-top: .5vmax;
-	margin-left: 4vmax;
+	margin-top: 0.46875rem;
+	margin-left: 3.5rem;
 	display: inline-flex;
 }
-/**검색버튼**/
 
+#menu{
+	background-image: url(/mainImage/menuicongray.png);
+	display: none;
+}
+#menu:hover{
+	background-image: url(/mainImage/menuiconpink.png);
+	display: none;
+}
+.homeLogo{
+	float: left;
+	cursor: pointer;
+	height: 1.2rem;
+	margin-left: 1.375rem;
+	margin-top: 0.65rem;
+}
+#credImage_icon{
+	display: none;
+}
+.smt_inMenu_on{
+	display: block !important;
+}
+/**검색버튼**/
 @media screen and (min-width: 0px) and (max-width: 900px){
-	/**검색창**/
-	#searchbar{
+	#bugReportBt{
 		display: none;
+		/**검색창**/
 	}
-	/**검색버튼**/
+	#searchSlot{
+		width: 12.5rem;
+	}
+	#searchbar{
+		margin-left: 1rem;
+	}
+	#menu, #buttons{
+		display: block;
+	}
+	#menu:hover{
+		display: block;
+	}
+	.smt_inMenu{
+		display: none !important;
+	}
+	.smt_inMenu_on{
+		display: block !important;
+	}
+	.headicons{
+		display: block;
+		text-align: -webkit-center;
+	}
+	.headicons:hover .smt_inMenu{
+		display: block;
+	}
+}
+
+@media screen and (min-width: 0px) and (max-width: 450px){
+	#credImage{	display: none;	}
+	#credImage_icon{display: block;	}
+	#searchSlot{
+		width: 8.5rem;
+	}
 
 }
 #searchButton {
-	width: 3vmax;
-	height: 2vmax;
+	width: 1.625rem;
+	height: 1.75rem;
 	color: #000;
 	background: #fff url(/mainImage/searchicon.png) center no-repeat;
 	background-size: 1.5vmax 1.4vmax;
 	border: none;
 	text-align: center;
-	margin-left: 0.4vmax;
 	text-decoration: none;
 	display: inline-block;
-	font-size: 1vmax;
 	border-radius: 4px;
 	cursor: pointer;
 	transition: all 0.8s;
@@ -77,42 +126,32 @@ button{
 button:hover{
 
 }
-#credImage{
-	float: left;
-	cursor: pointer;
-	height: 60%;
-	margin-left: 3.125vmax;
-	margin-top: 0.6vmax;
-
-}
-
 .headIcons {
 	position: absolute;
 	display: inline-flex;
 	right: 0px;
-	margin-top: 0.25vmax;
-	margin-right: 2vmax;
+	margin-top: 0.25rem;
+	margin-right: 1.375rem;
 	white-space: nowrap;
 }
 #profile{
 	float: left;
 	display: table;
-	margin-right: 1vmax
-	;
+	margin-right: 0.875rem;
 }
 
 #profileImage{
 	border-radius: 100%;
 	float: left;
-	width: 2.5vmax;
-	height: 2.5vmax;
-	margin-right: 1vmax;
+	width: 2rem;
+	height: 2rem;
+	margin-right: 0.25em;
 	display: inline-block;
 }
 
 #profileName{
 	cursor: pointer;
-	font-size: 1vmax;
+	font-size: .9rem;
 	display: table-cell;
 	vertical-align: middle;
 }
@@ -232,19 +271,18 @@ button:hover{
 
 .icons_none{
 	position: relative;
-	width: 3vmax;
-	height: 2.5vmax;
+	width: 2.625rem;
+	height: 2rem;
 	background-color: white;
 	background: no-repeat;
-	background-size: 1.5vmax;
+	background-size: 1.3125rem;
 	background-position: 50%;
 	color: #ed2a7b;
 	border: none;
 	text-align: center;
 	text-decoration: none;
 	display: inline-block;
-	font-size: 13px;
-	border-radius: 4px;
+	border-radius: 0.25rem;
 	cursor: pointer;
 	transition: all 0.3s;
 }
@@ -262,20 +300,19 @@ button:hover{
 }
 
 .icons{
-	position :relative;
-	width: 3vmax;
-	height: 2.5vmax;
+	position: relative;
+	width: 2.625rem;
+	height: 2rem;
 	background-color: white;
 	background: no-repeat;
-	background-size: 1.5vmax;
+	background-size: 1.3125rem;
 	background-position: 50%;
 	color: #ed2a7b;
 	border: none;
 	text-align: center;
 	text-decoration: none;
 	display: inline-block;
-	font-size: 13px;
-	border-radius: 4px;
+	border-radius: 0.25rem;
 	cursor: pointer;
 	transition: all 0.3s;
 }
@@ -367,20 +404,19 @@ ul{
 	display: inline-block;
 }
 #login {
-	width: 5.4vmax;
-	height: 2vmax;
+	width: 5em;
+	height: 2em;
 	background-color: rgba(255, 255, 255, 0.5);
 	color: black;
-	border: 0.2px solid white;
+	border: 0.2rem solid white;
 	text-align: center;
 	margin-left: 0.4vmax;
 	text-decoration: none;
 	display: inline-block;
-	font-size: 1vmax;
-	border-radius: 4px;
+	border-radius: .3rem;
 	cursor: pointer;
 	transition: all 0.8s;
-	margin-top: .25vmax;
+	margin-top: 0.19rem;
 }
 #login:hover{
 	text-decoration: underline;
@@ -407,10 +443,9 @@ ul{
 	display: inline-block;
 }
 #bugReportBt{
-	width: 80px;
-	color: #ed2a7b ;
-	height: 2.5vmax;
+	width: 5.67em;
+	color: #ed2a7b;
+	height: 2rem;
 	background: none;
 	border: none;
-	font-size: 1vmax;
 }

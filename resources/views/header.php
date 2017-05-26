@@ -60,9 +60,11 @@ class UserController extends Controller
 
     </head>
     <link rel="stylesheet" type ="text/css" href="css/header.css?v=1">
+    <script src="js/prefixfree.min.js" type="application/javascript"></script>
     <div class="headerFrame">
       <div id = "header">
-        <img id = "credImage" src = "mainImage/signupImage/signupLogo.png" title="홈페이지">
+        <img id = "credImage" class="homeLogo" src = "mainImage/signupImage/signupLogo.png" title="홈페이지">
+        <img id = "credImage_icon" class="homeLogo" src = "mainImage/credberrylogo.png" title="홈페이지">
 
     <!--
         아래에 있는 코드는 DB에서 값을 가져 온 뒤에 동적으로 수정해야 한다. (수정 1)
@@ -80,8 +82,9 @@ class UserController extends Controller
       <div class="headIcons">
         <?php
         if($_SESSION['is_login'] == true){
+          echo'<button id="menu" class="icons"></button>';
           echo '<button id = "bugReportBt" title="버그신고">버그신고</button>
-          <div id="aligner"><div id = "profile">';
+          <div id="aligner" class = "smt_inMenu"><div id = "profile">';
             echo '<img id = "profileImage" src = '.$GLOBALS['photoURL'].' title="나의 프로필">';
             echo '<p id = "profileName" title="나의 프로필">'.$GLOBALS['name'].'</p>';
             echo '</div></div>';
@@ -94,7 +97,7 @@ class UserController extends Controller
 
           // <button id = "yourart" class="icons"></button>
             echo '<div id="buttons">
-            <button id = "dm" class="icons" title = "DM">';
+            <button id = "dm" class="icons smt_inMenu" title = "DM">';
               echo '<div>';
               if($GLOBALS['msgCheck']==0){
                 echo "";
@@ -107,7 +110,7 @@ class UserController extends Controller
               echo '</div>';
               echo '<span class = "tooltiptext">메세지</span>
             </button>
-            <button id = "notification" class = "icons_none" title="알림" style = "background-image: url(mainImage/notioff.png)">';
+            <button id = "notification" class = "icons_none smt_inMenu" title="알림" style = "background-image: url(mainImage/notioff.png)">';
 
               echo '<div>';
               if($GLOBALS['eventCheck']==0){
@@ -121,10 +124,10 @@ class UserController extends Controller
 
               echo '<span class = "tooltiptext">알림</span>
             </button>
-            <button id = "upload" class="icons" title="업로드">
+            <button id = "upload" class="icons smt_inMenu" title="업로드">
               <span class = "tooltiptext">업로드</span>
             </button>
-            <button id = "logout" class="icons" title="로그아웃">
+            <button id = "logout" class="icons smt_inMenu" title="로그아웃">
               <span class = "tooltiptext">로그아웃</span>
             </button>
             <div id = "notification_out" class = "notification_out_none">
