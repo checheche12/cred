@@ -32,11 +32,21 @@ class UserController extends Controller
           }
           if($_POST['chk_info']=="personal"){
             DB::insert('insert into userinfo (Email, Password, Name, Certification, isgroup, ProfilePhotoURL) values (?, ?, ?, ?, ?, ?)',[$_POST['emailemail'],$GLOBALS['pLock'],$_POST['namename'],0,0,$_POST['hiddenPicURL']]);
-            self::sendEmail($_POST['emailemail']);
+            $Sentence = "select userPK from userinfo where Email = '".$_POST['emailemail']."'";
+            $users = DB::select(DB::raw($Sentence));
+            foreach($users as $user){$GLOBALS['userPK'] = $user->userPK;}
+            $nowDateTime = date("Y-m-d H:i:s");
+            DB::insert('insert into userAuth (userPK, AuthDate) values (?,?)',[$GLOBALS['userPK'],$nowDateTime]);
+            self::sendEmail($GLOBALS['userPK'],$_POST['emailemail'],$nowDateTime);
 
           }else if($_POST['chk_info']=="group"){
             DB::insert('insert into userinfo (Email, Password, Name, Certification, isgroup, ProfilePhotoURL) values (?, ?, ?, ?, ?, ?)',[$_POST['emailemail'],$GLOBALS['pLock'],$_POST['namename'],0,1,$_POST['hiddenPicURL']]);
-            self::sendEmail($_POST['emailemail']);
+            $Sentence = "select userPK from userinfo where Email = '".$_POST['emailemail']."'";
+            $users = DB::select(DB::raw($Sentence));
+            foreach($users as $user){$GLOBALS['userPK'] = $user->userPK;}
+            $nowDateTime = date("Y-m-d H:i:s");
+            DB::insert('insert into userAuth (userPK, AuthDate) values (?,?)',[$GLOBALS['userPK'],$nowDateTime]);
+            self::sendEmail($GLOBALS['userPK'],$_POST['emailemail'],$nowDateTime);
           }
 
           /**userExperience Table에 userPK 추가**/
@@ -70,17 +80,25 @@ class UserController extends Controller
       },3000);</script>";
     }
 
-    public function sendEmail($str){
+    public function sendEmail($stringOne,$stringTwo,$stringThree){
+      //str 1 은 userPK
+      //str 2 는 Email
+      //str 3 은 인증 날짜.
 
-      $to = base64_encode($str);
+      $to1 = base64_encode($stringOne);
+      $to2 = base64_encode($stringTwo);
+      $to3 = base64_encode($stringThree);
+      $to4 = $to1."|".$to2."|".$to3;
+      $to4 = base64_encode($to4);
+      $to4 = base64_encode($to4);
       $subject = 'CRED Certification Email';
       $data = [
       'title' => 'Certification URL',
       'body' => '아래의 URL 을 클릭하시면 인증이 완료됩니다.',
-      'url' => "http://www.credmob.com/certificate?aabbcc=".$to
+      'url' => "http://www.credmob.com/certificate?aabbcc=".$to4
       ];
-      return Mail::send('email.certification',$data,function($message) use($str, $subject){
-        $message->to($str)->subject($subject);
+      return Mail::send('email.certification',$data,function($message) use($stringTwo, $subject){
+        $message->to($stringTwo)->subject($subject);
       });
 
     }
@@ -98,7 +116,6 @@ class UserController extends Controller
       document.location.href='./';
     },3000);</script>";
   }
-
 
 
 

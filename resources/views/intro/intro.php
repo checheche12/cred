@@ -47,7 +47,7 @@ $A->post();
 		?>
 	</div>
 			<?php
-			if(($_SESSION['is_login'] == true and $GLOBALS['eventStatus']==0) or $_SESSION['is_login'] == false){
+			if(($_SESSION['is_login'] == true and (($GLOBALS['eventStatus'] & 1)==0)) or $_SESSION['is_login'] == false){
 				echo'
 				<div id="ContentWidth">
 				<div id="MainContent_Frame">
@@ -91,7 +91,7 @@ if($_SESSION['is_login'] == true){
 			echo "</div>"; /*end Newest_Frame*/
 		}
 		?>
-	
+
 		<div id="jobPosting_Frame">
 			<?php
 			include_once('../resources/views/jobposting.php');

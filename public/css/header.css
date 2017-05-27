@@ -83,7 +83,7 @@
 		display: block !important;
 	}
 	.headicons{
-		display: block;
+		display: inline-block !important;
 		text-align: -webkit-center;
 	}
 	.headicons:hover .smt_inMenu{
@@ -399,9 +399,6 @@ ul{
 	z-index: 999;
 	background: white;
 	border: 1px solid grey;
-}
-#buttons{
-	display: inline-block;
 }
 #login {
 	width: 5em;

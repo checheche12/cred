@@ -8,6 +8,17 @@ class UserController
        */
       public function getUserData()
       {
+
+        $users = DB::select(DB::raw("select eventStatus from userinfo where userPK = ".$_SESSION['userPK'].""));
+
+        foreach ($users as $user) {
+          $GLOBALS['eventStatus'] = $user->eventStatus;
+        }
+        if( $GLOBALS['eventStatus'] & 2 == 2 ){  //첫번째 아님
+        }else{  //첫번째
+          DB::update("update userinfo set eventStatus = eventStatus | 2 where userPK = ?", [$_SESSION['userPK']]);
+        }
+
         $Sentence = "select * from userinfo where userPK = ".$_SESSION['userPK'];
         $users = DB::select(DB::raw($Sentence));
         foreach($users as $user){

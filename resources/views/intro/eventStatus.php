@@ -12,7 +12,7 @@ class eventStatusClass extends Controller
          * @return Response
          */
         public function eventStatus(){
-        	DB::update(DB::raw("update userinfo set eventStatus=1 where userPK=".$_SESSION['userPK']));
+        	DB::update("update userinfo set eventStatus = eventStatus | 1 where userPK= ?",[$_SESSION['userPK']]);
         }
     }
 

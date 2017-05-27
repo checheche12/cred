@@ -70,7 +70,7 @@ class LoginController extends Controller
                     }
                       //첫번째 가입시에 프로파일 edit 으로 보냄
                       //첫번째가 이닌 상태 eventStatus: 10<= x <100.
-                      if( 10<=$GLOBALS['eventStatus'] and $GLOBALS['eventStatus']<100 ){ //첫번째 아님
+                      if(($GLOBALS['eventStatus'] & 2) == 2){ //첫번째 아님
                         header('Location: ./');
                         exit;
                       }else{  //첫번째
