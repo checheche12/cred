@@ -54,7 +54,7 @@ $("#notification_out").scroll(function(event){
 })
 
 $(notification).click(function(e){
-	if($(notification).attr('class')=="icons_none"){
+	if($(notification).hasClass( "icons_none" )){
 		$(notification).attr('class',"icons");
 		$(notification_out).attr('class',"notification_out");
 		$(notification).css('background-image','url(mainImage/notion.png)');
@@ -76,6 +76,7 @@ $(notification).click(function(e){
 });
 
 $("#menu").click(function(){
+
 	$(".smt_inMenu").addClass('smt_inMenu_on');
 	$(".smt_inMenu").removeClass('smt_inMenu');
 });
@@ -85,10 +86,15 @@ $("#menu").click(function(){
 // }
 
 $("body").click(function(e){
-	if($(notification).attr('class')=="icons"){
+	event.stopPropagation();
+	if($(notification).hasClass( "icons" )){
 		$(notification).attr('class',"icons_none");
 		$(notification_out).attr('class',"notification_out_none");
 		$(notification).css('background-image','url(mainImage/notioff.png)');
+	}
+	if(smt_inMenu_on!=undefined){
+		$(".smt_inMenu_on").addClass('smt_inMenu');
+		$(".smt_inMenu").removeClass('smt_inMenu_on');
 	}
 });
 

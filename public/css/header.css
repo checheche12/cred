@@ -60,10 +60,18 @@
 }
 /**검색버튼**/
 @media screen and (min-width: 0px) and (max-width: 900px){
-	#bugReportBt{
-		display: none;
+	.headIcons{
+		display: inline-block !important;
+		text-align: -webkit-center;
+	}
+	.headIcons:hover .smt_inMenu{
+		display: block;
+	}
+	#bugReportBt, #profileName{
+		display: none !important;
 		/**검색창**/
 	}
+	
 	#searchSlot{
 		width: 12.5rem;
 	}
@@ -81,13 +89,6 @@
 	}
 	.smt_inMenu_on{
 		display: block !important;
-	}
-	.headicons{
-		display: inline-block !important;
-		text-align: -webkit-center;
-	}
-	.headicons:hover .smt_inMenu{
-		display: block;
 	}
 }
 

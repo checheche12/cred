@@ -38,10 +38,10 @@ a img{
 #RecentWorks_Frame {
 	
 	max-width: 960px;
-    width: 100%;
+	width: 100%;
 	margin: 5vh auto 5vh;
 	height: 28vh;
-    
+	
 
 }
 .RecentWork{
@@ -64,10 +64,10 @@ p{
 	color: #000;
 
 }
-.position{
+.position, p.noCreditposition, p.noCreditname{
 	color: #a0a0a0;
 }
-p.name, p.position{
+p.name, p.position, p.noCreditname, p.noCreditposition{
 	font-size: 0.9vmax;
 	margin: 0px;
 	line-height: 1.6;
@@ -103,7 +103,7 @@ p.name, p.position{
 }
 #MainContent{
 	
-   
+	
 }
 #quoteBox{
 	position: relative;
@@ -127,20 +127,20 @@ p.name, p.position{
 }
 .title {
 	text-align: left;
-    font-size: 2vw;
-    margin: auto;
-    margin-top: 6vmax;
-    letter-spacing: -1px;
-    border-top: 3px solid #000;
-    width: 100%;
-    max-width: 960px;
+	font-size: 2vw;
+	margin: auto;
+	margin-top: 6vmax;
+	letter-spacing: -1px;
+	border-top: 3px solid #000;
+	width: 100%;
+	max-width: 960px;
 
 }
 .Newest_Frame {
-    background: #fafafa;
-    height: 90vh;
-    margin: 4rem 0 10vh;
-  
+	background: #fafafa;
+	height: 90vh;
+	margin: 4rem 0 10vh;
+	
 }
 #MainImage {
 	height: 100vh;
@@ -151,9 +151,9 @@ p.name, p.position{
 }
 #ContentWidth{
 	height: 400vh;
-	}
+}
 .credit{
-	/*height: 10vh;*/
+	height: 10vh;
 	overflow: auto;
 	overflow-x: hidden;
 	display: flex;
@@ -173,14 +173,14 @@ p.name, p.position{
 	background-color: #ffffff;
 }
 #xBt {
-    display: inline-block;
-    position: relative;
-    top: -100px;
-    left: 90%;
-    background: transparent;
-    border: none;
-    color: rgb(255, 255, 255);
-    font-size: 5rem !important;
+	display: inline-block;
+	position: relative;
+	top: -100px;
+	left: 90%;
+	background: transparent;
+	border: none;
+	color: rgb(255, 255, 255);
+	font-size: 5rem !important;
 }
 .workTitle{
 	font-size: 0.8rem;
