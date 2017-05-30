@@ -14,6 +14,15 @@ class DMTotalListClass
         greatest(senderuserPK, recieveruserPK) as value2 , MAX(DMPK) as DMPK from DirectMessage where
          senderuserPK = ? or recieveruserPK = ? group by value1, value2 order by MAX(DMPK) desc;",[$_SESSION['userPK'],$_SESSION['userPK']]);
 
+         echo '
+         <div id="searchDropdown">
+           <input id="searchDMSlot" class="searchSlot" type="text" name="search" placeholder="Search.." >
+           <br>
+           <div id="searchDropdown_content">
+           </div>
+
+         </div>';
+
         foreach($SelectsDMTotalLists as $SelectsDMTotalList){
 
           $SelectDMLasts = DB::select("select senderuserPK, recieveruserPK, sendDate, context,
@@ -35,7 +44,11 @@ class DMTotalListClass
                 echo '<div class="dmListSelection">';
               }
               echo "<img class = 'img' src = '".$SelectDMLast->RecieverProfilePhotoURL."'></img>";
-              echo '<p class="listSent">'.$SelectDMLast->RecieverName.' 님께 보낸 메세지</p>';
+              if(empty($SelectDMLast->RecieverName)){
+                echo '<p class="listSent">(알수없음) 님께 보낸 메세지</p>';
+              }else{
+                  echo '<p class="listSent">'.$SelectDMLast->RecieverName.' 님께 보낸 메세지</p>';
+              }
               echo '<p class="contextSent">'.$SelectDMLast->context.'</p>';
               $date = date("Y-m-d H:m",strtotime($SelectDMLast->sendDate));
               echo '<p class="finalDate">'.$date.'</p>';
@@ -48,7 +61,11 @@ class DMTotalListClass
                 echo '<div class="dmListSelection">';
               }
               echo "<img class = 'img' src = '".$SelectDMLast->SenderProfilePhotoURL."'></img>";
-              echo '<p class="listRecieved">'.$SelectDMLast->SenderName.' 님께 받은 메세지</p>';
+              if(empty($SelectDMLast->RecieverName)){
+                echo '<p class="listSent">(알수없음) 님께 받은 메세지</p>';
+              }else{
+                echo '<p class="listRecieved">'.$SelectDMLast->SenderName.' 님께 받은 메세지</p>';
+              }
               echo '<p class="contextRecieved">'.$SelectDMLast->context.'</p>';
               $date = date("Y-m-d H:m",strtotime($SelectDMLast->sendDate));
               echo '<p class="finalDate">'.$date.'</p>';
@@ -60,6 +77,7 @@ class DMTotalListClass
           }
 
         }
+
       }
     }
 

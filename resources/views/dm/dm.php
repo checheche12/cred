@@ -10,6 +10,15 @@
 
   }
 
+  if(!isset($_GET['userPK'])){
+        $_GET['userPK'] = 0;
+  }
+  if($_GET['userPK']==$_SESSION['userPK'])
+  {
+    Header("Location: /dm?userPK=0");
+    exit;
+  }
+
 ?>
 <!-- FOUC(Flash Of Unstyled Content) 방지 용 head-->
 <head>

@@ -37,14 +37,6 @@
 	display: inline-flex;
 }
 
-#menu{
-	background-image: url(/mainImage/menuicongray.png);
-	display: none;
-}
-#menu:hover{
-	background-image: url(/mainImage/menuiconpink.png);
-	display: none;
-}
 .homeLogo{
 	float: left;
 	cursor: pointer;
@@ -54,51 +46,6 @@
 }
 #credImage_icon{
 	display: none;
-}
-.smt_inMenu_on{
-	display: block !important;
-}
-/**검색버튼**/
-@media screen and (min-width: 0px) and (max-width: 900px){
-	.headIcons{
-		display: inline-block !important;
-		text-align: -webkit-center;
-	}
-	.headIcons:hover .smt_inMenu{
-		display: block;
-	}
-	#bugReportBt, #profileName{
-		display: none !important;
-		/**검색창**/
-	}
-	
-	#searchSlot{
-		width: 12.5rem;
-	}
-	#searchbar{
-		margin-left: 1rem;
-	}
-	#menu, #buttons{
-		display: block;
-	}
-	#menu:hover{
-		display: block;
-	}
-	.smt_inMenu{
-		display: none !important;
-	}
-	.smt_inMenu_on{
-		display: block !important;
-	}
-}
-
-@media screen and (min-width: 0px) and (max-width: 450px){
-	#credImage{	display: none;	}
-	#credImage_icon{display: block;	}
-	#searchSlot{
-		width: 8.5rem;
-	}
-
 }
 #searchButton {
 	width: 1.625rem;
@@ -437,13 +384,75 @@ ul{
 	width:1.2vw;
 
 }
-#aligner{
-	display: inline-block;
-}
+
 #bugReportBt{
 	width: 5.67em;
 	color: #ed2a7b;
 	height: 2rem;
 	background: none;
 	border: none;
+}
+#buttons, #aligner{
+	display: inline-block;
+}
+
+#menu{
+	background-image: url(/mainImage/menuicongray.png);
+	display: none;
+}
+#menu:hover{
+	background-image: url(/mainImage/menuiconpink.png);
+	/*display: none;*/
+}
+@media screen and (min-width: 0px) and (max-width: 900px){
+
+
+	.headIcons{
+		display: inline-block !important;
+		text-align: -webkit-center;
+	}
+	.headIcons:hover .smt_inMenu{
+		display: block;
+	}
+	#bugReportBt, #profileName{
+		display: none !important;
+		*검색창*
+	}
+
+	#searchSlot{
+		width: 12.5rem;
+	}
+	#searchbar{
+		margin-left: 1rem;
+	}
+	#menu, #buttons{
+		display: block;
+	}
+	#menu:hover{
+		display: block;
+	}
+	.smt_inMenu{
+		display: block;
+	}
+	#buttons, #aligner{
+		display: none;
+	}
+	#profileImage, #profile{
+		float: none;
+		margin-right: 0;
+	}
+}
+
+@media screen and (min-width: 0px) and (max-width: 450px){
+	#credImage{	display: none;	}
+	#credImage_icon{display: block;	}
+	#searchSlot{
+		width: 8.5rem;
+	}
+
+} 
+@media screen and (min-width: 900px){
+	#buttons, #aligner{
+		display: inline-block !important;
+	}
 }

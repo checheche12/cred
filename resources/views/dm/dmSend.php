@@ -10,15 +10,22 @@ class dmSendClass
 
       public function dmSend()
       {
-          DB::transaction(function(){
-            $insertDM = DB::insert('insert into DirectMessage (senderuserPK,
-            recieveruserPK, sendDate, context) values (?,?,?,?)'
-            ,[$_SESSION['userPK'],$_POST['recieveruserPK'],date("Y/m/d H:i:s",time()),$_POST['DMText']]);
-            $update = DB::update('update userinfo set msgCheck = msgCheck+1
-            where userPK = ?',[$_POST['recieveruserPK']]);
+          $isItUser = DB::select('select * from userinfo where userPK = ? ',[$_POST['recieveruserPK']]);
+          if(!empty($isItUser)){
+            DB::transaction(function(){
+              $insertDM = DB::insert('insert into DirectMessage (senderuserPK,
+              recieveruserPK, sendDate, context) values (?,?,?,?)'
+              ,[$_SESSION['userPK'],$_POST['recieveruserPK'],date("Y/m/d H:i:s",time()),$_POST['DMText']]);
+              $update = DB::update('update userinfo set msgCheck = msgCheck+1
+              where userPK = ?',[$_POST['recieveruserPK']]);
 
-            echo date("Y/m/d H:i",time());
-          });
+              echo date("Y/m/d H:i",time());
+            });
+          }
+          else{
+            echo "error";
+          }
+
       }
 }
 
