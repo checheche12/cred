@@ -14,142 +14,167 @@ class UserController extends Controller
        */
       public function index()
       {
-        $Sentence = "select * from userinfo where userPK = ".$_SESSION['userPK'];
-        $users = DB::select(DB::raw($Sentence));
-        $GLOBALS['name'] = "GUEST";
-        if(($_SESSION['persongroup'] == "administrator") && ($_SESSION['isGroup'] == "administrator")){
-          $GLOBALS['name'] = "Administrator";
-        }
-        $GLOBALS['photoURL'] = "mainImage/default_profile_pic.png";
+      	$Sentence = "select * from userinfo where userPK = ".$_SESSION['userPK'];
+      	$users = DB::select(DB::raw($Sentence));
+      	$GLOBALS['name'] = "GUEST";
+      	if(($_SESSION['persongroup'] == "administrator") && ($_SESSION['isGroup'] == "administrator")){
+      		$GLOBALS['name'] = "Administrator";
+      	}
+      	$GLOBALS['photoURL'] = "mainImage/default_profile_pic.png";
 
-        foreach($users as $user){
-          $GLOBALS['name'] = $user->Name;
-          $GLOBALS['photoURL'] = $user->ProfilePhotoURL;
-        }
+      	foreach($users as $user){
+      		$GLOBALS['name'] = $user->Name;
+      		$GLOBALS['photoURL'] = $user->ProfilePhotoURL;
+      	}
 
-        $eventChecks = DB::select("select eventCheck,msgCheck from userinfo where userPK = ?",[$_SESSION['userPK']]);
-        $GLOBALS['msgCheck']=0;
-        $GLOBALS['eventCheck']=0;
-        foreach($eventChecks as $eventCheck){
-          $GLOBALS['eventCheck'] = $eventCheck->eventCheck;
-          $GLOBALS['msgCheck']=$eventCheck->msgCheck;
-        }
+      	$eventChecks = DB::select("select eventCheck,msgCheck from userinfo where userPK = ?",[$_SESSION['userPK']]);
+      	$GLOBALS['msgCheck']=0;
+      	$GLOBALS['eventCheck']=0;
+      	foreach($eventChecks as $eventCheck){
+      		$GLOBALS['eventCheck'] = $eventCheck->eventCheck;
+      		$GLOBALS['msgCheck']=$eventCheck->msgCheck;
+      	}
 
-        $GLOBALS['notification'] = DB::select("select A.checknotification, A.notificationPK ,A.notificationKind, B.userPK,B.ProfilePhotoURL,
-          B.Name,C.title,C.artPK, D.Position,A.notificationPlacePK
-          from notification as A left join userinfo as B on A.senderuserPK = B.userPK
-          left join totalart as C on C.artPK = A.notificationPlacePK
-          left join workDB as D on C.artPK = D.artPK and A.recieveruserPK = D.userPK
-          where A.recieveruserPK = ? order by notificationPK DESC limit ?, 15;",[$_SESSION['userPK'],0]);
+      	$GLOBALS['notification'] = DB::select("select A.checknotification, A.notificationPK ,A.notificationKind, B.userPK,B.ProfilePhotoURL,
+      		B.Name,C.title,C.artPK, D.Position,A.notificationPlacePK
+      		from notification as A left join userinfo as B on A.senderuserPK = B.userPK
+      		left join totalart as C on C.artPK = A.notificationPlacePK
+      		left join workDB as D on C.artPK = D.artPK and A.recieveruserPK = D.userPK
+      		where A.recieveruserPK = ? order by notificationPK DESC limit ?, 15;",[$_SESSION['userPK'],0]);
       }
 
-    }
-    include_once('../resources/views/noti/notifunction.php');
-    $A = new UserController();
-    $A->index();
+  }
+  include_once('../resources/views/noti/notifunction.php');
+  $A = new UserController();
+  $A->index();
 
-    ?>
-
-    <head>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-      <style type="text/css">
-        .headerFrame{
-          display: none;
-        }
-      </style>
-
-    </head>
-    <link rel="stylesheet" type ="text/css" href="css/header.css?v=1">
-    <script src="js/prefixfree.min.js" type="application/javascript"></script>
-    <div class="headerFrame">
-      <div id = "header">
-        <img id = "credImage" class="homeLogo" src = "mainImage/signupImage/signupLogo.png" title="홈페이지">
-        <img id = "credImage_icon" class="homeLogo" src = "mainImage/credberrylogo.png" title="홈페이지">
-
-    <!--
-        아래에 있는 코드는 DB에서 값을 가져 온 뒤에 동적으로 수정해야 한다. (수정 1)
-      -->
-      <form id="searchbar" <?php if($_SESSION['is_login'] == false){echo'style="display:none"';}?>>
-        <div id="searchDropdown">
-          <input id="searchSlot" class="searchSlot" type="text" name="search" placeholder="Search.." >
-          <br>
-          <div id="searchDropdown_content">
-          </div>
-
-        </div>
-        <input type="button" name="submitbutton" id="searchButton">
-      </form>
-      <div class="headIcons">
-        <?php
-        if($_SESSION['is_login'] == true){
-          echo'<button id="menu" class="icons"></button>';
-          echo '<button id = "bugReportBt" title="버그신고">버그신고</button>
-          <div id="aligner" class = "smt_inMenu"><div id = "profile">';
-            echo '<img id = "profileImage" src = '.$GLOBALS['photoURL'].' title="나의 프로필">';
-            echo '<p id = "profileName" title="나의 프로필">'.$GLOBALS['name'].'</p>';
-            echo '</div></div>';
-          }
-          if($_SESSION['is_login'] == false){
-            echo '<button id = "login" class="dropdowns">로그인</button><br>';
-
-          }else{
+  ?>
 
 
-          // <button id = "yourart" class="icons"></button>
-            echo '<div id="buttons">
-            <button id = "dm" class="icons smt_inMenu" title = "DM">';
-              echo '<div>';
-              if($GLOBALS['msgCheck']==0){
-                echo "";
-              }
-              else if($GLOBALS['msgCheck']<=9){
-                echo "<img id = 'notiSmallImage' class = 'smallImage' src ='/mainImage/notiLogo/noti".$GLOBALS['msgCheck'].".png'></img>";
-              }else{
-                echo "<img id = 'notiSmallImage' class = 'smallImage 'src ='/mainImage/notiLogo/noti9p.png'></img>";
-              }
-              echo '</div>';
-              echo '<span class = "tooltiptext">메세지</span>
-            </button>
-            <button id = "notification" class = "icons_none smt_inMenu" title="알림" style = "background-image: url(mainImage/notioff.png)">';
+  <head>
+  	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  	<!-- css -->
+  	<link href="css/headerBootstrap.min.css" rel="stylesheet" />
+  	<!-- <link href="css/headerStyle.css" rel="stylesheet" /> -->
+  	<link rel="stylesheet" type ="text/css" href="css/header.css">
 
-              echo '<div>';
-              if($GLOBALS['eventCheck']==0){
-              }
-              else if($GLOBALS['eventCheck']<=9){
-                echo "<img id = 'notiSmallImage' class = 'smallImage' src ='/mainImage/notiLogo/noti".$GLOBALS['eventCheck'].".png'></img>";
-              }else{
-                echo "<img id = 'notiSmallImage' class = 'smallImage 'src ='/mainImage/notiLogo/noti9p.png'></img>";
-              }
-              echo '</div>';
+  	<!-- Theme skin -->
+  	<link href="css/skins/default.css" rel="stylesheet" />
 
-              echo '<span class = "tooltiptext">알림</span>
-            </button>
-            <button id = "upload" class="icons smt_inMenu" title="업로드">
-              <span class = "tooltiptext">업로드</span>
-            </button>
-            <button id = "logout" class="icons smt_inMenu" title="로그아웃">
-              <span class = "tooltiptext">로그아웃</span>
-            </button>
-            <div id = "notification_out" class = "notification_out_none">
-              <p id="notiText">알림</p>
-              <div id = "notiBox">
-                ';
-                foreach($GLOBALS['notification'] as $noti){
-                  $notifunctionClass->notification($noti);
-                }
-                echo '</div>
-                <div id = "addMore">더보기</div>
-              </div>
-            </div>';
-          }
-        //  \App\Http\Middleware\notiSendFunction::notiMake_Place();
-        //  \App\Http\Middleware\notiSendFunction::notiMake_noPlace();
-          ?>
+  	<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+      <![endif]-->
 
-        </div>
-      </div>
-    </div>
+  </head>
+  <body>
+  	<header>
+  		<div class="navbar navbar-default navbar-static-top">
+  			<div class="container">
+  				<div class="navbar-header">
+  					<?php 
+  					if($_SESSION['is_login'] == true){
+  						echo'<button id="navdrawer" type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+  						<span class="icon-bar"></span>
+  						<span class="icon-bar"></span>
+  						<span class="icon-bar"></span>
+  					</button>';
+  				} 
+  				?>
+  				<a class="navbar-brand" href="./">Credberry<span>*</span></a>
+  				<a class="navbar-brand-icon" href="./"><img src="mainImage/credberrylogo.png"></a>
+  				<form id="searchbar" <?php if($_SESSION['is_login'] == false){echo'style="display:none"';}?> >
+  					<div id="searchDropdown">
+  						<input id="searchSlot" class="searchSlot" type="text" name="search" placeholder="Search.." >
+  						<br>
+  						<div id="searchDropdown_content"></div>
 
-    <script type = "text/javascript" src = "js/jquery-3.1.1.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script type = "text/javascript" src = "js/header.js"></script>
+  					</div>
+  					<input type="button" name="submitbutton" id="searchButton">
+  				</form>
+  			</div>
+  			<?php
+  			if($_SESSION['is_login'] == false){
+  				echo'
+  				<ul class="nav navbar-nav loggedOff">
+  					<li><a href="./login">로그인</a></li>
+  				</ul>
+  				';
+  			}else{
+  				echo'
+  				<div class="navbar-collapse collapse ">
+  					<ul class="nav navbar-nav">
+  						<li><a href="./main">프로필</a></li>';
+
+  						// 알림 설정
+  						echo'<li class="dropdown">
+  						<a id="notification" href="#" class="icons_none">알림 </a>';
+  						if($GLOBALS['eventCheck']==0){
+  						}
+  						else if($GLOBALS['eventCheck']<=9){
+  							echo "<img id = 'notiSmallImage' class = 'smallImage' src ='/mainImage/notiLogo/noti".$GLOBALS['eventCheck'].".png'></img>";
+  						}else{
+  							echo "<img id = 'notiSmallImage' class = 'smallImage 'src ='/mainImage/notiLogo/noti9p.png'></img>";
+  						}
+  							// 	<!-- <ul class="dropdown-menu">
+  							// 	<li><a href="typography.html">Typography</a></li>
+  							// 	<li><a href="components.html">Components</a></li>
+  							// 	<li><a href="pricingbox.html">Pri cing box</a></li>
+  							// </ul> -->
+  						echo'
+  					</li>
+
+  					<li><a href="./dm">메세지</a></li>';
+  					if($GLOBALS["msgCheck"]==0){
+  						echo '';
+  					}
+  					else if($GLOBALS["msgCheck"]<=9){
+  						echo '<img id = "notiSmallImage" class = "smallImage" src ="/mainImage/notiLogo/noti'.$GLOBALS["msgCheck"].'.png"></img>';
+  					}else{
+  						echo '<img id = "notiSmallImage" class = "smallImage" src ="/mainImage/notiLogo/noti9p.png"></img>';
+  					}
+
+  					echo'<li><a href="./upload">업로드</a></li>
+  					<li><a href="./bugReport">버그신고</a></li>
+  					<li><a href="./Logout">로그아웃</a></li>
+
+  					<div id = "notification_out" class = "notification_out_none">
+  						<p id="notiText">알림</p>
+  						<div id = "notiBox">
+  							';
+  							foreach($GLOBALS['notification'] as $noti){
+  								$notifunctionClass->notification($noti);
+  							}
+  							echo '</div>
+  							<div id = "addMore">더보기</div>
+  						</div>
+  					</div>
+  				</ul>
+  			</div>
+  			';
+  		}
+
+  		?>
+  	</div>
+  </div>
+</header>
+<!-- javascript
+	================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<!-- <script src="js/jquery.js"></script> -->
+	<!-- <script src="js/jquery.easing.1.3.js"></script> -->
+	<script type = "text/javascript" src = "js/jquery-3.1.1.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script type = "text/javascript" src = "js/header.js"></script>
+	<script src="js/headerBootstrap.min.js"></script>
+<!-- <script src="js/jquery.fancybox.pack.js"></script>
+<script src="js/jquery.fancybox-media.js"></script>
+<script src="js/google-code-prettify/prettify.js"></script>
+<script src="js/portfolio/jquery.quicksand.js"></script>
+<script src="js/portfolio/setting.js"></script>
+<script src="js/jquery.flexslider.js"></script>
+<script src="js/animate.js"></script>
+<script src="js/custom.js"></script> -->
+</body>
+</html>

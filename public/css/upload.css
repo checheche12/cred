@@ -251,7 +251,7 @@ button:hover {
 }
 .ui-menu.ui-widget.ui-widget-content.ui-autocomplete.ui-front
 {
-	position: relative;
+	/*position: relative;*/
 	border-radius: 3px;
 	display: none;
 	overflow: auto;

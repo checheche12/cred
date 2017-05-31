@@ -73,21 +73,21 @@ if($_SESSION['is_login'] == true){
 	// echo'<p class="title">Spotlight</p>
 
 	echo '<div class="Newest_Frame"> ';
-	echo'<p class="title">Newest Project</p>
-	<div id="workFrame">
-		<div id="RecentWorks_Frame">';
+	// echo'<p class="title">Newest Project</p>
+	// <div id="workFrame">
+	// 	<div id="RecentWorks_Frame">';
 
 			include_once('../resources/views/administrator/getspotlight.php');
 
-			echo'</div>';
+			// echo'</div>';
 
-			echo'<div id="RecentWorks_Frame">';
+			// echo'<div id="RecentWorks_Frame">';
 
 
 			include_once('../resources/views/administrator/getrecent.php');
 
 
-			echo '</div></div>';
+			// echo '</div></div>';
 			echo "</div>"; /*end Newest_Frame*/
 		}
 		?>

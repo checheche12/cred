@@ -57,7 +57,7 @@ $(notification).click(function(e){
 	if($(notification).hasClass( "icons_none" )){
 		$(notification).attr('class',"icons");
 		$(notification_out).attr('class',"notification_out");
-		$(notification).css('background-image','url(mainImage/notion.png)');
+		// $(notification).css('background-image','url(mainImage/notion.png)');
 		$('#notiSmallImage').remove();
 		e.stopPropagation();
 		$.ajax({
@@ -71,18 +71,18 @@ $(notification).click(function(e){
 	}else{
 		$(notification).attr('class',"icons_none");
 		$(notification_out).attr('class',"notification_out_none");
-		$(notification).css('background-image','url(mainImage/notioff.png)');
+		// $(notification).css('background-image','url(mainImage/notioff.png)');
 	}
 });
 
-$("#menu").click(function(){
-	event.stopPropagation();
-	$(aligner).toggle();
-	$(buttons).toggle();
+// $("#menu").click(function(){
+// 	event.stopPropagation();
+// 	$(aligner).toggle();
+// 	$(buttons).toggle();
 
-	// $(".smt_inMenu").addClass('smt_inMenu_on');
-	// $(".smt_inMenu").removeClass('smt_inMenu');
-});
+// 	// $(".smt_inMenu").addClass('smt_inMenu_on');
+// 	// $(".smt_inMenu").removeClass('smt_inMenu');
+// });
 
 // $( "#menu" ).focusout(function() {
 // 	$(".smt_inMenu").css('none');
@@ -92,7 +92,7 @@ $("body").click(function(e){
 	if($(notification).hasClass( "icons" )){
 		$(notification).attr('class',"icons_none");
 		$(notification_out).attr('class',"notification_out_none");
-		$(notification).css('background-image','url(mainImage/notioff.png)');
+		// $(notification).css('background-image','url(mainImage/notioff.png)');
 	}
 	if($('#buttons').css('display') =='block'){
 		$(aligner).toggle();
@@ -131,55 +131,55 @@ $(".nobutton").click(function(e){
 })
 
 
-if(Upload!=undefined){
-	Upload.addEventListener("click", function() {
+// if(Upload!=undefined){
+// 	Upload.addEventListener("click", function() {
 
-		$(location).attr('href', './upload');
+// 		$(location).attr('href', './upload');
 
-	});
-}
+// 	});
+// }
 
-if(Login!=undefined){
-	Login.addEventListener("click", function() {
+// if(Login!=undefined){
+// 	Login.addEventListener("click", function() {
 
-		$(location).attr('href', './login');
+// 		$(location).attr('href', './login');
 
-	});
-}
-
-
-if(Logout!=undefined){
-	Logout.addEventListener("click", function() {
-
-		$(location).attr('href', './Logout');
-
-	});
-}
+// 	});
+// }
 
 
-if(Home!=undefined){
-	Home.addEventListener("click", function() {
+// if(Logout!=undefined){
+// 	Logout.addEventListener("click", function() {
 
-		$(location).attr('href', './');
+// 		$(location).attr('href', './Logout');
 
-	});
-}
+// 	});
+// }
 
-if(profileImage!=undefined){
-	profileImage.addEventListener("click", function() {
 
-		$(location).attr('href', './main');
+// if(Home!=undefined){
+// 	Home.addEventListener("click", function() {
 
-	});
-}
+// 		$(location).attr('href', './');
 
-if(profileName != undefined){
-	profileName.addEventListener("click", function() {
+// 	});
+// }
 
-		$(location).attr('href', './main');
+// if(profileImage!=undefined){
+// 	profileImage.addEventListener("click", function() {
 
-	});
-}
+// 		$(location).attr('href', './main');
+
+// 	});
+// }
+
+// if(profileName != undefined){
+// 	profileName.addEventListener("click", function() {
+
+// 		$(location).attr('href', './main');
+
+// 	});
+// }
 
 if(yourart != undefined){
 	yourart.addEventListener("click", function() {
@@ -197,17 +197,17 @@ if(Msg != undefined){
 	});
 }
 
-if(directMessage != undefined){
-	directMessage.addEventListener("click",function(){
-		$(location).attr('href','./dm');
-	});
-}
+// if(directMessage != undefined){
+// 	directMessage.addEventListener("click",function(){
+// 		$(location).attr('href','./dm');
+// 	});
+// }
 
-if(bugReport != undefined){
-	bugReport.addEventListener("click",function(){
-		$(location).attr('href','./bugReport');
-	});
-}
+// if(bugReport != undefined){
+// 	bugReport.addEventListener("click",function(){
+// 		$(location).attr('href','./bugReport');
+// 	});
+// }
 /*
 nameLengthCheck();
 function nameLengthCheck(){
@@ -224,6 +224,14 @@ searchButton.addEventListener("click", function() {
 		$('#searchSlot').autocomplete( "search");
 	}
 });
+
+// 사이즈 조정하는 코드
+  jQuery.ui.autocomplete.prototype._resizeMenu = function () {
+    var ul = this.menu.element;
+    ul.outerWidth($('#searchDropdown_content').outerWidth());
+  }
+
+//검색버튼 클릭시 바로 autocomplete 에서 결과 띄워 줌
 document.getElementById("searchbar").onkeypress = function(e) {
 	console.log("searchbar clicked");
 	var key = e.charCode || e.keyCode || 0;
