@@ -25,22 +25,19 @@ class getSpotlightClass extends Controller
         //================
         //bootstrap
         //================
+  // <link href="css/gbscss/bootstrap.min.css" rel="stylesheet" type="text/css" />
+  // <link href="css/gbscss/owl.carousel.css" rel="stylesheet">
+  // <link href="css/gbscss/style.css" rel="stylesheet" type="text/css" />
 echo'
-  <link href="css/gbscss/bootstrap.min.css" rel="stylesheet" type="text/css" />
-  <link href="css/gbscss/owl.carousel.css" rel="stylesheet">
-  <link href="css/gbscss/style.css" rel="stylesheet" type="text/css" />
+  <link href="css/works.css" rel="stylesheet" type="text/css" />
+  <link href="css/worksPlus.css" rel="stylesheet" type="text/css" />
 
-    <script src="js/gbsjs/jquery.min.js" type="text/javascript"></script>
-  <script src="js/gbsjs/bootstrap.min.js" type="text/javascript"></script>
-  <script src="js/gbsjs/jquery.nicescroll.min.js" type="text/javascript"></script>
-  <script src="js/gbsjs/superfish.min.js" type="text/javascript"></script>
-  <script src="js/gbsjs/owl.carousel.js" type="text/javascript"></script>
-  <script src="js/gbsjs/myscript.js" type="text/javascript"></script>
+
 
 ';
 
 
-    echo '<section id="projects" class="padbot20">
+    echo '<section id="projects01" class="padbot20">
     
     <!-- CONTAINER -->
     <div class="container">
@@ -72,7 +69,7 @@ echo'
           if(self::urlCheck($GLOBALS['artURL'])=="youtube"){
 
             $yvID = self::matchYoutubeUrl($GLOBALS['artURL']);
-            $GLOBALS['artURL'] = "https://img.youtube.com/vi/".$yvID.'/mqdefault.jpg';
+            $GLOBALS['artURL'] = "https://img.youtube.com/vi/".$yvID.'/hqdefault.jpg';
 
           }
 
@@ -89,6 +86,7 @@ echo'
                   <img src="'.$GLOBALS['artURL'].'" alt="" />
                 </div>
               </a>
+              <p class="workTitle">'.$GLOBALS['title'].'</p>
               <div class="credit">
                 <div class="position_Frame">';
                   $k = 0;

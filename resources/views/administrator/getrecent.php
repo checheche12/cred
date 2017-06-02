@@ -25,14 +25,15 @@ class getRecentClass extends Controller
 //================
         //bootstrap
         //================
+    // <link href="css/gbscss/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    // <link href="css/gbscss/owl.carousel.css" rel="stylesheet">
+    // <link href="css/gbscss/style.css" rel="stylesheet" type="text/css" />
     echo'
-    <link href="css/gbscss/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href="css/gbscss/owl.carousel.css" rel="stylesheet">
-    <link href="css/gbscss/style.css" rel="stylesheet" type="text/css" />
+    <link href="css/works.css" rel="stylesheet" type="text/css" />
+    <link href="css/worksPlus.css" rel="stylesheet" type="text/css" />
 
-    <script src="js/gbsjs/jquery.min.js" type="text/javascript"></script>
+
     <script src="js/gbsjs/bootstrap.min.js" type="text/javascript"></script>
-    <script src="js/gbsjs/jquery.nicescroll.min.js" type="text/javascript"></script>
     <script src="js/gbsjs/superfish.min.js" type="text/javascript"></script>
     <script src="js/gbsjs/owl.carousel.js" type="text/javascript"></script>
     <script src="js/gbsjs/myscript.js" type="text/javascript"></script>
@@ -44,7 +45,7 @@ class getRecentClass extends Controller
     //   <h2><b>Newest</b> Projects</h2>
     // </div><!-- //CONTAINER -->
 
-    echo '<section id="projects" class="padbot20">
+    echo '<section id="projects02" class="padbot20">
 
     <div class="projects-wrapper" data-appear-top-offset="-200" data-animated="fadeInUp">
       <!-- PROJECTS SLIDER -->
@@ -67,7 +68,7 @@ class getRecentClass extends Controller
           if(self::urlCheck($GLOBALS['artURL'])=="youtube"){
 
             $yvID = self::matchYoutubeUrl($GLOBALS['artURL']);
-            $GLOBALS['artURL'] = "https://img.youtube.com/vi/".$yvID.'/mqdefault.jpg';
+            $GLOBALS['artURL'] = "https://img.youtube.com/vi/".$yvID.'/hqdefault.jpg';
 
           }
 
@@ -79,11 +80,12 @@ class getRecentClass extends Controller
           echo '
           <div class="item">
             <div class="work_item">
-              <a href="'.$artPKArr[$i].'">
+              <a href="post?int='.$artPKArr[$i].'">
                 <div class="work_img">
                   <img src="'.$GLOBALS['artURL'].'" alt="" />
                 </div>
               </a>
+              <p class="workTitle">'.$GLOBALS['title'].'</p>
               <div class="credit">
                 <div class="position_Frame">';
                   $k = 0;

@@ -17,7 +17,7 @@
 	display: none;
 	position: relative;
 	width: 100%;
-	padding:48px 0 0;
+	/*padding:48px 0 0;*/
 	-ms-touch-action: pan-y;
 }
 .owl-carousel .testim_slider {padding-top:30px;}

@@ -226,10 +226,10 @@ searchButton.addEventListener("click", function() {
 });
 
 // 사이즈 조정하는 코드
-  jQuery.ui.autocomplete.prototype._resizeMenu = function () {
-    var ul = this.menu.element;
-    ul.outerWidth($('#searchDropdown_content').outerWidth());
-  }
+jQuery.ui.autocomplete.prototype._resizeMenu = function () {
+	var ul = this.menu.element;
+	ul.outerWidth($('#searchDropdown_content').outerWidth());
+}
 
 //검색버튼 클릭시 바로 autocomplete 에서 결과 띄워 줌
 document.getElementById("searchbar").onkeypress = function(e) {
@@ -247,6 +247,7 @@ document.getElementById("searchbar").onkeypress = function(e) {
 
 $( "#searchSlot" ).autocomplete({
 	minLength: 1,
+	appendTo: "#searchDropdown_content",
 	source: function( request, response ) {
 		var Data = {"_token" : token};
 		Data['inputValue'] = $('#searchSlot').val();
@@ -344,3 +345,21 @@ function post_to_url(path, int, method) {
 	form.submit();
 
 }
+
+
+//JobBoard Button 생성 및 스크롤
+if ( location.href == "http://www.credmob.com/" ) {
+	$("#jobBoardBt").click(function(event){		
+		event.preventDefault();
+		console.log("jobBoardBt Clicked");
+		$('#html, body').animate({scrollTop:$("#jobPosting_Frame").offset().top-101}, 800);
+	});
+}else{
+	$("#jobBoardBt").css("display","none");
+}
+
+
+//중복 클릭 체크 위함.
+$('html').on('click',function(){
+console.log("clicked");
+});

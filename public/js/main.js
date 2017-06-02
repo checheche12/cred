@@ -29,6 +29,20 @@ var addMemberBt = document.getElementById('addMember');
 
 // 현재 제작 과정. post 페이지로 잘 이동한다.
 bridgeLogDisplay();
+var siba;
+// $(window).ready(function(){
+	imagePreload( "/mainImage/GuideImage/guideLeftButton.png", "/mainImage/GuideImage/guideRightButton.png","/mainImage/GuideImage/myProject.png","/mainImage/GuideImage/box.png" );
+
+	$( window ).on("load",function() {
+	// var Testing = document.getElementsByTagName("li");
+	var Testing = $("li");
+	var arrowImage = new Array();
+	arrowImage[0] = "/mainImage/GuideImage/guideLeftButton.png"
+	arrowImage[1] = "/mainImage/GuideImage/guideRightButton.png"
+	makeGuide(true,Testing[3],-200,100,arrowImage);
+});
+// })
+
 function bridgeLogDisplay(){
 	$.ajax({
 

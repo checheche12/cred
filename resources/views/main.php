@@ -95,6 +95,7 @@
 <script>
   var userPK = <?=$_SESSION['userPK']?>;
 </script>
+<script type = "text/javascript" src = "js/makeGuide.js"></script>
 <script type = "text/javascript" src = "js/main.js"></script>
 <script type="text/javascript">//FOUC(Flash Of Unstyled Content) 방지 용
   $(function(){

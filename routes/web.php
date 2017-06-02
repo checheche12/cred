@@ -374,3 +374,7 @@ Route::get('/bugReport',function(){
 Route::post('/bugSend',function(){
 	return view('bugReport.bugSend');
 });
+
+Route::get('/testingg',function(){
+	return view('intro.testingg');
+});
