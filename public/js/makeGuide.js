@@ -18,7 +18,7 @@ imagePreload = function() {
   }
 
 
-function makeGuide(isStart, selector, x_Position, y_Position,arrowImage,imageURLs ,guideOptionArray,animatingFunction)
+function makeGuide(isStart, selector, x_Position, y_Position,imageURLs,arrowImage,guideOptionArray,animatingFunction)
 {
 
 	if(!isStart)
@@ -26,17 +26,27 @@ function makeGuide(isStart, selector, x_Position, y_Position,arrowImage,imageURL
 			return ;
 	}else{
 
+    if(arrowImage == undefined){
+      var BodyTag = document.getElementsByTagName("body"); // arrowImage 이미지 경로를 여기다가 추가해야한다.
+      $(BodyTag).prepend('<div id = "backLayerDiv">'+
+      '<div id = "guideTotal">'+
+      '<div id = "positionAbsolute" style="position: absolute">'+
+      '<div id = "guideImage"><div id = "reView" style="display : inline-block;position: absolute;margin-top: 3rem;margin-left: 4.3rem;z-index: 1001;">다시보지 않기</div><img id = "mainImage" src = '+imageURLs[0]+'>'+''+'</img>'+
+      '</div>'+
+      '</div>');
+    }else{
+      var BodyTag = document.getElementsByTagName("body"); // arrowImage 이미지 경로를 여기다가 추가해야한다.
+      $(BodyTag).prepend('<div id = "backLayerDiv">'+
+      '<div id = "guideTotal">'+
+      '<div id = "positionAbsolute" style="position: absolute">'+
+      '<div id = "guideImage"><div id = "reView" style="display : inline-block;position: absolute;margin-top: 3rem;margin-left: 4.3rem;z-index: 1001;">다시보지 않기</div><img id = "mainImage" src = '+imageURLs[0]+'>'+''+'</img>'+
+      '<div id = "ArrowBox">'+
+      '<div id = "preventGuide"><img id = "preventImage" src = '+arrowImage[0]+'>'+''+'</img></div>'+
+      '<div id = "nextGuide"><img id = "nextImage" src = '+arrowImage[1]+'>'+''+'</img><div></div></div>'+
+      '</div></div>'+
+      '</div>');
+    }
 		//style="background-image: url(/mainImage/GuideImage/box.png)"
-		var BodyTag = document.getElementsByTagName("body"); // arrowImage 이미지 경로를 여기다가 추가해야한다.
-		$(BodyTag).prepend('<div id = "backLayerDiv">'+
-		'<div id = "guideTotal">'+
-		'<div id = "positionAbsolute" style="position: absolute">'+
-		'<div id = "guideImage"><img id = "mainImage" src = "/mainImage/GuideImage/myProject.png">'+''+'</img></div>'+
-		'<div id = "ArrowBox">'+
-		'<div id = "preventGuide"><img id = "preventImage" src = '+arrowImage[0]+'>'+''+'</img></div>'+
-		'<div id = "nextGuide"><img id = "nextImage" src = '+arrowImage[1]+'>'+''+'</img></div></div>'+
-		'</div><img src = "/mainImage/GuideImage/box.png"></div>'+
-		'</div>');
 
 		$("#guideTotal").css('display','inline-block');
 		$("#preventGuide").css('z-index',"1000").css('display','inline-block');
@@ -60,20 +70,20 @@ function makeGuide(isStart, selector, x_Position, y_Position,arrowImage,imageURL
 
 			//$(BodyTag).css("background-color",guideOptionArray['backgroundcolor'])
 		}
-		var leftOffset = $("#guideTotal").offset().left+($("#guideTotal").width()-$("#positionAbsolute").width())/2
-		var topOffset = $("#guideTotal").offset().top+($("#guideTotal").height()-$("#positionAbsolute").height())/2
+		var leftOffset = $("#positionAbsolute").offset().left+($("#guideImage").width()-$("#positionAbsolute").width())/2
+		var topOffset = $("#positionAbsolute").offset().top+($("#guideImage").height()-$("#positionAbsolute").height())/2
 
-			console.log($("#guideTotal").width())
-			console.log($("#guideTotal").width())
+			console.log($("#guideImage").width())
+			console.log($("#guideImage").height())
 			console.log($("#positionAbsolute").width())
-			console.log($("guideTotal").width())
+      console.log($("#positionAbsolute").height())
 			$("#positionAbsolute").css('left',leftOffset).css('top',topOffset)
 
 		$(window).resize(function(){
 			var width = $(BodyTag[0]).width()
 			var height = $(BodyTag[0]).height()
       $("#backLayerDiv").width(width).height(height);
-			$("#guideTotal").css('margin-left',$(selector).offset().left-400).css('margin-top',$(selector).offset().top+200)
+			$("#guideToal").css('margin-left',$(selector).offset().left).css('margin-top',$(selector).offset().top)
    });
 
 	 $("#guideTotal").click(function(event){
@@ -84,6 +94,10 @@ function makeGuide(isStart, selector, x_Position, y_Position,arrowImage,imageURL
 		 	$(this).remove()
 
 	 });
+
+   $("#reView").click(function(){
+      $("#backLayerDiv").remove()
+   });
 
 
 	}

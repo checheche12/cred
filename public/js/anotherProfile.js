@@ -25,6 +25,18 @@ var token;
 	})
 
 bridgeLogDisplay();
+imagePreload( "/mainImage/GuideImage/guideLeftButton.png", "/mainImage/GuideImage/guideRightButton.png","/mainImage/GuideImage/myProject2.png");
+
+$( window ).on("load",function() {
+// var Testing = document.getElementsByTagName("li");
+var Testing = $(".profileFrame");
+var arrowImage = new Array();
+arrowImage[0] = "/mainImage/GuideImage/guideLeftButton.png"
+arrowImage[1] = "/mainImage/GuideImage/guideRightButton.png"
+imageURLs = new Array();
+imageURLs[0] = "/mainImage/GuideImage/myProject2.png"
+makeGuide(true,Testing[0],+200,100,imageURLs);
+});
 
 function bridgeLogDisplay(){
 	$.ajax({

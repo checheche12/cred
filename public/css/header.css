@@ -94,7 +94,7 @@
 .navbar-default .navbar-nav > .open > a:hover,
 .navbar-default .navbar-nav > .open > a:focus {
 	background-color:  #fff;
-}	
+}
 
 
 .dropdown-menu  {
@@ -128,14 +128,14 @@
 	margin:0;
 }
 
- ul.nav li a {	
+ ul.nav li a {
 	font-size:12px;
 	border:none;
 	font-weight:700;
 	text-transform:uppercase;
 }
 
- ul.nav li ul li a {	
+ ul.nav li ul li a {
 	font-size:12px;
 	border:none;
 	font-weight:300;
@@ -369,7 +369,7 @@ ul{
 }
 
 /* =============================
-21. Media queries 
+21. Media queries
 ============================= */
 
 @media (min-width: 768px) and (max-width: 1000px) {
@@ -391,7 +391,7 @@ ul{
 	#searchbar{
 		margin-left: 28px;
 	}
-	
+
 	footer .widget form  input#appendedInputButton {
 		display: block;
 		width: 91%;
@@ -399,7 +399,7 @@ ul{
 		-moz-border-radius: 4px 4px 4px 4px;
 		border-radius: 4px 4px 4px 4px;
 	}
-	
+
 	footer .widget form  .input-append .btn {
 		display: block;
 		width: 100%;
@@ -414,7 +414,7 @@ ul{
 	ul.related-folio li{
 		width:156px;
 		margin:0 20px 0 0;
-	}	
+	}
 }
 
 @media (max-width: 767px) {
@@ -498,11 +498,11 @@ ul{
 		}
 
 		#featured .flexslider .slide-caption {
-			width: 90%; 
-			padding: 2%; 
-			position: absolute; 
-			left: 0; 
-			bottom: -40px; 
+			width: 90%;
+			padding: 2%;
+			position: absolute;
+			left: 0;
+			bottom: -40px;
 		}
 
 
@@ -540,7 +540,7 @@ ul{
 		}
 
 
-		footer .col-lg-1, footer .col-lg-2, footer .col-lg-3, footer .col-lg-4, footer .col-lg-5, footer .col-lg-6, 
+		footer .col-lg-1, footer .col-lg-2, footer .col-lg-3, footer .col-lg-4, footer .col-lg-5, footer .col-lg-6,
 		footer .col-lg-7, footer .col-lg-8, footer .col-lg-9, footer .col-lg-10, footer .col-lg-11, footer .col-lg-12{
 			margin-bottom:20px;
 		}
@@ -578,7 +578,7 @@ ul{
 
 		.cta-text {
 			margin:0 auto;
-			text-align:center;	
+			text-align:center;
 		}
 
 		ul.portfolio li article a i{

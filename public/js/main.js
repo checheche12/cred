@@ -31,7 +31,7 @@ var addMemberBt = document.getElementById('addMember');
 bridgeLogDisplay();
 var siba;
 // $(window).ready(function(){
-	imagePreload( "/mainImage/GuideImage/guideLeftButton.png", "/mainImage/GuideImage/guideRightButton.png","/mainImage/GuideImage/myProject.png","/mainImage/GuideImage/box.png" );
+	imagePreload( "/mainImage/GuideImage/guideLeftButton.png", "/mainImage/GuideImage/guideRightButton.png","/mainImage/GuideImage/myProject.png");
 
 	$( window ).on("load",function() {
 	// var Testing = document.getElementsByTagName("li");
@@ -39,7 +39,9 @@ var siba;
 	var arrowImage = new Array();
 	arrowImage[0] = "/mainImage/GuideImage/guideLeftButton.png"
 	arrowImage[1] = "/mainImage/GuideImage/guideRightButton.png"
-	makeGuide(true,Testing[3],-200,100,arrowImage);
+	imageURLs = new Array();
+	imageURLs[0] = "/mainImage/GuideImage/myProject.png"
+	makeGuide(true,Testing[3],-200,100,imageURLs);
 });
 // })
 
