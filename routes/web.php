@@ -202,6 +202,10 @@ Route::group(['middleware' => ['isLogin']] ,function(){
 			return view('connected');
 		});
 
+		Route::get('/guideSetting',function(){
+			return view('guideSetting');
+		});
+
 
 		//Connect 관련한 route들
 

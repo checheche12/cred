@@ -35,7 +35,10 @@ arrowImage[0] = "/mainImage/GuideImage/guideLeftButton.png"
 arrowImage[1] = "/mainImage/GuideImage/guideRightButton.png"
 imageURLs = new Array();
 imageURLs[0] = "/mainImage/GuideImage/myProject2.png"
-makeGuide(true,Testing[0],+200,100,imageURLs);
+if(Guide != 8){
+		makeGuide(true,Testing[0],+200,100,imageURLs,8);
+}
+
 });
 
 function bridgeLogDisplay(){

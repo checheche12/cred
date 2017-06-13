@@ -18,7 +18,7 @@ imagePreload = function() {
   }
 
 
-function makeGuide(isStart, selector, x_Position, y_Position,imageURLs,arrowImage,guideOptionArray,animatingFunction)
+function makeGuide(isStart, selector, x_Position, y_Position,imageURLs,number,arrowImage,guideOptionArray,animatingFunction)
 {
 
 	if(!isStart)
@@ -96,7 +96,19 @@ function makeGuide(isStart, selector, x_Position, y_Position,imageURLs,arrowImag
 	 });
 
    $("#reView").click(function(){
-      $("#backLayerDiv").remove()
+      var Data = {"number" : number};
+      $.ajax({
+  			type:'GET',
+  			url:'/guideSetting',
+  			data : Data,
+  			success:function(data){
+            $("#backLayerDiv").remove()
+  			},
+  			error: function(){
+          alert(number)
+  			     alert('error');
+  			}
+  		})
    });
 
 

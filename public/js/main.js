@@ -41,7 +41,9 @@ var siba;
 	arrowImage[1] = "/mainImage/GuideImage/guideRightButton.png"
 	imageURLs = new Array();
 	imageURLs[0] = "/mainImage/GuideImage/myProject.png"
-	makeGuide(true,Testing[3],-200,100,imageURLs);
+	if(Guide != 4){
+		makeGuide(true,Testing[3],-200,100,imageURLs,4);
+	}
 });
 // })
 

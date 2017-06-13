@@ -1,4 +1,7 @@
 <?php
+$Selects = DB::select('select * from userinfo where userPK = ?',[$_SESSION['userPK']]);
+$anotherGuide = (($Selects[0]->eventStatus)&8);
+
 
 class UserController
 {
@@ -22,7 +25,6 @@ class UserController
           array_push($GLOBALS['userinfoArray'],$user->education);
           array_push($GLOBALS['userinfoArray'],$user->userPK);
         }
-
 
       }
 }
@@ -80,6 +82,7 @@ class UserController
 
     <script>
       var userPK = <?=$_GET['int']?>;
+      var Guide = <?=$anotherGuide?>
     </script>
     <script type = "text/javascript" src = "js/makeGuide.js"></script>
     <script type = "text/javascript" src = "js/anotherProfile.js"></script>

@@ -1,5 +1,7 @@
 <?php
 
+    $Selects = DB::select('select * from userinfo where userPK = ?',[$_SESSION['userPK']]);
+    $mainGuide = (($Selects[0]->eventStatus)&4);
 ?>
 <!-- FOUC(Flash Of Unstyled Content) 방지 용 head-->
 <head>
@@ -94,6 +96,7 @@
 ?>
 <script>
   var userPK = <?=$_SESSION['userPK']?>;
+  var Guide = <?=$mainGuide?>
 </script>
 <script type = "text/javascript" src = "js/makeGuide.js"></script>
 <script type = "text/javascript" src = "js/main.js"></script>
